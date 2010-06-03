@@ -1,0 +1,16 @@
+defflow off
+defscrollback 4096
+hardstatus on
+hardstatus alwayslastline
+hardstatus string "%n* %t %= %D %d/%M %C"
+vbell   off
+defobuflimit 256
+defsilence off
+defmonitor off
+shell /bin/bash
+defutf8 on
+startup_message off 
+#attrcolor b "-b .I"
+bindkey ^[[1;3D prev
+bindkey ^[[1;3C next
+bind p paste

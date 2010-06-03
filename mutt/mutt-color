@@ -1,0 +1,5 @@
+color index         yellow  black   ~U
+color index         red     black   ~F
+
+color hdrdefault    white   black
+color header        yellow  black   '^(from|to|subject|date)'

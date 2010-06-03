@@ -1,0 +1,21 @@
+bind  pager     <up>     previous-line
+bind  pager     <down>   next-line
+bind  pager     <left>   exit 
+bind  pager     <right>  view-attachments
+bind  attach    <left>   exit
+bind  attach    <right>  view-attach
+bind  compose   <right> view-attach
+bind  index     G imap-fetch-mail
+bind  index     <f2> next-new
+bind  index     <right>  display-message
+bind  browser   <right>  select-entry
+bind  browser   <left>   exit
+bind  index     N        search-opposite
+bind  index     \Cn      toggle-new
+
+macro index     <left>   "c?\t"
+
+macro index A   "!abook\n"
+macro pager A   "!abook\n"
+
+macro index "<esc>\Cn" "T~N\n;\Cn\CT.\n"
