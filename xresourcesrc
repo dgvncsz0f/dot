@@ -1,4 +1,4 @@
-Xft.antialias: false
+Xft.antialias: true
 
 XTerm*background: black
 XTerm*foreground: white
@@ -25,6 +25,7 @@ UXTerm*metaSendsEscape: true
 UXTerm*saveLines: 4096
 UXTerm*geometry: 130x40
 
+emacs.FontBackend: xft
 emacs.font: unifont-12
 emacs.menuBar: off
 emacs.toolBar: off

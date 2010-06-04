@@ -1,0 +1,34 @@
+(require 'color-theme)
+(eval-after-load "color-theme"
+  '(progn
+     (color-theme-initialize)
+     (color-theme-midnight)))
+
+(set-face-attribute 'mode-line nil :box nil)
+(fset 'yes-or-no-p 'y-or-n-p)
+
+(show-paren-mode t)
+(show-ws-toggle-show-hard-spaces)
+(show-ws-toggle-show-tabs)
+; (show-ws-toggle-show-trailing-whitespace)
+
+(setq-default indent-tabs-mode nil)
+(setq-default auto-save-default nil)
+(setq-default tab-width 4)
+(setq-default blink-matching-paren t)
+(setq-default inhibit-startup-screen t)
+(setq-default modeline-shadow-thickness 0)
+(setq-default cua-toggle-set-mark nil)
+(setq-default cua-enable-cua-keys nil)
+(setq-default ido-enable-flex-matching t)
+(setq-default c-default-style "bsd")
+(setq-default c-basic-offset 2)
+
+(put 'narrow-to-region 'disabled nil)
+
+(global-linum-mode t)
+(line-number-mode t)
+(column-number-mode t)
+(auto-fill-mode t)
+(cua-mode t)
+(ido-mode t)
