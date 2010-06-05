@@ -23,8 +23,8 @@ function exp_env
   export JRE_HOME="/opt/jdk1.6.0_07/jre"
   export JDK_HOME="/opt/jdk1.6.0_07"
   export HISTFILE=$HOME/.bash_history
-  export VISUAL="vi"
-  export EDITOR="vi"
+  export VISUAL="emacsclient"
+  export EDITOR="emacsclient"
   export PAGER="less"
   export CDDA_DEVICE="/dev/cdrom"
   export HGENCODING="utf-8"

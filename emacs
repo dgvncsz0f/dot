@@ -23,12 +23,17 @@
 (setq-default ido-enable-flex-matching t)
 (setq-default c-default-style "bsd")
 (setq-default c-basic-offset 2)
+(setq-default comment-multi-line t)
 
 (put 'narrow-to-region 'disabled nil)
 
 (global-linum-mode t)
 (line-number-mode t)
 (column-number-mode t)
-(auto-fill-mode t)
 (cua-mode t)
 (ido-mode t)
+
+(add-hook 'text-mode-hook 'auto-fill-mode t)
+(add-hook 'text-mode-hook 'flyspell-mode t)
+
+(server-start)
