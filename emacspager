@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+mktemp=${MKTEMP:-/bin/mktemp}
+editor=${EMACSCLIENT:-/usr/bin/emacsclient}
+temp=${TEMP:-/tmp}
+
+tmpfile=$("${mktemp}" "${temp}/emacspipe.XXXXXX") &&\
+{
+    /bin/cat >"${tmpfile}" && (/bin/chmod 400 "${tmpfile}"; "${editor}" "${tmpfile}")
+    /bin/rm -f "${tmpfile}"
+}

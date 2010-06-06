@@ -6,6 +6,7 @@
 
 (set-face-attribute 'mode-line nil :box nil)
 (fset 'yes-or-no-p 'y-or-n-p)
+; (put 'narrow-to-region 'disabled nil)
 
 (show-paren-mode t)
 (show-ws-toggle-show-hard-spaces)
@@ -25,8 +26,7 @@
 (setq-default c-basic-offset 2)
 (setq-default comment-multi-line t)
 
-(put 'narrow-to-region 'disabled nil)
-
+(global-font-lock-mode t)
 (global-linum-mode t)
 (line-number-mode t)
 (column-number-mode t)
@@ -37,3 +37,8 @@
 (add-hook 'text-mode-hook 'flyspell-mode t)
 
 (server-start)
+
+(global-set-key [?\C-x ?a] 'align-string)
+(global-set-key [?\C-x ?c] 'ispell-buffer)
+(global-set-key [S-f12] 'next-error)
+(define-key ctl-x-map "\C-q" 'view-mode)
