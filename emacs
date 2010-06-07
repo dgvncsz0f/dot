@@ -6,7 +6,6 @@
 
 (set-face-attribute 'mode-line nil :box nil)
 (fset 'yes-or-no-p 'y-or-n-p)
-; (put 'narrow-to-region 'disabled nil)
 
 (show-paren-mode t)
 (show-ws-toggle-show-hard-spaces)
@@ -36,9 +35,13 @@
 (add-hook 'text-mode-hook 'auto-fill-mode t)
 (add-hook 'text-mode-hook 'flyspell-mode t)
 
-(server-start)
-
-(global-set-key [?\C-x ?a] 'align-string)
-(global-set-key [?\C-x ?c] 'ispell-buffer)
-(global-set-key [S-f12] 'next-error)
+(define-key ctl-x-map "a" 'align-string)
+(define-key ctl-x-map "c" 'ispell-buffer)
 (define-key ctl-x-map "\C-q" 'view-mode)
+(define-key ctl-x-map "\M-k" 'erase-buffer)
+(global-set-key [S-f12] 'next-error)
+
+(put 'erase-buffer 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
+
+(server-start)
