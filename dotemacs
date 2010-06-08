@@ -1,3 +1,6 @@
+(add-to-list 'load-path "~/emacs/lib/icicles")
+(require 'icicles)
+
 (require 'color-theme)
 (eval-after-load "color-theme"
   '(progn
@@ -8,8 +11,8 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (show-paren-mode t)
-(show-ws-toggle-show-hard-spaces)
-(show-ws-toggle-show-tabs)
+; (show-ws-toggle-show-hard-spaces)
+; (show-ws-toggle-show-tabs)
 ; (show-ws-toggle-show-trailing-whitespace)
 
 (setq-default indent-tabs-mode nil)
@@ -31,6 +34,7 @@
 (column-number-mode t)
 (cua-mode t)
 (ido-mode t)
+(icy-mode t)
 
 (add-hook 'text-mode-hook 'auto-fill-mode t)
 (add-hook 'text-mode-hook 'flyspell-mode t)
@@ -40,6 +44,7 @@
 (define-key ctl-x-map "\C-q" 'view-mode)
 (define-key ctl-x-map "\M-k" 'erase-buffer)
 (global-set-key [S-f12] 'next-error)
+(global-set-key [C-.] 'icicle-find-file-in-tags-table)
 
 (put 'erase-buffer 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
