@@ -1,7 +1,9 @@
+(add-to-list 'load-path "~/emacs/lib/")
 (add-to-list 'load-path "~/emacs/lib/icicles")
+(require 'fuzzy-match)
 (require 'icicles)
-
 (require 'color-theme)
+
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)
