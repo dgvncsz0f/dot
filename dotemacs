@@ -29,13 +29,16 @@
 (setq-default c-default-style "bsd")
 (setq-default c-basic-offset 2)
 (setq-default comment-multi-line t)
+(setq-default vertical-scroll-bar nil)
 
+(tool-bar-mode nil)
+(menu-bar-mode nil)
 (global-font-lock-mode t)
 (global-linum-mode t)
 (line-number-mode t)
 (column-number-mode t)
 (cua-mode t)
-(ido-mode t)
+;(ido-mode t)
 (icy-mode t)
 
 (add-hook 'text-mode-hook 'auto-fill-mode t)
