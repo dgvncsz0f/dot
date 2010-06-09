@@ -27,9 +27,9 @@ UXTerm*geometry: 130x40
 
 emacs.FontBackend: xft
 emacs.font: unifont-12
-emacs.menuBar: off
-emacs.toolBar: off
-emacs.verticalScrollBars: off
+//emacs.menuBar: off
+//emacs.toolBar: off
+//emacs.verticalScrollBars: off
 emacs.background: black
 emacs.foreground: white
 emacs.mode-line.AttributeBox: t
