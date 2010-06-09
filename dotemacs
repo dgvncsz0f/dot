@@ -29,6 +29,7 @@
 (setq-default c-default-style "bsd")
 (setq-default c-basic-offset 2)
 (setq-default comment-multi-line t)
+(setq-default mail-from-style 'angles)
 
 (global-font-lock-mode t)
 (global-linum-mode t)

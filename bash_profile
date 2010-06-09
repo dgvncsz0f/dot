@@ -51,8 +51,8 @@ function exp_env
   readonly HISTFILESIZE
 }
 
-# main
 [ -f /etc/profile ] && source /etc/profile
+[ -f "${HOME}/.bash_profile.local" ] && source "${HOME}/.bash_profile.local"
 exp_env
 exe_ext
 mnt_sec
