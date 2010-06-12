@@ -50,6 +50,8 @@
 
 (add-hook 'text-mode-hook 'auto-fill-mode t)
 (add-hook 'text-mode-hook 'flyspell-mode t)
+(add-hook 'mail-mode-hook 'turn-on-auto-fill)
+(add-hook 'mail-mode-hook 'flyspell-mode t)
 
 (define-key ctl-x-map "a" 'align-string)
 (define-key ctl-x-map "c" 'ispell-buffer)
@@ -57,8 +59,11 @@
 (define-key ctl-x-map "\M-k" 'erase-buffer)
 (define-key ctl-x-map "\M-." 'icicle-find-file-in-tags-table)
 (global-set-key [S-f12] 'next-error)
+(global-set-key [S-f8] 'ispell-change-dictionary)
 
 (put 'erase-buffer 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
+
+(setq auto-mode-alist (cons '("/tmp/mutt.*$" . mail-mode) auto-mode-alist))
 
 (server-start)
