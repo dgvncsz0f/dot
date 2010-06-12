@@ -30,6 +30,12 @@
 (setq-default c-basic-offset 2)
 (setq-default comment-multi-line t)
 (setq-default mail-from-style 'angles)
+(setq-default erc-kill-buffer-on-part t)
+(setq-default erc-kill-queries-on-quit t)
+(setq-default erc-kill-server-buffer-on-quit t)
+(setq-default erc-track-exclude-types (quote ("JOIN" "NICK" "PART" "QUIT" "MODE" "324" "329" "332" "333" "353" "477")))
+(setq-default erc-timestamp-right-align-by-pixel t)
+(setq-default erc-nick "dsouza")
 
 (global-font-lock-mode t)
 (global-linum-mode t)
