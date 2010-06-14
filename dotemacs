@@ -66,6 +66,8 @@
 
 (setq auto-mode-alist (cons '("/tmp/mutt.*$" . mail-mode) auto-mode-alist))
 
-(server-start)
+; (server-start)
 
 (put 'dired-find-alternate-file 'disabled nil)
+
+(put 'scroll-left 'disabled nil)
