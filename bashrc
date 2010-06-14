@@ -25,6 +25,7 @@ function exp_env
 [ -z "${PS1}" ] && return
 [ -f /etc/bash.bashrc ] && source /etc/bash.bashrc
 [ -f /etc/bashrc ] && source /etc/bashrc
+[ -f "${HOME}/.bashrc.local" ] && source "${HOME}/.bashrc.local"
 shopt -s checkwinsize
 shopt -s histappend
 reg_als
