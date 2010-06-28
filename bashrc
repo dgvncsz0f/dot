@@ -5,6 +5,18 @@ function e_man()
   /usr/bin/emacsclient -t -e "(woman \"$1\")"
 }
 
+function e_emacs()
+{
+  local pidof=/bin/pidof
+  ${pidof} /usr/bin/emacs >/dev/null
+  if [ "$?" == "0" ]
+  then
+    /usr/bin/emacsclient -nc $@
+  else
+    /usr/bin/emacs $@
+  fi
+}
+
 function reg_als
 {
   alias startx="/usr/bin/startx & exit"
@@ -20,6 +32,7 @@ function reg_als
   alias egrep="/bin/egrep --color=auto"
   alias grep="/bin/grep --color=auto"
   alias man=e_man
+  alias emacs=e_emacs
 }
 
 function exp_env
