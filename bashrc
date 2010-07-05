@@ -6,7 +6,7 @@ function e_emacs()
   ${pidof} /usr/bin/emacs >/dev/null
   if [ "$?" == "0" ]
   then
-    /usr/bin/emacsclient -nc $@
+    /usr/bin/emacsclient -c $@
   else
     /usr/bin/emacs $@
   fi
