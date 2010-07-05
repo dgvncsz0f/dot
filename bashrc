@@ -1,10 +1,5 @@
 # -*- mode: Shell-script; sh-basic-offset: 2; -*-
 
-function e_man()
-{
-  /usr/bin/emacsclient -t -e "(woman \"$1\")"
-}
-
 function e_emacs()
 {
   local pidof=/bin/pidof
@@ -31,7 +26,6 @@ function reg_als
   alias l1="ls --color=auto -1"
   alias egrep="/bin/egrep --color=auto"
   alias grep="/bin/grep --color=auto"
-  alias man=e_man
   alias emacs=e_emacs
 }
 
