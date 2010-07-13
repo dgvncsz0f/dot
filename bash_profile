@@ -1,6 +1,6 @@
 # -*- mode: Shell-script; sh-basic-offset: 2; -*-
 
-function mnt_sec
+function my_mnt_sec
 {
   local ENCFS=/usr/bin/encfs
   local MOUNT=/bin/mount
@@ -18,7 +18,7 @@ function mnt_sec
   fi
 }
 
-function exe_ext
+function my_exe_ext
 {
   local EMACS="/usr/bin/emacs"
   local PIDOF="/bin/pidof"
@@ -34,24 +34,35 @@ function exe_ext
   fi
 }
 
-function exp_env
+function my_exp_env
 {
   export SSH_ASKPASS=/usr/bin/ssh-askpass
   export JRE_HOME=/opt/jdk1.6.0_07/jre
   export JDK_HOME=/opt/jdk1.6.0_07
   export HISTFILE="${HOME}/.bash_history"
-  export VISUAL="emacsclient -c"
-  export EDITOR="emacsclient -c"
   export PAGER=/usr/bin/less
   export CDDA_DEVICE=/dev/cdrom
   export FTP_PASSIVE_MODE=1
   export LANG=en_US.UTF-8
   [ -x /usr/bin/dircolors ] && eval `/usr/bin/dircolors`
+  if [ -x "/usr/bin/emacs" ]
+  then
+    export VISUAL=/usr/bin/emacs
+    export EDITOR=/usr/bin/emacs
+  elif [ -x "/usr/bin/vim" ]
+  then
+    export VISUAL=/usr/bin/vim
+    export EDITOR=/usr/bin/vim
+  elif [ -x "/usr/bin/vi" ]
+  then
+    export VISUAL=/usr/bin/vi
+    export EDITOR=/usr/vin/vi
+  fi
 }
 
 [ -f /etc/profile ] && source /etc/profile
 [ -f "${HOME}/.bash_profile.local" ] && source "${HOME}/.bash_profile.local"
 [ -f /etc/bash_completion ] && source /etc/bash_completion
-exp_env
-exe_ext
-mnt_sec
+my_exp_env
+my_exe_ext
+my_mnt_sec

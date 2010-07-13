@@ -62,7 +62,7 @@
 (global-set-key "\C-ct" 'icicle-find-file-in-tags-table)
 (global-set-key "\C-cq" 'delete-frame)
 (global-set-key "\C-cw" 'server-edit)
-(global-set-key [S-f12] 'next-error)
+(global-set-key [S-f12] 'whitespace-mode)
 (global-set-key [S-f8] 'ispell-change-dictionary)
 
 (put 'erase-buffer 'disabled nil)
