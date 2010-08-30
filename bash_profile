@@ -29,7 +29,7 @@ function my_exe_ext
   then
     if [ -x "${PIDOF}" ]
     then
-      ("${PIDOF}" "${EMACS}" >/dev/null || "${EMACS}" --daemon 2>/dev/null)
+      ("${PIDOF}" "${EMACS}" >/dev/null || "${EMACS}" --daemon 2>/dev/null)&
     fi
   fi
 }

@@ -64,6 +64,7 @@
 (global-set-key "\C-cw" 'server-edit)
 (global-set-key [S-f12] 'whitespace-mode)
 (global-set-key [S-f8] 'ispell-change-dictionary)
+(global-set-key [S-f5] 'viper-mode)
 
 (put 'erase-buffer 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
