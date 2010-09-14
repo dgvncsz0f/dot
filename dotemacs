@@ -7,7 +7,7 @@
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)
-     (color-theme-midnight)))
+     (color-theme-emacs-21)))
 
 (set-face-attribute 'mode-line nil :box nil)
 (fset 'yes-or-no-p 'y-or-n-p)
