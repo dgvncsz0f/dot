@@ -3,11 +3,12 @@
 (require 'fuzzy-match)
 (require 'icicles)
 (require 'color-theme)
+(require 'zenburn)
 
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)
-     (color-theme-emacs-21)))
+     (color-theme-zenburn)))
 
 (set-face-attribute 'mode-line nil :box nil)
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -17,6 +18,7 @@
 ; (show-ws-toggle-show-tabs)
 ; (show-ws-toggle-show-trailing-whitespace)
 
+(setq-default haskell-program-name "ghci \"+.\"")
 (setq-default indent-tabs-mode nil)
 (setq-default auto-save-default nil)
 (setq-default tab-width 4)
@@ -41,6 +43,7 @@
 
 (global-font-lock-mode t)
 (global-linum-mode t)
+(global-hl-line-mode)
 (line-number-mode t)
 (column-number-mode t)
 (cua-mode t)
