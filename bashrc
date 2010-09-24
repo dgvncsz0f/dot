@@ -41,5 +41,8 @@ function my_exp_env
 [ -f "${HOME}/.bashrc.local" ] && source "${HOME}/.bashrc.local"
 shopt -s checkwinsize
 shopt -s histappend
+shopt -s checkjobs
+shopt -s globstar
+shopt -s dirspell
 my_reg_als
 my_exp_env
