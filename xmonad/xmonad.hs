@@ -15,7 +15,7 @@ myConfig = do { xmproc <- spawnPipe "/usr/bin/xmobar"
                                                          ; setWMName "LG3D"
                                                          }
                                        , modMask    = mod4Mask
-                                       , terminal   = "/usr/bin/xterm -e /usr/bin/screen"
+                                       , terminal   = "/usr/bin/urxvt -e /usr/bin/screen"
                                        } `additionalKeys` [ 
                                                           ]
               }

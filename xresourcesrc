@@ -34,3 +34,8 @@ emacs.font: unifont-12
 emacs.background: black
 emacs.foreground: white
 emacs.mode-line.AttributeBox: t
+
+urxvt.foreground: white
+urxvt.background: black
+urxvt.font: xft:unifont
+urxvt.scrollBar: false
