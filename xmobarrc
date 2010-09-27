@@ -1,12 +1,12 @@
 Config { font = "xft:unifont"
        , bgColor      = "black"
-       , fgColor      = "grey"
+       , fgColor      = "white"
        , position     = Bottom
        , lowerOnStart = True
        , commands     = [ Run StdinReader
                         , Run Network "eth0" ["-L","0","-H","32","--normal","green","--high","red"] 10
                         , Run Network "wlan0" ["-L","0","-H","32","--normal","green","--high","red"] 10
-                        , Run MultiCpu ["-L","3","-H","50","--normal","green","--high","red"] 10
+                        , Run MultiCpu ["-L","3","-H","50","--normal","green","--high","red","-t","Cpu: <total>|<total0>,<total1>"] 10
                         , Run BatteryP ["C23A"] [] 10
                         , Run Memory ["-t","Mem: <usedratio>%"] 10
                         , Run Swap [] 10
@@ -14,5 +14,5 @@ Config { font = "xft:unifont"
                         ]
        , sepChar      = "%"
        , alignSep     = "}{"
-       , template     = "%StdinReader% | %multicpu% | %memory% * %swap% | %wlan0% }{ <fc=#ee9a00>%date%</fc> | %battery%"
+       , template = "%StdinReader% }{[%wlan0%][%multicpu%][%memory%][%swap%][%date%]"
        }
