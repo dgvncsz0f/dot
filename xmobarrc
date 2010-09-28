@@ -1,8 +1,8 @@
 Config { font = "xft:unifont"
-       , bgColor      = "black"
+       , bgColor      = "#2f4f4f"
        , fgColor      = "white"
        , position     = Bottom
-       , lowerOnStart = True
+       , lowerOnStart = False
        , commands     = [ Run StdinReader
                         , Run Network "eth0" ["-L","0","-H","32","--normal","green","--high","red"] 10
                         , Run Network "wlan0" ["-L","0","-H","32","--normal","green","--high","red"] 10
