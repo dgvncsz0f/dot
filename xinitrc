@@ -10,6 +10,7 @@ test -x /usr/bin/xsetroot && \
   /usr/bin/xsetroot -solid black
   /usr/bin/xsetroot -cursor_name left_ptr
 }
+test -x /usr/bin/wicd-client && /usr/bin/wicd-client&
 
 # exec ssh-agent openbox-session 
 exec ssh-agent /usr/bin/xmonad
