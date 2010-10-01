@@ -1,5 +1,6 @@
 import XMonad
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.SetWMName
 import XMonad.Util.Run (spawnPipe)
@@ -20,6 +21,7 @@ myConfig = do { xmproc <- spawnPipe "/usr/bin/xmobar"
                                                           ]
               }
   where myManageHook = composeAll [ className =? "Pidgin" --> doFloat
+                                  , isFullscreen          --> doFullFloat
                                   ]
 
 main :: IO ()
