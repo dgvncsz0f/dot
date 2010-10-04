@@ -43,7 +43,7 @@ endif
 
 if has("gui_running")
   "let moria_style='black'
-  colorscheme inkpot
+  colorscheme zenburn
   set guioptions=ic
   set guifont=unifont\ 12
   set shell=/usr/bin/uxterm

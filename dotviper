@@ -6,7 +6,7 @@
 (setq-default viper-want-emacs-keys-in-vi t)
 (setq-default viper-want-emacs-keys-in-insert t)
 (setq-default viper-want-ctl-h-help t)
-(setq-default viper-always nil)
+(setq-default viper-always t)
 (setq-default viper-vi-style-in-minibuffer nil)
 
 (define-key viper-vi-global-user-map "\C-v" 'scroll-down)
