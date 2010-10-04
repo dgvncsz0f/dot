@@ -44,5 +44,6 @@ shopt -s histappend
 shopt -s checkjobs
 shopt -s globstar
 shopt -s dirspell
+shopt -s nullglob
 my_reg_als
 my_exp_env
