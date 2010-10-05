@@ -39,11 +39,16 @@ function my_exp_env
 [ -f /etc/bash.bashrc ] && source /etc/bash.bashrc
 [ -f /etc/bashrc ] && source /etc/bashrc
 [ -f "${HOME}/.bashrc.local" ] && source "${HOME}/.bashrc.local"
+
+set -o ignoreeof
+
 shopt -s checkwinsize
 shopt -s histappend
 shopt -s checkjobs
 shopt -s globstar
 shopt -s dirspell
 shopt -s nullglob
+shopt -s extglob
+
 my_reg_als
 my_exp_env

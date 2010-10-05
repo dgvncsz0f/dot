@@ -1,0 +1,4 @@
+set editing-mode emacs
+set keymap emacs
+set visible-stats on
+set show-all-if-ambiguous on
