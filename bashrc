@@ -41,8 +41,6 @@ function my_exp_env
 [ -f /etc/bashrc ] && source /etc/bashrc
 [ -f "${HOME}/.bashrc.local" ] && source "${HOME}/.bashrc.local"
 
-set -o ignoreeof
-
 shopt -s checkwinsize
 shopt -s histappend
 shopt -s checkjobs
