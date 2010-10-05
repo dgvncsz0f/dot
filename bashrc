@@ -48,6 +48,8 @@ shopt -s globstar
 shopt -s dirspell
 shopt -s nullglob
 shopt -s extglob
+shopt -s extquote
+shopt -s cdspell
 
 my_reg_als
 my_exp_env
