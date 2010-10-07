@@ -1,4 +1,4 @@
-Config { font = "xft:unifont"
+Config { font         = "xft:unifont-13"
        , bgColor      = "#2f4f4f"
        , fgColor      = "white"
        , position     = Bottom

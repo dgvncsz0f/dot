@@ -15,14 +15,16 @@ myConfig = do { xmproc <- spawnPipe "/usr/bin/xmobar"
                                                                                        }
                                                          ; setWMName "LG3D"
                                                          }
-                                       , modMask    = mod4Mask
+                                       , modMask    = myModMask
                                        , terminal   = "/usr/bin/urxvt -e /usr/bin/screen"
-                                       } `additionalKeys` [ 
+                                       } `additionalKeys` [ ((myModMask, xK_x), spawn "/usr/bin/xscreensaver-command -activate")
                                                           ]
               }
   where myManageHook = composeAll [ className =? "Pidgin" --> doFloat
                                   , isFullscreen          --> doFullFloat
                                   ]
+
+        myModMask = mod4Mask
 
 main :: IO ()
 main = myConfig >>= xmonad
