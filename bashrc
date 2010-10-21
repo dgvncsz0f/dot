@@ -28,6 +28,9 @@ function my_reg_als
   alias egrep="/bin/egrep --color=auto"
   alias grep="/bin/grep --color=auto"
   alias emacs=my_emacs
+
+  [ -x /usr/bin/ack-grep ] && alias egrep="/usr/bin/ack-grep"
+  [ -x /usr/bin/ack-grep ] && alias grep="/usr/bin/ack-grep"
 }
 
 function my_exp_env

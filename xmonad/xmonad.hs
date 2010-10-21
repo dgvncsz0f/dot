@@ -18,6 +18,7 @@ myConfig = do { xmproc <- spawnPipe "/usr/bin/xmobar"
                                        , modMask    = myModMask
                                        , terminal   = "/usr/bin/urxvt -e /usr/bin/screen"
                                        } `additionalKeys` [ ((myModMask, xK_x), spawn "/usr/bin/xscreensaver-command -activate")
+                                                          , ((myModMask .|. shiftMask, xK_s), spawn "/usr/bin/import /tmp/screenshot.png")
                                                           ]
               }
   where myManageHook = composeAll [ className =? "Pidgin" --> doFloat
