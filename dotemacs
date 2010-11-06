@@ -1,3 +1,5 @@
+(setenv "ERGOEMACS_KEYBOARD_LAYOUT" "us") ; US layout
+
 (add-to-list 'load-path "~/emacs/lib/icicles")
 (add-to-list 'load-path "~/emacs/lib/")
 (autoload 'js2-mode "js2" nil t)
@@ -5,6 +7,9 @@
 (require 'icicles)
 (require 'color-theme)
 (require 'zenburn)
+
+(load "~/emacs/lib/ergoemacs-keybindings-5.3.4/ergoemacs-mode")
+(ergoemacs-mode 1)
 
 (eval-after-load "color-theme"
   '(progn
@@ -36,6 +41,7 @@
 (setq-default comment-multi-line t)
 (setq-default mail-from-style 'angles)
 (setq-default erc-kill-buffer-on-part t)
+(setq-default kill-whole-line t)
 (setq-default erc-kill-queries-on-quit t)
 (setq-default erc-kill-server-buffer-on-quit t)
 (setq-default erc-track-exclude-types (quote ("JOIN" "NICK" "PART" "QUIT" "MODE" "324" "329" "332" "333" "353" "477")))
@@ -59,16 +65,18 @@
 (add-hook 'mail-mode-hook 'turn-on-auto-fill)
 (add-hook 'mail-mode-hook 'flyspell-mode t)
 
-(global-set-key "\C-ca" 'align-string)
-(global-set-key "\C-ci" 'ispell-buffer)
-(global-set-key "\C-cq" 'view-mode)
-(global-set-key "\C-cK" 'erase-buffer)
-(global-set-key "\C-ct" 'icicle-find-file-in-tags-table)
-(global-set-key "\C-cq" 'delete-frame)
-(global-set-key "\C-cw" 'server-edit)
-(global-set-key [S-f12] 'whitespace-mode)
-(global-set-key [S-f8] 'ispell-change-dictionary)
-(global-set-key [S-f5] 'viper-mode)
+(global-set-key (kbd "C-c a") 'align-string)
+(global-set-key (kbd "C-c i") 'ispell-buffer)
+(global-set-key (kbd "C-c q") 'view-mode)
+(global-set-key (kbd "C-c K") 'erase-buffer)
+(global-set-key (kbd "C-c t") 'icicle-find-file-in-tags-table)
+(global-set-key (kbd "C-c q") 'delete-frame)
+(global-set-key (kbd "C-c w") 'server-edit)
+(global-set-key (kbd "S-<f12>") 'whitespace-mode)
+(global-set-key (kbd "S-<f8>") 'ispell-change-dictionary)
+(global-set-key (kbd "S-<f5>") 'viper-mode)
+(global-set-key (kbd "C-k") 'kill-whole-line)
+(global-set-key (kbd "C-c k") 'kill-line)
 
 (put 'erase-buffer 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
