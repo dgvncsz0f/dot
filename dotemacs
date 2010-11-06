@@ -1,5 +1,3 @@
-(setenv "ERGOEMACS_KEYBOARD_LAYOUT" "us") ; US layout
-
 (add-to-list 'load-path "~/emacs/lib/icicles")
 (add-to-list 'load-path "~/emacs/lib/")
 (autoload 'js2-mode "js2" nil t)
@@ -7,9 +5,6 @@
 (require 'icicles)
 (require 'color-theme)
 (require 'zenburn)
-
-(load "~/emacs/lib/ergoemacs-keybindings-5.3.4/ergoemacs-mode")
-(ergoemacs-mode 1)
 
 (eval-after-load "color-theme"
   '(progn
@@ -75,8 +70,6 @@
 (global-set-key (kbd "S-<f12>") 'whitespace-mode)
 (global-set-key (kbd "S-<f8>") 'ispell-change-dictionary)
 (global-set-key (kbd "S-<f5>") 'viper-mode)
-(global-set-key (kbd "C-k") 'kill-whole-line)
-(global-set-key (kbd "C-c k") 'kill-line)
 
 (put 'erase-buffer 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
