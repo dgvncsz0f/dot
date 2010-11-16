@@ -1,8 +1,7 @@
 #!/bin/sh
 
-test -r $HOME/.xresourcesrc && /usr/bin/xrdb -load $HOME/.xresourcesrc
+test -r $HOME/.xresourcesrc && /usr/bin/xrdb -merge $HOME/.xresourcesrc
 test -r $HOME/.xresourcesrc.local && /usr/bin/xrdb -merge $HOME/.xresourcesrc.local
-test -r $HOME/.xmodmaprc && /usr/bin/xmodmap $HOME/.xmodmaprc
 test -x /usr/bin/trayer && /usr/bin/trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype request --transparent false --tint 0x00 --height 22&
 test -x /usr/bin/unclutter && /usr/bin/unclutter&
 test -x /usr/bin/xscreensaver && /usr/bin/xscreensaver -no-splash&
@@ -13,5 +12,4 @@ test -x /usr/bin/xsetroot && \
 }
 test -x /usr/bin/wicd-client && /usr/bin/wicd-client&
 
-# exec ssh-agent openbox-session 
 exec ssh-agent /usr/bin/xmonad
