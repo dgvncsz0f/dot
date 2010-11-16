@@ -43,7 +43,6 @@ function my_exp_env
 [ -f /etc/bash.bashrc ] && source /etc/bash.bashrc
 [ -f /etc/bashrc ] && source /etc/bashrc
 [ -f "${HOME}/.bashrc.local" ] && source "${HOME}/.bashrc.local"
-test -r $HOME/.xmodmaprc && test -n "${DISPLAY}" && /usr/bin/xmodmap $HOME/.xmodmaprc
 
 shopt -s checkwinsize
 shopt -s histappend
