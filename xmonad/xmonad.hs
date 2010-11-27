@@ -22,6 +22,7 @@ myConfig = do { xmproc <- spawnPipe "/usr/bin/xmobar"
                                                           ]
               }
   where myManageHook = composeAll [ className =? "Pidgin" --> doFloat
+                                  , className =? "Skype"  --> doFloat
                                   , isFullscreen          --> doFullFloat
                                   ]
 

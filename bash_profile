@@ -44,6 +44,7 @@ function my_exp_env
   export CDDA_DEVICE=/dev/cdrom
   export FTP_PASSIVE_MODE=1
   export LANG=en_US.UTF-8
+  export LC_ALL=en_US.UTF-8
   [ -x /usr/bin/dircolors ] && eval `/usr/bin/dircolors`
   if [ -x "/usr/bin/emacs" ]
   then
