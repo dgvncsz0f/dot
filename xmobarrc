@@ -14,5 +14,5 @@ Config { font         = "xft:unifont-12"
                         ]
        , sepChar      = "%"
        , alignSep     = "}{"
-       , template = "%StdinReader% }{[%multicpu%][%memory%][%swap%][%date%]"
+       , template = "%StdinReader% }{[%multicpu%][%battery%][%memory%][%swap%][%date%]"
        }

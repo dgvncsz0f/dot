@@ -49,7 +49,7 @@ shopt -s histappend
 shopt -s checkjobs
 shopt -s globstar
 shopt -s dirspell
-shopt -s nullglob
+# shopt -s nullglob
 shopt -s extglob
 shopt -s extquote
 shopt -s cdspell
