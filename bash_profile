@@ -45,7 +45,6 @@ function my_exp_env
   export FTP_PASSIVE_MODE=1
   export LANG=en_US.UTF-8
   export LC_ALL=en_US.UTF-8
-  export PATH=/var/lib/gems/1.8/bin:${PATH}
   [ -x /usr/bin/dircolors ] && eval `/usr/bin/dircolors`
   if [ -x "/usr/bin/emacs" ]
   then
