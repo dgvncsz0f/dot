@@ -15,7 +15,7 @@ function my_emacs()
 function my_reg_als
 {
   alias :q=exit
-  alias startx="/usr/bin/startx & exit"
+  alias startx="/usr/bin/startx & exit; exit"
   alias tssh="/usr/bin/tsocks /usr/bin/ssh"
   alias tscp="/usr/bin/tsocks /usr/bin/scp"
   alias more="less"
