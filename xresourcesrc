@@ -4,12 +4,6 @@ XTerm*background: black
 XTerm*foreground: white
 XTerm*colorBDMode: true
 XTerm*boldMode: true
-XTerm*faceName: unifont
-//XTerm*faceName: dejavu sans mono
-XTerm*faceSize: 12
-XTerm*metaSendsEscape: true
-//XTerm*minBufSize: 1024
-//XTerm*maxBufSize: 1024
 XTerm*saveLines: 4096
 XTerm*geometry: 130x40
 
@@ -17,25 +11,19 @@ UXTerm*background: black
 UXTerm*foreground: white
 UXTerm*colorBDMode: true
 UXTerm*boldMode: true
-//UXTerm*faceName: dejavu sans mono
-UXTerm*faceName: unifont
-UXTerm*faceSize: 12
 UXTerm*metaSendsEscape: true
-//UXTerm*minBufSize: 1024
-//UXTerm*maxBufSize: 1024
 UXTerm*saveLines: 4096
 UXTerm*geometry: 130x40
 
-emacs.FontBackend: xft
-emacs.font: unifont-12
-//emacs.menuBar: off
-//emacs.toolBar: off
-//emacs.verticalScrollBars: off
+emacs.menuBar: off
+emacs.toolBar: off
+emacs.verticalScrollBars: off
 emacs.background: black
 emacs.foreground: white
 emacs.mode-line.AttributeBox: t
 
 urxvt.foreground: white
 urxvt.background: black
-urxvt.font: xft:unifont
 urxvt.scrollBar: false
+
+#include ".Xresources_local"

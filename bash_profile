@@ -36,12 +36,8 @@ function my_exe_ext
 
 function my_exp_env
 {
-  export SSH_ASKPASS=/usr/bin/ssh-askpass
-  export JRE_HOME=/opt/jdk1.6.0_07/jre
-  export JDK_HOME=/opt/jdk1.6.0_07
   export HISTFILE="${HOME}/.bash_history"
   export PAGER=/usr/bin/less
-  export CDDA_DEVICE=/dev/cdrom
   export FTP_PASSIVE_MODE=1
   export LANG=en_US.UTF-8
   export LC_ALL=en_US.UTF-8

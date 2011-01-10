@@ -28,8 +28,6 @@ set incsearch
 set hlsearch
 set complete=.,w,b,u,U,t,i,d
 set showmatch
-set backupdir=$HOME/tmp/.vim/bck
-set dir=$HOME/tmp/.vim/swp
 "filetype plugin indent on
 "set fileencoding=utf8
 
@@ -45,7 +43,6 @@ if has("gui_running")
   "let moria_style='black'
   colorscheme zenburn
   set guioptions=ic
-  set guifont=unifont\ 12
   set shell=/usr/bin/uxterm
   set shellcmdflag=-e
 endif
@@ -158,5 +155,6 @@ endif
 
 if has("printer")
   set printoptions=paper:A4,syntax:y,number:n,wrap:y
-  set printfont=unifont\ 13
 endif
+
+source $HOME/.vimrc_local

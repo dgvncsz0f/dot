@@ -3,7 +3,7 @@
 function my_emacs()
 {
   local pidof=/bin/pidof
-  ${pidof} /usr/bin/emacs >/dev/null
+  ${pidof} /usr/bin/emacs 2>&1 >/dev/null
   if [ "$?" == "0" ]
   then
     /usr/bin/emacsclient -c $@
@@ -22,15 +22,10 @@ function my_reg_als
   alias vi="vim"
   alias rm="/bin/rm -i"
   alias chroot32="/usr/bin/sudo -H /usr/sbin/chroot /var/chroot/sid-ia32"
-  alias ls="ls --color=auto"
-  alias ll="ls --color=auto -l"
-  alias l1="ls --color=auto -1"
-  alias egrep="/bin/egrep --color=auto"
-  alias grep="/bin/grep --color=auto"
+  alias ls="ls"
+  alias ll="ls -l"
+  alias l1="ls -1"
   alias emacs=my_emacs
-
-  [ -x /usr/bin/ack-grep ] && alias egrep="/usr/bin/ack-grep"
-  [ -x /usr/bin/ack-grep ] && alias grep="/usr/bin/ack-grep"
 }
 
 function my_exp_env
