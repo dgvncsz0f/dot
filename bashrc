@@ -2,13 +2,16 @@
 
 function my_emacs()
 {
-  local pidof=/bin/pidof
-  ${pidof} /usr/bin/emacs 2>&1 >/dev/null
-  if [ "$?" == "0" ]
-  then
-    /usr/bin/emacsclient -c $@
-  else
-    /usr/bin/emacs $@
+  local pidof=$(which pidof)
+  if [ -x "${pidof}" ]
+  then 
+    ${pidof} /usr/bin/emacs >/dev/null
+    if [ "$?" == "0" ]
+    then
+      /usr/bin/emacsclient -c $@
+    else
+      /usr/bin/emacs $@
+    fi
   fi
 }
 
