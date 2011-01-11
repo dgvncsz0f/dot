@@ -2,7 +2,7 @@
   finish
 endif
 
-colorscheme desert
+colorscheme zenburn
 syntax on
 
 set nocompatible
@@ -41,7 +41,6 @@ endif
 
 if has("gui_running")
   "let moria_style='black'
-  colorscheme zenburn
   set guioptions=ic
   set shell=/usr/bin/uxterm
   set shellcmdflag=-e
