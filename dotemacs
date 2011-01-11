@@ -54,7 +54,7 @@
 (icy-mode t)
 (tool-bar-mode nil)
 (menu-bar-mode nil)
-(scroll-bar-mode nil)
+;(scroll-bar-mode nil)
 
 (add-hook 'text-mode-hook 'auto-fill-mode t)
 (add-hook 'text-mode-hook 'flyspell-mode t)

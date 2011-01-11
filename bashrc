@@ -12,6 +12,8 @@ function my_emacs()
     else
       /usr/bin/emacs $@
     fi
+  else
+    /usr/bin/emacs $@
   fi
 }
 
