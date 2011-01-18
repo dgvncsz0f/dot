@@ -1,22 +1,5 @@
 # -*- mode: Shell-script; sh-basic-offset: 2; -*-
 
-function my_emacs()
-{
-  local pidof=$(which pidof)
-  if [ -x "${pidof}" ]
-  then 
-    ${pidof} /usr/bin/emacs >/dev/null
-    if [ "$?" == "0" ]
-    then
-      /usr/bin/emacsclient -c $@
-    else
-      /usr/bin/emacs $@
-    fi
-  else
-    /usr/bin/emacs $@
-  fi
-}
-
 function my_reg_als
 {
   alias :q=exit
@@ -30,7 +13,6 @@ function my_reg_als
   alias ls="ls"
   alias ll="ls -l"
   alias l1="ls -1"
-  alias emacs=my_emacs
 }
 
 function my_exp_env

@@ -24,14 +24,6 @@ function my_exe_ext
   local PIDOF="/bin/pidof"
   
   [ -f "${HOME}/.bashrc" ] && source "${HOME}/.bashrc"
-  
-  if [ -x "${EMACS}" ]
-  then
-    if [ -x "${PIDOF}" ]
-    then
-      ("${PIDOF}" "${EMACS}" >/dev/null || "${EMACS}" --daemon 2>/dev/null)&
-    fi
-  fi
 }
 
 function my_exp_env
