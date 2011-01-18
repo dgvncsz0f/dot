@@ -21,6 +21,12 @@ emacs.verticalScrollBars: off
 emacs.background: black
 emacs.foreground: white
 emacs.mode-line.AttributeBox: t
+emacs23.menuBar: off
+emacs23.toolBar: off
+emacs23.verticalScrollBars: off
+emacs23.background: black
+emacs23.foreground: white
+emacs23.mode-line.AttributeBox: t
 
 urxvt.foreground: white
 urxvt.background: black
