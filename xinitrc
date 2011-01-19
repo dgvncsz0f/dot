@@ -7,6 +7,7 @@ test -x /usr/bin/trayer && /usr/bin/trayer --edge top --align right --SetDockTyp
 test -x /usr/bin/xscreensaver && /usr/bin/xscreensaver -no-splash&
 test -x /usr/bin/xset && /usr/bin/xset -b b off
 test -x /usr/bin/setxkbmap && /usr/bin/setxkbmap us intl
+test -x /usr/bin/wicd-client && /usr/bin/wicd-client&
 test -x /usr/bin/xsetroot && \
 {
   /usr/bin/xsetroot -solid black
