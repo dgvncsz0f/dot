@@ -13,4 +13,4 @@ test -x /usr/bin/xsetroot && \
   /usr/bin/xsetroot -cursor_name left_ptr
 }
 
-exec ssh-agent /usr/bin/xmonad
+exec ssh-agent dbus-launch /usr/bin/xmonad
