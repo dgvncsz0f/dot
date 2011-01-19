@@ -10,9 +10,10 @@ function my_reg_als
   alias vi="vim"
   alias rm="/bin/rm -i"
   alias chroot32="/usr/bin/sudo -H /usr/sbin/chroot /var/chroot/sid-ia32"
-  alias ls="ls"
+  alias ls="ls -F"
   alias ll="ls -l"
   alias l1="ls -1"
+  alias la="ll -a"
 }
 
 function my_exp_env
