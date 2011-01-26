@@ -1,25 +1,19 @@
-[merge]
-        tool = gvimdiff
 [user]
-	name = dsouza
-	email = dsouza@bitforest.org
-        signingkey = dsouza
-[github]
-	user = dsouza
-        token = 47bda789820898cedbb0beaf12b2c84f
+  name = dsouza
+  email = dsouza@bitforest.org
+  signingkey = dsouza
+
 [color]
-	diff = auto
-	status = auto
-	branch = auto
+  diff = auto
+  status = auto
+  branch = auto
+
 [alias]
-	st = status -s
-        ci = commit
-        co = checkout
-        br = branch
-        pl = pull
-        ps = push
-        ss  = stash
-        sp  = stash pop
-[github]
-	user = dsouza
-	token = 47bda789820898cedbb0beaf12b2c84f
+  st = status -s
+  ci = commit
+  co = checkout
+  br = branch
+  pl = pull
+  ps = push
+  push = stash
+  pop  = stash pop
