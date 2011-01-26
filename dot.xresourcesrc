@@ -32,4 +32,4 @@ urxvt.foreground: white
 urxvt.background: black
 urxvt.scrollBar: false
 
-#include ".Xresources_local"
+#include ".Xresources.local"

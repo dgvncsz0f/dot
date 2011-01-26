@@ -16,6 +16,7 @@ set expandtab
 set undolevels=1000
 set showmode
 set pastetoggle=<F11>
+set hidden
 "set list
 set listchars=tab:»\ ,trail:·,eol:$
 set formatoptions=cnoqr
@@ -90,8 +91,7 @@ if has("localmap")
   nmap <unique> <silent> <F6> :next<CR>
   nmap <unique> <silent> <Leader>f :FilesystemExplorer<CR>
   nmap <unique> <silent> <Leader>r :FilesystemExplorerFromHere<CR>
-  nmap <unique> <silent> <Leader>t :NERDTreeToggle<CR>
-  nmap <unique> <silent> <Leader>b :BufExplorer<CR>
+  nmap <unique> <silent> <Leader>b :buffers<CR>:buffer<Space>
   nmap <unique> <silent> <unique> <Leader>be :BufExplorer<CR>
 endif
 
@@ -156,4 +156,4 @@ if has("printer")
   set printoptions=paper:A4,syntax:y,number:n,wrap:y
 endif
 
-source $HOME/.vimrc_local
+source $HOME/.vimrc.local

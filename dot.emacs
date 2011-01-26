@@ -1,5 +1,5 @@
-(add-to-list 'load-path "~/emacs/lib/icicles")
-(add-to-list 'load-path "~/emacs/lib/")
+(add-to-list 'load-path "~/.emacs.d/lib/icicles")
+(add-to-list 'load-path "~/.emacs.d/lib/")
 (autoload 'js2-mode "js2" nil t)
 (require 'fuzzy-match)
 (require 'icicles)
