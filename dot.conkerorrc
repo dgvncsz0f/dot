@@ -1,0 +1,5 @@
+homepage                        = "about:blank";
+url_remoting_fn                 = load_url_in_new_buffer;
+hints_display_url_panel         = true;
+view_source_use_external_editor = false;
+xkcd_add_title                  = true;
