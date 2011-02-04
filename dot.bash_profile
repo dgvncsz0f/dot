@@ -28,6 +28,7 @@ function my_exe_ext
 
 function my_exp_env
 {
+  export PATH=$HOME/bin:$PATH
   export HISTFILE="${HOME}/.bash_history"
   export PAGER=/usr/bin/less
   export FTP_PASSIVE_MODE=1

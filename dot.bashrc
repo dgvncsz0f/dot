@@ -39,3 +39,5 @@ shopt -s cdspell
 
 my_reg_als
 my_exp_env
+
+export GPG_TTY=$(tty)
