@@ -56,9 +56,9 @@
 ; (menu-bar-mode nil)
 ; (scroll-bar-mode nil)
 
-(add-hook 'text-mode-hook 'auto-fill-mode t)
+; (add-hook 'text-mode-hook 'auto-fill-mode t)
 (add-hook 'text-mode-hook 'flyspell-mode t)
-(add-hook 'mail-mode-hook 'turn-on-auto-fill)
+; (add-hook 'mail-mode-hook 'turn-on-auto-fill)
 (add-hook 'mail-mode-hook 'flyspell-mode t)
 
 (global-set-key (kbd "C-c a") 'align-string)

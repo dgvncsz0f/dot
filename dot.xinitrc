@@ -8,7 +8,7 @@ test -x /usr/bin/xscreensaver && /usr/bin/xscreensaver -no-splash&
 test -x /usr/bin/xset && /usr/bin/xset -b b off
 test -x /usr/bin/setxkbmap && /usr/bin/setxkbmap us intl
 test -x /usr/bin/wicd-client && /usr/bin/wicd-client&
-test -x /usr/bin/gpg-agent && test -z "${GPG_AGENT_INFO}" && eval $(/usr/bin/gpg-agent --daemon --quiet)
+test -x /usr/bin/gpg-agent && test -z "${GPG_AGENT_INFO}" && eval $(/usr/bin/gpg-agent --daemon --max-cache-ttl 28800 --default-cache-ttl 28800 --quiet)
 test -x /usr/bin/xsetroot && \
 {
   /usr/bin/xsetroot -solid black
