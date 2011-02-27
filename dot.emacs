@@ -73,7 +73,8 @@
 (global-set-key (kbd "S-<f10>") 'viper-mode)
 (global-set-key (kbd "S-<f11>") 'whitespace-mode)
 (global-set-key (kbd "C-k") 'kill-whole-line)
-(global-set-key (kbd "C-S-k") 'kill-line)
+(global-set-key (kbd "C-x C-k") 'kill-line)
+(global-set-key (kbd "C-x C-d") 'kill-region)
 
 (put 'erase-buffer 'disabled nil)
 (put 'narrow-to-region 'disabled nil)

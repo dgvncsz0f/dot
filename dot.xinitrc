@@ -14,5 +14,6 @@ test -x /usr/bin/xsetroot && \
   /usr/bin/xsetroot -solid black
   /usr/bin/xsetroot -cursor_name left_ptr
 }
+test -r $HOME/.xinitrc.local && /bin/sh $HOME/.xinitrc.local
 
 exec ssh-agent dbus-launch /usr/bin/xmonad

@@ -1,4 +1,10 @@
+$include /etc/inputrc
+
 set editing-mode emacs
 set keymap emacs
 set visible-stats on
 set show-all-if-ambiguous on
+
+"\C-k": kill-whole-line
+"\C-x\C-k": kill-line
+"\C-x\C-d": kill-region
