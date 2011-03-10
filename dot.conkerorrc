@@ -1,3 +1,5 @@
+require("new-tabs.js");
+
 homepage                        = "about:blank";
 url_completion_use_history      = true;
 url_completion_use_bookmarks    = true;
