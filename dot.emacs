@@ -72,7 +72,7 @@
 (global-set-key (kbd "S-<f9>") 'ispell-change-dictionary)
 (global-set-key (kbd "S-<f10>") 'viper-mode)
 (global-set-key (kbd "S-<f11>") 'whitespace-mode)
-(global-set-key (kdb "S-<f7>") 'toggle-truncate-lines)
+(global-set-key (kbd "S-<f7>") 'toggle-truncate-lines)
 (global-set-key (kbd "C-k") 'kill-whole-line)
 (global-set-key (kbd "C-x C-k") 'kill-line)
 (global-set-key (kbd "C-x C-d") 'kill-region)
