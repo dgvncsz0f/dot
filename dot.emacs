@@ -2,6 +2,7 @@
 (add-to-list 'load-path "~/.libemacs/lib/")
 (autoload 'js2-mode "js2" nil t)
 (require 'fuzzy-match)
+(require 'synonyms)
 (require 'icicles)
 (require 'color-theme)
 (require 'zenburn)
@@ -61,10 +62,9 @@
 ; (add-hook 'mail-mode-hook 'turn-on-auto-fill)
 (add-hook 'mail-mode-hook 'flyspell-mode t)
 
-(global-set-key (kbd "C-c a") 'align-string)
-(global-set-key (kbd "C-c i") 'ispell-buffer)
+; (global-set-key (kbd "C-c a") 'align-string)
+; (global-set-key (kbd "C-c i") 'ispell-buffer)
 (global-set-key (kbd "C-c q") 'view-mode)
-(global-set-key (kbd "C-c K") 'erase-buffer)
 (global-set-key (kbd "C-c t") 'icicle-find-file-in-tags-table)
 (global-set-key (kbd "C-c q") 'delete-frame)
 (global-set-key (kbd "C-c w") 'server-edit)
@@ -72,6 +72,7 @@
 (global-set-key (kbd "S-<f9>") 'ispell-change-dictionary)
 (global-set-key (kbd "S-<f10>") 'viper-mode)
 (global-set-key (kbd "S-<f11>") 'whitespace-mode)
+(global-set-key (kdb "S-<f7>") 'toggle-truncate-lines)
 (global-set-key (kbd "C-k") 'kill-whole-line)
 (global-set-key (kbd "C-x C-k") 'kill-line)
 (global-set-key (kbd "C-x C-d") 'kill-region)
@@ -86,3 +87,15 @@
 (setq auto-mode-alist (cons '("/tmp/mutt.*$" . post-mode) auto-mode-alist))
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(org-agenda-files (quote ("~/backlot.org"))))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ )
