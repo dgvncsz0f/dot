@@ -76,6 +76,7 @@
 (global-set-key (kbd "C-k") 'kill-whole-line)
 (global-set-key (kbd "C-x C-k") 'kill-line)
 (global-set-key (kbd "C-x C-d") 'kill-region)
+(global-set-key (kbd "C-S-y") 'x-clipboard-yank)
 
 (put 'erase-buffer 'disabled nil)
 (put 'narrow-to-region 'disabled nil)

@@ -31,5 +31,7 @@ emacs23.mode-line.AttributeBox: t
 urxvt.foreground: white
 urxvt.background: black
 urxvt.scrollBar: false
+urxvt.saveLines: 0
+urxvt.scrollWithBuffer: false
 
 #include ".Xresourcesrc.local"

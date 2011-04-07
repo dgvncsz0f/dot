@@ -7,7 +7,9 @@ vbell   off
 defobuflimit 256
 defsilence off
 defmonitor off
-shell /bin/bash
+deflogin on
+shell /usr/bin/zsh
 defutf8 on
 startup_message off 
-#attrcolor b "-b .I"
+
+bind ^y exec .!! /usr/bin/xclip -o
