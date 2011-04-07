@@ -6,6 +6,8 @@
 (require 'icicles)
 (require 'color-theme)
 (require 'zenburn)
+(require 'epa-file)
+(epa-file-enable)
 
 (eval-after-load "color-theme"
   '(progn
