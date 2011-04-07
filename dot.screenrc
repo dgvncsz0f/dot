@@ -7,7 +7,7 @@ vbell   off
 defobuflimit 256
 defsilence off
 defmonitor off
-shell /bin/bash
+shell /usr/bin/zsh
 defutf8 on
 startup_message off 
 #attrcolor b "-b .I"
