@@ -9,5 +9,6 @@
 (setq-default viper-always t)
 (setq-default viper-vi-style-in-minibuffer nil)
 
-(define-key viper-vi-global-user-map "\C-v" 'scroll-down)
+(define-key viper-vi-global-user-map "\C-v" 'scroll-up)
+(define-key viper-insert-global-user-map "\C-v" 'scroll-up)
 (define-key viper-vi-global-user-map "\C-w" 'kill-region)
