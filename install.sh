@@ -50,6 +50,8 @@ dot_install_dot()
   $ln_bin -s -f -n "$HOME/.dot/dot.xmodmaprc" "$HOME/.xmodmaprc"
   $ln_bin -s -f -n "$HOME/.dot/dot.xmonad" "$HOME/.xmonad"
   $ln_bin -s -f -n "$HOME/.dot/dot.xresourcesrc" "$HOME/.xresourcesrc"
+  $ln_bin -s -f -n "$HOME/.dot/dot.muttrc" "$HOME/.muttrc"
+  $ln_bin -s -f -n "$HOME/.dot/dot.mutt" "$HOME/.mutt"
 }
 
 dot_install_zsh()
