@@ -14,7 +14,7 @@ dot_clone_dot()
   print_info "CLONING DOT INTO $HOME/.dot"
   if [ -d "$HOME/.dot" ]
   then
-    $env_bin GIT_DIR="$HOME/.dot/.git" $git_bin pull -q origin master
+    (cd "$HOME/.dot" && $git_bin pull -q origin master)
   else
     $git_bin clone -q git://github.com/dsouza/dot.git "$HOME/.dot"
   fi
@@ -25,7 +25,7 @@ dot_clone_zsh()
   print_info "CLONING OH-MY-ZSH INTO $HOME/.oh-my-zsh"
   if [ -d "$HOME/.oh-my-zsh" ]
   then
-    $env_bin GIT_DIR="$HOME/.oh-my-zsh/.git" $git_bin pull -q origin master
+    (cd "$HOME/.oh-my-zsh" && $git_bin pull -q origin master)
   else
     $git_bin clone -q git://github.com/dsouza/oh-my-zsh "$HOME/.oh-my-zsh"
   fi
