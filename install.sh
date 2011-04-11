@@ -9,6 +9,30 @@ print_info()
   printf "%s\n" "$1"
 }
 
+print_error()
+{
+  printf "ERROR - %s\n" "$1"
+  exit 1
+}
+
+check_binaries()
+{
+  if [ ! -x "$git_bin" ]
+  then
+    print_error "git binary not found"
+  fi
+
+  if [ ! -x "$ln_bin" ]
+  then
+    print_error "ln binary not found"
+  fi
+
+  if [ ! -x "$env_bin" ]
+  then
+    print_error "env binary not found"
+  fi
+}
+
 dot_clone_dot()
 {
   print_info "CLONING DOT INTO $HOME/.dot"
@@ -60,6 +84,7 @@ dot_install_zsh()
   $ln_bin -s -f -n "$HOME/.oh-my-zsh/templates/zshrc.zsh-template" "$HOME/.zshrc"
 }
 
+check_binaries
 dot_clone_dot
 dot_install_dot
 dot_clone_zsh
