@@ -1,5 +1,5 @@
 defflow off
-defscrollback 4096
+defscrollback 100000
 hardstatus on
 hardstatus alwayslastline
 hardstatus string "%n* %t %= %D %d/%M %C"
