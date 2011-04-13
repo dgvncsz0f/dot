@@ -34,4 +34,4 @@ urxvt.scrollBar: false
 urxvt.saveLines: 0
 urxvt.scrollWithBuffer: false
 
-#include ".Xresourcesrc.local"
+#include ".xresourcesrc.local"

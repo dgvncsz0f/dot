@@ -1,6 +1,6 @@
 # -*- mode: Shell-script; sh-basic-offset: 2; -*-
 
-function my_mnt_sec
+my_mnt_sec()
 {
   local ENCFS=/usr/bin/encfs
   local MOUNT=/bin/mount
@@ -18,7 +18,7 @@ function my_mnt_sec
   fi
 }
 
-function my_exe_ext
+my_exe_ext()
 {
   local EMACS="/usr/bin/emacs"
   local PIDOF="/bin/pidof"
@@ -26,7 +26,7 @@ function my_exe_ext
   [ -f "${HOME}/.bashrc" ] && source "${HOME}/.bashrc"
 }
 
-function my_exp_env
+my_exp_env()
 {
   export PATH=$HOME/bin:$PATH
   export HISTFILE="${HOME}/.bash_history"

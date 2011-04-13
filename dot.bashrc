@@ -1,6 +1,6 @@
 # -*- mode: Shell-script; sh-basic-offset: 2; -*-
 
-function my_reg_als
+my_reg_als()
 {
   alias :q=exit
   alias startx="/usr/bin/startx & exit; exit"
@@ -16,10 +16,23 @@ function my_reg_als
   alias la="ll -a"
 }
 
-function my_exp_env
+my_exp_env()
 {
   export GPG_TTY=`tty`
   PS1='\n\u@\H \w \n(\j) \$ '
+}
+
+my_switch2zsh()
+{
+  if [ -x /bin/zsh ]
+  then
+    exec /bin/zsh
+  else
+    if [ -x /usr/bin/zsh ]
+    then
+      exec /usr/bin/zsh
+    fi
+  fi
 }
 
 [ -z "${PS1}" ] && return
@@ -32,12 +45,12 @@ shopt -s histappend
 shopt -s checkjobs
 shopt -s globstar
 shopt -s dirspell
-# shopt -s nullglob
 shopt -s extglob
 shopt -s extquote
 shopt -s cdspell
 
 my_reg_als
 my_exp_env
+my_switch2zsh
 
 export GPG_TTY=$(tty)
