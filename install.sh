@@ -38,6 +38,7 @@ dot_clone_dot()
   print_info "CLONING DOT INTO $HOME/.dot"
   if [ -d "$HOME/.dot" ]
   then
+    (cd "$HOME/.dot" && $git_bin reset --hard)
     (cd "$HOME/.dot" && $git_bin pull)
   else
     $git_bin clone git://github.com/dsouza/dot.git "$HOME/.dot"
@@ -49,6 +50,7 @@ dot_clone_zsh()
   print_info "CLONING OH-MY-ZSH INTO $HOME/.oh-my-zsh"
   if [ -d "$HOME/.oh-my-zsh" ]
   then
+    (cd "$HOME/.oh-my-zsh" && $git_bin reset --hard)
     (cd "$HOME/.oh-my-zsh" && $git_bin pull)
   else
     $git_bin clone git://github.com/dsouza/oh-my-zsh "$HOME/.oh-my-zsh"
