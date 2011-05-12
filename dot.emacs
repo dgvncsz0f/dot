@@ -8,6 +8,7 @@
 (require 'zenburn)
 (require 'epa-file)
 (epa-file-enable)
+(require 'col-highlight)
 
 (eval-after-load "color-theme"
   '(progn
@@ -47,6 +48,7 @@
 (setq-default erc-timestamp-right-align-by-pixel t)
 (setq-default erc-nick (quote ("dsouza" "_dsouza_" "__dsouza__")))
 
+(column-highlight-mode t)
 (global-font-lock-mode t)
 (global-linum-mode t)
 (global-hl-line-mode)
