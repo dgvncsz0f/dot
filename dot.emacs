@@ -7,14 +7,15 @@
 (require 'color-theme)
 (require 'zenburn)
 (require 'epa-file)
-(epa-file-enable)
 (require 'col-highlight)
+(epa-file-enable)
 
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)
      (color-theme-zenburn)))
 
+(set-face-background 'col-highlight zenburn-bg-1)
 (set-face-attribute 'mode-line nil :box nil)
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -48,7 +49,10 @@
 (setq-default erc-timestamp-right-align-by-pixel t)
 (setq-default erc-nick (quote ("dsouza" "_dsouza_" "__dsouza__")))
 
-(column-highlight-mode t)
+(col-highlight-set-interval 1)
+(toggle-highlight-column-when-idle t)
+
+(size-indication-mode t)
 (global-font-lock-mode t)
 (global-linum-mode t)
 (global-hl-line-mode)
