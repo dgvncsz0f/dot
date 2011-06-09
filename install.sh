@@ -98,6 +98,7 @@ dot_install_dot()
   dot_symlink "$HOME/.dot/dot.xresourcesrc" "$HOME/.xresourcesrc"
   dot_symlink "$HOME/.dot/dot.mutt/muttrc-bitforest" "$HOME/.muttrc"
   dot_symlink "$HOME/.dot/dot.mutt" "$HOME/.mutt"
+  dot_symlink "$HOME/.dot/dot.email-signature" "$HOME/.email-signature"
 }
 
 dot_install_zsh()
