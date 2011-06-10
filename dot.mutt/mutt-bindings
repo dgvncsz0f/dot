@@ -26,3 +26,9 @@ bind index \CO sidebar-open
 bind pager \CP sidebar-prev
 bind pager \CN sidebar-next
 bind pager \CO sidebar-open
+
+macro index b '<enter-command>toggle sidebar_visible<enter>'
+macro pager b '<enter-command>toggle sidebar_visible<enter>'
+
+bind index B bounce-message
+
