@@ -16,7 +16,7 @@ set pager_index_lines=5
 set header_cache     = "~/opt/cache/mutt/headers/"
 #set message_cachedir = "~/opt/cache/mutt/imap/"
 unset maildir_header_cache_verify
-set imap_check_subscribed
+unset imap_check_subscribed
 set imap_idle
 set folder_format="%3C %N %f"
 
@@ -68,3 +68,8 @@ set use_from
 set move=no
 
 set forward_format="[Fwd: %s]"
+
+set sidebar_width=12
+set sidebar_visible=no
+set sidebar_delim='|'
+set sidebar_sort=yes
