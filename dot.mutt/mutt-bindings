@@ -11,7 +11,7 @@ bind  index     <right>  display-message
 bind  browser   <right>  select-entry
 bind  browser   <left>   exit
 bind  index     N        search-opposite
-# bind  index     \Cn      toggle-new
+bind  index     \Cx      toggle-new
 
 macro index     <left>   "c?\t"
 
