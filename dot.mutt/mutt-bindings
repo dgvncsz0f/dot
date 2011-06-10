@@ -11,7 +11,7 @@ bind  index     <right>  display-message
 bind  browser   <right>  select-entry
 bind  browser   <left>   exit
 bind  index     N        search-opposite
-bind  index     \Cn      toggle-new
+# bind  index     \Cn      toggle-new
 
 macro index     <left>   "c?\t"
 
@@ -19,3 +19,10 @@ macro index A   "!abook\n"
 macro pager A   "!abook\n"
 
 macro index "<esc>\Cn" "T~N\n;\Cn\CT.\n"
+
+bind index \CP sidebar-prev
+bind index \CN sidebar-next
+bind index \CO sidebar-open
+bind pager \CP sidebar-prev
+bind pager \CN sidebar-next
+bind pager \CO sidebar-open

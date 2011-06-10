@@ -17,4 +17,4 @@ source ~/.mutt/mutt-hooks
 set postponed = "+[Gmail]/Drafts"
 unset record
 
-#set trash="+[Gmail]/Trash"
+mailboxes = =INBOX "+[Gmail]/Important" "=ilists/haskell" "=ilists/haskell-cafe"
