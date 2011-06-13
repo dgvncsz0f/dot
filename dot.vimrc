@@ -74,6 +74,7 @@ if has("autocmd")
   
     autocmd filetype tex set spell
     autocmd filetype mail set spell tw=72 fo=noqrt
+    autocmd filetype xml set formatprg=/usr/bin/xmlstarlet\ fo
   augroup END
 endif
 
