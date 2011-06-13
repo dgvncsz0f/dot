@@ -63,7 +63,6 @@
 (cua-mode t)
 ;(ido-mode t)
 (icy-mode t)
-(viper-mode t)
 ; (tool-bar-mode nil)
 ; (menu-bar-mode nil)
 ; (scroll-bar-mode nil)
