@@ -1,0 +1,20 @@
+set folder      = "imap://webmail.ig.com/"
+set spoolfile   = "=INBOX"
+set signature   = "~/.email-signature"
+set from        = "dsouza@ig.com"
+set envelope_from_address = "dsouza@ig.com"
+set smtp_url    = "smtp://dsouza@srvexchcas.ig.corp"
+set imap_user   = dsouza
+
+source "/etc/Muttrc"
+source ~/.mutt/mutt-vars
+source ~/.mutt/mutt-aliases
+source ~/.mutt/mutt-color
+source ~/.mutt/mutt-bindings
+source ~/.mutt/mutt-views
+source ~/.mutt/mutt-hooks
+
+set postponed = "+[Gmail]/Drafts"
+unset record
+
+#set trash="+[Gmail]/Trash"
