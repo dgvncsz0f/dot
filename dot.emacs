@@ -8,6 +8,8 @@
 (require 'zenburn)
 (require 'epa-file)
 (require 'col-highlight)
+(setq viper-mode t)
+(require 'viper)
 (epa-file-enable)
 
 (eval-after-load "color-theme"
@@ -61,6 +63,7 @@
 (cua-mode t)
 ;(ido-mode t)
 (icy-mode t)
+(viper-mode t)
 ; (tool-bar-mode nil)
 ; (menu-bar-mode nil)
 ; (scroll-bar-mode nil)
@@ -78,7 +81,7 @@
 (global-set-key (kbd "C-c w") 'server-edit)
 (global-set-key (kbd "S-<f8>") 'compile)
 (global-set-key (kbd "S-<f9>") 'ispell-change-dictionary)
-(global-set-key (kbd "S-<f10>") 'viper-mode)
+(global-set-key (kbd "S-<f10>") 'toggle-viper-mode)
 (global-set-key (kbd "S-<f11>") 'whitespace-mode)
 (global-set-key (kbd "S-<f7>") 'toggle-truncate-lines)
 (global-set-key (kbd "C-k") 'kill-whole-line)
