@@ -90,10 +90,7 @@ if has("localmap")
   nmap <unique> <silent> <A-S-w> :close<CR>
   nmap <unique> <silent> <F5> :prev<CR>
   nmap <unique> <silent> <F6> :next<CR>
-  nmap <unique> <silent> <Leader>f :FilesystemExplorer<CR>
-  nmap <unique> <silent> <Leader>r :FilesystemExplorerFromHere<CR>
   nmap <unique> <silent> <Leader>b :buffers<CR>:buffer<Space>
-  nmap <unique> <silent> <unique> <Leader>be :BufExplorer<CR>
 endif
 
 if has("windows") && v:version >= 700
