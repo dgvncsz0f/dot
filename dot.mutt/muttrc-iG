@@ -14,7 +14,7 @@ source ~/.mutt/mutt-bindings
 source ~/.mutt/mutt-views
 source ~/.mutt/mutt-hooks
 
-set postponed = "+[Gmail]/Drafts"
-unset record
+set postponed = "=Rascunhos"
+set record = "=Mensagens enviadas"
 
-#set trash="+[Gmail]/Trash"
+mailboxes =INBOX "=Mensagens enviadas" "=Rascunhos"

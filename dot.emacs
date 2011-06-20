@@ -58,7 +58,6 @@
 (global-font-lock-mode t)
 (global-linum-mode t)
 (global-hl-line-mode)
-(line-number-mode t)
 (column-number-mode t)
 (cua-mode t)
 ;(ido-mode t)
