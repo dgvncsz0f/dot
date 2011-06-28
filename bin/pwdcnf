@@ -1,0 +1,8 @@
+pwsroot="/mnt/pws/dsouza/sec/.pws"
+binroot=$HOME/.dot/bin
+
+function pws_path
+{
+  local file=$(/usr/bin/basename $1)
+  pws_path="${pwsroot}/${file}.gpg"
+}

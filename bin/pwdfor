@@ -1,0 +1,15 @@
+#!/bin/bash
+
+builtin set -o pipefail
+
+builtin source $HOME/.dot/bin/pwdcnf
+
+$binroot/pwdshow $@ | /usr/bin/tr -d $'\n' | /usr/bin/xsel -p
+
+if [ "$?" == "0" ]
+then
+  builtin echo ok
+else
+  builtin echo fail
+  builtin exit 1
+fi

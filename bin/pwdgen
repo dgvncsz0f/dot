@@ -1,0 +1,25 @@
+#!/bin/bash
+
+builtin source $HOME/.dot/bin/pwdcnf
+
+site=$(/usr/bin/basename $1)
+range=${2:-10,20}
+pws_path "${site}"
+
+while [ 1 ]
+do
+  nextpwd=$(/usr/bin/perl -e "use Crypt::GeneratePassword qw(word chars); print chars(${range});")
+  builtin echo write \`$nextpwd\' to $pws_path
+  builtin read -n 1 -p 'accept [y|n|q]? ' take_this
+  if [ "${take_this}" == "y" ]
+  then
+    builtin echo "${nextpwd}" | /usr/bin/gpg -e > "${pws_path}" 
+    /bin/chmod 600 "${pws_path}"
+    $binroot/pwdfor "${site}"
+    builtin exit 0
+  elif [ "${take_this}" == "q" ]
+  then
+    builtin exit 0
+  fi
+  builtin echo
+done
