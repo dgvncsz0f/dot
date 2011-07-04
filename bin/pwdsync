@@ -2,4 +2,4 @@
 
 builtin source $HOME/.dot/bin/pwdcnf
 
-(cd "$pwdroot"; /bin/tar -cf - .) | ssh "$remote_host" /bin/tar -C "$rpwsroot" -tf -
+(cd "$pwsroot"; /bin/tar -cf - .) | ssh "$remote_host" /bin/tar -C "$rpwsroot" -xvf -
