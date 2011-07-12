@@ -8,6 +8,7 @@
 (require 'zenburn)
 (require 'epa-file)
 (require 'col-highlight)
+(require 'find-file-in-tags)
 (setq viper-mode t)
 (require 'viper)
 (epa-file-enable)
@@ -73,6 +74,7 @@
 
 ; (global-set-key (kbd "C-c a") 'align-string)
 ; (global-set-key (kbd "C-c i") 'ispell-buffer)
+(global-set-key (read-kbd-macro "C-,") 'find-file-in-tags)
 (global-set-key (kbd "C-c q") 'view-mode)
 (global-set-key (kbd "C-c t") 'icicle-find-file-in-tags-table)
 (global-set-key (kbd "C-c q") 'delete-frame)
