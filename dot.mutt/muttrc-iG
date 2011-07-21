@@ -1,4 +1,4 @@
-set folder      = "imap://webmail.ig.com/"
+set folder      = "imap://srvexchcas.ig.corp/"
 set spoolfile   = "=INBOX"
 set signature   = "~/.email-signature"
 set from        = "dsouza@ig.com"

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+builtin source $HOME/.dot/bin/pwdcnf
+
+(cd "$pwsroot"; /bin/tar -cf - .) | ssh "$remote_host" /bin/tar -C "$rpwsroot" -xvf -
