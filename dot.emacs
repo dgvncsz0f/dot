@@ -27,6 +27,7 @@
 ; (show-ws-toggle-show-tabs)
 ; (show-ws-toggle-show-trailing-whitespace)
 
+(setq-default mmm-submode-decoration-level 0)
 (setq-default backup-inhibited t)
 (setq-default haskell-program-name "ghci \"+.\"")
 (setq-default indent-tabs-mode nil)
