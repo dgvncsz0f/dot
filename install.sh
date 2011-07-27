@@ -2,6 +2,7 @@
 
 ln_bin=/bin/ln
 rm_bin=/bin/rm
+chmod_bin=/bin/chmod
 env_bin=/usr/bin/env
 git_bin=${GIT_BIN:-$(which git)}
 
@@ -100,6 +101,11 @@ dot_install_dot()
   dot_symlink "$HOME/.dot/dot.email-signature" "$HOME/.email-signature"
 }
 
+dot_fixperms()
+{
+  chmod_bin 0600 $HOME/.dot/dot.ig.fetchmailrc
+}
+
 dot_install_zsh()
 {
   dot_print_info "INSTALLING ZSH FILES"
@@ -111,3 +117,4 @@ dot_clone_dot
 dot_install_dot
 dot_clone_zsh
 dot_install_zsh
+dot_fixperms
