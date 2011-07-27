@@ -103,7 +103,7 @@ dot_install_dot()
 
 dot_fixperms()
 {
-  chmod_bin 0600 $HOME/.dot/dot.ig.fetchmailrc
+  $chmod_bin 0600 $HOME/.dot/dot.ig.fetchmailrc
 }
 
 dot_install_zsh()
