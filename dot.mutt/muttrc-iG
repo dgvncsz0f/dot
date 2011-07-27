@@ -1,5 +1,5 @@
-set folder      = "imap://srvexchcas.ig.corp/"
-set spoolfile   = "=INBOX"
+set folder      = "/home/dsouza/maildir"
+set spoolfile   = "/home/dsouza/maildir"
 set signature   = "~/.email-signature"
 set from        = "dsouza@ig.com"
 set envelope_from_address = "dsouza@ig.com"
@@ -14,7 +14,5 @@ source ~/.mutt/mutt-bindings
 source ~/.mutt/mutt-views
 source ~/.mutt/mutt-hooks
 
-set postponed = "=Rascunhos"
-set record = "=Mensagens enviadas"
-
-mailboxes =INBOX "=Mensagens enviadas" "=Rascunhos"
+set postponed = "=draft"
+set record = "=sent"

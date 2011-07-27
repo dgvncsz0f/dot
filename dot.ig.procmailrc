@@ -1,0 +1,7 @@
+PATH=/usr/bin:/usr/local/bin
+MAILDIR=$HOME/maildir/
+LOGFILE=/dev/null
+SHELL=/bin/sh
+
+:0:
+${MAILDIR}
