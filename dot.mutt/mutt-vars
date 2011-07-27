@@ -22,8 +22,8 @@ set folder_format="%3C %N %f"
 
 unset imap_passive
 unset check_new
-set mail_check  = 900
-set timeout     = 15
+set mail_check  = 5
+set timeout     = 90
 
 set postponed   = "+drafts"
 set record      = "+sent"
