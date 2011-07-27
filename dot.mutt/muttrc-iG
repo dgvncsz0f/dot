@@ -1,5 +1,5 @@
 set folder      = "/home/dsouza/maildir"
-set spoolfile   = "/home/dsouza/maildir"
+set spoolfile   = "="
 set signature   = "~/.email-signature"
 set from        = "dsouza@ig.com"
 set envelope_from_address = "dsouza@ig.com"
