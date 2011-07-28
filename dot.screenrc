@@ -3,7 +3,7 @@ escape "^Xx"
 defscrollback 100000
 hardstatus on
 hardstatus alwayslastline
-hardstatus string "%n* %t %= %D %d/%M %C"
+hardstatus string "%-w %{+b r}[%n.%t] %{-b d} %+w %= %D %d/%M %C"
 vbell   off
 defobuflimit 256
 defsilence off
