@@ -16,3 +16,5 @@ source ~/.mutt/mutt-hooks
 
 set postponed = "=draft"
 set record = "=sent"
+
+mailboxes = =draft =sent
