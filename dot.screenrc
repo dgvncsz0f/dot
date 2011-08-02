@@ -15,4 +15,4 @@ startup_message off
 bind ^y exec .!! /usr/bin/xclip -o
 bind -c pwdfor 0 exec .!! pwdshow ig:unix
 bind -c pwdfor 1 exec .!! pwdshow ig:ds
-bindkey "^P" command -c pwdfor
+bindkey "^v" command -c pwdfor
