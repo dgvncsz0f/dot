@@ -2,6 +2,7 @@
 
 ln_bin=/bin/ln
 rm_bin=/bin/rm
+chmod_bin=/bin/chmod
 env_bin=/usr/bin/env
 git_bin=${GIT_BIN:-$(which git)}
 
@@ -96,9 +97,13 @@ dot_install_dot()
   dot_symlink "$HOME/.dot/dot.xmodmaprc" "$HOME/.xmodmaprc"
   dot_symlink "$HOME/.dot/dot.xmonad" "$HOME/.xmonad"
   dot_symlink "$HOME/.dot/dot.xresourcesrc" "$HOME/.xresourcesrc"
-  dot_symlink "$HOME/.dot/dot.mutt/muttrc-bitforest" "$HOME/.muttrc"
   dot_symlink "$HOME/.dot/dot.mutt" "$HOME/.mutt"
   dot_symlink "$HOME/.dot/dot.email-signature" "$HOME/.email-signature"
+}
+
+dot_fixperms()
+{
+  $chmod_bin 0600 $HOME/.dot/dot.ig.fetchmailrc
 }
 
 dot_install_zsh()
@@ -112,3 +117,4 @@ dot_clone_dot
 dot_install_dot
 dot_clone_zsh
 dot_install_zsh
+dot_fixperms

@@ -3,7 +3,7 @@ escape "^Ff"
 defscrollback 100000
 hardstatus on
 hardstatus alwayslastline
-hardstatus string "%n* %t %= %D %d/%M %C"
+hardstatus string "%-w [%n.%t] %+w %= %D %d/%M %C"
 vbell   off
 defobuflimit 256
 defsilence off
@@ -15,4 +15,4 @@ startup_message off
 bind ^y exec .!! /usr/bin/xclip -o
 bind -c pwdfor 0 exec .!! pwdshow ig:unix
 bind -c pwdfor 1 exec .!! pwdshow ig:ds
-bindkey "^P" command -c pwdfor
+bindkey "^v" command -c pwdfor
