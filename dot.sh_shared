@@ -2,7 +2,6 @@
 
 my_colors()
 {
-
 fg_norm_black='[22;30m'
 bg_norm_black='[22;40m'
 fg_bold_black='[01;30m'
@@ -53,7 +52,7 @@ bg_norm_def='[22;49m'
 fg_bold_def='[01;39m'
 bg_bold_def='[01;49m'
 
-nocolors='[0m' # No Color
+nocolors='[0m'
 }
 
 my_editors()
