@@ -95,14 +95,7 @@ dot_fixperms()
   $chmod_bin 0600 $HOME/.dot/dot.ig.fetchmailrc
 }
 
-dot_install_zsh()
-{
-  dot_print_info "INSTALLING ZSH FILES"
-}
-
 dot_check_binaries
 dot_clone_dot
 dot_install_dot
-dot_clone_zsh
-dot_install_zsh
 dot_fixperms
