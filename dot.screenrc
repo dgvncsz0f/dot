@@ -1,5 +1,5 @@
 defflow off
-escape "^Xx"
+escape "^Ff"
 defscrollback 100000
 hardstatus on
 hardstatus alwayslastline
