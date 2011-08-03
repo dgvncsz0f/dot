@@ -65,18 +65,6 @@ dot_clone_dot()
   fi
 }
 
-dot_clone_zsh()
-{
-  dot_print_info "CLONING OH-MY-ZSH INTO $HOME/.oh-my-zsh"
-  if [ -d "$HOME/.oh-my-zsh" ]
-  then
-    (cd "$HOME/.oh-my-zsh" && $git_bin reset --hard)
-    (cd "$HOME/.oh-my-zsh" && $git_bin pull)
-  else
-    $git_bin clone git://github.com/dsouza/oh-my-zsh "$HOME/.oh-my-zsh"
-  fi
-}
-
 dot_install_dot()
 {
   dot_print_info "INSTALLING DOT FILES"
@@ -88,6 +76,7 @@ dot_install_dot()
   dot_symlink "$HOME/.dot/dot.vimrc" "$HOME/.vimrc"
   dot_symlink "$HOME/.dot/dot.bash_profile" "$HOME/.bash_profile"
   dot_symlink "$HOME/.dot/dot.bashrc" "$HOME/.bashrc"
+  dot_symlink "$HOME/.dot/dot.zshrc" "$HOME/.zshrc"
   dot_symlink "$HOME/.dot/dot.conkerorrc" "$HOME/.conkerorrc"
   dot_symlink "$HOME/.dot/dot.gitconfig" "$HOME/.gitconfig"
   dot_symlink "$HOME/.dot/dot.inputrc" "$HOME/.inputrc"
@@ -109,7 +98,6 @@ dot_fixperms()
 dot_install_zsh()
 {
   dot_print_info "INSTALLING ZSH FILES"
-  $ln_bin -s -f -n "$HOME/.oh-my-zsh/templates/zshrc.zsh-template" "$HOME/.zshrc"
 }
 
 dot_check_binaries

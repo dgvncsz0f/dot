@@ -1,0 +1,63 @@
+#!/bin/sh
+
+my_editors()
+{
+  if [ -x "/usr/bin/emacs" ]
+  then
+    export VISUAL=/usr/bin/emacs
+    export EDITOR=/usr/bin/emacs
+  elif [ -x "/usr/bin/vim" ]
+  then
+    export VISUAL=/usr/bin/vim
+    export EDITOR=/usr/bin/vim
+  elif [ -x "/usr/bin/vi" ]
+  then
+    export VISUAL=/usr/bin/vi
+    export EDITOR=/usr/vin/vi
+  fi
+}
+
+my_setenv()
+{
+  export PAGER=/usr/bin/less
+  export PATH=$PATH:$HOME/.dot/bin
+  export GPG_TTY=$(/usr/bin/tty)
+  export LANG=en_US.UTF-8
+  export LC_ALL=en_US.UTF-8
+}
+
+my_aliases()
+{
+  alias ll="ls -l"
+  alias l1="ls -1"
+  alias la="ll -a"
+  alias rm="/bin/rm -i"
+  alias startx="/usr/bin/startx & disown; exit"
+  alias issh="$HOME/.dot/bin/ssh-pw ig:unix /usr/bin/ssh"
+}
+
+my_loadrvm()
+{
+  if [ -f ~/.rvm/scripts/rvm ]
+  then
+    source ~/.rvm/scripts/rvm
+  fi
+}
+
+my_encfs()
+{
+  local ENCFS=/usr/bin/encfs
+  local MOUNT=/bin/mount
+  local WC=/usr/bin/wc
+  local GREP=/bin/grep
+  if [ -x "${ENCFS}" ]
+  then
+    if [ -d "${HOME}/.sec" ]
+    then
+      while [ "`\"${MOUNT}\" | \"${GREP}\" /home/dsouza/sec | \"${WC}\" -l`" != "1" ]
+      do
+        "${ENCFS}" "${HOME}/.sec" "${HOME}/sec"
+      done
+    fi
+  fi
+}

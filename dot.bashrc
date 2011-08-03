@@ -1,38 +1,25 @@
 # -*- mode: Shell-script; sh-basic-offset: 2; -*-
 
-my_reg_als()
+source $HOME/.dot/dot.sh_shared
+
+my_bash_prompt()
 {
-  alias :q=exit
-  alias startx="/usr/bin/startx & exit; exit"
-  alias tssh="/usr/bin/tsocks /usr/bin/ssh"
-  alias tscp="/usr/bin/tsocks /usr/bin/scp"
-  alias more="less"
-  alias vi="vim"
-  alias rm="/bin/rm -i"
-  alias chroot32="/usr/bin/sudo -H /usr/sbin/chroot /var/chroot/sid-ia32"
-  alias ls="ls -F"
-  alias ll="ls -l"
-  alias l1="ls -1"
-  alias la="ll -a"
+  export PS1='➜ |\u@\H| \w \n (\j) \$ '
 }
 
-my_exp_env()
+my_bash_history()
 {
-  export GPG_TTY=`tty`
-  PS1='\n\u@\H \w \n(\j) \$ '
+  export HISTFILE=$HOME/.bash_history
+  export HISTFILESIZE=10000
+  export HISTSIZE=7500
 }
 
-my_switch2zsh()
+my_bash_options()
 {
-  if [ -x /bin/zsh ]
-  then
-    exec /bin/zsh
-  else
-    if [ -x /usr/bin/zsh ]
-    then
-      exec /usr/bin/zsh
-    fi
-  fi
+  shopt -s histappend
+  shopt -s extglob
+  shopt -s extquote
+  shopt -s cdspell
 }
 
 [ -z "${PS1}" ] && return
@@ -40,17 +27,11 @@ my_switch2zsh()
 [ -f /etc/bashrc ] && source /etc/bashrc
 [ -f "${HOME}/.bashrc.local" ] && source "${HOME}/.bashrc.local"
 
-shopt -s checkwinsize
-shopt -s histappend
-shopt -s checkjobs
-shopt -s globstar
-shopt -s dirspell
-shopt -s extglob
-shopt -s extquote
-shopt -s cdspell
-
-my_reg_als
-my_exp_env
-my_switch2zsh
-
-export GPG_TTY=$(tty)
+my_bash_options
+my_setenv
+my_editors
+my_aliases
+my_encfs
+my_loadrvm
+my_bash_history
+my_bash_prompt
