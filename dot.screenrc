@@ -8,7 +8,7 @@ vbell   off
 defobuflimit 256
 defsilence off
 defmonitor off
-shell /usr/bin/zsh
+shell /bin/bash
 defutf8 on
 startup_message off 
 

@@ -4,7 +4,8 @@ source $HOME/.dot/dot.sh_shared
 
 my_bash_prompt()
 {
-  export PS1='➜ |\u@\H| \w \n (\j) \$ '
+  # export PS1='%{$fg_bold[red]%}➜ %{$fg_bold[grey]%}|%n@%M| %{$fg[cyan]%}%~ %{$fg_bold[yellow]%}'$'\n'' (%j) %# %{$reset_color%}'
+  export PS1="${fg_bold_red}➜ ${fg_bold_grey}|\\u@\\H| ${fg_norm_cyan}\\w \\n ${fg_bold_yellow}(\\j) \\$ ${nocolors}"
 }
 
 my_bash_history()
@@ -28,6 +29,7 @@ my_bash_options()
 [ -f "${HOME}/.bashrc.local" ] && source "${HOME}/.bashrc.local"
 
 my_bash_options
+my_colors
 my_setenv
 my_editors
 my_aliases
