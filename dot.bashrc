@@ -31,6 +31,7 @@ my_bash_options()
 
 [ -z "${PS1}" ] && return
 [ -f /etc/bash.bashrc ] && source /etc/bash.bashrc
+[ -f /etc/bash_completion ] && source /etc/bash_completion
 [ -f /etc/bashrc ] && source /etc/bashrc
 [ -f "${HOME}/.bashrc.local" ] && source "${HOME}/.bashrc.local"
 
