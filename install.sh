@@ -2,6 +2,7 @@
 
 ln_bin=/bin/ln
 rm_bin=/bin/rm
+mkdir_bin=/bin/mkdir
 chmod_bin=/bin/chmod
 env_bin=/usr/bin/env
 git_bin=${GIT_BIN:-$(which git)}
@@ -40,6 +41,16 @@ dot_check_binaries()
   fi
 }
 
+dot_mkdir()
+{
+  local dir=$1
+
+  if [ ! -d "$dir" ]
+  then
+    $mkdir_bin "$dir"
+  fi
+}
+
 dot_symlink()
 {
   local src=$1
@@ -69,6 +80,8 @@ dot_install_dot()
 {
   dot_print_info "INSTALLING DOT FILES"
 
+  dot_mkdir   "$HOME/.ssh"
+  dot_symlink "$HOME/.dot/dot.ssh/config" "$HOME/.ssh/config"
   dot_symlink "$HOME/.dot/dot.emacs" "$HOME/.emacs"
   dot_symlink "$HOME/.dot/dot.libemacs" "$HOME/.libemacs"
   dot_symlink "$HOME/.dot/dot.viper" "$HOME/.viper"
