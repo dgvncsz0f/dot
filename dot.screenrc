@@ -1,5 +1,5 @@
 defflow off
-escape "^Ff"
+escape "^Xx"
 defscrollback 100000
 hardstatus on
 hardstatus alwayslastline
@@ -12,7 +12,8 @@ shell /bin/bash
 defutf8 on
 startup_message off 
 
-bind ^y exec .!! /usr/bin/xclip -o
-bind -c pwdfor 0 exec .!! pwdshow ig:unix
-bind -c pwdfor 1 exec .!! pwdshow ig:ds
-bindkey "^v" command -c pwdfor
+bind -c pwdfor 0 exec .!! /usr/bin/xclip -o
+bind -c pwdfor 1 exec .!! pwdshow ig:unix
+bind -c pwdfor 2 exec .!! pwdshow ig:ds
+bind -c pwdfor 3 exec .!! pwdshow linode.bitforest.org:dsouza
+bindkey "p" command -c pwdfor
