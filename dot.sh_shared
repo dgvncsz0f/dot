@@ -88,7 +88,6 @@ my_aliases()
   alias la="ll -a"
   alias rm="/bin/rm -i"
   alias startx="/usr/bin/startx & disown; exit"
-  alias issh="$HOME/.dot/bin/ssh-pw ig:unix /usr/bin/ssh"
 }
 
 my_loadrvm()
