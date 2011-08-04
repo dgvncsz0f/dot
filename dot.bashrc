@@ -20,6 +20,10 @@ my_bash_options()
   shopt -s extglob
   shopt -s extquote
   shopt -s cdspell
+  shopt -s dirspell
+  shopt -s globstar
+  shopt -s checkjobs
+  shopt -s checkwinsize
 }
 
 [ -z "${PS1}" ] && return
