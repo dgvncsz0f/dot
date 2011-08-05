@@ -17,6 +17,21 @@ my_bash_history()
   export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 }
 
+my_bash_cd()
+{
+  local todir=$HOME
+  if [ $# -eq 1 ]
+  then
+    todir=$1
+  fi
+  builtin pushd "$todir" >/dev/null
+}
+
+my_bash_aliases()
+{
+  alias cd=my_bash_cd
+}
+
 my_bash_options()
 {
   shopt -s histappend
@@ -44,3 +59,4 @@ my_encfs
 my_loadrvm
 my_bash_history
 my_bash_prompt
+my_bash_aliases
