@@ -4,7 +4,7 @@ source $HOME/.dot/dot.sh_shared
 
 my_bash_prompt()
 {
-  export PS1="\[$fg_bold_red\]➜ \[$fg_bold_grey\]|\\u@\\H| \[$fg_norm_cyan\]\\w \\n \[$fg_bold_yellow\](\\j) \\$ \[$nocolors\]"
+  export PS1="\[$fg_bold_red\]➜ \[$fg_bold_grey\]|\\u@\\H| \[$fg_norm_cyan\]\\w \\n\[$fg_bold_yellow\]\\$\[$nocolors\] "
 }
 
 my_bash_history()
