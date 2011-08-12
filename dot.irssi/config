@@ -226,8 +226,8 @@ windows = {
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#haskell";
-        tag = "freenode";
+        name = "&bitlbee";
+        tag = "bitlbee";
       }
     );
   };
@@ -236,7 +236,7 @@ windows = {
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#agda";
+        name = "#haskell";
         tag = "freenode";
       }
     );
@@ -246,7 +246,7 @@ windows = {
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "##bitforest";
+        name = "#agda";
         tag = "freenode";
       }
     );
@@ -256,12 +256,22 @@ windows = {
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "##iglu";
+        name = "##bitforest";
         tag = "freenode";
       }
     );
   };
   7 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "##iglu";
+        tag = "freenode";
+      }
+    );
+  };
+  8 = {
     items = (
       {
         type = "CHANNEL";
@@ -274,6 +284,6 @@ windows = {
 };
 mainwindows = {
   1 = { first_line = "8"; lines = "51"; };
-  6 = { first_line = "1"; lines = "7"; };
+  2 = { first_line = "1"; lines = "7"; };
 };
 hilights = ( { nick = "yes"; word = "yes"; } );
