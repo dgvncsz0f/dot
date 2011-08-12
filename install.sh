@@ -109,8 +109,7 @@ dot_install_dot()
 dot_fixperms()
 {
   $chmod_bin 0600 $HOME/.dot/dot.ig.fetchmailrc
-  $chmod_bin 0600 $HOME/.dot/dot.irssi/nickserv.auth
-  $chmod_bin 0500 $HOME/.dot/dot.irssi/nickserv.networks
+  $chmod_bin 0500 $HOME/.dot/dot.irssi/nickserv.auth
   $chmod_bin 0500 $HOME/.dot/dot.irssi/nickserv.networks
 }
 
