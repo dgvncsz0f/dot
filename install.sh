@@ -39,7 +39,7 @@ dot_symlink()
   local dst=$2
 
   [ -d "$dst" ] && $rm_bin -r -f "$dst"
-  [ -f "$src" ] && $ln_bin -s -f -n "$src" "$dst"
+  [ -e "$src" ] && $ln_bin -s -f -n "$src" "$dst"
 }
 
 dot_clone_dot()
