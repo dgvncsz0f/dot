@@ -36,8 +36,9 @@
 (setq-default blink-matching-paren t)
 (setq-default inhibit-startup-screen t)
 (setq-default modeline-shadow-thickness 0)
-(setq-default cua-toggle-set-mark nil)
 (setq-default cua-enable-cua-keys nil)
+(setq cua-highlight-region-shift-only t) ;; no transient mark mode
+(setq cua-toggle-set-mark nil) ;; original set-mark behavior, i.e. no transient-mark-mode
 (setq-default ido-enable-flex-matching t)
 (setq-default c-default-style "bsd")
 (setq-default c-basic-offset 2)
@@ -61,6 +62,7 @@
 (global-linum-mode t)
 (global-hl-line-mode)
 (column-number-mode t)
+(transient-mark-mode nil)
 (cua-mode t)
 ;(ido-mode t)
 (icy-mode t)
