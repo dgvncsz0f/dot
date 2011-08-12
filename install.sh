@@ -101,11 +101,17 @@ dot_install_dot()
   dot_symlink "$HOME/.dot/dot.xresourcesrc" "$HOME/.xresourcesrc"
   dot_symlink "$HOME/.dot/dot.mutt" "$HOME/.mutt"
   dot_symlink "$HOME/.dot/dot.email-signature" "$HOME/.email-signature"
+  dot_symlink "$HOME/.dot/dot.irssi" "$HOME/.irssi"
+  dot_symlink "$HOME/.nickserv.auth" "$HOME/.irssi/nickserv.auth"
+  dot_symlink "$HOME/.nickserv.networks" "$HOME/.irssi/nickserv.networks"
 }
 
 dot_fixperms()
 {
   $chmod_bin 0600 $HOME/.dot/dot.ig.fetchmailrc
+  $chmod_bin 0600 $HOME/.dot/dot.irssi/nickserv.auth
+  $chmod_bin 0500 $HOME/.dot/dot.irssi/nickserv.networks
+  $chmod_bin 0500 $HOME/.dot/dot.irssi/nickserv.networks
 }
 
 dot_check_binaries
