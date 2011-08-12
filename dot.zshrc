@@ -41,9 +41,7 @@ my_zsh_completion()
 
 my_zsh_prompt()
 {
-  # export PS1='%{$fg_bold[red]%}➜ %{$fg_bold[grey]%}|%n@%M| %{$fg[cyan]%}%~ %{$fg_bold[yellow]%}'$'\n'' (%j) %# %{$reset_color%}'
-
-  export PS1="%{$fg_bold_red%}➜ %{$fg_bold_grey%}|%n@%M| %{$fg_bold_cyan%}%~ "$'\n'"%{$fg_bold_yellow%} (%j) %#%{$nocolors%} "
+  export PS1="%{$fg_bold_red%}➜ %{$fg_bold_grey%}|%n@%M| %{$fg_bold_cyan%}%~ "$'\n'"%{$fg_bold_yellow%}%#%{$nocolors%} "
 }
 
 my_colors
