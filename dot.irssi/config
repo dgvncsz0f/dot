@@ -11,7 +11,7 @@ servers = (
     address = "localhost";
     port = "6667";
     ssl_verify = "no";
-    autoconnect = "no";
+    autoconnect = "yes";
     chatnet = "bitlbee";
   }
 );
