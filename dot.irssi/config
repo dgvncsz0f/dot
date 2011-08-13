@@ -31,7 +31,8 @@ channels = (
   { name = "#haskell"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#agda"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "##bitforest"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "##iglu"; chatnet = "freenode"; autojoin = "yes"; }
+  { name = "##iglu"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#emacs"; chatnet = "freenode"; autojoin = "yes"; }
 );
 
 aliases = {
@@ -277,6 +278,16 @@ windows = {
         type = "CHANNEL";
         chat_type = "IRC";
         name = "##devel-pedreiro";
+        tag = "freenode";
+      }
+    );
+  };
+  9 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#emacs";
         tag = "freenode";
       }
     );
