@@ -3,13 +3,11 @@
 (autoload 'js2-mode "js2" nil t)
 (require 'fuzzy-match)
 (require 'synonyms)
-(require 'framemove)
 (require 'icicles)
 (require 'color-theme)
 (require 'zenburn)
 (require 'epa-file)
 (require 'col-highlight)
-(require 'find-file-in-tags)
 (epa-file-enable)
 
 (eval-after-load "color-theme"
@@ -27,7 +25,7 @@
 ; (show-ws-toggle-show-trailing-whitespace)
 
 (windmove-default-keybindings 'super)
-(setq-default framemove-hook-into-windmove t)
+
 (setq-default mmm-submode-decoration-level 0)
 (setq-default backup-inhibited t)
 (setq-default haskell-program-name "ghci \"+.\"")
@@ -78,17 +76,13 @@
 
 ; (global-set-key (kbd "C-c a") 'align-string)
 ; (global-set-key (kbd "C-c i") 'ispell-buffer)
-(global-set-key (read-kbd-macro "C-,") 'find-file-in-tags)
-(global-set-key (kbd "C-c q") 'view-mode)
-(global-set-key (kbd "C-c t") 'icicle-find-file-in-tags-table)
-(global-set-key (kbd "C-c q") 'delete-frame)
-(global-set-key (kbd "C-c w") 'server-edit)
+(global-set-key (kbd "C-c v") 'view-mode)
+(global-set-key (kbd "C-c C-f") 'icicle-find-file-in-tags-table)
 (global-set-key (kbd "<f5>") 'ispell-change-dictionary)
 (global-set-key (kbd "<f6>") 'whitespace-mode)
 (global-set-key (kbd "<f7>") 'toggle-truncate-lines)
 (global-set-key (kbd "C-k") 'kill-whole-line)
 (global-set-key (kbd "C-x C-k") 'kill-line)
-(global-set-key (kbd "C-x C-d") 'kill-region)
 (global-set-key (kbd "C-S-i") 'beginning-of-line-text)
 
 (put 'erase-buffer 'disabled nil)
