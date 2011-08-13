@@ -9,8 +9,6 @@
 (require 'epa-file)
 (require 'col-highlight)
 (require 'find-file-in-tags)
-(setq viper-mode t)
-(require 'viper)
 (epa-file-enable)
 
 (eval-after-load "color-theme"
@@ -80,15 +78,13 @@
 (global-set-key (kbd "C-c t") 'icicle-find-file-in-tags-table)
 (global-set-key (kbd "C-c q") 'delete-frame)
 (global-set-key (kbd "C-c w") 'server-edit)
-(global-set-key (kbd "S-<f8>") 'compile)
-(global-set-key (kbd "S-<f9>") 'ispell-change-dictionary)
-(global-set-key (kbd "S-<f10>") 'toggle-viper-mode)
-(global-set-key (kbd "S-<f11>") 'whitespace-mode)
-(global-set-key (kbd "S-<f7>") 'toggle-truncate-lines)
+(global-set-key (kbd "<f5>") 'ispell-change-dictionary)
+(global-set-key (kbd "<f6>") 'whitespace-mode)
+(global-set-key (kbd "<f7>") 'toggle-truncate-lines)
 (global-set-key (kbd "C-k") 'kill-whole-line)
 (global-set-key (kbd "C-x C-k") 'kill-line)
 (global-set-key (kbd "C-x C-d") 'kill-region)
-(global-set-key (kbd "C-S-y") 'x-clipboard-yank)
+(global-set-key (kbd "C-i") 'beginning-of-text-line)
 
 (put 'erase-buffer 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
@@ -97,7 +93,6 @@
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 
-(setq auto-mode-alist (cons '("/tmp/mutt.*$" . post-mode) auto-mode-alist))
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
 (custom-set-variables
