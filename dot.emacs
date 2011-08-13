@@ -86,7 +86,7 @@
 (global-set-key (kbd "C-k") 'kill-whole-line)
 (global-set-key (kbd "C-x C-k") 'kill-line)
 (global-set-key (kbd "C-x C-d") 'kill-region)
-(global-set-key (kbd "C-i") 'beginning-of-text-line)
+(global-set-key (kbd "C-S-i") 'beginning-of-line-text)
 
 (put 'erase-buffer 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
@@ -94,6 +94,7 @@
 (put 'scroll-left 'disabled nil)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
+(put 'set-goal-column 'disabled nil)
 
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
