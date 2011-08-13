@@ -8,6 +8,7 @@
 (require 'zenburn)
 (require 'epa-file)
 (require 'col-highlight)
+(require 'myemacs)
 (epa-file-enable)
 
 (eval-after-load "color-theme"
@@ -78,12 +79,13 @@
 ; (global-set-key (kbd "C-c i") 'ispell-buffer)
 (global-set-key (kbd "C-c v") 'view-mode)
 (global-set-key (kbd "C-c C-f") 'icicle-find-file-in-tags-table)
+(global-set-key (kdb "C-c s") 'my-open-shell-sideways)
 (global-set-key (kbd "<f5>") 'ispell-change-dictionary)
 (global-set-key (kbd "<f6>") 'whitespace-mode)
 (global-set-key (kbd "<f7>") 'toggle-truncate-lines)
 (global-set-key (kbd "C-k") 'kill-whole-line)
 (global-set-key (kbd "C-x C-k") 'kill-line)
-(global-set-key (kbd "C-S-i") 'beginning-of-line-text)
+(global-set-key (kbd "C-S-a") 'beginning-of-line-text)
 
 (put 'erase-buffer 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
