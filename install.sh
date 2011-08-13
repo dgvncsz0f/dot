@@ -20,35 +20,17 @@ dot_print_error()
 
 dot_check_binaries()
 {
-  if [ ! -x "$git_bin" ]
-  then
-    dot_print_error "git binary not found"
-  fi
-
-  if [ ! -x "$ln_bin" ]
-  then
-    dot_print_error "ln binary not found (really?)"
-  fi
-
-  if [ ! -x "$env_bin" ]
-  then
-    dot_print_error "env binary not found"
-  fi
-
-  if [ ! -x "$rm_bin" ]
-  then
-    dot_print_error "rm binary not found (really?)"
-  fi
+  [ ! -x "$git_bin" ] && dot_print_error "git binary not found"
+  [ ! -x "$ln_bin" ]  && dot_print_error "ln binary not found (really?)"
+  [ ! -x "$env_bin" ] && dot_print_error "env binary not found"
+  [ ! -x "$rm_bin" ]  && dot_print_error "rm binary not found (really?)"
 }
 
 dot_mkdir()
 {
   local dir=$1
 
-  if [ ! -d "$dir" ]
-  then
-    $mkdir_bin "$dir"
-  fi
+  [ ! -d "$dir" ] && $mkdir_bin "$dir"
 }
 
 dot_symlink()
@@ -56,12 +38,8 @@ dot_symlink()
   local src=$1
   local dst=$2
 
-  if [ -d "$dst" ]
-  then
-    $rm_bin -r -f "$dst"
-  fi
-
-  $ln_bin -s -f -n "$src" "$dst"
+  [ -d "$dst" ] && $rm_bin -r -f "$dst"
+  [ -e "$src" ] && $ln_bin -s -f -n "$src" "$dst"
 }
 
 dot_clone_dot()
@@ -101,11 +79,16 @@ dot_install_dot()
   dot_symlink "$HOME/.dot/dot.xresourcesrc" "$HOME/.xresourcesrc"
   dot_symlink "$HOME/.dot/dot.mutt" "$HOME/.mutt"
   dot_symlink "$HOME/.dot/dot.email-signature" "$HOME/.email-signature"
+  dot_symlink "$HOME/.dot/dot.irssi" "$HOME/.irssi"
+  dot_symlink "$HOME/.nickserv.auth" "$HOME/.irssi/nickserv.auth"
+  dot_symlink "$HOME/.nickserv.networks" "$HOME/.irssi/nickserv.networks"
 }
 
 dot_fixperms()
 {
   $chmod_bin 0600 $HOME/.dot/dot.ig.fetchmailrc
+  [ -f "$HOME/.dot/dot.irssi/nickserv.auth" ]     && $chmod_bin 0500 $HOME/.dot/dot.irssi/nickserv.auth
+  [ -f "$HOME/.dot/dot.irssi/nickserv.networks" ] && $chmod_bin 0500 $HOME/.dot/dot.irssi/nickserv.networks
 }
 
 dot_check_binaries
