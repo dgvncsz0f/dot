@@ -3,6 +3,7 @@
 (autoload 'js2-mode "js2" nil t)
 (require 'fuzzy-match)
 (require 'synonyms)
+(require 'framemove)
 (require 'icicles)
 (require 'color-theme)
 (require 'zenburn)
@@ -25,6 +26,8 @@
 ; (show-ws-toggle-show-tabs)
 ; (show-ws-toggle-show-trailing-whitespace)
 
+(windmove-default-keybindings 'super)
+(setq-default framemove-hook-into-windmove t)
 (setq-default mmm-submode-decoration-level 0)
 (setq-default backup-inhibited t)
 (setq-default haskell-program-name "ghci \"+.\"")
