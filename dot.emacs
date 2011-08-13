@@ -79,7 +79,7 @@
 ; (global-set-key (kbd "C-c i") 'ispell-buffer)
 (global-set-key (kbd "C-c v") 'view-mode)
 (global-set-key (kbd "C-c C-f") 'icicle-find-file-in-tags-table)
-(global-set-key (kdb "C-c s") 'my-open-shell-sideways)
+(global-set-key (kbd "C-c s") 'my-open-shell-sideways)
 (global-set-key (kbd "<f5>") 'ispell-change-dictionary)
 (global-set-key (kbd "<f6>") 'whitespace-mode)
 (global-set-key (kbd "<f7>") 'toggle-truncate-lines)
