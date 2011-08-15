@@ -53,6 +53,8 @@
 (setq-default erc-track-exclude-types (quote ("JOIN" "NICK" "PART" "QUIT" "MODE" "324" "329" "332" "333" "353" "477")))
 (setq-default erc-timestamp-right-align-by-pixel t)
 (setq-default erc-nick (quote ("dsouza" "_dsouza_" "__dsouza__")))
+(setq-default uniquify-buffer-name-style 'post-forward)
+(setq-default uniquify-strip-common-suffix nil)
 
 (col-highlight-set-interval 1)
 (toggle-highlight-column-when-idle t)
@@ -78,10 +80,10 @@
 ; (global-set-key (kbd "C-c i") 'ispell-buffer)
 ; (global-set-key (kbd "C-c a") 'align-string)
 (global-set-key (kbd "C-c v") 'view-mode)
-(global-set-key (kbd "C-c C-f") 'icicle-find-file-in-tags-table)
+(global-set-key (kbd "C-c f") 'icicle-find-file-in-tags-table)
 (global-set-key (kbd "C-c s") 'my-open-shell-sideways)
-(global-set-key (kbd "C-c M-w") 'my-copy-line)
-(global-set-key (kbd "C-c C-a") 'beginning-of-line-text)
+(global-set-key (kbd "C-c w") 'my-copy-line)
+(global-set-key (kbd "C-c a") 'beginning-of-line-text)
 (global-set-key (kbd "C-c c") 'describe-char)
 (global-set-key (kbd "C-S-o") 'my-prepend-line)
 (global-set-key (kbd "C-o") 'my-append-line)
@@ -100,17 +102,3 @@
 (put 'set-goal-column 'disabled nil)
 
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-
-(custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(uniquify-buffer-name-style (quote post-forward) nil (uniquify))
- '(uniquify-strip-common-suffix nil))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
