@@ -82,6 +82,7 @@
 (global-set-key (kbd "C-c s") 'my-open-shell-sideways)
 (global-set-key (kbd "C-c M-w") 'my-copy-line)
 (global-set-key (kbd "C-c C-a") 'beginning-of-line-text)
+(global-set-key (kbd "C-c c") 'describe-char)
 (global-set-key (kbd "C-S-o") 'my-prepend-line)
 (global-set-key (kbd "C-o") 'my-append-line)
 (global-set-key (kbd "<f5>") 'ispell-change-dictionary)
