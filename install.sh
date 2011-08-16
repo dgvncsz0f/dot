@@ -6,6 +6,7 @@ mkdir_bin=/bin/mkdir
 chmod_bin=/bin/chmod
 env_bin=/usr/bin/env
 git_bin=${GIT_BIN:-$(which git)}
+find_bin=/usr/bin/find
 
 dot_print_info()
 {
@@ -40,7 +41,6 @@ dot_symlink()
 
   [ -d "$dst" ] && $rm_bin -r -f "$dst"
   [ -e "$src" ] && $ln_bin -s -f -n "$src" "$dst"
-  [ -e "$dst" ] && $chmod_bin 0500 "$dst"
 }
 
 dot_clone_dot()
@@ -87,9 +87,9 @@ dot_install_dot()
 
 dot_fixperms()
 {
-  $chmod_bin 0600 $HOME/.dot/dot.ig.fetchmailrc
-  [ -f "$HOME/.dot/dot.irssi/nickserv.auth" ]     && $chmod_bin 0500 $HOME/.dot/dot.irssi/nickserv.auth
-  [ -f "$HOME/.dot/dot.irssi/nickserv.networks" ] && $chmod_bin 0500 $HOME/.dot/dot.irssi/nickserv.networks
+  $find_bin $HOME/.dot -type d -exec $chmod_bin 0700 \{\} \;
+  $find_bin $HOME/.dot -type f -exec $chmod_bin 0600 \{\} \;
+  $find_bin $HOME/.dot/bin -type f -exec $chmod_bin 0700 \{\} \;
 }
 
 dot_check_binaries
