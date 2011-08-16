@@ -9,6 +9,7 @@
 (require 'epa-file)
 (require 'col-highlight)
 (require 'myemacs)
+(require 'uniquify)
 (epa-file-enable)
 
 (eval-after-load "color-theme"
