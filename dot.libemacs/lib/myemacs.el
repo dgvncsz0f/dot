@@ -16,7 +16,7 @@
   (interactive "P")
   (let ((buffer-read-only t)
         (kill-read-only-ok t))
-    (kill-line arg)))
+    (kill-whole-line arg)))
 
 (defun my-prepend-line (&optional arg)
   " Insert a newline before the current one. C-a C-o achieves the
