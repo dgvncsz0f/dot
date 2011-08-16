@@ -27,6 +27,18 @@
 
 (windmove-default-keybindings 'super)
 
+(when window-system
+      (speedbar t))
+(speedbar-add-supported-extension ".hs")
+(speedbar-add-supported-extension ".h")
+(speedbar-add-supported-extension ".c")
+(speedbar-add-supported-extension ".cc")
+(speedbar-add-supported-extension ".py")
+(speedbar-add-supported-extension ".pl")
+(speedbar-add-supported-extension ".rb")
+(speedbar-add-supported-extension ".js")
+(speedbar-add-supported-extension ".el")
+
 (setq-default mmm-submode-decoration-level 0)
 (setq-default backup-inhibited t)
 (setq-default haskell-program-name "ghci \"+.\"")
@@ -87,6 +99,7 @@
 (global-set-key (kbd "C-c c") 'describe-char)
 (global-set-key (kbd "C-S-o") 'my-prepend-line)
 (global-set-key (kbd "C-o") 'my-append-line)
+(global-set-key (kbd "S-<f5>") 'flyspell-mode)
 (global-set-key (kbd "<f5>") 'ispell-change-dictionary)
 (global-set-key (kbd "<f6>") 'whitespace-mode)
 (global-set-key (kbd "<f7>") 'toggle-truncate-lines)
