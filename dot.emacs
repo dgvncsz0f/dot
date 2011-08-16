@@ -27,6 +27,18 @@
 
 (windmove-default-keybindings 'super)
 
+(when window-system
+      (speedbar t))
+(speedbar-add-supported-extension ".hs")
+(speedbar-add-supported-extension ".h")
+(speedbar-add-supported-extension ".c")
+(speedbar-add-supported-extension ".cc")
+(speedbar-add-supported-extension ".py")
+(speedbar-add-supported-extension ".pl")
+(speedbar-add-supported-extension ".rb")
+(speedbar-add-supported-extension ".js")
+(speedbar-add-supported-extension ".el")
+
 (setq-default mmm-submode-decoration-level 0)
 (setq-default backup-inhibited t)
 (setq-default haskell-program-name "ghci \"+.\"")
