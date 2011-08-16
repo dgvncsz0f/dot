@@ -27,8 +27,7 @@
 
 (windmove-default-keybindings 'super)
 
-(when window-system
-      (speedbar t))
+(speedbar (- 1))
 (speedbar-add-supported-extension ".hs")
 (speedbar-add-supported-extension ".h")
 (speedbar-add-supported-extension ".c")
@@ -103,6 +102,7 @@
 (global-set-key (kbd "<f5>") 'ispell-change-dictionary)
 (global-set-key (kbd "<f6>") 'whitespace-mode)
 (global-set-key (kbd "<f7>") 'toggle-truncate-lines)
+(global-set-key (kbd "<f9>") 'speedbar)
 (global-set-key (kbd "C-k") 'kill-whole-line)
 (global-set-key (kbd "C-S-k") 'kill-line)
 
