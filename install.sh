@@ -40,6 +40,7 @@ dot_symlink()
 
   [ -d "$dst" ] && $rm_bin -r -f "$dst"
   [ -e "$src" ] && $ln_bin -s -f -n "$src" "$dst"
+  [ -e "$dst" ] && $chmod_bin 0500 "$dst"
 }
 
 dot_clone_dot()
