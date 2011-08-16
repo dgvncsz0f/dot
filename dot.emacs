@@ -99,6 +99,7 @@
 (global-set-key (kbd "C-c c") 'describe-char)
 (global-set-key (kbd "C-S-o") 'my-prepend-line)
 (global-set-key (kbd "C-o") 'my-append-line)
+(global-set-key (kbd "S-<f5>") 'flyspell-mode)
 (global-set-key (kbd "<f5>") 'ispell-change-dictionary)
 (global-set-key (kbd "<f6>") 'whitespace-mode)
 (global-set-key (kbd "<f7>") 'toggle-truncate-lines)
