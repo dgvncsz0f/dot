@@ -3,22 +3,37 @@
 bin_find=${bin_find:-/usr/bin/find}
 bin_etags=${bin_etags:-/usr/bin/etags}
 
-srcroot=$1
+file_or_dir=$1
 
-mketags_run()
+mketags_run4dir()
 {
-  local lang=$1
-  local glob=$2
+  local srcroot=$1
+  local lang=$2
+  local glob=$3
 
-  $bin_find "$srcroot" -type f -name "$glob" -exec $bin_etags --ignore-indentation --language="$lang" --append \{\} \;
+  $bin_find "$srcroot" -type f -name "$glob" -exec $bin_etags --ignore-indentation --append --language=$lang \{\} \;
 }
 
-mketags_run python "*.py"
-mketags_run c++ "*.h"
-mketags_run c++ "*.cc"
-mketags_run c "*.c"
-mketags_run java "*.java"
-mketags_run lisp "*.el"
-mketags_run lisp "*.l"
-mketags_run lisp "*.cl"
-mketags_run perl "*.pl"
+mketags_run4file()
+{
+  local lang=$1
+  local file=$2
+
+  $bin_etags --ignore-indentation --append --language=$lang "$file"
+}
+
+if [ -d "$file_or_dir" ]
+then
+  mketags_run4dir "$file_or_dir" python "*.py"
+  mketags_run4dir "$file_or_dir" c++ "*.h"
+  mketags_run4dir "$file_or_dir" c++ "*.cc"
+  mketags_run4dir "$file_or_dir" c "*.c"
+  mketags_run4dir "$file_or_dir" java "*.java"
+  mketags_run4dir "$file_or_dir" lisp "*.el"
+  mketags_run4dir "$file_or_dir" lisp "*.l"
+  mketags_run4dir "$file_or_dir" lisp "*.cl"
+  mketags_run4dir "$file_or_dir" perl "*.pl"
+elif [ -f "$file_or_dir" ]
+then
+  mketags_run4file auto "$file_or_dir"
+fi
