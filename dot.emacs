@@ -34,7 +34,7 @@
 
 (windmove-default-keybindings 'super)
 
-(yas/load-directory "~/.libemacs/lib/")
+(yas/load-directory "~/.libemacs/yasnippets/")
 
 (speedbar (- 1))
 (speedbar-add-supported-extension ".hs")
@@ -115,6 +115,8 @@
 (global-set-key (kbd "<f9>") 'speedbar)
 (global-set-key (kbd "C-k") 'kill-whole-line)
 (global-set-key (kbd "C-S-k") 'kill-line)
+(global-set-key (kbd "M-p") 'yas/prev-field)
+(global-set-key (kbd "M-n") 'yas/next-field)
 
 (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
 
