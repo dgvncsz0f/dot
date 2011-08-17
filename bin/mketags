@@ -3,6 +3,8 @@
 bin_find=${bin_find:-/usr/bin/find}
 bin_etags=${bin_etags:-/usr/bin/etags}
 bin_cut=${bin_cut:-/usr/bin/cut}
+bin_notifysend=${bin_notifysend:-/usr/bin/notify-send}
+bin_env=${bin_env:-/usr/bin/env}
 
 srcroot=$1
 file_or_dir=$2
@@ -80,3 +82,5 @@ elif [ -f "$file_or_dir" ]
 then
   mketags_known "$file_or_dir" && mketags_run4file auto "$file_or_dir"
 fi
+
+$bin_env DISPLAY=:0 $bin_notifysend --icon=dialog-information --urgency=low "TAGS updated [srcroot=$srcroot, pattern=$file_or_dir"

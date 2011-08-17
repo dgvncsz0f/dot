@@ -1,0 +1,19 @@
+#!/bin/sh
+
+bin_find=find
+
+srcroot=$(pwd)
+basedir=$1
+
+if [ -n "$basedir" ]
+then
+  for f in $($bin_find "$basedir" -type d ! -wholename "$basedir/.git*")
+  do
+    echo "$srcroot/$f" IN_CLOSE_WRITE,IN_NO_LOOP /home/dsouza/.dot/bin/mketags "$srcroot" '$@/$#'
+  done
+else
+  for f in $($bin_find $srcroot -type d ! -wholename "$srcroot/.git*")
+  do
+    echo "$f" IN_CLOSE_WRITE,IN_NO_LOOP /home/dsouza/.dot/bin/mketags "$srcroot" '$@/$#'
+  done
+fi
