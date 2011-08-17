@@ -114,6 +114,8 @@
 (global-set-key (kbd "C-k") 'kill-whole-line)
 (global-set-key (kbd "C-S-k") 'kill-line)
 
+(define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
+
 (put 'erase-buffer 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 (put 'dired-find-alternate-file 'disabled nil)
