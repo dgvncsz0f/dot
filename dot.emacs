@@ -9,7 +9,14 @@
 (require 'epa-file)
 (require 'col-highlight)
 (require 'myemacs)
+(require 'uniquify)
+(require 'yasnippet-bundle)
 (epa-file-enable)
+
+(when (not (boundp 'ac-dictionary-directories)) (setq ac-dictionary-directories ()))
+(add-to-list 'ac-dictionary-directories "~/.libemacs/lib/ac-dict")
+(require 'auto-complete-config)
+(ac-config-default)
 
 (eval-after-load "color-theme"
   '(progn
@@ -27,8 +34,7 @@
 
 (windmove-default-keybindings 'super)
 
-(when window-system
-      (speedbar t))
+(speedbar (- 1))
 (speedbar-add-supported-extension ".hs")
 (speedbar-add-supported-extension ".h")
 (speedbar-add-supported-extension ".c")
@@ -67,6 +73,7 @@
 (setq-default erc-nick (quote ("dsouza" "_dsouza_" "__dsouza__")))
 (setq-default uniquify-buffer-name-style 'post-forward)
 (setq-default uniquify-strip-common-suffix nil)
+(setq-default ac-auto-show-menu nil)
 
 (col-highlight-set-interval 1)
 (toggle-highlight-column-when-idle t)
@@ -103,8 +110,11 @@
 (global-set-key (kbd "<f5>") 'ispell-change-dictionary)
 (global-set-key (kbd "<f6>") 'whitespace-mode)
 (global-set-key (kbd "<f7>") 'toggle-truncate-lines)
+(global-set-key (kbd "<f9>") 'speedbar)
 (global-set-key (kbd "C-k") 'kill-whole-line)
 (global-set-key (kbd "C-S-k") 'kill-line)
+
+(define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
 
 (put 'erase-buffer 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
