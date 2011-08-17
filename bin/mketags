@@ -66,6 +66,11 @@ mketags_run4file()
   $bin_etags --ignore-indentation --append --output="$srcroot/TAGS" --language=$lang "$file"
 }
 
+mketags_notify()
+{
+  $bin_env DISPLAY=:0 $bin_notifysend --icon=dialog-information --urgency=low "$srcroot/TAGS updated"
+}
+
 if [ -d "$file_or_dir" ]
 then
   mketags_run4dir "$file_or_dir" python "*.py"
@@ -78,9 +83,9 @@ then
   mketags_run4dir "$file_or_dir" lisp "*.cl"
   mketags_run4dir "$file_or_dir" perl "*.pl"
   mketags_run4dir "$file_or_dir" perl "*.pm"
+  mketags_notify
 elif [ -f "$file_or_dir" ]
 then
   mketags_known "$file_or_dir" && mketags_run4file auto "$file_or_dir"
+  mketags_notify
 fi
-
-$bin_env DISPLAY=:0 $bin_notifysend --icon=dialog-information --urgency=low "TAGS updated [srcroot=$srcroot, pattern=$file_or_dir"
