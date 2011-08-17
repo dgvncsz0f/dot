@@ -1,0 +1,24 @@
+#!/bin/sh
+
+bin_find=${bin_find:-/usr/bin/find}
+bin_etags=${bin_etags:-/usr/bin/etags}
+
+srcroot=$1
+
+mketags_run()
+{
+  local lang=$1
+  local glob=$2
+
+  $bin_find "$srcroot" -type f -name "$glob" -exec $bin_etags --ignore-indentation --language="$lang" --append \{\} \;
+}
+
+mketags_run python "*.py"
+mketags_run c++ "*.h"
+mketags_run c++ "*.cc"
+mketags_run c "*.c"
+mketags_run java "*.java"
+mketags_run lisp "*.el"
+mketags_run lisp "*.l"
+mketags_run lisp "*.cl"
+mketags_run perl "*.pl"

@@ -95,7 +95,7 @@
 (global-set-key (kbd "C-c f") 'icicle-find-file-in-tags-table)
 (global-set-key (kbd "C-c s") 'my-open-shell-sideways)
 (global-set-key (kbd "C-c w") 'my-copy-line)
-(global-set-key (kbd "C-c a") 'beginning-of-line-text)
+(global-set-key (kbd "C-S-a") 'beginning-of-line-text)
 (global-set-key (kbd "C-c c") 'describe-char)
 (global-set-key (kbd "C-S-o") 'my-prepend-line)
 (global-set-key (kbd "C-o") 'my-append-line)
