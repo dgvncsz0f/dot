@@ -12,9 +12,10 @@ shell /bin/bash
 defutf8 on
 startup_message off 
 
-bind -c pwdfor 0 exec .!! /usr/bin/xclip -o
-bind -c pwdfor 1 exec .!! pwdshow linode.bitforest.org:dsouza
-bind -c pwdfor 2 exec .!! pwdshow linode.bitforest.org:root
-bind -c pwdfor 3 exec .!! pwdshow ig:unix
-bind -c pwdfor 4 exec .!! pwdshow ig:ds
-bindkey "p" command -c pwdfor
+bind -c altesc 0 exec .!! /usr/bin/xclip -o
+bind -c altesc 1 exec .!! pwdshow linode.bitforest.org:dsouza
+bind -c altesc 2 exec .!! pwdshow linode.bitforest.org:root
+bind -c altesc 3 exec .!! pwdshow ig:unix
+bind -c altesc 4 exec .!! pwdshow ig:ds
+bind -c altesc -k kP copy
+bindkey "" command -c altesc
