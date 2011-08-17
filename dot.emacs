@@ -34,6 +34,8 @@
 
 (windmove-default-keybindings 'super)
 
+(yas/load-directory "~/.libemacs/lib/")
+
 (speedbar (- 1))
 (speedbar-add-supported-extension ".hs")
 (speedbar-add-supported-extension ".h")
@@ -125,3 +127,5 @@
 (put 'set-goal-column 'disabled nil)
 
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
+(yas/load-directory "~/.libemacs/yasnippets")
