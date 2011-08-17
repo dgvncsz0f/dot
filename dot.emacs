@@ -10,7 +10,13 @@
 (require 'col-highlight)
 (require 'myemacs)
 (require 'uniquify)
+(require 'yasnippet-bundle)
+(require 'auto-complete)
 (epa-file-enable)
+
+(add-to-list 'ac-dictionary-directories "~/.libemacs.d/lib/ac-dict")
+(require 'auto-complete-config)
+(ac-config-default)
 
 (eval-after-load "color-theme"
   '(progn
@@ -67,6 +73,7 @@
 (setq-default erc-nick (quote ("dsouza" "_dsouza_" "__dsouza__")))
 (setq-default uniquify-buffer-name-style 'post-forward)
 (setq-default uniquify-strip-common-suffix nil)
+(setq-default ac-auto-show-menu nil)
 
 (col-highlight-set-interval 1)
 (toggle-highlight-column-when-idle t)
