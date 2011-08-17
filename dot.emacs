@@ -11,10 +11,10 @@
 (require 'myemacs)
 (require 'uniquify)
 (require 'yasnippet-bundle)
-(require 'auto-complete)
 (epa-file-enable)
 
-(add-to-list 'ac-dictionary-directories "~/.libemacs.d/lib/ac-dict")
+(when (not (boundp 'ac-dictionary-directories)) (setq ac-dictionary-directories ()))
+(add-to-list 'ac-dictionary-directories "~/.libemacs/lib/ac-dict")
 (require 'auto-complete-config)
 (ac-config-default)
 
