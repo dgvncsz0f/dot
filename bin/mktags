@@ -8,31 +8,44 @@ bin_notifysend=${bin_notifysend:-/usr/bin/notify-send}
 bin_env=${bin_env:-/usr/bin/env}
 
 srcroot=$1
+event=$2
 
-mketags_runetags()
+mktags_runetags()
 {
   $bin_ctags -e -o "$srcroot/TAGS" -L-
 }
 
-mketags_runctags()
+mktags_runctags()
 {
   $bin_ctags -o "$srcroot/tags" -L-
 }
 
-mketags_notify()
+mktags_notify()
 {
   $bin_env DISPLAY=:0 $bin_notifysend \
     --icon=dialog-information \
-    "mketags: $srcroot" \
+    "mktags: $srcroot" \
     2>/dev/null
 }
 
-mketags_gather()
+mktags_gather()
 {
   for suffix in $suffixes
   do
-    find "$srcroot" -type f -name "*.${suffix}"
+    find "$srcroot" -type f -name "*.$suffix"
   done
 }
 
-{ mketags_gather | mketags_runetags; } && { mketags_gather | mketags_runctags; } && mketags_notify
+mktags_should_ignore()
+{
+  [ "$event" = "$srcroot/TAGS" ] && return 0
+  [ "$event" = "$srcroot/tags" ] && return 0
+  return 1
+}
+
+mktags_run()
+{
+  { mktags_gather | mktags_runetags; } && { mktags_gather | mktags_runctags; } && mktags_notify;
+}
+
+mktags_should_ignore || mktags_run

@@ -30,7 +30,7 @@ mkincrontab_gather()
   local mydir=$(mkincrontab_abspath "$basedir")
   for dir in $($bin_find "$mydir" -type d ! -wholename "$mydir/.git*" -a ! -wholename "$mydir/.hg*")
   do
-    echo "${dir}" IN_CLOSE_WRITE,IN_NO_LOOP /home/dsouza/.dot/bin/mketags "$srcroot"
+    echo "$dir" IN_CLOSE_WRITE,IN_NO_LOOP /home/dsouza/.dot/bin/mktags "$srcroot" '$@/$#'
   done
 }
 
