@@ -1,69 +1,16 @@
 #!/bin/sh
 
+suffixes="py hh h cc c java el l cl pl pm hs rb js"
+
 bin_find=${bin_find:-/usr/bin/find}
-bin_etags=${bin_etags:-/usr/bin/etags}
-bin_cut=${bin_cut:-/usr/bin/cut}
+bin_ctags=${bin_etags:-/usr/bin/ctags-exuberant}
 bin_notifysend=${bin_notifysend:-/usr/bin/notify-send}
-bin_env=${bin_env:-/usr/bin/env}
 
 srcroot=$1
-file_or_dir=$2
 
-mketags_known()
+mketags_run()
 {
-  local name=$(basename "$1")
-  local suffix=$(echo $name | $bin_cut -d . -f 2)
-  case $suffix in
-    py)
-      return 0
-      ;;
-    h)
-      return 0
-      ;;
-    cc)
-      return 0
-      ;;
-    c)
-      return 0
-      ;;
-    java)
-      return 0
-      ;;
-    el)
-      return 0
-      ;;
-    l)
-      return 0
-      ;;
-    cl)
-      return 0
-      ;;
-    pl)
-      return 0
-      ;;
-    pm)
-      return 0
-      ;;
-    *)
-      return 1
-      ;;
-  esac
-}
-
-mketags_run4dir()
-{
-  local lang=$2
-  local glob=$3
-
-  $bin_find "$srcroot" -type f -name "$glob" -exec $bin_etags --ignore-indentation --append --output="$srcroot/TAGS" --language=$lang \{\} \;
-}
-
-mketags_run4file()
-{
-  local lang=$1
-  local file=$2
-
-  $bin_etags --ignore-indentation --append --output="$srcroot/TAGS" --language=$lang "$file"
+  $bin_ctags -e -o "$srcroot/TAGS" -L-
 }
 
 mketags_notify()
@@ -71,21 +18,12 @@ mketags_notify()
   $bin_env DISPLAY=:0 $bin_notifysend --icon=dialog-information --urgency=low "$srcroot/TAGS updated"
 }
 
-if [ -d "$file_or_dir" ]
-then
-  mketags_run4dir "$file_or_dir" python "*.py"
-  mketags_run4dir "$file_or_dir" c++ "*.h"
-  mketags_run4dir "$file_or_dir" c++ "*.cc"
-  mketags_run4dir "$file_or_dir" c "*.c"
-  mketags_run4dir "$file_or_dir" java "*.java"
-  mketags_run4dir "$file_or_dir" lisp "*.el"
-  mketags_run4dir "$file_or_dir" lisp "*.l"
-  mketags_run4dir "$file_or_dir" lisp "*.cl"
-  mketags_run4dir "$file_or_dir" perl "*.pl"
-  mketags_run4dir "$file_or_dir" perl "*.pm"
-  mketags_notify
-elif [ -f "$file_or_dir" ]
-then
-  mketags_known "$file_or_dir" && mketags_run4file auto "$file_or_dir"
-  mketags_notify
-fi
+mketags_gather()
+{
+  for suffix in $suffixes
+  do
+    find "$srcroot" -type f -name "*.${suffix}"
+  done
+}
+
+{ mketags_gather | mketags_run; } && mketags_notify

@@ -1,0 +1,36 @@
+#!/bin/sh
+
+bin_incrontab=${bin_incrontab:-/usr/bin/incrontab}
+bin_find=${bin_find:-/usr/bin/find}
+bin_uniq=${bin_uniq:-/usr/bin/uniq}
+bin_sort=${bin_sort:-/usr/bin/sort}
+
+srcroot=$(pwd)
+basedir=$1
+
+mkincrontab_current()
+{
+  $bin_incrontab -l
+}
+
+mkincrontab_gather()
+{
+  for dir in $($bin_find "$basedir" -type d ! -wholename "$basedir/.git*" -a ! -wholename "$basedir/.hg*")
+  do
+    echo "${srcroot}${dir}" IN_CLOSE_WRITE,IN_NO_LOOP /home/dsouza/.dot/bin/mketags "$srcroot"
+  done
+}
+
+mkincrontab_dump()
+{
+  { mkincrontab_gather; mkincrontab_current; } | $bin_sort | $bin_uniq
+}
+
+mkincrontab_install()
+{
+  mkincrontab_dump | $bin_incrontab -
+}
+
+mkincrontab_dump
+read -p "install new incrontab? [N|y] " -r accept
+[ "$accept" = "y" ] && mkincrontab_install

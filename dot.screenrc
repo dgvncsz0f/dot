@@ -18,4 +18,4 @@ bind -c altesc 2 exec .!! pwdshow linode.bitforest.org:root
 bind -c altesc 3 exec .!! pwdshow ig:unix
 bind -c altesc 4 exec .!! pwdshow ig:ds
 bind -c altesc -k kP copy
-bindkey "" command -c altesc
+bindkey "]" command -c altesc
