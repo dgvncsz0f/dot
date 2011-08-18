@@ -9,16 +9,21 @@ bin_env=${bin_env:-/usr/bin/env}
 
 srcroot=$1
 
-mketags_run()
+mketags_runetags()
 {
   $bin_ctags -e -o "$srcroot/TAGS" -L-
+}
+
+mketags_runctags()
+{
+  $bin_ctags -o "$srcroot/tags" -L-
 }
 
 mketags_notify()
 {
   $bin_env DISPLAY=:0 $bin_notifysend \
     --icon=dialog-information \
-    "$srcroot/TAGS" \
+    "mketags: $srcroot" \
     2>/dev/null
 }
 
@@ -30,4 +35,4 @@ mketags_gather()
   done
 }
 
-{ mketags_gather | mketags_run; } && mketags_notify
+{ mketags_gather | mketags_runetags; } && { mketags_gather | mketags_runctags; } && mketags_notify
