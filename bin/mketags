@@ -5,6 +5,7 @@ suffixes="py hh h cc c java el l cl pl pm hs rb js"
 bin_find=${bin_find:-/usr/bin/find}
 bin_ctags=${bin_etags:-/usr/bin/ctags-exuberant}
 bin_notifysend=${bin_notifysend:-/usr/bin/notify-send}
+bin_env=${bin_env:-/usr/bin/env}
 
 srcroot=$1
 
@@ -15,7 +16,10 @@ mketags_run()
 
 mketags_notify()
 {
-  $bin_env DISPLAY=:0 $bin_notifysend --icon=dialog-information --urgency=low "$srcroot/TAGS updated"
+  $bin_env DISPLAY=:0 $bin_notifysend \
+    --icon=dialog-information \
+    "$srcroot/TAGS" \
+    2>/dev/null
 }
 
 mketags_gather()
