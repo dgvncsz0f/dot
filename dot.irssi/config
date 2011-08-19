@@ -218,7 +218,10 @@ settings = {
   };
 };
 logs = { };
-ignores = ( { mask = "RaTiFeRs"; level = "ALL"; } );
+ignores = (
+  { mask = "RaTiFeRs"; level = "ALL"; },
+  { level = "JOINS PARTS QUITS MODES"; channels = ( "&bitlbee" ); }
+);
 windows = {
   1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
   2 = { name = "hilight"; sticky = "yes"; };
