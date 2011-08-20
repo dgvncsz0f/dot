@@ -1,12 +1,14 @@
 #!/bin/sh
 
-ln_bin=/bin/ln
-rm_bin=/bin/rm
-mkdir_bin=/bin/mkdir
-chmod_bin=/bin/chmod
-env_bin=/usr/bin/env
-git_bin=${GIT_BIN:-$(which git)}
-find_bin=/usr/bin/find
+bin_ln=/bin/ln
+bin_rm=/bin/rm
+bin_mkdir=/bin/mkdir
+bin_chmod=/bin/chmod
+bin_env=/usr/bin/env
+bin_git=${GIT_BIN:-$(which git)}
+bin_find=/usr/bin/find
+bin_xmonad=/usr/bin/xmonad
+bin_emacs=/usr/bin/emacs
 
 dot_print_info()
 {
@@ -21,17 +23,17 @@ dot_print_error()
 
 dot_check_binaries()
 {
-  [ ! -x "$git_bin" ] && dot_print_error "git binary not found"
-  [ ! -x "$ln_bin" ]  && dot_print_error "ln binary not found (really?)"
-  [ ! -x "$env_bin" ] && dot_print_error "env binary not found"
-  [ ! -x "$rm_bin" ]  && dot_print_error "rm binary not found (really?)"
+  [ ! -x "$bin_git" ] && dot_print_error "git binary not found"
+  [ ! -x "$bin_ln" ]  && dot_print_error "ln binary not found (really?)"
+  [ ! -x "$bin_env" ] && dot_print_error "env binary not found"
+  [ ! -x "$bin_rm" ]  && dot_print_error "rm binary not found (really?)"
 }
 
 dot_mkdir()
 {
   local dir=$1
 
-  [ ! -d "$dir" ] && $mkdir_bin "$dir"
+  [ ! -d "$dir" ] && $bin_mkdir "$dir"
 }
 
 dot_symlink()
@@ -39,8 +41,8 @@ dot_symlink()
   local src=$1
   local dst=$2
 
-  [ -d "$dst" ] && $rm_bin -r -f "$dst"
-  [ -e "$src" ] && $ln_bin -s -f -n "$src" "$dst"
+  [ -d "$dst" ] && $bin_rm -r -f "$dst"
+  [ -e "$src" ] && $bin_ln -s -f -n "$src" "$dst"
 }
 
 dot_clone_dot()
@@ -48,14 +50,14 @@ dot_clone_dot()
   dot_print_info "CLONING DOT INTO $HOME/.dot"
   if [ -d "$HOME/.dot" ]
   then
-    (cd "$HOME/.dot" && $git_bin reset --hard)
-    (cd "$HOME/.dot" && $git_bin pull)
+    (cd "$HOME/.dot" && $bin_git reset --hard)
+    (cd "$HOME/.dot" && $bin_git pull)
   else
-    $git_bin clone git://github.com/dsouza/dot.git "$HOME/.dot"
+    $bin_git clone git://github.com/dsouza/dot.git "$HOME/.dot"
   fi
 }
 
-dot_install_dot()
+dot_install()
 {
   dot_print_info "INSTALLING DOT FILES"
 
@@ -87,12 +89,30 @@ dot_install_dot()
 
 dot_fixperms()
 {
-  $find_bin $HOME/.dot -type d -exec $chmod_bin 0700 \{\} \;
-  $find_bin $HOME/.dot -type f -exec $chmod_bin 0600 \{\} \;
-  $find_bin $HOME/.dot/bin -type f -exec $chmod_bin 0700 \{\} \;
+  $bin_find $HOME/.dot -type d -exec $bin_chmod 0700 \{\} \;
+  $bin_find $HOME/.dot -type f -exec $bin_chmod 0600 \{\} \;
+  $bin_find $HOME/.dot/bin -type f -exec $bin_chmod 0700 \{\} \;
 }
+
+dot_post_xmonad()
+{
+  $bin_xmonad --recompile
+}
+
+dot_post_emacs()
+{
+  $bin_emacs -nw -f my-bytecompile
+}
+
+dot_postinst()
+{
+  dot_fixperms
+  [ -x $bin_xmonad ] && dot_post_xmonad
+  [ -x $bin_emacs ]  && dot_post_emacs
+}
+
 
 dot_check_binaries
 dot_clone_dot
-dot_install_dot
-dot_fixperms
+dot_install
+dot_postinst

@@ -35,4 +35,13 @@
   (open-line 1)
   (forward-line 1))
 
+(defun my-bytecompile ()
+  " Recompile ~/.emacs and everything under ~/.libemacs "
+  ; (byte-recompile-directory "~/.libemacs")
+  ; (byte-compile-file "~/.emacs")
+  (byte-recompile-directory "~/.libemacs" 0)
+  (byte-compile-file "~/.emacs")
+  (kill-emacs 0))
+  
+
 (provide 'myemacs)
