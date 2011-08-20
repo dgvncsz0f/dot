@@ -101,6 +101,8 @@ dot_post_xmonad()
 
 dot_post_emacs()
 {
+  $bin_find $HOME/.libemacs/ -type f -name \*.elc -exec $bin_rm -f \{\} \;
+  $bin_rm -f $HOME/.emacs.elc
   $bin_emacs -nw -f my-bytecompile
 }
 
