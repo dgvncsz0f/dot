@@ -23,10 +23,12 @@ dot_print_error()
 
 dot_check_binaries()
 {
-  [ ! -x "$bin_git" ] && dot_print_error "git binary not found"
-  [ ! -x "$bin_ln" ]  && dot_print_error "ln binary not found (really?)"
+  [ ! -x "$bin_ln" ]  && dot_print_error "ln binary not found"
+  [ ! -x "$bin_rm" ]  && dot_print_error "rm binary not found"
+  [ ! -x "$bin_chmod" ] && dot_print_error "chmod binary not found"
   [ ! -x "$bin_env" ] && dot_print_error "env binary not found"
-  [ ! -x "$bin_rm" ]  && dot_print_error "rm binary not found (really?)"
+  [ ! -x "$bin_git" ] && dot_print_error "git binary not found"
+  [ ! -x "$bin_find" ] && dot_print_error "find binary not found"
 }
 
 dot_mkdir()
