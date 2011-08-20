@@ -35,13 +35,40 @@
   (open-line 1)
   (forward-line 1))
 
-(defun my-bytecompile ()
+(defun my-bytecompile-and-exit ()
   " Recompile ~/.emacs and everything under ~/.libemacs "
-  ; (byte-recompile-directory "~/.libemacs")
-  ; (byte-compile-file "~/.emacs")
   (byte-recompile-directory "~/.libemacs" 0)
   (byte-compile-file "~/.emacs")
   (kill-emacs 0))
-  
+
+(defun my-toggle-flyspell ()
+  " Toggles flyspell-mode.
+  "
+  (interactive)
+  (if (symbol-value 'flyspell-mode)
+      (flyspell-mode (- 1))
+    (flyspell-mode)
+    (flyspell-buffer)))
+
+(defun my-x-as-term ()
+  (interactive)
+  (when 'window-system
+    (lambda ()
+      ((toolbar-mode (- 1))
+       (menu-bar-mode (- 1))
+       (scroll-bar-mode (- 1))))))
+
+(defun my-c-mode-common-hook ()
+  (setq c-basic-offset 2)
+  (setq c-set-style "bsd"))
+
+(defun my-sh-mode-hook ()
+  (setq sh-basic-offset 2))
+
+(defun my-sgml-mode-hook ()
+  (setq sgml-basic-offset 2))
+
+(defun my-haskell-mode-hook ()
+  (setq haskell-program-name "ghci"))
 
 (provide 'myemacs)
