@@ -14,8 +14,6 @@ startup_message off
 
 bind -c altesc 0 exec .!! /usr/bin/xclip -o
 bind -c altesc 1 exec .!! pwdshow linode.bitforest.org:dsouza
-bind -c altesc 2 exec .!! pwdshow linode.bitforest.org:root
-bind -c altesc 3 exec .!! pwdshow ig:unix
-bind -c altesc 4 exec .!! pwdshow ig:ds
+bind -c altesc 2 exec .!! pwdshow bitforest.org:dsouza
 bind -c altesc -k kP copy
 bindkey "]" command -c altesc
