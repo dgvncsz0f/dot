@@ -72,7 +72,8 @@
   (setq haskell-program-name "ghci"))
 
 (defun my-icicle-mode-hook ()
-  (icicle-unmap 'set-mark-command icicle-mode-map 'set-mark-command))
+  (when (symbol-value icicle-mode)
+    (icicle-unmap 'set-mark-command icicle-mode-map 'set-mark-command)))
 
 (defun my-org-mode-hook ()
   (let ((my-srcroot "~/dev/github/b"))
