@@ -51,6 +51,7 @@
 (add-hook 'sgml-mode-hook 'my-sgml-mode-hook)
 (add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
 (add-hook 'org-mode-hook 'my-org-mode-hook)
+(add-hook 'icicle-mode-hook 'my-icicle-mode-hook)
 
 (setq-default indent-tabs-mode nil)
 (setq backup-inhibited t)
@@ -67,7 +68,6 @@
 (setq uniquify-buffer-name-style 'post-forward)
 (setq uniquify-strip-common-suffix nil)
 (setq ac-auto-show-menu nil)
-(setq longlines-show-hard-newlines t)
 
 (col-highlight-set-interval 1)
 (toggle-highlight-column-when-idle t)
@@ -95,7 +95,7 @@
 (global-set-key (kbd "<f5>") 'ispell-change-dictionary)
 (global-set-key (kbd "<f6>") 'whitespace-mode)
 (global-set-key (kbd "S-<f7>") 'toggle-truncate-lines)
-(global-set-key (kbd "<f7>") 'longlines-mode)
+(global-set-key (kbd "<f7>") 'visual-line-mode)
 (global-set-key (kbd "<f9>") 'speedbar)
 (global-set-key (kbd "C-k") 'kill-whole-line)
 (global-set-key (kbd "C-S-k") 'kill-line)
