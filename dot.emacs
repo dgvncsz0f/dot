@@ -59,9 +59,6 @@
 (setq blink-matching-paren t)
 (setq inhibit-startup-screen t)
 (setq modeline-shadow-thickness 0)
-(setq cua-enable-cua-keys nil)
-(setq cua-highlight-region-shift-only t) ;; no transient mark mode
-(setq cua-toggle-set-mark nil) ;; original set-mark behavior, i.e. no transient-mark-mode
 (setq comment-multi-line t)
 (setq mail-from-style 'angles)
 (setq kill-whole-line t)
@@ -79,7 +76,6 @@
 (global-hl-line-mode)
 (column-number-mode t)
 (transient-mark-mode nil)
-(cua-mode t)
 (icy-mode t)
 (my-x-as-term)
 
