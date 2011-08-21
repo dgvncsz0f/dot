@@ -71,4 +71,32 @@
 (defun my-haskell-mode-hook ()
   (setq haskell-program-name "ghci"))
 
+(defun my-org-mode-hook ()
+  (setq my-blogroot "~/dev/github/dsouza.bitforest.org")
+  (setq org-publish-project-alist
+        '(
+
+          ("dsouza-posts"
+           :base-directory "~/dev/github/dsouza.bitforest.org/org/"
+           :base-extension "org"
+           
+           :recursive t
+           :body-only t
+           :auto-preamble nil
+           :html-extension "html"
+           :publish-function org-publish-org-to-html
+           :publishing-directory "~/dev/github/dsouza.bitforest.org/jekyll/_posts/"
+           )
+
+          ("dsouza-static"
+           :base-directory "~/dev/github/dsouza.bitforest.org/org/"
+           :base-extension "css\\|js\\|png\\|jpg\\|gif"
+
+           :recursive t
+           :publish-function org-publish-attachment
+           :publishing-directory "~/dev/github/dsouza.bitforest.org/jekyll/"
+           )
+
+          ("dsouza" :components ("dsouza-posts" "dsouza-static")))))
+
 (provide 'myemacs)

@@ -27,7 +27,6 @@
 (set-face-attribute 'mode-line nil :box nil)
 (fset 'yes-or-no-p 'y-or-n-p)
 
-(show-paren-mode t)
 ; (show-ws-toggle-show-hard-spaces)
 ; (show-ws-toggle-show-tabs)
 ; (show-ws-toggle-show-trailing-whitespace)
@@ -51,6 +50,7 @@
 (add-hook 'sh-mode-hook 'my-sh-mode-hook)
 (add-hook 'sgml-mode-hook 'my-sgml-mode-hook)
 (add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
+(add-hook 'org-mode-hook 'my-org-mode-hook)
 
 (setq-default indent-tabs-mode nil)
 (setq backup-inhibited t)
@@ -71,6 +71,7 @@
 (col-highlight-set-interval 1)
 (toggle-highlight-column-when-idle t)
 
+(show-paren-mode t)
 (size-indication-mode t)
 (global-font-lock-mode t)
 (global-linum-mode t)
