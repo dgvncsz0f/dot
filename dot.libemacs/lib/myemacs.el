@@ -71,40 +71,33 @@
 (defun my-haskell-mode-hook ()
   (setq haskell-program-name "ghci"))
 
-(defun my-icicle-mode-hook ()
-  (when (symbol-value icicle-mode)
-    (icicle-unmap 'set-mark-command icicle-mode-map 'set-mark-command)))
+(defun my-icicle-mode-hook () ())
 
 (defun my-org-mode-hook ()
-  (let ((my-srcroot "~/dev/github/b"))
-    (let ((my-org-basedir (concat my-srcroot "org"))
-          (my-org-publishdir (concat my-srcroot "_posts"))
-          (my-org-staticdir (concat my-srcroot "static")))
+  (setq org-publish-project-alist
+        '(
 
-      (setq org-publish-project-alist
-            '(
+          ("dsouza-posts"
+           :base-directory "~/dev/github/b/org"
+           :base-extension "org"
+           
+           :recursive t
+           :body-only t
+           :auto-preamble nil
+           :html-extension "html"
+           :publish-function org-publish-org-to-html
+           :publishing-directory "~/dev/github/b/_posts"
+           )
 
-              ("dsouza-posts"
-               :base-directory "~/dev/github/b/org"
-               :base-extension "org"
-               
-               :recursive t
-               :body-only t
-               :auto-preamble nil
-               :html-extension "html"
-               :publish-function org-publish-org-to-html
-               :publishing-directory "~/dev/github/b/_posts"
-               )
+          ("dsouza-static"
+           :base-directory "~/dev/github/b/org"
+           :base-extension "css\\|js\\|png\\|jpg\\|gif"
 
-              ("dsouza-static"
-               :base-directory "~/dev/github/b/org"
-               :base-extension "css\\|js\\|png\\|jpg\\|gif"
+           :recursive t
+           :publish-function org-publish-attachment
+           :publishing-directory "~/dev/github/b/_static"
+           )
 
-               :recursive t
-               :publish-function org-publish-attachment
-               :publishing-directory "~/dev/github/b/_static"
-               )
-
-              ("dsouza" :components ("dsouza-posts" "dsouza-static")))))))
+          ("dsouza" :components ("dsouza-posts" "dsouza-static")))))
 
 (provide 'myemacs)
