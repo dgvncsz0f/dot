@@ -67,6 +67,7 @@
 (setq uniquify-buffer-name-style 'post-forward)
 (setq uniquify-strip-common-suffix nil)
 (setq ac-auto-show-menu nil)
+(setq longlines-show-hard-newlines t)
 
 (col-highlight-set-interval 1)
 (toggle-highlight-column-when-idle t)
@@ -93,7 +94,8 @@
 (global-set-key (kbd "S-<f5>") 'my-toggle-flyspell)
 (global-set-key (kbd "<f5>") 'ispell-change-dictionary)
 (global-set-key (kbd "<f6>") 'whitespace-mode)
-(global-set-key (kbd "<f7>") 'toggle-truncate-lines)
+(global-set-key (kbd "S-<f7>") 'toggle-truncate-lines)
+(global-set-key (kbd "<f7>") 'longlines-mode)
 (global-set-key (kbd "<f9>") 'speedbar)
 (global-set-key (kbd "C-k") 'kill-whole-line)
 (global-set-key (kbd "C-S-k") 'kill-line)

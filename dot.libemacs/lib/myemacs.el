@@ -72,31 +72,35 @@
   (setq haskell-program-name "ghci"))
 
 (defun my-org-mode-hook ()
-  (setq my-blogroot "~/dev/github/dsouza.bitforest.org")
-  (setq org-publish-project-alist
-        '(
+  (let ((my-srcroot "~/dev/github/b"))
+    (let ((my-org-basedir (concat my-srcroot "org"))
+          (my-org-publishdir (concat my-srcroot "_posts"))
+          (my-org-staticdir (concat my-srcroot "static")))
 
-          ("dsouza-posts"
-           :base-directory "~/dev/github/dsouza.bitforest.org/org/"
-           :base-extension "org"
-           
-           :recursive t
-           :body-only t
-           :auto-preamble nil
-           :html-extension "html"
-           :publish-function org-publish-org-to-html
-           :publishing-directory "~/dev/github/dsouza.bitforest.org/jekyll/_posts/"
-           )
+      (setq org-publish-project-alist
+            '(
 
-          ("dsouza-static"
-           :base-directory "~/dev/github/dsouza.bitforest.org/org/"
-           :base-extension "css\\|js\\|png\\|jpg\\|gif"
+              ("dsouza-posts"
+               :base-directory "~/dev/github/b/org"
+               :base-extension "org"
+               
+               :recursive t
+               :body-only t
+               :auto-preamble nil
+               :html-extension "html"
+               :publish-function org-publish-org-to-html
+               :publishing-directory "~/dev/github/b/_posts"
+               )
 
-           :recursive t
-           :publish-function org-publish-attachment
-           :publishing-directory "~/dev/github/dsouza.bitforest.org/jekyll/"
-           )
+              ("dsouza-static"
+               :base-directory "~/dev/github/b/org"
+               :base-extension "css\\|js\\|png\\|jpg\\|gif"
 
-          ("dsouza" :components ("dsouza-posts" "dsouza-static")))))
+               :recursive t
+               :publish-function org-publish-attachment
+               :publishing-directory "~/dev/github/b/_static"
+               )
+
+              ("dsouza" :components ("dsouza-posts" "dsouza-static")))))))
 
 (provide 'myemacs)
