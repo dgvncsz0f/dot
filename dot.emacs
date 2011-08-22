@@ -1,6 +1,5 @@
 (add-to-list 'load-path "~/.libemacs/lib/icicles")
 (add-to-list 'load-path "~/.libemacs/lib/")
-(autoload 'js2-mode "js2" nil t)
 (require 'fuzzy-match)
 (require 'synonyms)
 (require 'icicles)
@@ -36,7 +35,7 @@
 
 (windmove-default-keybindings 'super)
 
-(yas/load-directory "~/.libemacs/yasnippets/")
+(yas/load-directory "~/.libemacs/yasnippets")
 
 (speedbar (- 1))
 (speedbar-add-supported-extension ".hs")
@@ -55,6 +54,7 @@
 (add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
 (add-hook 'org-mode-hook 'my-org-mode-hook)
 (add-hook 'icicle-mode-hook 'my-icicle-mode-hook)
+(add-hook 'js-mode-hook 'my-js-mode-hook)
 
 (setq-default indent-tabs-mode nil)
 (setq backup-inhibited t)
@@ -113,7 +113,5 @@
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (put 'set-goal-column 'disabled nil)
-
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
 (yas/load-directory "~/.libemacs/yasnippets")
