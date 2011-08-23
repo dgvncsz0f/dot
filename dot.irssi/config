@@ -1,38 +1,41 @@
 servers = (
   {
-    address = "irc.freenode.net";
-    port = "7000";
-    use_ssl = "yes";
-    ssl_verify = "no";
+    address     = "irc.freenode.net";
+    port        = "7000";
+    use_ssl     = "yes";
+    ssl_verify  = "no";
     autoconnect = "yes";
-    chatnet = "freenode";
+    chatnet     = "freenode";
   },
   {
-    address = "localhost";
-    port = "6667";
-    ssl_verify = "no";
+    address     = "irc.linux.locaweb.com.br";
+    port        = "5222";
+    use_ssl     = "no";
     autoconnect = "yes";
-    chatnet = "bitlbee";
+    chatnet     = "locaweb";
+  },
+  {
+    address     = "localhost";
+    port        = "6667";
+    ssl_verify  = "no";
+    autoconnect = "yes";
+    chatnet     = "bitlbee";
   }
 );
 
 chatnets = {
-  freenode = {
-    type = "IRC";
-    max_kicks = "4";
-    max_modes = "4";
-    max_msgs = "1";
-    max_whois = "1";
-  };
-  bitlbee = { type = "IRC"; };
+  freenode = { type = "IRC"; };
+  bitlbee  = { type = "IRC"; };
+  locaweb  = { type = "IRC"; };
 };
 
 channels = (
-  { name = "#haskell"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#agda"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#haskell";    chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#agda";       chatnet = "freenode"; autojoin = "yes"; },
   { name = "##bitforest"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "##iglu"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#emacs"; chatnet = "freenode"; autojoin = "yes"; }
+  { name = "##iglu";      chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#emacs";      chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#cloud";      chatnet = "locaweb";  autojoin = "yes"; }
 );
 
 aliases = {
