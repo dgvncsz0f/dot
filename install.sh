@@ -1,5 +1,7 @@
 #!/bin/sh
 
+arg_repo=${1:-git://github.com/dsouza/dot.git}
+
 bin_ln=/bin/ln
 bin_rm=/bin/rm
 bin_mkdir=/bin/mkdir
@@ -52,11 +54,9 @@ dot_clone_dot()
   dot_print_info "CLONING DOT INTO $HOME/.dot"
   if [ -d "$HOME/.dot" ]
   then
-    (cd "$HOME/.dot" && $bin_git reset --hard)
-    (cd "$HOME/.dot" && $bin_git pull)
-  else
-    $bin_git clone git://github.com/dsouza/dot.git "$HOME/.dot"
+    $bin_rm -rf $HOME/.dot
   fi
+  $bin_git clone $arg_repo "$HOME/.dot"
 }
 
 dot_install()
@@ -103,9 +103,7 @@ dot_post_xmonad()
 
 dot_post_emacs()
 {
-  $bin_find $HOME/.libemacs/ -type f -name \*.elc -exec $bin_rm -f \{\} \;
-  $bin_rm -f $HOME/.emacs.elc
-  $bin_emacs -nw -f my-bytecompile
+  $bin_emacs -nw -f my-bytecompile-and-exit
 }
 
 dot_postinst()

@@ -35,13 +35,79 @@
   (open-line 1)
   (forward-line 1))
 
-(defun my-bytecompile ()
+(defun my-bytecompile-and-exit ()
   " Recompile ~/.emacs and everything under ~/.libemacs "
-  ; (byte-recompile-directory "~/.libemacs")
-  ; (byte-compile-file "~/.emacs")
   (byte-recompile-directory "~/.libemacs" 0)
   (byte-compile-file "~/.emacs")
   (kill-emacs 0))
-  
+
+(defun my-toggle-flyspell ()
+  " Toggles flyspell-mode.
+  "
+  (interactive)
+  (if (symbol-value 'flyspell-mode)
+      (flyspell-mode (- 1))
+    (flyspell-mode)
+    (flyspell-buffer)))
+
+(defun my-x-as-term ()
+  (interactive)
+  (when 'window-system
+    (lambda ()
+      ((toolbar-mode (- 1))
+       (menu-bar-mode (- 1))
+       (scroll-bar-mode (- 1))))))
+
+(defun my-c-mode-common-hook ()
+  (setq c-basic-offset 2)
+  (setq c-set-style "bsd"))
+
+(defun my-sh-mode-hook ()
+  (setq sh-basic-offset 2))
+
+(defun my-sgml-mode-hook ()
+  (setq sgml-basic-offset 2))
+
+(defun my-haskell-mode-hook ()
+  (setq haskell-program-name "ghci"))
+
+(defun my-icicle-mode-hook () ())
+
+(defun my-js-mode-hook ()
+  (setq js-indent-level 2))
+
+(defun yas/org-very-safe-expand ()
+  (let ((yas/fallback-behavior 'return-nil)) (yas/expand)))
+
+(defun my-org-mode-hook ()
+  (make-variable-buffer-local 'yas/trigger-key)
+  (setq yas/trigger-key [tab])
+  (add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
+  (define-key yas/keymap [tab] 'yas/next-field)
+  (setq org-publish-project-alist
+        '(
+
+          ("dsouza-posts"
+           :base-directory "~/dev/github/b/org"
+           :base-extension "org"
+           
+           :recursive t
+           :body-only t
+           :auto-preamble nil
+           :html-extension "html"
+           :publish-function org-publish-org-to-html
+           :publishing-directory "~/dev/github/b/_posts"
+           )
+
+          ("dsouza-static"
+           :base-directory "~/dev/github/b/org"
+           :base-extension "css\\|js\\|png\\|jpg\\|gif"
+
+           :recursive t
+           :publish-function org-publish-attachment
+           :publishing-directory "~/dev/github/b/_static"
+           )
+
+          ("dsouza" :components ("dsouza-posts" "dsouza-static")))))
 
 (provide 'myemacs)
