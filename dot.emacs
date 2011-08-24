@@ -81,7 +81,6 @@
 (my-x-as-term)
 
 (global-set-key (kbd "C-c v") 'view-mode)
-(global-set-key (kbd "C-c f") 'icicle-find-file-in-tags-table)
 (global-set-key (kbd "C-c s") 'my-open-shell-sideways)
 (global-set-key (kbd "C-c w") 'my-copy-line)
 (global-set-key (kbd "C-c c") 'describe-char)
