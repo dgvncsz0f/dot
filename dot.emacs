@@ -33,7 +33,9 @@
 ; (show-ws-toggle-show-tabs)
 ; (show-ws-toggle-show-trailing-whitespace)
 
+(require 'framemove)
 (windmove-default-keybindings 'super)
+(setq framemove-hook-into-windmove t)
 
 (yas/load-directory "~/.libemacs/yasnippets")
 

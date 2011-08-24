@@ -1,13 +1,13 @@
 #!/bin/bash
 
-builtin source $HOME/.dot/bin/pwdcnf
+source $HOME/.dot/bin/pwdcnf
 
 pws_path "$1"
 rpws_path "$1"
 
-if [ -f "${pws_path}" ]
+if [ -f "$pws_path" ]
 then
-  /usr/bin/gpg -q -d "${pws_path}"
+  /usr/bin/gpg -q -d "$pws_path"
 else
-  /usr/bin/ssh "${remote_host}" /bin/cat "${rpws_path}" | /usr/bin/gpg -q -d
+  /usr/bin/ssh "$remote_host" /bin/cat "$rpws_path" | /usr/bin/gpg -q -d
 fi

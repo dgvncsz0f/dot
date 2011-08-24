@@ -1,6 +1,6 @@
 #!/bin/bash
 
-builtin source $HOME/.dot/bin/pwdcnf
+source $HOME/.dot/bin/pwdcnf
 
 for file in $(/bin/ls -1 "${pwsroot}")
 do
