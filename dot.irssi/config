@@ -35,7 +35,8 @@ channels = (
   { name = "##bitforest"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "##iglu";      chatnet = "freenode"; autojoin = "yes"; },
   { name = "#emacs";      chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#cloud";      chatnet = "locaweb";  autojoin = "yes"; }
+  { name = "#cloud";      chatnet = "locaweb";  autojoin = "yes"; },
+  { name = "#infradev";   chatnet = "locaweb";  autojoin = "yes"; }
 );
 
 aliases = {

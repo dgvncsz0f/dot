@@ -71,7 +71,10 @@
 (defun my-haskell-mode-hook ()
   (setq haskell-program-name "ghci"))
 
-(defun my-icicle-mode-hook () ())
+(defun my-icicle-mode-hook ()
+  (when (symbol-value icicle-mode)
+    (setq icicle-incremental-completion-flag t)
+    (define-key icicle-mode-map (kbd "C-c f") 'icicle-locate-file)))
 
 (defun my-js-mode-hook ()
   (setq js-indent-level 2))
@@ -91,6 +94,7 @@
   (add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
   (define-key yas/keymap [tab] 'yas/next-field)
   (define-key org-mode-map (kbd "C-k") 'my-org-kill-whole-line)
+  (define-key org-mode-map (kbd "C-c a") 'org-agenda)
   (setq org-publish-project-alist
         '(
 
