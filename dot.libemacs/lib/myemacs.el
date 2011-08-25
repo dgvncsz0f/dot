@@ -79,11 +79,18 @@
 (defun yas/org-very-safe-expand ()
   (let ((yas/fallback-behavior 'return-nil)) (yas/expand)))
 
+(defun my-org-kill-whole-line (&optional arg)
+  "Simply put the point at beginning of line and invoke org-kill-line."
+  (interactive "P")
+  (move-beginning-of-line nil)
+  (org-kill-line arg))
+
 (defun my-org-mode-hook ()
   (make-variable-buffer-local 'yas/trigger-key)
   (setq yas/trigger-key [tab])
   (add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
   (define-key yas/keymap [tab] 'yas/next-field)
+  (define-key org-mode-map (kbd "C-k") 'my-org-kill-whole-line)
   (setq org-publish-project-alist
         '(
 
