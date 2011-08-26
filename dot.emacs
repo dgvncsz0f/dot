@@ -70,6 +70,7 @@
 (setq uniquify-buffer-name-style 'post-forward)
 (setq uniquify-strip-common-suffix nil)
 (setq ac-auto-show-menu nil)
+(setq browse-url-browser-function 'w3m-browse-url)
 
 (show-paren-mode t)
 (size-indication-mode t)
@@ -91,6 +92,8 @@
 (global-set-key (kbd "M-Z") 'fastnav-zap-up-to-char-backward)
 (global-set-key (kbd "C-c j") 'fastnav-jump-to-char-forward)
 (global-set-key (kbd "C-c J") 'fastnav-jump-to-char-backward)
+(global-set-key (kbd "C-c U") 'browse-url-at-point)
+(global-set-key (kbd "C-c u") 'browse-url)
 (global-set-key (kbd "C-o") 'my-append-line)
 (global-set-key (kbd "<f5>") 'ispell-change-dictionary)
 (global-set-key (kbd "S-<f5>") 'my-toggle-flyspell)
