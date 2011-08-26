@@ -10,6 +10,7 @@
 (require 'myemacs)
 (require 'uniquify)
 (require 'yasnippet-bundle)
+(require 'fastnav)
 (epa-file-enable)
 
 (setq custom-file "~/.libemacs/custom.el")
