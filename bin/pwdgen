@@ -5,7 +5,6 @@ source $HOME/.dot/bin/pwdcnf
 site=$(/usr/bin/basename $1)
 range=${2:-10,20}
 pws_path "$site"
-rpws_path "$site"
 
 while [ 1 ]
 do
@@ -14,19 +13,10 @@ do
   read -n 1 -p 'accept [y|n|q]? ' take_this
   if [ "$take_this" == "y" ]
   then
-    pws_dir=$(dirname $pwd_path)
-    if [ -d "$pws_dir" ]
-    then
-      echo "$nextpwd" | /usr/bin/gpg -e > "$pws_path"
-      /bin/chmod 600 "$pws_path"
-      $binroot/pwdfor "$site"
-      exit 0
-    else
-      echo "$nextpwd" | /usr/bin/gpg -e | /usr/bin/ssh "$remote_host" /usr/bin/tee "$rpws_path" >/dev/null
-      /usr/bin/ssh "$remote_host" /bin/chmod 600 "$rpws_path"
-      $binroot/pwdfor "$site"
-      exit 0
-    fi
+    echo "$nextpwd" | /usr/bin/gpg -e > "$pws_path"
+    /bin/chmod 600 "$pws_path"
+    $binroot/pwdfor "$site"
+    exit 0
   elif [ "$take_this" == "q" ]
   then
     exit 0
