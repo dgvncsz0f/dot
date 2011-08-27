@@ -88,6 +88,9 @@
   (move-beginning-of-line nil)
   (org-kill-line arg))
 
+(defun my-w3m-mode-hook ()
+  (w3m-link-numbering-mode))
+
 (defun my-org-mode-hook ()
   (make-variable-buffer-local 'yas/trigger-key)
   (setq yas/trigger-key [tab])

@@ -58,6 +58,7 @@
 (add-hook 'org-mode-hook 'my-org-mode-hook)
 (add-hook 'icicle-mode-hook 'my-icicle-mode-hook)
 (add-hook 'js-mode-hook 'my-js-mode-hook)
+(add-hook 'w3m-mode-hook 'my-w3m-mode-hook)
 
 (setq-default indent-tabs-mode nil)
 (setq backup-inhibited t)
