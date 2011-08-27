@@ -1,16 +1,8 @@
-pwsroot="/mnt/pws/dsouza/sec/.pws"
-rpwsroot="/home/dsouza/sec/.pws"
+pwsroot="$HOME/dev/github/passwd"
 binroot=$HOME/.dot/bin
-remote_host=bitforest.org
 
 function pws_path
 {
   local file=$(/usr/bin/basename $1)
   pws_path="${pwsroot}/${file}.gpg"
-}
-
-function rpws_path
-{
-  local file=$(/usr/bin/basename $1)
-  rpws_path="${rpwsroot}/${file}.gpg"
 }

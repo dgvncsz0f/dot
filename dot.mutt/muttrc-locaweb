@@ -1,0 +1,21 @@
+set folder      = "imaps://webmail.locaweb.com.br/"
+set spoolfile   = "=INBOX"
+set signature   = "~/.email-signature"
+set from        = "diego.souza@locaweb.com.br"
+set envelope_from_address = "diego.souza@locaweb.com.br"
+set smtp_url    = smtps://diego.souza@locaweb.com.br@webmail.locaweb.com.br"
+set imap_user   = diego.souza@locaweb.com.br
+set imap_idle
+
+source "/etc/Muttrc"
+source ~/.mutt/mutt-vars
+source ~/.mutt/mutt-aliases
+source ~/.mutt/mutt-color
+source ~/.mutt/mutt-bindings
+source ~/.mutt/mutt-views
+source ~/.mutt/mutt-hooks
+
+set postponed = "=Rascunhos"
+set record = "=Itens Enviados"
+
+mailboxes =INBOX "=lists/infra-dev" "=lists/cloud-dev"
