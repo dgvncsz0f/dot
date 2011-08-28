@@ -21,6 +21,7 @@ myConfig = do { xmproc <- spawnPipe "/usr/bin/xmobar"
                                                           , ((myModMask .|. shiftMask, xK_s), spawn "/usr/bin/import /tmp/screenshot.png")
                                                           , ((myModMask .|. shiftMask, xK_i), spawn "/usr/bin/emacs")
                                                           , ((myModMask .|. shiftMask, xK_b), spawn "/usr/bin/conkeror")
+                                                          , ((myModMask .|. shiftMask, xK_p), spawn "/usr/bin/kupfer")
                                                           ]
               }
   where myManageHook = composeAll [ className =? "Pidgin" --> doFloat
