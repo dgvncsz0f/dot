@@ -113,6 +113,8 @@
 (global-set-key (kbd "M-<down>") 'scroll-up)
 (global-set-key (kbd "M-<right>") 'move-end-of-line)
 (global-set-key (kbd "M-<left>") 'move-beginning-of-line)
+(global-set-key (kbd "C-c 0") (my-recursive-edit-preserving-window-config (my-recursive-edit-without-this-window)))
+(global-set-key (kbd "C-c 1") (my-recursive-edit-preserving-window-config (my-recursive-edit-with-single-window)))
 
 (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
 

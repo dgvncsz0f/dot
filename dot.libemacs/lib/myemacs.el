@@ -124,4 +124,39 @@
 
           ("dsouza" :components ("dsouza-posts" "dsouza-static")))))
 
+;; source: http://www.emacswiki.org/emacs/RecursiveEditPreservingWindowConfig
+(defmacro my-recursive-edit-preserving-window-config (body)
+  "*Return a command that enters a recursive edit after executing BODY.
+    Upon exiting the recursive edit (with\\[exit-recursive-edit] (exit)
+    or \\[abort-recursive-edit] (abort)), restore window configuration
+    in current frame.
+  "
+  `(lambda ()
+     "See the documentation for `recursive-edit-preserving-window-config'."
+     (interactive)
+     (save-window-excursion
+       ,body
+       (recursive-edit))))
+
+(defun my-recursive-edit-without-this-window ()
+  "Enters recursive edit without this window. When exiting edit
+   restores window configuration
+  "
+  (let (myf (command-remapping 'delete-window))
+    (if (commandp 'myf)
+        (myf)
+      (delete-window))))
+
+;; source: http://www.emacswiki.org/emacs/RecursiveEditPreservingWindowConfig
+(defun my-recursive-edit-with-single-window ()
+  "Enters recursive edit leaving only a single window. When
+   exiting all other windows are restored.
+  "
+  (let (myf (command-remapping 'delete-other-windows))
+       (if (one-window-p 'ignore-minibuffer)
+           (error "current window is the only window in its frame")
+         (if (commandp 'myf)
+             (myf)
+           (delete-other-windows)))))
+
 (provide 'myemacs)
