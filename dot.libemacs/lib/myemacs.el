@@ -98,6 +98,7 @@
   (define-key yas/keymap [tab] 'yas/next-field)
   (define-key org-mode-map (kbd "C-k") 'my-org-kill-whole-line)
   (define-key org-mode-map (kbd "C-c a") 'org-agenda)
+  (define-key icicle-mode-map (kbd "C-c /") nil)
   (setq org-publish-project-alist
         '(
 
