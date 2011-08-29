@@ -58,6 +58,7 @@
 (add-hook 'org-mode-hook 'my-org-mode-hook)
 (add-hook 'icicle-mode-hook 'my-icicle-mode-hook)
 (add-hook 'js-mode-hook 'my-js-mode-hook)
+(add-hook 'w3m-mode-hook 'my-w3m-mode-hook)
 
 (setq-default indent-tabs-mode nil)
 (setq backup-inhibited t)
@@ -112,6 +113,8 @@
 (global-set-key (kbd "M-<down>") 'scroll-up)
 (global-set-key (kbd "M-<right>") 'move-end-of-line)
 (global-set-key (kbd "M-<left>") 'move-beginning-of-line)
+(global-set-key (kbd "C-c 0") (my-recursive-edit-preserving-window-config (my-recursive-edit-without-this-window)))
+(global-set-key (kbd "C-c 1") (my-recursive-edit-preserving-window-config (my-recursive-edit-with-single-window)))
 
 (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
 
