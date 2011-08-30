@@ -11,6 +11,7 @@
 (require 'uniquify)
 (require 'yasnippet-bundle)
 (require 'fastnav)
+(require 'ipython)
 (epa-file-enable)
 
 (setq custom-file "~/.libemacs/custom.el")
