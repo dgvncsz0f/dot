@@ -103,7 +103,7 @@ dot_post_xmonad()
 
 dot_post_emacs()
 {
-  $bin_emacs -nw -f my-bytecompile-and-exit
+  $bin_find $HOME/.dot -name \*.el -o | $bin_emacs --user $USER --batch --funcall batch-byte-compile $HOME/.emacs
 }
 
 dot_postinst()
