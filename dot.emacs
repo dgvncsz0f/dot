@@ -9,9 +9,6 @@
 (require 'fastnav)
 (require 'ipython)
 
-(setq custom-file "~/.libemacs/custom.el")
-(load custom-file)
-
 (when (not (boundp 'ac-dictionary-directories)) (setq ac-dictionary-directories ()))
 (add-to-list 'ac-dictionary-directories "~/.libemacs/lib/ac-dict")
 (require 'auto-complete-config)
@@ -69,6 +66,7 @@
 (setq uniquify-strip-common-suffix nil)
 (setq ac-auto-show-menu nil)
 (setq browse-url-browser-function 'w3m-browse-url)
+(setq custom-file "~/.libemacs/custom.el")
 
 (show-paren-mode t)
 (size-indication-mode t)
@@ -123,3 +121,5 @@
 (put 'set-goal-column 'disabled nil)
 
 (yas/load-directory "~/.libemacs/yasnippets")
+
+(load custom-file)

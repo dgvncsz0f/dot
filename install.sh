@@ -11,6 +11,7 @@ bin_git=${GIT_BIN:-$(which git)}
 bin_find=/usr/bin/find
 bin_xmonad=/usr/bin/xmonad
 bin_emacs=/usr/bin/emacs
+bin_xargs=/usr/bin/xargs
 
 dot_print_info()
 {
@@ -31,6 +32,7 @@ dot_check_binaries()
   [ ! -x "$bin_env" ] && dot_print_error "env binary not found"
   [ ! -x "$bin_git" ] && dot_print_error "git binary not found"
   [ ! -x "$bin_find" ] && dot_print_error "find binary not found"
+  [ ! -x "$bin_xargs" ] && dot_print_error "xargs binary not found"
 }
 
 dot_mkdir()
@@ -103,7 +105,8 @@ dot_post_xmonad()
 
 dot_post_emacs()
 {
-  $bin_find $HOME/.dot -name \*.el -o | $bin_emacs --user $USER --batch --funcall batch-byte-compile $HOME/.emacs
+  $bin_rm -f $HOME/.emacs.elc
+  $bin_find $HOME/.dot -name \*.el | $bin_xargs $bin_emacs --user $USER --batch --funcall batch-byte-compile
 }
 
 dot_postinst()
