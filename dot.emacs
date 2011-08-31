@@ -7,6 +7,7 @@
 (require 'uniquify)
 (require 'yasnippet-bundle)
 (require 'fastnav)
+(require 'ipython)
 
 (setq custom-file "~/.libemacs/custom.el")
 (load custom-file)

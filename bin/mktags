@@ -22,7 +22,7 @@ mktags_runctags()
 
 mktags_notify()
 {
-  $bin_env DISPLAY=:0 $bin_notifysend \
+  $bin_notifysend \
     --icon=dialog-information \
     "mktags: $srcroot" \
     2>/dev/null
