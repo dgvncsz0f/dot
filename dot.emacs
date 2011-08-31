@@ -8,6 +8,7 @@
 (require 'yasnippet-bundle)
 (require 'fastnav)
 (require 'ipython)
+(require 'org)
 
 (when (not (boundp 'ac-dictionary-directories)) (setq ac-dictionary-directories ()))
 (add-to-list 'ac-dictionary-directories "~/.libemacs/lib/ac-dict")
@@ -67,6 +68,7 @@
 (setq ac-auto-show-menu nil)
 (setq browse-url-browser-function 'w3m-browse-url)
 (setq custom-file "~/.libemacs/custom.el")
+(setq org-default-notes-file "~/org/dsouza.org")
 
 (show-paren-mode t)
 (size-indication-mode t)
@@ -79,6 +81,7 @@
 (icy-mode t)
 (my-x-as-term)
 
+(global-set-key (kbd "C-c o") 'org-capture)
 (global-set-key (kbd "C-c v") 'view-mode)
 (global-set-key (kbd "C-c s") 'my-open-shell-sideways)
 (global-set-key (kbd "C-c w") 'my-copy-line)
