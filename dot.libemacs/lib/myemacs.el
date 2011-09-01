@@ -1,8 +1,11 @@
 (defun my-open-shell-sideways ()
   " Open shell in a window next to the current buffer "
   (interactive)
-  (split-window-horizontally)
-  (other-window 1) (shell))
+  (split-window)
+  (other-window 1)
+  (if (get-buffer "*my-ansi-term*")
+      (switch-to-buffer "*my-ansi-term*" t)
+    (ansi-term "/bin/bash" "my-ansi-term")))
 
 (defun my-copy-line (&optional arg)
   " Do a kill-line but copy rather than kill.  This function
