@@ -9,6 +9,7 @@
 (require 'fastnav)
 (require 'ipython)
 (require 'org)
+(require 'rainbow-delimiters)
 
 (when (not (boundp 'ac-dictionary-directories)) (setq ac-dictionary-directories ()))
 (add-to-list 'ac-dictionary-directories "~/.libemacs/lib/ac-dict")
@@ -109,6 +110,7 @@
 (global-set-key (kbd "S-<f5>") 'my-toggle-flyspell)
 (global-set-key (kbd "<f6>") 'column-highlight-mode)
 (global-set-key (kbd "S-<f6>") 'whitespace-mode)
+(global-set-key (kbd "C-<f6>") 'rainbow-delimiters-mode)
 (global-set-key (kbd "<f7>") 'visual-line-mode)
 (global-set-key (kbd "S-<f7>") 'toggle-truncate-lines)
 (global-set-key (kbd "<f8>") 'compile)
