@@ -69,7 +69,7 @@
 (setq ac-auto-show-menu nil)
 (setq browse-url-browser-function 'w3m-browse-url)
 (setq custom-file "~/.libemacs/custom.el")
-(setq org-default-notes-file "/ssh:bitforest.org:/home/dsouza/org/dsouza.org")
+(setq org-default-notes-file "~/dev/github/priv/org/dsouza.org")
 (setq org-capture-templates
       '(
         ("s" "SIMPLE TODO" entry (file+headline org-default-notes-file "INBOX")
