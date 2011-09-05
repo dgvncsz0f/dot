@@ -102,6 +102,7 @@
   (define-key org-mode-map (kbd "C-k") 'my-org-kill-whole-line)
   (define-key org-mode-map (kbd "C-c a") 'org-agenda)
   (define-key icicle-mode-map (kbd "C-c /") nil)
+  (setq org-enforce-todo-dependencies t)
   (setq org-agenda-skip-scheduled-if-deadline-is-shown t)
   (setq org-publish-project-alist
         '(
