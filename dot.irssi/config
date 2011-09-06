@@ -30,14 +30,14 @@ chatnets = {
 };
 
 channels = (
-  { name = "#haskell";    chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#agda";       chatnet = "freenode"; autojoin = "yes"; },
-  { name = "##bitforest"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "##iglu";      chatnet = "freenode"; autojoin = "yes"; },
-  { name = "##devel-pedreiro", chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#emacs";      chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#cloud";      chatnet = "locaweb";  autojoin = "yes"; },
-  { name = "#infradev";   chatnet = "locaweb";  autojoin = "yes"; }
+  { name = "#haskell";         chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#agda";            chatnet = "freenode"; autojoin = "yes"; },
+  { name = "##bitforest";      chatnet = "freenode"; autojoin = "yes"; },
+  { name = "##iglu";           chatnet = "freenode"; autojoin = "yes"; },
+  { name = "##devel-pedreiro"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#emacs";           chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#cloud";           chatnet = "locaweb";  autojoin = "yes"; },
+  { name = "#infradev";        chatnet = "locaweb";  autojoin = "yes"; }
 );
 
 aliases = {
