@@ -55,7 +55,7 @@ dot_symlink()
 
 dot_clone_dot()
 {
-  dot_print_info "CLONING DOT INTO $HOME/.dot"
+  dot_print_info "cloning dot into $HOME/.dot"
   if [ -d "$HOME/.dot" ]
   then
     $bin_rm -rf $HOME/.dot
@@ -65,7 +65,7 @@ dot_clone_dot()
 
 dot_install()
 {
-  dot_print_info "INSTALLING DOT FILES"
+  dot_print_info "installing dot files"
 
   dot_mkdir   "$HOME/.ssh"
   dot_symlink "$HOME/.dot/dot.ssh/config" "$HOME/.ssh/config"
@@ -107,11 +107,11 @@ dot_local_apply()
 
 dot_local()
 {
-  dot_print_info "APPLYING LOCAL FILES"
+  dot_print_info "applying local files"
 
   for f in $($bin_find $HOME/.dot -type f)
   do
-    rf=${f##$HOME/.dot}
+    rf=${f##$HOME/.dot/}
     dot_local_apply "$HOME/.dot.local/$rf" "$HOME/.dot/$rf"
   done
 }
@@ -125,13 +125,13 @@ dot_fixperms()
 
 dot_post_xmonad()
 {
-  dot_print_info "RECOMPILING XMONAD"
+  dot_print_info "recompiling xmonad"
   $bin_xmonad --recompile
 }
 
 dot_post_emacs()
 {
-  dot_print_info "BYTE-COMPILING EMACS LISP FILES"
+  dot_print_info "byte-compiling emacs lisp files"
   $bin_rm -f $HOME/.emacs.elc
   $bin_find $HOME/.dot -name \*.el | $bin_xargs $bin_emacs --user $USER --batch --funcall batch-byte-compile
 }
@@ -143,8 +143,40 @@ dot_postinst()
   [ -x $bin_emacs ]  && dot_post_emacs
 }
 
+dot_omit_stdout_of()
+{
+  txt=$1
+  cmd=$2
+  
+  dot_print_info "invoking $txt"
+  $cmd 1>/dev/null
+
+  if [ "$?" = "0" ]
+  then
+    dot_print_info "$txt : ok"
+  else
+    dot_print_info "$txt : fail"
+  fi
+}
+
+dot_omit_stderr_of()
+{
+  txt=$1
+  cmd=$2
+  
+  dot_print_info "invoking $txt"
+  $cmd 2>/dev/null
+
+  if [ "$?" = "0" ]
+  then
+    dot_print_info "$txt : ok"
+  else
+    dot_print_info "$txt : fail"
+  fi
+}
 
 dot_check_binaries
-dot_clone_dot
+dot_omit_stderr_of "git clone" dot_clone_dot
 dot_install
-dot_postinst
+dot_local
+dot_omit_stderr_of "postinst" dot_postinst
