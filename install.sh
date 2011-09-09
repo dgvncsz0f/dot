@@ -3,6 +3,7 @@
 arg_repo=${1:-git://github.com/dsouza/dot.git}
 
 bin_ln=/bin/ln
+bin_cat=/bin/cat
 bin_rm=/bin/rm
 bin_mkdir=/bin/mkdir
 bin_chmod=/bin/chmod
@@ -33,6 +34,7 @@ dot_check_binaries()
   [ ! -x "$bin_git" ] && dot_print_error "git binary not found"
   [ ! -x "$bin_find" ] && dot_print_error "find binary not found"
   [ ! -x "$bin_xargs" ] && dot_print_error "xargs binary not found"
+  [ ! -x "$bin_cat" ] && dot_print_error "cat binary not found"
 }
 
 dot_mkdir()
@@ -91,6 +93,29 @@ dot_install()
   dot_symlink "$HOME/.nickserv.networks" "$HOME/.irssi/nickserv.networks"
 }
 
+dot_local_apply()
+{
+  src=$1
+  dst=$2
+
+  if [ -f "$src" ]
+  then
+    dot_print_info "  appending $src into $dst"
+    $bin_cat "$src" >>"$dst"
+  fi
+}
+
+dot_local()
+{
+  dot_print_info "APPLYING LOCAL FILES"
+
+  for f in $($bin_find $HOME/.dot -type f)
+  do
+    rf=${f##$HOME/.dot}
+    dot_local_apply "$HOME/.dot.local/$rf" "$HOME/.dot/$rf"
+  done
+}
+
 dot_fixperms()
 {
   $bin_find $HOME/.dot -type d -exec $bin_chmod 0700 \{\} \;
@@ -100,11 +125,13 @@ dot_fixperms()
 
 dot_post_xmonad()
 {
+  dot_print_info "RECOMPILING XMONAD"
   $bin_xmonad --recompile
 }
 
 dot_post_emacs()
 {
+  dot_print_info "BYTE-COMPILING EMACS LISP FILES"
   $bin_rm -f $HOME/.emacs.elc
   $bin_find $HOME/.dot -name \*.el | $bin_xargs $bin_emacs --user $USER --batch --funcall batch-byte-compile
 }
