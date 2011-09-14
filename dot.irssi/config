@@ -36,6 +36,7 @@ channels = (
   { name = "##iglu";           chatnet = "freenode"; autojoin = "yes"; },
   { name = "##devel-pedreiro"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#emacs";           chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#guru-sp";         chatnet = "freenode"; autojoin = "yes"; },
   { name = "#cloud";           chatnet = "locaweb";  autojoin = "yes"; },
   { name = "#infradev";        chatnet = "locaweb";  autojoin = "yes"; }
 );
