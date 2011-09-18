@@ -8,6 +8,14 @@ expect {
     send "$password\n"
     exp_continue
   }
+  "Password: " {
+    send "$password\n"
+    exp_continue
+  }
+  "Enter passphrase for key*: " {
+    send "\n"
+    exp_continue
+  }
   "Are you sure*(yes/no)? " {
     send "yes\n"
     exp_continue

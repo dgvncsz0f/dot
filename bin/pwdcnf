@@ -1,4 +1,4 @@
-pwsroot="$HOME/dev/github/passwd"
+pwsroot="$HOME/dev/github/priv/passwd"
 binroot=$HOME/.dot/bin
 
 function pws_path

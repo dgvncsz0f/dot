@@ -1,8 +1,11 @@
 (defun my-open-shell-sideways ()
   " Open shell in a window next to the current buffer "
   (interactive)
-  (split-window-horizontally)
-  (other-window 1) (shell))
+  (split-window)
+  (other-window 1)
+  (if (get-buffer "*my-ansi-term*")
+      (switch-to-buffer "*my-ansi-term*" t)
+    (ansi-term "/bin/bash" "my-ansi-term")))
 
 (defun my-copy-line (&optional arg)
   " Do a kill-line but copy rather than kill.  This function
@@ -99,6 +102,7 @@
   (define-key org-mode-map (kbd "C-k") 'my-org-kill-whole-line)
   (define-key org-mode-map (kbd "C-c a") 'org-agenda)
   (define-key icicle-mode-map (kbd "C-c /") nil)
+  (setq org-enforce-todo-dependencies t)
   (setq org-agenda-skip-scheduled-if-deadline-is-shown t)
   (setq org-publish-project-alist
         '(

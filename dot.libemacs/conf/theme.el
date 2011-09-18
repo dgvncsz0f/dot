@@ -1,3 +1,4 @@
+(require 'color-theme)
 (require 'zenburn)
 
 (eval-after-load "color-theme"

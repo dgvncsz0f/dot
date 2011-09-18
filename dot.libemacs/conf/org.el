@@ -1,5 +1,3 @@
-(require 'org)
-
 (setq org-default-notes-file "~/org/dsouza.org")
 (setq org-capture-templates
       '(

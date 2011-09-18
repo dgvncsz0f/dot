@@ -1,11 +1,11 @@
 (add-to-list 'load-path "~/.libemacs/lib/")
 (require 'icicles)
-(require 'color-theme)
 (require 'col-highlight)
 (require 'myemacs)
 (require 'uniquify)
 (require 'fastnav)
 (require 'ipython)
+(require 'rainbow-delimiters)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -60,5 +60,5 @@
 (load "~/.libemacs/conf/theme.el")
 (load "~/.libemacs/conf/erc.el")
 (load "~/.libemacs/conf/org.el")
-
+(load "~/.libemacs/conf/movement.el")
 (load custom-file)
