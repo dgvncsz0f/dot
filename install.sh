@@ -4,6 +4,7 @@ arg_repo=${1:-git://github.com/dsouza/dot.git}
 
 bin_ln=/bin/ln
 bin_cat=/bin/cat
+bin_cp=/bin/cp
 bin_rm=/bin/rm
 bin_mkdir=/bin/mkdir
 bin_chmod=/bin/chmod
@@ -35,6 +36,7 @@ dot_check_binaries()
   [ ! -x "$bin_find" ] && dot_print_error "find binary not found"
   [ ! -x "$bin_xargs" ] && dot_print_error "xargs binary not found"
   [ ! -x "$bin_cat" ] && dot_print_error "cat binary not found"
+  [ ! -x "$bin_cp" ] && dot_print_error "cp binary not found"
 }
 
 dot_mkdir()
@@ -93,26 +95,39 @@ dot_install()
   dot_symlink "$HOME/.nickserv.networks" "$HOME/.irssi/nickserv.networks"
 }
 
-dot_local_apply()
+dot_overlay_merge()
 {
   src=$1
   dst=$2
 
   if [ -f "$src" ]
   then
-    dot_print_info "  appending $src into $dst"
+    dot_print_info "  merging $src into $dst"
     $bin_cat "$src" >>"$dst"
   fi
 }
 
-dot_local()
+dot_overlay_replace()
 {
-  dot_print_info "applying local files"
+  src=$1
+  dst=$2
+
+  if [ -f "$src" ]
+  then
+    dot_print_info "  replacing $dst with $src"
+    $bin_cp "$src" "$dst"
+  fi
+}
+
+dot_overlay()
+{
+  dot_print_info "applying overlay"
 
   for f in $($bin_find $HOME/.dot -type f)
   do
     rf=${f##$HOME/.dot/}
-    dot_local_apply "$HOME/.dot.local/$rf" "$HOME/.dot/$rf"
+    dot_overlay_replace "$HOME/.dot.overlay/r/$rf" "$HOME/.dot/$rf"
+    dot_overlay_merge "$HOME/.dot.overlay/m/$rf" "$HOME/.dot/$rf"
   done
 }
 
@@ -178,5 +193,5 @@ dot_omit_stderr_of()
 dot_check_binaries
 dot_omit_stderr_of "git clone" dot_clone_dot
 dot_install
-dot_local
-dot_omit_stderr_of "postinst" dot_postinst
+dot_overlay
+dot_omit_stderr_of "post install" dot_postinst
