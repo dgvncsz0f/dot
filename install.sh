@@ -140,13 +140,13 @@ dot_fixperms()
 
 dot_post_xmonad()
 {
-  dot_print_info "recompiling xmonad"
+  dot_print_info "  recompiling xmonad"
   $bin_xmonad --recompile
 }
 
 dot_post_emacs()
 {
-  dot_print_info "byte-compiling emacs lisp files"
+  dot_print_info "  byte-compiling emacs lisp files"
   $bin_rm -f $HOME/.emacs.elc
   $bin_find $HOME/.dot -name \*.el | $bin_xargs $bin_emacs --user $USER --batch --funcall batch-byte-compile
 }
