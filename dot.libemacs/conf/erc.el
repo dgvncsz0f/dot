@@ -51,7 +51,7 @@
   (erc :server "irc.freenode.net" :port 6667 :nick "dsouza" :full-name "Diego Souza")
   )
 
-(defun my-erc-bitlbee()
+(defun my-irc-bitlbee()
   (interactive)
   (erc :server "localhost" :port 6667 :nick "dsouza" :full-name "Diego Souza")
   )
