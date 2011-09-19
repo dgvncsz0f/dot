@@ -45,22 +45,22 @@
 (erc-timestamp-mode t)
 (erc-button-mode (- 1))
 
-(defun my-erc (arg)
-  (erc :server arg :port 6667 :nick "dsouza")
+(defun my-erc (arg port)
+  (erc :server arg :port port :nick "dsouza")
   )
 
 (defun my-irc-freenode()
   (interactive)
-  (my-erc "irc.freenode.net")
+  (my-erc "irc.freenode.net" 6667)
   )
 
 (defun my-irc-bitlbee()
   (interactive)
-  (my-erc "localhost")
+  (my-erc "localhost" 6667)
   )
 
 (defun my-irc-locaweb()
    (interactive)
-   (my-erc "irc.linux.locaweb.com.br")
+   (my-erc "irc.linux.locaweb.com.br" 5552)
    )
 
