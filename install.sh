@@ -91,8 +91,6 @@ dot_install()
   dot_symlink "$HOME/.dot/dot.mutt" "$HOME/.mutt"
   dot_symlink "$HOME/.dot/dot.email-signature" "$HOME/.email-signature"
   dot_symlink "$HOME/.dot/dot.irssi" "$HOME/.irssi"
-  dot_symlink "$HOME/.nickserv.auth" "$HOME/.irssi/nickserv.auth"
-  dot_symlink "$HOME/.nickserv.networks" "$HOME/.irssi/nickserv.networks"
 }
 
 dot_overlay_merge()
