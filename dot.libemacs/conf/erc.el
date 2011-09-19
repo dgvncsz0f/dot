@@ -15,6 +15,8 @@
 (setq erc-track-use-faces t)
 (setq erc-track-faces-priority-list
       '(erc-current-nick-face erc-keyword-face))
+(setq erc-user-full-name nil)
+(setq erc-email-userid nil)
 (setq erc-track-priority-faces-only 'all)
 (setq erc-log-insert-log-on-open nil)
 (setq erc-log-channels t)
@@ -23,7 +25,6 @@
 (setq erc-hide-timestamps nil)
 (setq erc-max-buffer-size 20000)
 (setq erc-truncate-buffer-on-save t)
-(setq erc-email-userid "dsouza@bitforest.org")
 (setq erc-prompt-for-nickserv-password nil)
 (setq erc-timestamp-format "[%R-%m/%d]")
 (setq erc-autojoin-channels-alist
@@ -45,22 +46,18 @@
 (erc-timestamp-mode t)
 (erc-button-mode (- 1))
 
-(defun my-erc (arg port)
-  (erc :server arg :port port :nick "dsouza")
-  )
-
 (defun my-irc-freenode()
   (interactive)
-  (my-erc "irc.freenode.net" 6667)
+  (erc :server "irc.freenode.net" :port 6667 :nick "dsouza" :full-name "Diego Souza")
   )
 
-(defun my-irc-bitlbee()
+(defun my-erc-bitlbee()
   (interactive)
-  (my-erc "localhost" 6667)
+  (erc :server "localhost" :port 6667 :nick "dsouza" :full-name "Diego Souza")
   )
 
 (defun my-irc-locaweb()
    (interactive)
-   (my-erc "irc.linux.locaweb.com.br" 5552)
+   (erc :server "irc.linux.locaweb.com.br" :port 5222 :nick "dsouza" :full-name "Diego Souza")
    )
 
