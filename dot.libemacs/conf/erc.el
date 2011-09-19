@@ -8,7 +8,12 @@
 
 (load "~/.erc.passwd")
 
-(setq erc-keywords '("dsouza"))
+(setq erc-current-nick-highlight-type 'nick)
+(setq erc-track-exclude-types '("JOIN" "PART" "QUIT" "NICK" "MODE"))
+(setq erc-track-use-faces t)
+(setq erc-track-faces-priority-list
+      '(erc-current-nick-face erc-keyword-face))
+(setq erc-track-priority-faces-only 'all)
 (setq erc-log-insert-log-on-open nil)
 (setq erc-log-channels t)
 (setq erc-log-channels-directory "~/.irclogs/")
