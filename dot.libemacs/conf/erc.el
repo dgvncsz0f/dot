@@ -8,6 +8,8 @@
 
 (load "~/.erc.passwd")
 
+;; References: http://www.emacswiki.org/emacs/ErcStartupFiles
+;;             http://www.emacswiki.org/emacs/ErcChannelTracking
 (setq erc-current-nick-highlight-type 'nick)
 (setq erc-track-exclude-types '("JOIN" "PART" "QUIT" "NICK" "MODE"))
 (setq erc-track-use-faces t)
@@ -43,7 +45,6 @@
 (erc-timestamp-mode t)
 (erc-button-mode (- 1))
 
-;; Reference: http://www.emacswiki.org/emacs/ErcStartupFiles
 (defun my-irc ()
    "Start to waste time on IRC with ERC."
    (interactive)
