@@ -34,7 +34,7 @@
 (add-hook 'erc-insert-post-hook 'erc-truncate-buffer)
 (add-hook 'erc-after-connect '(lambda (SERVER NICK)
                                 (message server)
-                                (erc-message "PRIVMSG" (concat "nickserv identify dsouza " nickserv-passwd))))
+                                (erc-message "PRIVMSG" (concat "nickserv identify " nickserv-passwd))))
 
 (erc-match-mode t)
 (erc-autojoin-mode t)
@@ -45,13 +45,22 @@
 (erc-timestamp-mode t)
 (erc-button-mode (- 1))
 
-(defun my-irc ()
-   "Start to waste time on IRC with ERC."
+(defun my-erc (arg)
+  (erc :server arg :port 6667 :nick "dsouza")
+  )
+
+(defun my-irc-freenode()
+  (interactive)
+  (my-erc "irc.freenode.net")
+  )
+
+(defun my-irc-bitlbee()
+  (interactive)
+  (my-erc "localhost")
+  )
+
+(defun my-irc-locaweb()
    (interactive)
-   (erc :server "irc.freenode.net" :port 6667 :nick "dsouza" :full-name "Diego Souza")
-   (when (y-or-n-p "Bitlbee? ")
-     (erc :server "localhost" :port 6667 :nick "dsouza" :full-name "Diego Souza"))
-   (when (y-or-n-p "Locaweb? ")
-     (erc :server "irc.linux.locaweb.com.br" :port 6667 :nick "dsouza" :full-name "Diego Souza"))
+   (my-erc "irc.linux.locaweb.com.br")
    )
 
