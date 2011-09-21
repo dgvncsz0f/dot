@@ -60,5 +60,6 @@
 (load "~/.libemacs/conf/theme.el")
 (load "~/.libemacs/conf/erc.el")
 (load "~/.libemacs/conf/org.el")
+(load "~/.libemacs/conf/yas.el")
 (load "~/.libemacs/conf/movement.el")
 (load custom-file)
