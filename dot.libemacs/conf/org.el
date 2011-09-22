@@ -1,3 +1,4 @@
+(setq org-link-abbrev-alist '(("att" . org-attach-expand-link)))
 (setq org-default-notes-file "~/org/dsouza.org")
 (setq org-capture-templates
       '(
