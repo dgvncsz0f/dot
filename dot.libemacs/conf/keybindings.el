@@ -4,6 +4,7 @@
 (global-set-key (kbd "C-c w") 'my-copy-line)
 (global-set-key (kbd "C-c c") 'describe-char)
 (global-set-key (kbd "C-S-o") 'my-prepend-line)
+(global-set-key (kbd "C-c ,") 'tags-search)
 (global-set-key (kbd "M-z") 'fastnav-zap-up-to-char-forward)
 (global-set-key (kbd "M-Z") 'fastnav-zap-up-to-char-backward)
 (global-set-key (kbd "C-c j") 'fastnav-jump-to-char-forward)
