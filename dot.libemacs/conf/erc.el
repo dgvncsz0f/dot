@@ -27,9 +27,21 @@
 (setq erc-truncate-buffer-on-save t)
 (setq erc-prompt-for-nickserv-password nil)
 (setq erc-timestamp-format "[%R-%m/%d]")
+(setq erc-auto-query 'bury)
 (setq erc-autojoin-channels-alist
           '(("freenode" "#haskell" "#agda" "#latex" "#emacs" "##devel-pedreiro" "#guru-sp")
             ("locaweb" "#cloud" "#infradev")))
+
+;; Source: http://www.emacswiki.org/emacs/ErcChannelTracking#toc5
+(defadvice erc-track-find-face (around erc-track-find-face-promote-query activate)
+  (if (erc-query-buffer-p) 
+      (setq ad-return-value (intern "erc-current-nick-face"))
+    ad-do-it))
+
+(defadvice erc-track-modified-channels (around erc-track-modified-channels-promote-query activate)
+  (if (erc-query-buffer-p) (setq erc-track-priority-faces-only 'nil))
+  ad-do-it
+  (if (erc-query-buffer-p) (setq erc-track-priority-faces-only 'all)))
 
 (add-hook 'erc-insert-post-hook 'erc-save-buffer-in-logs)
 (add-hook 'erc-insert-post-hook 'erc-truncate-buffer)
