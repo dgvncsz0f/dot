@@ -115,7 +115,7 @@
            :body-only t
            :auto-preamble nil
            :html-extension "html"
-           :publish-function org-publish-org-to-html
+           :publishing-function org-publish-org-to-html
            :publishing-directory "~/dev/github/b/_posts"
            )
 
@@ -124,7 +124,7 @@
            :base-extension "css\\|js\\|png\\|jpg\\|gif"
 
            :recursive t
-           :publish-function org-publish-attachment
+           :publishing-function org-publish-attachment
            :publishing-directory "~/dev/github/b/_static"
            )
 

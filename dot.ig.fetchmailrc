@@ -1,4 +1,0 @@
-poll srvexchcas.ig.corp 
-  proto imap 
-  user "dsouza" 
-  options mda "/usr/bin/procmail";
