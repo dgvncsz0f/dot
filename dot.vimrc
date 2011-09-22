@@ -45,6 +45,7 @@ if has("gui_running")
   set guioptions=ic
   set shell=/usr/bin/uxterm
   set shellcmdflag=-e
+  set guifont=DejaVu\ Sans\ Mono\ 14
 endif
 
 if has("cmdline_info")

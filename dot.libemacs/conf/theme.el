@@ -8,3 +8,5 @@
 
 (set-face-background 'col-highlight zenburn-bg-1)
 (set-face-attribute 'mode-line nil :box nil)
+(set-default-font "DejaVu Sans Mono")
+(set-face-attribute 'default nil :height 140)
