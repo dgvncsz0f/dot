@@ -13,8 +13,8 @@ my_bash_history()
   export HISTFILESIZE=10000
   export HISTSIZE=7500
   export HISTCONTROL=ignoredups:erasedups
+  export HISTIGNORE=" *"
   # http://stackoverflow.com/questions/103944/real-time-history-export-amongst-bash-terminal-windows/3055135#3055135
-  export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 }
 
 my_bash_cd()
