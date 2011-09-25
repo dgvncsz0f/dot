@@ -6,6 +6,8 @@
 (require 'fastnav)
 (require 'ipython)
 (require 'rainbow-delimiters)
+(require 'org)
+(require 'org-attach)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -21,6 +23,8 @@
 (add-hook 'icicle-mode-hook 'my-icicle-mode-hook)
 (add-hook 'js-mode-hook 'my-js-mode-hook)
 (add-hook 'w3m-mode-hook 'my-w3m-mode-hook)
+(add-hook 'org-publish-before-export-hook 'my-org-publish-before-export-hook)
+(add-hook 'org-publish-after-export-hook 'my-org-publish-after-export-hook)
 
 (setq-default indent-tabs-mode nil)
 (setq backup-inhibited t)

@@ -94,16 +94,47 @@
 (defun my-w3m-mode-hook ()
   (w3m-link-numbering-mode))
 
+(defun my-delete-prefix (pfx str)
+  (if (string-prefix-p pfx str)
+      (substring str (length pfx))
+    str
+    ))
+
+(defun my-org-attach-expand-link (file)
+  (cond
+   ((string-prefix-p (expand-file-name "~/dev/github/b") (expand-file-name (org-attach-expand "")))
+    (concat "http://dsouza.bitforest.org/static" (my-delete-prefix (org-attach-expand "") (org-attach-expand file))))
+   (t
+    (org-attach-expand-link file))
+   ))
+
+(defun my-org-publish-before-export-hook ()
+  (setq org-link-abbrev-alist-backup org-link-abbrev-alist)
+  (setq org-link-abbrev-alist '(("attach" . my-org-attach-expand-link))))
+
+(defun my-org-publish-after-export-hook ()
+  (setq org-link-abbrev-alist org-link-abbrev-alist-backup))
+
+(defun my-org-insert-link-to-attachment (&optional name)
+  (interactive "P")
+  (cond 
+   (name 
+    (org-insert-link 'org-store-link (concat "attach:" (org-attach-expand name))))
+   (t 
+    (let ((myname (read-string "Attachment: ")))
+      (org-insert-link 'org-store-link (concat "attach:" (org-attach-expand myname)))))))
+
 (defun my-org-mode-hook ()
   (define-key org-mode-map (kbd "C-k") 'my-org-kill-whole-line)
   (define-key org-mode-map (kbd "C-c a") 'org-agenda)
+  (define-key org-mode-map (kbd "C-c M-l") 'my-org-insert-link-to-attachment)
   (define-key icicle-mode-map (kbd "C-c /") nil)
   (setq org-enforce-todo-dependencies t)
   (setq org-agenda-skip-scheduled-if-deadline-is-shown t)
   (setq org-publish-project-alist
         '(
 
-          ("dsouza-posts"
+          ("dsouza-org"
            :base-directory "~/dev/github/b/org"
            :base-extension "org"
            
@@ -115,7 +146,16 @@
            :publishing-directory "~/dev/github/b/_posts"
            )
 
-          ("dsouza" :components ("dsouza-posts")))))
+          ("dsouza-static"
+           :base-directory "~/dev/github/b/org"
+           :base-extension "css\\|js\\|png\\|jpg\\|gif"
+
+           :recursive t
+           :publishing-function org-publish-attachment
+           :publishing-directory "~/dev/github/b/static"
+           )
+
+          ("dsouza" :components ("dsouza-org" "dsouza-static")))))
 
 ;; source: http://www.emacswiki.org/emacs/RecursiveEditPreservingWindowConfig
 (defmacro my-recursive-edit-preserving-window-config (body)
@@ -135,7 +175,7 @@
   "Enters recursive edit without this window. When exiting edit
    restores window configuration
   "
-  (let (myf (command-remapping 'delete-window))
+  (let ((myf (command-remapping 'delete-window)))
     (if (commandp 'myf)
         (myf)
       (delete-window))))
@@ -145,7 +185,7 @@
   "Enters recursive edit leaving only a single window. When
    exiting all other windows are restored.
   "
-  (let (myf (command-remapping 'delete-other-windows))
+  (let ((myf (command-remapping 'delete-other-windows)))
        (if (one-window-p 'ignore-minibuffer)
            (error "current window is the only window in its frame")
          (if (commandp 'myf)
