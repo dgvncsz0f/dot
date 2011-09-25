@@ -95,10 +95,6 @@
   (w3m-link-numbering-mode))
 
 (defun my-org-mode-hook ()
-  ; (make-variable-buffer-local 'yas/trigger-key)
-  ; (setq yas/trigger-key [tab])
-  ; (add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
-  ; (define-key yas/keymap [tab] 'yas/next-field)
   (define-key org-mode-map (kbd "C-k") 'my-org-kill-whole-line)
   (define-key org-mode-map (kbd "C-c a") 'org-agenda)
   (define-key icicle-mode-map (kbd "C-c /") nil)
@@ -119,16 +115,7 @@
            :publishing-directory "~/dev/github/b/_posts"
            )
 
-          ("dsouza-static"
-           :base-directory "~/dev/github/b/org"
-           :base-extension "css\\|js\\|png\\|jpg\\|gif"
-
-           :recursive t
-           :publishing-function org-publish-attachment
-           :publishing-directory "~/dev/github/b/_static"
-           )
-
-          ("dsouza" :components ("dsouza-posts" "dsouza-static")))))
+          ("dsouza" :components ("dsouza-posts")))))
 
 ;; source: http://www.emacswiki.org/emacs/RecursiveEditPreservingWindowConfig
 (defmacro my-recursive-edit-preserving-window-config (body)
