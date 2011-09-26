@@ -1,5 +1,5 @@
 (setq org-link-abbrev-alist '(("attach" . org-attach-expand-link)))
-(setq org-default-notes-file "~/org/dsouza.org")
+(setq org-default-notes-file "~/dev/github/priv/org/dsouza.org")
 (setq org-capture-templates
       '(
         ("s" "SIMPLE TODO" entry (file+headline org-default-notes-file "INBOX")
