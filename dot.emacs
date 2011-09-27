@@ -8,6 +8,7 @@
 (require 'rainbow-delimiters)
 (require 'org)
 (require 'org-attach)
+(require 'nyan-mode)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -50,6 +51,7 @@
 (transient-mark-mode nil)
 (icy-mode t)
 (my-x-as-term)
+(nyan-mode)
 
 (put 'erase-buffer 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
