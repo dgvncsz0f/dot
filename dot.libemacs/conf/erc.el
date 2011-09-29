@@ -58,18 +58,23 @@
 (erc-timestamp-mode t)
 (erc-button-mode (- 1))
 
-(defun my-irc-freenode()
+(defun my-irc-freenode ()
   (interactive)
   (erc :server "irc.freenode.net" :port 6667 :nick "dsouza" :full-name "Diego Souza")
   )
 
-(defun my-irc-bitlbee()
+(defun my-irc-bitlbee ()
   (interactive)
   (erc :server "localhost" :port 6667 :nick "dsouza" :full-name "Diego Souza")
   )
 
-(defun my-irc-locaweb()
+(defun my-irc-locaweb ()
    (interactive)
    (erc :server "irc.linux.locaweb.com.br" :port 5222 :nick "dsouza" :full-name "Diego Souza")
    )
 
+(defun my-irc-all ()
+  (interactive)
+  (my-irc-locaweb)
+  (my-irc-freenode)
+  (my-irc-bitlbee))
