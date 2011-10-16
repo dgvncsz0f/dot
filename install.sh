@@ -74,7 +74,6 @@ dot_install()
   dot_symlink "$HOME/.dot/dot.ssh/config" "$HOME/.ssh/config"
   dot_symlink "$HOME/.dot/dot.emacs" "$HOME/.emacs"
   dot_symlink "$HOME/.dot/dot.libemacs" "$HOME/.libemacs"
-  dot_symlink "$HOME/.dot/dot.viper" "$HOME/.viper"
   dot_symlink "$HOME/.dot/dot.vim" "$HOME/.vim"
   dot_symlink "$HOME/.dot/dot.vimrc" "$HOME/.vimrc"
   dot_symlink "$HOME/.dot/dot.bash_profile" "$HOME/.bash_profile"
@@ -91,7 +90,7 @@ dot_install()
   dot_symlink "$HOME/.dot/dot.xresourcesrc" "$HOME/.xresourcesrc"
   dot_symlink "$HOME/.dot/dot.mutt" "$HOME/.mutt"
   dot_symlink "$HOME/.dot/dot.email-signature" "$HOME/.email-signature"
-  dot_symlink "$HOME/.dot/dot.irssi" "$HOME/.irssi"
+  dot_symlink "$HOME/.dot/dot.octaverc" "$HOME/.octaverc"
 }
 
 dot_overlay_merge()
