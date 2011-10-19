@@ -3,9 +3,7 @@
   (interactive)
   (split-window)
   (other-window 1)
-  (if (get-buffer "*my-ansi-term*")
-      (switch-to-buffer "*my-ansi-term*" t)
-    (ansi-term "/bin/bash" "my-ansi-term")))
+  (shell))
 
 (defun my-copy-line (&optional arg)
   " Do a kill-line but copy rather than kill.  This function
