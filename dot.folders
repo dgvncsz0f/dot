@@ -1,0 +1,16 @@
+# my folders
+
+Locaweb {
+  %inbox:"diego.souza@locaweb.com.br"/clear@webmail.locaweb.com.br:993! "Inbox"
+}
+
+Gmail {
+  %inbox:"dsouza@bitforest.org"/clear@imap.gmail.com:993! "Inbox"
+  %[Gmail]/Trash:"dsouza@bitforest.org"/clear@imap.gmail.com:993! "Trash"
+  %[Gmail]/Sent Mail:"dsouza@bitforest.org"/clear@imap.gmail.com:993! "Sent"
+  %[Gmail]/Drafts:"dsouza@bitforest.org"/clear@imap.gmail.com:993! "Draft"
+  Lists {
+    %ilists/haskell:"dsouza@bitforest.org"/clear@imap.gmail.com:993! "Haskell"
+    %ilists/haskell-cafe:"dsouza@bitforest.org"/clear@imap.gmail.com:993! "Haskell Cafe"
+  }
+}
