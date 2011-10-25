@@ -77,7 +77,7 @@
     ("gmail"                            ; Gmail
      (wl-from . "Diego Souza <dsouza@bitforest.org>")
      (wl-trash-folder . "%[Gmail]/Trash")
-     (wl-draft-folder . "%[Gmail]/Draft")
+     (wl-draft-folder . "%[Gmail]/Drafts")
      (wl-fcc . nil)
      ("From" . wl-from)
      (wl-smtp-connection-type . 'starttls)
