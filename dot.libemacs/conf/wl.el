@@ -11,6 +11,9 @@
   wl-insert-message-id nil
   wl-folder-window-width 25
   wl-stay-folder-window t
+  wl-mime-charset 'x-ctext
+  elmo-mime-charset 'utf-8
+  mime-transfer-level 8
 
   ;; Automatic signature insertion
   signature-file-name "~/.email-signature.txt"
@@ -133,14 +136,6 @@
 ;; Apply wl-draft-config-alist as soon as you enter in a draft buffer. Without
 ;; this wanderlust would apply it only when actually sending the e-mail.
 (add-hook 'wl-mail-setup-hook 'wl-draft-config-exec)
-
-(add-hook
- 'wl-mail-send-pre-hook
- '(lambda ()
-    (setq wl-mime-charset 'utf-8
-          elmo-mime-charset 'utf-8
-          )
-    ))
 
 (add-hook
  'wl-biff-notify-hook
