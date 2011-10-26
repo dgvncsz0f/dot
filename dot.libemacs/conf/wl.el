@@ -11,19 +11,13 @@
   wl-stay-folder-window t                       ;; show the folder pane (left)
   wl-folder-window-width 25                     ;; toggle on/off with 'i'
   
-  wl-smtp-posting-server "smtp.gmail.com"       ;; put the smtp server here
-  wl-local-domain "bitforest.org"               ;; put something here...
-  wl-message-id-domain "bitforest.org"          ;; ...
-
   wl-message-window-size '(2 . 3)
 
   ;; gmail not reporting new mails
   elmo-imap4-set-seen-flag-explicitly t
 
-  wl-from "Diego Souza <dsouza@bitforest.org>"  ;; my From:
-
   ;; Automatic signature insertion
-  signature-file-name "~/.email-signature"
+  signature-file-name "~/.email-signature.txt"
   signature-insert-at-eof t
 
   ;; mark sent messages as read
@@ -41,9 +35,6 @@
   wl-smtp-connection-type 'starttls
   wl-smtp-posting-port 587
   wl-smtp-authenticate-type "plain"
-  wl-smtp-posting-user "dsouza@bitforest.org"
-  wl-smtp-posting-server "smtp.gmail.com"
-  wl-local-domain "bitforest.org"
 
   ;; summary
   wl-auto-select-next 'unread
@@ -56,12 +47,9 @@
   wl-thread-open-reading-thread t
 
   ;; IMAP
-  elmo-imap4-default-server "imap.gmail.com"
-  elmo-imap4-default-user "dsouza@bitforest.org"
   elmo-imap4-default-authenticate-type 'clear
   elmo-imap4-default-port '993
   elmo-imap4-default-stream-type 'ssl
-  elmo-imap4-use-modified-utf7 t
 
   ;; hide many fields from message buffers
   wl-message-ignored-field-list '("^.*:")
@@ -102,19 +90,18 @@
      (wl-smtp-posting-user . "diego.souza@bitforest.org")
      (wl-smtp-posting-server . "smtp.gmail.com")
      (wl-local-domain . "bitforest.org")
-     (signature-file-name . "~/.email-signature")
+     (signature-file-name . "~/.email-signature.txt")
      )
     ("locaweb"
      (wl-from . "Diego Souza <diego.souza@locaweb.com.br>")
      ("From" . wl-from)
-     (wl-smtp-connection-type . nil)
-     (wl-smtp-posting-port . nil)
-     (wl-smtp-authenticate-type . "login") ; change if necessary
+     (wl-smtp-connection-type . 'starttls)
+     (wl-smtp-posting-port . 25)
+     (wl-smtp-authenticate-type . "plain")
      (wl-smtp-posting-user . "diego.souza@locaweb.com.br")
      (wl-smtp-posting-server . "webmail.locaweb.com.br")
      (wl-local-domain . "locaweb.com.br")
-     ("Organization" . "Locaweb")
-     (signature-file-name . "~/.email-signature")
+     (signature-file-name . "~/.email-signature.txt")
      )
     )
 

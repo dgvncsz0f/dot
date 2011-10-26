@@ -89,7 +89,7 @@ dot_install()
   dot_symlink "$HOME/.dot/dot.xmonad" "$HOME/.xmonad"
   dot_symlink "$HOME/.dot/dot.xresourcesrc" "$HOME/.xresourcesrc"
   dot_symlink "$HOME/.dot/dot.mutt" "$HOME/.mutt"
-  dot_symlink "$HOME/.dot/dot.email-signature" "$HOME/.email-signature"
+  dot_symlink "$HOME/.dot/dot.email-signature" "$HOME/.email-signature.txt"
   dot_symlink "$HOME/.dot/dot.octaverc" "$HOME/.octaverc"
   dot_symlink "$HOME/.dot/dot.gtkrc-2.0" "$HOME/.gtkrc-2.0"
   dot_symlink "$HOME/.dot/dot.folders" "$HOME/.folders"
