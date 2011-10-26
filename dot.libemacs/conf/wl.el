@@ -135,10 +135,10 @@
 (add-hook 'wl-mail-setup-hook 'wl-draft-config-exec)
 
 (add-hook
- 'wl-mail-setup-hook
+ 'wl-mail-send-pre-hook
  '(lambda ()
     (setq wl-mime-charset 'utf-8
-          elmo-mime-charset 'x-ctext
+          elmo-mime-charset 'utf-8
           )
     ))
 
