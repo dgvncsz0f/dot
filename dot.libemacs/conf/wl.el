@@ -26,15 +26,16 @@
   signature-file-name "~/.email-signature"
   signature-insert-at-eof t
 
-  wl-fcc-force-as-read t            ;; mark sent messages as read 
+  ;; mark sent messages as read
+  wl-fcc-force-as-read t
 
   ;; Biff notification
-  ;; wl-biff-check-folder-list
-  ;; '("%inbox:\"diego.souza@locaweb.com.br\"/clear@webmail.locaweb.com.br:993!"
-  ;;   "%inbox:\"dsouza@bitforest.org\"/clear@imap.gmail.com:993!"
-  ;;   )
-  ;; wl-biff-check-interval 180
-  ;; wl-biff-use-idle-timer t
+  wl-biff-check-folder-list
+  '("%inbox:\"diego.souza@locaweb.com.br\"/clear@webmail.locaweb.com.br:993!"
+    "%inbox:\"dsouza@bitforest.org\"/clear@imap.gmail.com:993!"
+    )
+  wl-biff-check-interval 180
+  wl-biff-use-idle-timer t
 
   ;; SMTP
   wl-smtp-connection-type 'starttls
@@ -127,6 +128,14 @@
      (template . "gmail")
      )
     )
+
+  ;; Set mail-icon to be shown universally in the modeline.
+  global-mode-string
+  (cons
+   '(wl-modeline-biff-status
+     wl-modeline-biff-state-on
+     wl-modeline-biff-state-off)
+   global-mode-string)
 )
 
 (if (boundp 'mail-user-agent)
