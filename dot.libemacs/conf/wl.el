@@ -135,6 +135,14 @@
 (add-hook 'wl-mail-setup-hook 'wl-draft-config-exec)
 
 (add-hook
+ 'wl-mail-setup-hook
+ '(lambda ()
+    (setq wl-mime-charset 'utf-8
+          elmo-mime-charset 'x-ctext
+          )
+    ))
+
+(add-hook
  'wl-biff-notify-hook
  '(lambda ()
     (my-wl-update-current-summaries)
