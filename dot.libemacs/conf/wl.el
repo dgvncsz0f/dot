@@ -17,6 +17,9 @@
 
   wl-message-window-size '(2 . 3)
 
+  ;; gmail not reporting new mails
+  elmo-imap4-set-seen-flag-explicitly t
+
   wl-from "Diego Souza <dsouza@bitforest.org>"  ;; my From:
 
   ;; Automatic signature insertion
@@ -139,6 +142,12 @@
 ;; Apply wl-draft-config-alist as soon as you enter in a draft buffer. Without
 ;; this wanderlust would apply it only when actually sending the e-mail.
 (add-hook 'wl-mail-setup-hook 'wl-draft-config-exec)
+
+(add-hook
+ 'wl-biff-notify-hook
+ '(lambda ()
+    (my-wl-update-current-summaries)
+    ))
 
 ;; the default function doesn't works for me
 (defun elmo-read-passwd (prompt &optional stars)
