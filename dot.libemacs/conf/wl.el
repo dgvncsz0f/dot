@@ -174,17 +174,8 @@
 (add-hook
  'wl-init-hook
  '(lambda ()
-    ;; Add support for (signature . "filename")
-    (unless (assq 'signature wl-draft-config-sub-func-alist)
-      (wl-append wl-draft-config-sub-func-alist
-                 '((signature . wl-draft-config-sub-signature))))
-
-    (defun mime-edit-insert-signature (&optional arg)
-      "Redefine to insert a signature file directly, not as a tag."
-      (interactive "P")
-      (insert-signature arg))
+    (defun elmo-read-passwd (prompt &optional stars)
+      "Redefining this as the default does not allow paste and other useful things"
+      (read-passwd prompt nil))
     ))
 
-;; the default function doesn't works for me
-(defun elmo-read-passwd (prompt &optional stars)
-    (read-passwd prompt nil))
