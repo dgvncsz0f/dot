@@ -44,6 +44,16 @@
   wl-smtp-posting-server "smtp.gmail.com"
   wl-local-domain "bitforest.org"
 
+  ;; summary
+  wl-auto-select-next 'unread
+  wl-summary-width nil
+  wl-summary-weekday-name-lang "en"
+  wl-summary-line-format "%T%P%M/%D(%W)%h:%m %[ %17f %][%n/%S] %t%C%s"
+  
+  ;; Summary threads
+  wl-thread-insert-opened t
+  wl-thread-open-reading-thread t
+
   ;; IMAP
   elmo-imap4-default-server "imap.gmail.com"
   elmo-imap4-default-user "dsouza@bitforest.org"
@@ -107,6 +117,9 @@
      )
     )
 
+  ; Do not split large messages
+  mime-edit-split-message nil
+
   ; let the SMTP servers handle the message-id and stop warning from wanderlust
   wl-insert-message-id nil
 
@@ -155,6 +168,20 @@
  'wl-biff-notify-hook
  '(lambda ()
     (my-wl-update-current-summaries)
+    ))
+
+(add-hook
+ 'wl-init-hook
+ '(lambda ()
+    ;; Add support for (signature . "filename")
+    (unless (assq 'signature wl-draft-config-sub-func-alist)
+      (wl-append wl-draft-config-sub-func-alist
+                 '((signature . wl-draft-config-sub-signature))))
+
+    (defun mime-edit-insert-signature (&optional arg)
+      "Redefine to insert a signature file directly, not as a tag."
+      (interactive "P")
+      (insert-signature arg))
     ))
 
 ;; the default function doesn't works for me
