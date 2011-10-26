@@ -32,6 +32,7 @@
   ;; Biff notification
   wl-biff-check-folder-list
   '("%inbox:\"dsouza@bitforest.org\"/clear@imap.gmail.com:993!"
+    "%inbox:\"diego.souza@locaweb.com.br\"/clear@webmail.locaweb.com.br:993!"
     )
   wl-biff-check-interval 180
   wl-biff-use-idle-timer t
