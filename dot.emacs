@@ -27,6 +27,8 @@
 (add-hook 'org-publish-before-export-hook 'my-org-publish-before-export-hook)
 (add-hook 'org-publish-after-export-hook 'my-org-publish-after-export-hook)
 
+(setq ssl-program-name "gnutls-cli")
+(setq ssl-program-arguments '("--insecure" "--port" service "--x509cafile" "/etc/ssl/certs/ca-certificates.crt" host))
 (setq-default indent-tabs-mode nil)
 (setq backup-inhibited t)
 (setq auto-save-default nil)
@@ -68,4 +70,5 @@
 (load "~/.libemacs/conf/org.el")
 (load "~/.libemacs/conf/yas.el")
 (load "~/.libemacs/conf/movement.el")
+(load "~/.libemacs/conf/wl.el")
 (load custom-file)
