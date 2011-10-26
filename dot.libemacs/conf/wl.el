@@ -15,6 +15,8 @@
   wl-local-domain "bitforest.org"               ;; put something here...
   wl-message-id-domain "bitforest.org"          ;; ...
 
+  wl-message-window-size '(2. 3)
+
   wl-from "Diego Souza <dsouza@bitforest.org>"  ;; my From:
 
   ;; Automatic signature insertion
