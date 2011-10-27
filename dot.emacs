@@ -1,4 +1,5 @@
 (add-to-list 'load-path "~/.libemacs/lib/")
+(add-to-list 'load-path "~/.libemacs/lib/icicles")
 (require 'icicles)
 (require 'col-highlight)
 (require 'myemacs)

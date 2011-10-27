@@ -4313,27 +4313,27 @@ elements with keys in list OMIT."
     (nreverse new)))
 
 ;;; $$$$$$ No longer used.
-;;; (defun bmkp-sort-and-remove-dups (alist &optional omit)
-;;;   "Remove duplicates from a copy of ALIST, then sort it and return it.
-;;; Do not sort if `bmkp-sort-comparer' is nil.
-;;; Always remove duplicates.  Keep only the first element with a given
-;;; key.  This is a non-destructive operation: ALIST is not modified.
+(defun bmkp-sort-and-remove-dups (alist &optional omit)
+  "Remove duplicates from a copy of ALIST, then sort it and return it.
+Do not sort if `bmkp-sort-comparer' is nil.
+Always remove duplicates.  Keep only the first element with a given
+key.  This is a non-destructive operation: ALIST is not modified.
 
-;;; Sorting is done using using `bmkp-sort-comparer'.
-;;; If `bmkp-reverse-sort-p' is non-nil, then reverse the sort order.
-;;; Keys are compared for sorting using `equal'.
-;;; If optional arg OMIT is non-nil, then omit from the return value any
-;;; elements with keys in list OMIT."
-;;;   (let ((new-alist  (bmkp-remove-assoc-dups alist omit))
-;;;         (sort-fn  (and bmkp-sort-comparer  (if (and (not (functionp bmkp-sort-comparer))
-;;;                                                     (consp bmkp-sort-comparer))
-;;;                                                'bmkp-multi-sort
-;;;                                              bmkp-sort-comparer))))
-;;;     (when sort-fn
-;;;       (setq new-alist  (sort new-alist (if bmkp-reverse-sort-p
-;;;                                            (lambda (a b) (not (funcall sort-fn a b)))
-;;;                                          sort-fn))))
-;;;     new-alist))
+Sorting is done using using `bmkp-sort-comparer'.
+If `bmkp-reverse-sort-p' is non-nil, then reverse the sort order.
+Keys are compared for sorting using `equal'.
+If optional arg OMIT is non-nil, then omit from the return value any
+elements with keys in list OMIT."
+  (let ((new-alist  (bmkp-remove-assoc-dups alist omit))
+        (sort-fn  (and bmkp-sort-comparer  (if (and (not (functionp bmkp-sort-comparer))
+                                                    (consp bmkp-sort-comparer))
+                                               'bmkp-multi-sort
+                                             bmkp-sort-comparer))))
+    (when sort-fn
+      (setq new-alist  (sort new-alist (if bmkp-reverse-sort-p
+                                           (lambda (a b) (not (funcall sort-fn a b)))
+                                         sort-fn))))
+    new-alist))
 
 ;;; KEEP this simpler version also.  This uses `run-hook-with-args-until-success', but it
 ;;; does not respect `bmkp-reverse-multi-sort-p'.
@@ -4347,15 +4347,15 @@ elements with keys in list OMIT."
 ;;;       result)))
 
 ;;; $$$$$$ No longer used.
-;;; (defun bmkp-remove-assoc-dups (alist &optional omit)
-;;;   "Shallow copy of ALIST without elements that have duplicate keys.
-;;; Only the first element of those with the same key is kept.
-;;; Keys are compared using `equal'.
-;;; If optional arg OMIT is non-nil, then omit from the return value any
-;;; elements with keys in list OMIT."
-;;;   (let ((new  ()))
-;;;     (dolist (ii  alist)  (unless (or (assoc (car ii) new) (member (car ii) omit))  (push ii new)))
-;;;     (nreverse new)))
+(defun bmkp-remove-assoc-dups (alist &optional omit)
+  "Shallow copy of ALIST without elements that have duplicate keys.
+Only the first element of those with the same key is kept.
+Keys are compared using `equal'.
+If optional arg OMIT is non-nil, then omit from the return value any
+elements with keys in list OMIT."
+  (let ((new  ()))
+    (dolist (ii  alist)  (unless (or (assoc (car ii) new) (member (car ii) omit))  (push ii new)))
+    (nreverse new)))
 
 
 ;; This Lisp definition respects `bmkp-reverse-multi-sort-p', and can be extended.
