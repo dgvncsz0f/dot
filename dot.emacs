@@ -9,6 +9,7 @@
 (require 'org)
 (require 'org-attach)
 (require 'nyan-mode)
+(require 'bookmark+)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
