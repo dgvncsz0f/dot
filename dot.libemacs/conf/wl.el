@@ -1,6 +1,6 @@
 ;; mode:-*-emacs-lisp-*-
 
-;; This is mostly stuff I found online
+;; Mostly stuff stolen from: ://www.emacswiki.org/emacs/hgw-init-wl.el
 
 (require 'wl)
 (require 'wl-draft)
@@ -9,8 +9,6 @@
   ;; Misc
   wl-message-window-size '(2 . 3)
   wl-insert-message-id nil
-  wl-folder-window-width 25
-  wl-stay-folder-window t
   wl-mime-charset 'x-ctext
   elmo-mime-charset 'utf-8
   mime-transfer-level 8
@@ -40,6 +38,7 @@
   elmo-imap4-default-authenticate-type 'clear
   elmo-imap4-default-port '993
   elmo-imap4-default-stream-type 'ssl
+  elmo-imap4-set-seen-flag-explicitly t
 
   ;; SMTP
   wl-smtp-connection-type 'starttls
@@ -55,6 +54,15 @@
   wl-summary-line-format "%11n %T%P%M/%D(%W)%h:%m %[ %17f %] %t%C%s"
   wl-thread-insert-opened t
   wl-thread-open-reading-thread t
+
+  ;; Folder
+  wl-folder-window-width 25
+  wl-stay-folder-window t
+  wl-folder-check-async t
+  wl-auto-check-folder-name nil
+  wl-auto-check-folder-list nil
+  wl-auto-uncheck-folder-list '("^.*")
+  wl-highlight-folder-by-numbers 1
 
   ;; Mime
   wl-fcc-force-as-read t
@@ -160,6 +168,11 @@
        "Redefine to insert a signature file directly, not as a tag."
        (interactive "P")
        (insert-signature arg))
+
+     ;; elmo-imap4-set-seen-flag-explicitly doesn't seem to work
+     ;; little hack for now
+     (defsubst elmo-diff-new (diff)
+       (elmo-diff-unread diff))
     ))
 
 (defun wl-draft-config-sub-signature (content)
@@ -168,3 +181,12 @@
          (signature-file-name content))
      (goto-char (mime-edit-content-end))
      (insert-signature)))
+
+(defun my-wl-update-current-summaries ()
+  (let ((buffers (wl-collect-summary)))
+    (while buffers
+      (with-current-buffer (car buffers)
+        (save-excursion
+          (wl-summary-sync-update)))
+      (setq buffers (cdr buffers)))))
+
