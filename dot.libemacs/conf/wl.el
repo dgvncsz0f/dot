@@ -103,6 +103,8 @@
     ("locaweb"
      (wl-from . "Diego Souza <diego.souza@locaweb.com.br>")
      ("From" . wl-from)
+     (wl-draft-folder . "%Rascunhos:\"diego.souza@locaweb.com.br\"/clear@webmail.locaweb.com.br:993!")
+     (wl-fcc . "%Itens Enviados:\"diego.souza@locaweb.com.br\"/clear@webmail.locaweb.com.br:993!")
      (wl-smtp-connection-type . 'starttls)
      (wl-smtp-posting-port . 25)
      (wl-smtp-authenticate-type . "plain")
