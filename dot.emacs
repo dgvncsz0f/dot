@@ -1,6 +1,7 @@
 (add-to-list 'load-path "~/.libemacs/lib/")
 (add-to-list 'load-path "~/.libemacs/lib/icicles")
 (require 'icicles)
+(require 'myemacs)
 (require 'col-highlight)
 (require 'myemacs)
 (require 'uniquify)
@@ -11,6 +12,9 @@
 (require 'org-attach)
 (require 'nyan-mode)
 (require 'bookmark+)
+(require 'thingatpt+)
+(require 'files+)
+(require 'dired+)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
