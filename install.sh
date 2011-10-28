@@ -180,7 +180,12 @@ dot_omit_stderr_of()
   cmd=$2
   
   dot_print_info "invoking $txt"
-  $cmd 2>/dev/null
+  if [ -n "$dot_debugon" ]
+  then
+    $cmd
+  else
+    $cmd 2>/dev/null
+  fi
 
   if [ "$?" = "0" ]
   then
