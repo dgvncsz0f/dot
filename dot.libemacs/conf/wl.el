@@ -93,6 +93,7 @@
     (".*gmail" . "%[Gmail]/Trash:\"dsouza@bitforest.org\"/clear@imap.gmail.com:993!")
     (".*locaweb" . remove)
     )
+  wl-template-default-name "gmail"
   wl-template-alist
   '(
     ("gmail"
@@ -142,6 +143,10 @@
         'wl-draft-kill
         'mail-send-hook))
 
+(define-key wl-template-mode-map (kbd "C-n") 'wl-template-next)
+(define-key wl-template-mode-map (kbd "C-p") 'wl-template-prev)
+(define-key wl-template-mode-map (kbd "C-c C-c") 'wl-template-set)
+
 ;; Apply wl-draft-config-alist as soon as you enter in a draft buffer. Without
 ;; this wanderlust would apply it only when actually sending the e-mail.
 (add-hook 'wl-mail-setup-hook 'wl-draft-config-exec)
@@ -171,9 +176,8 @@
 
      ;; elmo-imap4-set-seen-flag-explicitly doesn't seem to work
      ;; little hack for now
-     (defsubst elmo-diff-new (diff)
-       (elmo-diff-unread diff))
-    ))
+     ;; TODO:fixme
+     ))
 
 (defun wl-draft-config-sub-signature (content)
    "Insert the signature at the end of the MIME message."
