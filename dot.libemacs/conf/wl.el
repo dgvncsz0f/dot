@@ -30,8 +30,8 @@
   '( "%inbox:\"dsouza@bitforest.org\"/clear@imap.gmail.com:993!"
      "%inbox:\"diego.souza@locaweb.com.br\"/clear@webmail.locaweb.com.br:993!"
     )
-  wl-biff-check-interval 180
-  wl-biff-use-idle-timer t
+  wl-biff-check-interval 30
+  wl-biff-use-idle-timer nil
 
   ;; Mail/Imap
   elmo-maildir-folder-path "~/Maildir"
@@ -176,8 +176,14 @@
 
      ;; elmo-imap4-set-seen-flag-explicitly doesn't seem to work
      ;; little hack for now
-     ;; TODO:fixme
+     (defadvice wl-biff-check-folder (after my-wl-biff-check-folder (folder))
+       "This function ignores NEW messages and uses UNREAD instead"
+       (let ((new (nth 1 ad-return-value))
+             (tail (cdr ad-return-value)))
+         (setq ad-return-value (cons new tail))))
+     (ad-update 'wl-biff-check-folder)
      ))
+
 
 (defun wl-draft-config-sub-signature (content)
    "Insert the signature at the end of the MIME message."
