@@ -181,7 +181,7 @@
        (let ((new (nth 1 ad-return-value))
              (tail (cdr ad-return-value)))
          (setq ad-return-value (cons new tail))))
-     (ad-update 'wl-biff-check-folder)
+     (ad-activate 'wl-biff-check-folder)
      ))
 
 
