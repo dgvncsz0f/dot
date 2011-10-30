@@ -1,6 +1,6 @@
 ;; mode:-*-emacs-lisp-*-
 
-;; Mostly stuff stolen from: ://www.emacswiki.org/emacs/hgw-init-wl.el
+;; Mostly stuff stolen from: http://www.emacswiki.org/emacs/hgw-init-wl.el
 
 (require 'wl)
 (require 'wl-draft)
@@ -30,8 +30,10 @@
   '( "%inbox:\"dsouza@bitforest.org\"/clear@imap.gmail.com:993!"
      "%inbox:\"diego.souza@locaweb.com.br\"/clear@webmail.locaweb.com.br:993!"
     )
-  wl-biff-check-interval 30
-  wl-biff-use-idle-timer nil
+  wl-biff-check-interval 180
+  wl-biff-use-idle-timer t
+  wl-strict-diff-folders '("^%inbox.*")
+  wl-folder-use-server-diff nil
 
   ;; Mail/Imap
   elmo-maildir-folder-path "~/Maildir"
@@ -39,6 +41,7 @@
   elmo-imap4-default-port '993
   elmo-imap4-default-stream-type 'ssl
   elmo-imap4-set-seen-flag-explicitly t
+  elmo-imap-debug 1
 
   ;; SMTP
   wl-smtp-connection-type 'starttls
@@ -176,12 +179,12 @@
 
      ;; elmo-imap4-set-seen-flag-explicitly doesn't seem to work
      ;; little hack for now
-     (defadvice wl-biff-check-folder (after my-wl-biff-check-folder (folder))
-       "This function ignores NEW messages and uses UNREAD instead"
-       (let ((new (nth 1 ad-return-value))
-             (tail (cdr ad-return-value)))
-         (setq ad-return-value (cons new tail))))
-     (ad-activate 'wl-biff-check-folder)
+     ;; (defadvice wl-biff-check-folder (after my-wl-biff-check-folder (folder))
+     ;;   "This function ignores NEW messages and uses UNREAD instead"
+     ;;   (let ((new (nth 1 ad-return-value))
+     ;;         (tail (cdr ad-return-value)))
+     ;;     (setq ad-return-value (cons new tail))))
+     ;; (ad-deactivate 'wl-biff-check-folder)
      ))
 
 
