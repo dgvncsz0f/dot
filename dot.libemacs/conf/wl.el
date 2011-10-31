@@ -40,7 +40,7 @@
   elmo-imap4-default-authenticate-type 'clear
   elmo-imap4-default-port '993
   elmo-imap4-default-stream-type 'ssl
-  elmo-imap4-set-seen-flag-explicitly nil
+  elmo-imap4-set-seen-flag-explicitly t
   elmo-use-server-diff t
 
   ;; SMTP
