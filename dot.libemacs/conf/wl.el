@@ -104,7 +104,7 @@
      ("From" . wl-from)
      (wl-fcc . nil)
      (wl-trash-folder . "%[Gmail]/Trash:\"dsouza@bitforest.org\"/clear@imap.gmail.com:993!")
-     (wl-draft-folder . "%[Gmail]/Drafts:\"dsouza@bitforest.org\"/clear@imap.gmail.com:993!")
+     ; (wl-draft-folder . "%[Gmail]/Drafts:\"dsouza@bitforest.org\"/clear@imap.gmail.com:993!")
      (wl-smtp-connection-type . 'starttls)
      (wl-smtp-posting-port . 587)
      (wl-smtp-authenticate-type . "plain")
@@ -115,7 +115,7 @@
     ("locaweb"
      (wl-from . "Diego Souza <diego.souza@locaweb.com.br>")
      ("From" . wl-from)
-     (wl-draft-folder . "%Rascunhos:\"diego.souza@locaweb.com.br\"/clear@webmail.locaweb.com.br:993!")
+     ; (wl-draft-folder . "%Rascunhos:\"diego.souza@locaweb.com.br\"/clear@webmail.locaweb.com.br:993!")
      (wl-fcc . "%Itens Enviados:\"diego.souza@locaweb.com.br\"/clear@webmail.locaweb.com.br:993!")
      (wl-smtp-connection-type . 'starttls)
      (wl-smtp-posting-port . 25)
@@ -127,10 +127,10 @@
     )
   wl-draft-config-alist
   '(
-    ((string-match ".*locaweb" wl-draft-parent-folder)
+    ((string-match "locaweb" wl-draft-parent-folder)
      (template . "locaweb")
      )
-    ((string-match ".*gmail" wl-draft-parent-folder)
+    ((string-match "." wl-draft-parent-folder)
      (template . "gmail")
      )
     )
