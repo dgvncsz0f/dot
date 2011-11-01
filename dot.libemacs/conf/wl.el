@@ -30,9 +30,9 @@
   '( "%inbox:\"dsouza@bitforest.org\"/clear@imap.gmail.com:993!"
      "%inbox:\"diego.souza@locaweb.com.br\"/clear@webmail.locaweb.com.br:993!"
     )
-  wl-biff-check-interval 60
-  wl-biff-use-idle-timer t
-  ;; wl-strict-diff-folders '("^%inbox.*")
+  wl-biff-check-interval 300
+  wl-biff-use-idle-timer nil
+  wl-strict-diff-folders '("^%inbox.*")
   wl-folder-use-server-diff t
 
   ;; Mail/Imap
@@ -41,7 +41,8 @@
   elmo-imap4-default-port '993
   elmo-imap4-default-stream-type 'ssl
   elmo-imap4-set-seen-flag-explicitly t
-  elmo-use-server-diff t
+  elmo-network-session-idle-timeout 60
+  elmo-imap4-debug t
 
   ;; SMTP
   wl-smtp-connection-type 'starttls
@@ -184,7 +185,7 @@
        (let ((new (nth 1 ad-return-value))
              (tail (cdr ad-return-value)))
          (setq ad-return-value (cons new tail))))
-     (ad-activate 'wl-biff-check-folder)
+     ;; (ad-activate 'wl-biff-check-folder)
      ))
 
 
