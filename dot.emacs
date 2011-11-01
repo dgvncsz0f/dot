@@ -15,6 +15,7 @@
 (require 'thingatpt+)
 (require 'files+)
 (require 'dired+)
+(require 'buff-menu+)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
