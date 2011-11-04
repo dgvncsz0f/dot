@@ -30,8 +30,8 @@
   '( "%inbox:\"dsouza@bitforest.org\"/clear@imap.gmail.com:993!"
      "%inbox:\"diego.souza@locaweb.com.br\"/clear@webmail.locaweb.com.br:993!"
     )
-  wl-biff-check-interval 300
-  wl-biff-use-idle-timer nil
+  wl-biff-check-interval 60
+  wl-biff-use-idle-timer t
   wl-strict-diff-folders '("^%inbox.*")
   wl-folder-use-server-diff t
 
