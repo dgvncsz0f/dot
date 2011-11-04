@@ -28,6 +28,9 @@
 (setq erc-prompt-for-nickserv-password nil)
 (setq erc-timestamp-format "[%R-%m/%d]")
 (setq erc-auto-query 'bury)
+(setq erc-kill-buffer-on-part t)
+(setq erc-kill-queries-on-quit t)
+(setq erc-kill-server-buffer-on-quit t)
 (setq erc-autojoin-channels-alist
           '(("freenode" "#haskell" "#agda" "#latex" "#emacs" "##devel-pedreiro" "#guru-sp")
             ("locaweb" "#cloud" "#infradev")))
@@ -72,6 +75,15 @@
    (interactive)
    (erc :server "irc.linux.locaweb.com.br" :port 5222 :nick "dsouza" :full-name "Diego Souza")
    )
+
+;; Source: http://mwolson.org/projects/emacs-config/erc-init.el
+(defun erc-cmd-YOW (&rest ignore)
+  "Display some pinhead wisdom into the current ERC buffer.  I'd
+rather not see it messaged to me, just sent out."
+  (let ((yow-msg (replace-regexp-in-string "\n" "" (yow nil nil))))
+    (erc-send-message
+     (concat "{Pinhead wisdom} "
+             yow-msg))))
 
 (defun my-irc-all ()
   (interactive)
