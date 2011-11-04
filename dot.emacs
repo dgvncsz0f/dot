@@ -33,6 +33,7 @@
 (add-hook 'org-publish-before-export-hook 'my-org-publish-before-export-hook)
 (add-hook 'org-publish-after-export-hook 'my-org-publish-after-export-hook)
 
+(setq yow-file "~/.dot/dot.libemacs/shared/yow.lines")
 (setq ssl-program-name "gnutls-cli")
 (setq ssl-program-arguments '("--insecure" "--port" service "--x509cafile" "/etc/ssl/certs/ca-certificates.crt" host))
 (setq-default indent-tabs-mode nil)
