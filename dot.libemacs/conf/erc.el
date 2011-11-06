@@ -28,6 +28,7 @@
 (setq erc-prompt-for-nickserv-password nil)
 (setq erc-timestamp-format "[%R-%m/%d]")
 (setq erc-auto-query 'bury)
+(setq erc-query-display 'buffer)
 (setq erc-kill-buffer-on-part t)
 (setq erc-kill-queries-on-quit t)
 (setq erc-kill-server-buffer-on-quit t)
