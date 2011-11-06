@@ -4,9 +4,9 @@ locaweb {
   %inbox:"diego.souza@locaweb.com.br"/clear@webmail.locaweb.com.br:993! "inbox"
   %Rascunhos:"diego.souza@locaweb.com.br"/clear@webmail.locaweb.com.br:993! "drafts"
   %Itens Enviados:"diego.souza@locaweb.com.br"/clear@webmail.locaweb.com.br:993! "sent"
-  lists {
-    %lists/infra-dev:"diego.souza@locaweb.com.br"/clear@webmail.locaweb.com.br:993! "i/infra"
-    %lists/cloud-dev:"diego.souza@locaweb.com.br"/clear@webmail.locaweb.com.br:993! "i/cloud"
+  locaweb-lists {
+    %lists/infra-dev:"diego.souza@locaweb.com.br"/clear@webmail.locaweb.com.br:993! "l/infra"
+    %lists/cloud-dev:"diego.souza@locaweb.com.br"/clear@webmail.locaweb.com.br:993! "l/cloud"
   }
 }
 
@@ -15,9 +15,9 @@ gmail {
   %[Gmail]/Trash:"dsouza@bitforest.org"/clear@imap.gmail.com:993! "trash"
   %[Gmail]/Sent Mail:"dsouza@bitforest.org"/clear@imap.gmail.com:993! "sent"
   %[Gmail]/Drafts:"dsouza@bitforest.org"/clear@imap.gmail.com:993! "drafts"
-  lists {
+  gmail-lists {
     %cron:"dsouza@bitforest.org"/clear@imap.gmail.com:993! "cron"
-    %ilists/haskell:"dsouza@bitforest.org"/clear@imap.gmail.com:993! "i/haskell"
-    %ilists/haskell-cafe:"dsouza@bitforest.org"/clear@imap.gmail.com:993! "i/haskell"
+    %ilists/haskell:"dsouza@bitforest.org"/clear@imap.gmail.com:993! "l/haskell"
+    %ilists/haskell-cafe:"dsouza@bitforest.org"/clear@imap.gmail.com:993! "l/haskell-cafe"
   }
 }
