@@ -86,8 +86,17 @@ rather not see it messaged to me, just sent out."
      (concat "{Pinhead wisdom} "
              yow-msg))))
 
-(defun my-irc-all ()
+(defun my-irc-connect-all ()
   (interactive)
   (my-irc-locaweb)
   (my-irc-freenode)
   (my-irc-bitlbee))
+
+(defun my-irc-disconnect-all ()
+  (interactive)
+  (save-excursion
+    (map nil '(lambda (s)
+                (when (get-buffer s)
+                  (message s)
+                  (set-buffer s)
+                  (erc-cmd-QUIT nil))) '("localhost:6667" "irc.freenode.net:6667" "irc.linux.locaweb.com.br:5222"))))
