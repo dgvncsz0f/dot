@@ -4,6 +4,8 @@
 
 (require 'wl)
 (require 'wl-draft)
+(require 'w3m-load)
+(require 'mime-w3m)
 
 (setq 
   ;; Misc
