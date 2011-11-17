@@ -6,6 +6,7 @@
 (require 'wl-draft)
 (require 'w3m-load)
 (require 'mime-w3m)
+(require 'bbdb-wl)
 
 (setq 
   ;; Misc
@@ -153,9 +154,40 @@
 (define-key wl-template-mode-map (kbd "C-p") 'wl-template-prev)
 (define-key wl-template-mode-map (kbd "C-c C-c") 'wl-template-set)
 
+;; ----------------------------------------------------------------------------
+;;; Configure BBDB to manage Email addresses
+(bbdb-wl-setup)
+
+(setq bbdb-use-pop-up t ;; Allow pop-ups
+      bbdb-pop-up-target-lines 2
+      bbdb/mail-auto-create-p t ;; auto collection
+      bbdb-wl-ignore-folder-regexp "^@" ;; folders without auto collection
+      bbdb-north-american-phone-numbers-p nil
+      bbdb-auto-notes-alist '(("X-ML-Name" (".*$" ML 0)))
+      bbdb-dwim-net-address-allow-redundancy t
+
+      ;; shows the name of bbdb in the summary
+
+      ;; Not with wl-summary-showto-folder-regexp
+      ;;wl-summary-from-function 'bbdb-wl-from-func
+      ;; Use the default:
+      wl-summary-from-function 'wl-summary-default-from
+
+      ;; Using BBDB for pet names is OK
+      wl-summary-get-petname-function 'bbdb-wl-get-petname
+      )
+
 ;; Apply wl-draft-config-alist as soon as you enter in a draft buffer. Without
 ;; this wanderlust would apply it only when actually sending the e-mail.
 (add-hook 'wl-mail-setup-hook 'wl-draft-config-exec)
+
+(add-hook
+ 'wl-summary-exec-hook
+ '(lambda ()
+    ;; Synchronise the folder with the server after executing the summary
+    ;; operation
+    (wl-summary-sync-update)
+    ))
 
 (add-hook
  'wl-biff-notify-hook
