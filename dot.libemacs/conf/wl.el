@@ -185,7 +185,8 @@
 
 (add-hook 'mime-view-mode-hook
 	  (lambda ()
-	    (local-set-key "f" 'w3m-view-url-with-external-browser)))
+	    (local-set-key "f" 'my-jump-and-visit-link)
+            (w3m-link-numbering-mode)))
 
 (add-hook
  'wl-summary-exec-hook

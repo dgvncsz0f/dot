@@ -193,6 +193,13 @@
 (defun my-browse-url-chrome (url &rest ignore)
   "Browse url using google-chrome"
   (interactive "sURL: ")
-  (shell-command (concat "google-chrome " (shell-quote-argument url) "&")))
+  (shell-command-to-string (concat "google-chrome " (shell-quote-argument url) "&")))
+
+(defun my-jump-and-visit-link ()
+  (interactive)
+  (let ((active w3m-link-numbering-mode))
+    (when (not active) (w3m-link-numbering-mode))
+    (w3m-move-numbered-anchor (read-number "Link #: "))
+    (w3m-view-url-with-external-browser)))
 
 (provide 'myemacs)
