@@ -190,4 +190,9 @@
              (myf)
            (delete-other-windows)))))
 
+(defun my-browse-url-chrome (url &rest ignore)
+  "Browse url using google-chrome"
+  (interactive "sURL: ")
+  (shell-command (concat "google-chrome " (shell-quote-argument url) "&")))
+
 (provide 'myemacs)

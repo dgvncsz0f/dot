@@ -15,6 +15,7 @@
   wl-mime-charset 'x-ctext
   elmo-mime-charset 'utf-8
   mime-transfer-level 8
+  browse-url-browser-function 'my-browse-url-chrome
 
   ;; Automatic signature insertion
   signature-file-name "~/.email-signature.txt"
@@ -181,6 +182,10 @@
 ;; Apply wl-draft-config-alist as soon as you enter in a draft buffer. Without
 ;; this wanderlust would apply it only when actually sending the e-mail.
 (add-hook 'wl-mail-setup-hook 'wl-draft-config-exec)
+
+(add-hook 'mime-view-mode-hook
+	  (lambda ()
+	    (local-set-key "f" 'w3m-view-url-with-external-browser)))
 
 (add-hook
  'wl-summary-exec-hook
