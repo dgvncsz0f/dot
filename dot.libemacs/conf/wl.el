@@ -74,6 +74,7 @@
   ;; Mime
   wl-fcc-force-as-read t
   mime-edit-split-message nil
+  mime-w3m-display-inline-images t
   wl-forward-subject-prefix "Fwd: "
   wl-message-ignored-field-list '("^.*:")
   wl-message-visible-field-list
