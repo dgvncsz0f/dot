@@ -106,7 +106,7 @@
   wl-template-alist
   '(
     ("gmail"
-     (wl-from . "Diego Souza <dsouza@bitforest.org>")
+     (wl-from . "diego souza <dsouza@bitforest.org>")
      ("From" . wl-from)
      (wl-fcc . nil)
      (wl-trash-folder . "%[Gmail]/Trash:\"dsouza@bitforest.org\"/clear@imap.gmail.com:993!")
@@ -119,7 +119,7 @@
      (signature-file-name . "~/.email-signature.txt")
      )
     ("locaweb"
-     (wl-from . "Diego Souza <diego.souza@locaweb.com.br>")
+     (wl-from . "diego souza <diego.souza@locaweb.com.br>")
      ("From" . wl-from)
      ; (wl-draft-folder . "%Rascunhos:\"diego.souza@locaweb.com.br\"/clear@webmail.locaweb.com.br:993!")
      (wl-fcc . "%Itens Enviados:\"diego.souza@locaweb.com.br\"/clear@webmail.locaweb.com.br:993!")
