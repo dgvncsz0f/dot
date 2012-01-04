@@ -44,6 +44,23 @@ my_bash_options()
   shopt -s checkwinsize
 }
 
+my_ssh_add()
+{
+  if [ -n "$SSH_AGENT_PID" ]
+  then
+    for f in $(/usr/bin/find "$HOME/.ssh/" -type f)
+    do
+      if /usr/bin/file -b "$f" | /bin/grep -q -i "\bprivate key\b"
+      then
+        if ! /usr/bin/ssh-add -l | /bin/grep -q "$f"
+        then
+          /usr/bin/ssh-add "$f"
+        fi
+      fi
+    done
+  fi
+}
+
 [ -z "${PS1}" ] && return
 [ -f /etc/bash.bashrc ] && source /etc/bash.bashrc
 [ -f /etc/bash_completion ] && source /etc/bash_completion
@@ -60,3 +77,4 @@ my_loadrvm
 my_bash_history
 my_bash_prompt
 my_bash_aliases
+my_ssh_add
