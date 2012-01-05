@@ -167,6 +167,8 @@
       bbdb-north-american-phone-numbers-p nil
       bbdb-auto-notes-alist '(("X-ML-Name" (".*$" ML 0)))
       bbdb-dwim-net-address-allow-redundancy t
+      bbdb-offer-save 'never
+      bbdb-quiet-about-name-mismatches t
 
       ;; shows the name of bbdb in the summary
 
