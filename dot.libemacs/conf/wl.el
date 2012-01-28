@@ -18,6 +18,7 @@
   browse-url-browser-function 'my-browse-url-chrome
   wl-interactive-send nil
   wl-interactive-exit nil
+  wl-draft-always-delete-myself t
 
   ;; Automatic signature insertion
   signature-file-name "~/.email-signature.txt"
@@ -124,7 +125,7 @@
     ("locaweb"
      (wl-from . "diego souza <diego.souza@locaweb.com.br>")
      ("From" . wl-from)
-     (wl-fcc . "%sent items:\"diego.souza\"/clear@outlook.locaweb.com.br:993!")
+     ("Fcc" . "%sent items:\"diego.souza\"/clear@outlook.locaweb.com.br:993!")
      (wl-smtp-connection-type . 'starttls)
      (wl-smtp-posting-port . 587)
      (wl-smtp-authenticate-type . "login")
