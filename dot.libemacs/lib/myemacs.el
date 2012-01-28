@@ -202,4 +202,11 @@
     (w3m-move-numbered-anchor (read-number "Link #: "))
     (w3m-view-url-with-external-browser)))
 
+; (defun my-jump-and-yank-link ()
+;   (interactive)
+;   (let ((active w3m-link-numbering-mode))
+;     (when (not active) (w3m-link-numbering-mode))
+;     (w3m-move-numbered-anchor (read-number "Link #: "))
+;     (w3m-url-at-point)))
+
 (provide 'myemacs)

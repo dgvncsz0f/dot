@@ -1,12 +1,12 @@
 # my folders
 
 locaweb {
-  %inbox:"diego.souza@locaweb.com.br"/clear@webmail.locaweb.com.br:993! "inbox"
-  %Rascunhos:"diego.souza@locaweb.com.br"/clear@webmail.locaweb.com.br:993! "drafts"
-  %Itens Enviados:"diego.souza@locaweb.com.br"/clear@webmail.locaweb.com.br:993! "sent"
+  %inbox:"diego.souza"/clear@outlook.locaweb.com.br:993! "inbox"
+  %Rascunhos:"diego.souza"/clear@outlook.locaweb.com.br:993! "drafts"
+  %Itens Enviados:"diego.souza"/clear@outlook.locaweb.com.br:993! "sent"
   locaweb-lists {
-    %lists/infra-dev:"diego.souza@locaweb.com.br"/clear@webmail.locaweb.com.br:993! "l/infra"
-    %lists/cloud-dev:"diego.souza@locaweb.com.br"/clear@webmail.locaweb.com.br:993! "l/cloud"
+    %lists/infra-dev:"diego.souza"/clear@outlook.locaweb.com.br:993! "l/infra"
+    %lists/cloud-dev:"diego.souza"/clear@outlook.locaweb.com.br:993! "l/cloud"
   }
 }
 

@@ -34,7 +34,7 @@
    global-mode-string)
   wl-biff-check-folder-list
   '( "%inbox:\"dsouza@bitforest.org\"/clear@imap.gmail.com:993!"
-     "%inbox:\"diego.souza@locaweb.com.br\"/clear@webmail.locaweb.com.br:993!"
+     "%inbox:\"diego.souza\"/clear@outlook.locaweb.com.br:993!"
     )
   wl-biff-check-interval 180
   wl-biff-use-idle-timer t
@@ -115,7 +115,7 @@
      (wl-trash-folder . "%[Gmail]/Trash:\"dsouza@bitforest.org\"/clear@imap.gmail.com:993!")
      ; (wl-draft-folder . "%[Gmail]/Drafts:\"dsouza@bitforest.org\"/clear@imap.gmail.com:993!")
      (wl-smtp-connection-type . 'starttls)
-     (wl-smtp-posting-port . 587)
+     (wl-smtp-posting-port . 25)
      (wl-smtp-authenticate-type . "plain")
      (wl-smtp-posting-user . "dsouza@bitforest.org")
      (wl-smtp-posting-server . "smtp.gmail.com")
@@ -124,13 +124,13 @@
     ("locaweb"
      (wl-from . "diego souza <diego.souza@locaweb.com.br>")
      ("From" . wl-from)
-     ; (wl-draft-folder . "%Rascunhos:\"diego.souza@locaweb.com.br\"/clear@webmail.locaweb.com.br:993!")
-     (wl-fcc . "%Itens Enviados:\"diego.souza@locaweb.com.br\"/clear@webmail.locaweb.com.br:993!")
+     ; (wl-draft-folder . "%Rascunhos:\"diego.souza\"/clear@outlook.locaweb.com.br:993!")
+     (wl-fcc . "%Itens Enviados:\"diego.souza\"/clear@outlook.locaweb.com.br:993!")
      (wl-smtp-connection-type . 'starttls)
-     (wl-smtp-posting-port . 25)
-     (wl-smtp-authenticate-type . "plain")
-     (wl-smtp-posting-user . "diego.souza@locaweb.com.br")
-     (wl-smtp-posting-server . "webmail.locaweb.com.br")
+     (wl-smtp-posting-port . 587)
+     (wl-smtp-authenticate-type . "login")
+     (wl-smtp-posting-user . "diego.souza")
+     (wl-smtp-posting-server . "outlook.locaweb.com.br")
      (signature-file-name . "~/.email-signature.txt")
      )
     )

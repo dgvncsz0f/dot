@@ -1,3 +1,4 @@
 Host *
   ForwardAgent yes
   HashKnownHosts no
+  GSSAPIAuthentication no
