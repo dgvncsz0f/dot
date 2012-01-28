@@ -16,6 +16,8 @@
   elmo-mime-charset 'utf-8
   mime-transfer-level 8
   browse-url-browser-function 'my-browse-url-chrome
+  wl-interactive-send nil
+  wl-interactive-exit nil
 
   ;; Automatic signature insertion
   signature-file-name "~/.email-signature.txt"
@@ -97,6 +99,7 @@
 
   ;; Accounts
   wl-draft-config-matchone t
+  wl-draft-reply-buffer-style 'full
   wl-dispose-folder-alist
   '(
     (".*gmail" . "%[Gmail]/Trash:\"dsouza@bitforest.org\"/clear@imap.gmail.com:993!")
