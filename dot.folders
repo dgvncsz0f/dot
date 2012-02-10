@@ -2,12 +2,7 @@
 
 locaweb {
   %inbox:"diego.souza"/clear@outlook.locaweb.com.br:993! "inbox"
-  %Rascunhos:"diego.souza"/clear@outlook.locaweb.com.br:993! "drafts"
-  %Itens Enviados:"diego.souza"/clear@outlook.locaweb.com.br:993! "sent"
-  locaweb-lists {
-    %lists/infra-dev:"diego.souza"/clear@outlook.locaweb.com.br:993! "l/infra"
-    %lists/cloud-dev:"diego.souza"/clear@outlook.locaweb.com.br:993! "l/cloud"
-  }
+  %sent items:"diego.souza"/clear@outlook.locaweb.com.br:993! "sent"
 }
 
 gmail {

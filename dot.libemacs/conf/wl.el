@@ -16,6 +16,9 @@
   elmo-mime-charset 'utf-8
   mime-transfer-level 8
   browse-url-browser-function 'my-browse-url-chrome
+  wl-interactive-send nil
+  wl-interactive-exit nil
+  wl-draft-always-delete-myself t
 
   ;; Automatic signature insertion
   signature-file-name "~/.email-signature.txt"
@@ -97,6 +100,7 @@
 
   ;; Accounts
   wl-draft-config-matchone t
+  wl-draft-reply-buffer-style 'full
   wl-dispose-folder-alist
   '(
     (".*gmail" . "%[Gmail]/Trash:\"dsouza@bitforest.org\"/clear@imap.gmail.com:993!")
@@ -121,8 +125,7 @@
     ("locaweb"
      (wl-from . "diego souza <diego.souza@locaweb.com.br>")
      ("From" . wl-from)
-     ; (wl-draft-folder . "%Rascunhos:\"diego.souza\"/clear@outlook.locaweb.com.br:993!")
-     (wl-fcc . "%Itens Enviados:\"diego.souza\"/clear@outlook.locaweb.com.br:993!")
+     ("Fcc" . "%sent items:\"diego.souza\"/clear@outlook.locaweb.com.br:993!")
      (wl-smtp-connection-type . 'starttls)
      (wl-smtp-posting-port . 587)
      (wl-smtp-authenticate-type . "login")
