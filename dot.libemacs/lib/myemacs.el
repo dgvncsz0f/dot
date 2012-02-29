@@ -72,6 +72,9 @@
 (defun my-haskell-mode-hook ()
   (setq haskell-program-name "ghci"))
 
+(defun my-python-mode-hook ()
+  (setq py-indent-offset 2))
+
 (defun my-icicle-mode-hook ()
   (when (symbol-value icicle-mode)
     (setq icicle-incremental-completion-flag t)

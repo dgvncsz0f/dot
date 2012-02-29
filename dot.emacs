@@ -32,6 +32,7 @@
 (add-hook 'icicle-mode-hook 'my-icicle-mode-hook)
 (add-hook 'js-mode-hook 'my-js-mode-hook)
 (add-hook 'w3m-mode-hook 'my-w3m-mode-hook)
+(add-hook 'python-mode-hook 'my-python-mode-hook)
 (add-hook 'org-publish-before-export-hook 'my-org-publish-before-export-hook)
 (add-hook 'org-publish-after-export-hook 'my-org-publish-after-export-hook)
 
