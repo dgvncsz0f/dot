@@ -119,9 +119,28 @@ dot_overlay_replace()
   fi
 }
 
+dot_overlay_create()
+{
+  src=$1
+  dst=$2
+
+  if [ ! -f "$dst" ]
+  then
+    dot_print_info "  copying $src to $dst"
+    $bin_mkdir -p $(dirname "$dst") 2>/dev/null
+    $bin_cp "$src" "$dst"
+  fi
+}
+
 dot_overlay()
 {
   dot_print_info "applying overlay"
+
+  for f in $($bin_find $HOME/.dot.overlay/c -type f)
+  do
+    rf=${f##$HOME/.dot.overlay/c/}
+    dot_overlay_create "$f" "$HOME/.dot/$rf"
+  done
 
   for f in $($bin_find $HOME/.dot -type f)
   do
@@ -129,6 +148,7 @@ dot_overlay()
     dot_overlay_replace "$HOME/.dot.overlay/r/$rf" "$HOME/.dot/$rf"
     dot_overlay_merge "$HOME/.dot.overlay/m/$rf" "$HOME/.dot/$rf"
   done
+
 }
 
 dot_fixperms()
