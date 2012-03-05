@@ -220,3 +220,4 @@ dot_omit_stderr_of "git clone" dot_clone_dot
 dot_install
 dot_overlay
 dot_omit_stderr_of "post install" dot_postinst
+
