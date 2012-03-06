@@ -1,8 +1,8 @@
-#!/usr/bin/env expect -f
+#!/usr/bin/expect -f
 
 set password ""
 set passphrase ""
-eval spawn [lrange $argv 0 [llength $argv]]
+eval spawn -noecho [lrange $argv 0 [llength $argv]]
 
 proc read_passwd {} {
     global password
