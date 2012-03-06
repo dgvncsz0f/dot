@@ -14,6 +14,7 @@ proc read_passwd {} {
         set password $expect_out(1,string)
     } else {
         send_user "($name) using cache"
+        sleep 1
     }
 }
 
@@ -26,6 +27,7 @@ proc read_passphrase {} {
         set passphrase $expect_out(1,string)
     } else {
         send_user "($name) using cache"
+        sleep 1
     }
 }
 
@@ -33,7 +35,7 @@ proc purge_cache {} {
     global passphrase
     global password
     global name
-    send_user "($name) purging cache\r"
+    send_user "($name) purging cache\n"
     set passphrase ""
     set password ""
 }
