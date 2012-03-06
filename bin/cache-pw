@@ -1,0 +1,48 @@
+#!/usr/bin/env expect -f
+
+set password ""
+set passphrase ""
+eval spawn [lrange $argv 0 [llength $argv]]
+
+proc read_passwd {} {
+    global password
+    if { $password == "" } {
+        send_user "(ssh-pw) password: "
+        expect_user -re "(.*)\r"
+        set password $expect_out(1,string)
+    } else {
+        send_user "(ssh-pw) using cache"
+    }
+}
+
+proc read_passphrase {} {
+    global passphrase
+    if { $passphrase == "" } {
+        send_user "(ssh-pw) passphrase: "
+        expect_user -re "(.*)\r"
+        set passphrase $expect_out(1,string)
+    } else {
+        send_user "(ssh-pw) using cache"
+    }
+}
+
+proc purge_cache {} {
+    global passphrase
+    global password
+    send_user "(ssh-pw) purging cache\r"
+    set passphrase ""
+    set password ""
+}
+
+interact \
+    ~. {
+        purge_cache
+    } -o \
+    -nobuffer -re "\[pP\]assword.*: $" {
+        read_passwd
+        send "$password\n"
+    } -nobuffer -re "passphrase.*: $" {
+        read_passphrase
+        send "$passphrase\n"
+    }
+
