@@ -19,6 +19,7 @@ proc read_passwd {} {
 
 proc read_passphrase {} {
     global passphrase
+    global name
     if { $passphrase == "" } {
         send_user "($name) passphrase: "
         expect_user -re "(.*)\r"
@@ -31,6 +32,7 @@ proc read_passphrase {} {
 proc purge_cache {} {
     global passphrase
     global password
+    global name
     send_user "($name) purging cache\r"
     set passphrase ""
     set password ""
