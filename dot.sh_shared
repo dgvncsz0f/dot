@@ -59,8 +59,8 @@ my_editors()
 {
   if [ -x "/usr/bin/emacs" ]
   then
-    export VISUAL=/usr/bin/emacs
-    export EDITOR=/usr/bin/emacs
+    export VISUAL=/usr/bin/emacs\ -nw
+    export EDITOR=/usr/bin/emacs\ -nw
   elif [ -x "/usr/bin/vim" ]
   then
     export VISUAL=/usr/bin/vim
