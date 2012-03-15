@@ -16,7 +16,7 @@ myConfig = do { xmproc <- spawnPipe "/usr/bin/xmobar"
                                                          ; setWMName "LG3D"
                                                          }
                                        , modMask    = myModMask
-                                       , terminal   = "/usr/bin/urxvt -e /usr/bin/screen"
+                                       , terminal   = "/usr/bin/urxvt -e /usr/bin/tmux"
                                        } `additionalKeys` [ ((myModMask .|. shiftMask, xK_x), spawn "/usr/bin/xscreensaver-command -activate")
                                                           , ((myModMask .|. shiftMask, xK_s), spawn "/usr/bin/import /tmp/screenshot.png")
                                                           , ((myModMask .|. shiftMask, xK_i), spawn "/usr/bin/emacs")

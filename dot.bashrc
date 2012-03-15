@@ -30,6 +30,10 @@ my_bash_cd()
 my_bash_aliases()
 {
   alias cd=my_bash_cd
+  [ -n "$COLORTERM" ] && { 
+    alias ls="$(which ls) --color"
+    alias grep="$(which grep) --color"
+  }
 }
 
 my_bash_options()
