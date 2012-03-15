@@ -83,6 +83,7 @@ dot_install()
   dot_symlink "$HOME/.dot/dot.gitconfig" "$HOME/.gitconfig"
   dot_symlink "$HOME/.dot/dot.inputrc" "$HOME/.inputrc"
   dot_symlink "$HOME/.dot/dot.screenrc" "$HOME/.screenrc"
+  dot_symlink "$HOME/.dot/dot.tmux.conf" "$HOME/.tmux.conf"
   dot_symlink "$HOME/.dot/dot.xinitrc" "$HOME/.xinitrc"
   dot_symlink "$HOME/.dot/dot.xmobarrc" "$HOME/.xmobarrc"
   dot_symlink "$HOME/.dot/dot.xmodmaprc" "$HOME/.xmodmaprc"

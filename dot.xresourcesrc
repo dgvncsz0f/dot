@@ -1,14 +1,14 @@
 Xft.antialias: true
 
-XTerm*background: black
-XTerm*foreground: white
+XTerm*background: #1f1f1f
+XTerm*foreground: #dcdccc
 XTerm*colorBDMode: true
 XTerm*boldMode: true
 XTerm*saveLines: 4096
 XTerm*geometry: 130x40
 
-UXTerm*background: black
-UXTerm*foreground: white
+UXTerm*background: #1f1f1f
+UXTerm*foreground: #dcdccc
 UXTerm*colorBDMode: true
 UXTerm*boldMode: true
 UXTerm*metaSendsEscape: true
@@ -28,10 +28,44 @@ emacs23.background: black
 emacs23.foreground: white
 emacs23.mode-line.AttributeBox: t
 
-urxvt.foreground: white
-urxvt.background: black
+urxvt.background: #3f3f3f
+urxvt.foreground: #dcdccc
 urxvt.scrollBar: false
 urxvt.saveLines: 0
 urxvt.scrollWithBuffer: false
+urxvt*cursorColor: #dcdccc
+
+! black
+urxvt*color0:      #000000
+! red
+urxvt*color1:      #cc9393
+! green
+urxvt*color2:      #7f9f7f
+! yellow
+urxvt*color3:      #e0cf9f
+! blue
+urxvt*color4:      #8cd0d3
+! purple
+urxvt*color5:      #dc8cc3
+! cyan
+urxvt*color6:      #93e0e3
+! white
+urxvt*color7:      #dcdccc
+! black+
+urxvt*color8:      #000000
+! red+
+urxvt*color9:      #dca3a3
+! green+
+urxvt*color10:     #8fb28f
+! yellow+
+urxvt*color11:     #f0dfaf
+! blue+
+urxvt*color12:     #94bff3
+! purple+
+urxvt*color13:     #dc8cc3
+! cyan+
+urxvt*color14:     #93e0e3
+! white+
+urxvt*color15:     #ffffff
 
 #include ".xresourcesrc.local"
