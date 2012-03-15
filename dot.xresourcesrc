@@ -1,19 +1,11 @@
 Xft.antialias: true
 
-XTerm*background: #1f1f1f
-XTerm*foreground: #dcdccc
-XTerm*colorBDMode: true
-XTerm*boldMode: true
-XTerm*saveLines: 4096
-XTerm*geometry: 130x40
-
-UXTerm*background: #1f1f1f
-UXTerm*foreground: #dcdccc
-UXTerm*colorBDMode: true
-UXTerm*boldMode: true
-UXTerm*metaSendsEscape: true
-UXTerm*saveLines: 4096
-UXTerm*geometry: 130x40
+xterm*background: #3f3f3f
+xterm*foreground: #dcdccc
+xterm*colorBDMode: true
+xterm*boldMode: true
+xterm*saveLines: 4096
+xterm*geometry: 130x40
 
 emacs.menuBar: off
 emacs.toolBar: off
@@ -37,35 +29,51 @@ urxvt*cursorColor: #dcdccc
 
 ! black
 urxvt*color0:      #000000
+xterm*color0:      #000000
 ! red
 urxvt*color1:      #cc9393
+xterm*color1:      #cc9393
 ! green
 urxvt*color2:      #7f9f7f
+xterm*color2:      #7f9f7f
 ! yellow
 urxvt*color3:      #e0cf9f
+xterm*color3:      #e0cf9f
 ! blue
 urxvt*color4:      #8cd0d3
+xterm*color4:      #8cd0d3
 ! purple
 urxvt*color5:      #dc8cc3
+xterm*color5:      #dc8cc3
 ! cyan
 urxvt*color6:      #93e0e3
+xterm*color6:      #93e0e3
 ! white
 urxvt*color7:      #dcdccc
+xterm*color7:      #dcdccc
 ! black+
 urxvt*color8:      #000000
+xterm*color8:      #000000
 ! red+
 urxvt*color9:      #dca3a3
+xterm*color9:      #dca3a3
 ! green+
 urxvt*color10:     #8fb28f
+xterm*color10:     #8fb28f
 ! yellow+
 urxvt*color11:     #f0dfaf
+xterm*color11:     #f0dfaf
 ! blue+
 urxvt*color12:     #94bff3
+xterm*color12:     #94bff3
 ! purple+
 urxvt*color13:     #dc8cc3
+xterm*color13:     #dc8cc3
 ! cyan+
 urxvt*color14:     #93e0e3
+xterm*color14:     #93e0e3
 ! white+
 urxvt*color15:     #ffffff
+xterm*color15:     #ffffff
 
 #include ".xresourcesrc.local"
