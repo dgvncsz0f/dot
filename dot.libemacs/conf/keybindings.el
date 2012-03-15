@@ -13,6 +13,7 @@
 (global-set-key (kbd "C-c u") 'browse-url)
 (global-set-key (kbd "C-o") 'my-append-line)
 (global-set-key (kbd "<f5>") 'ispell-change-dictionary)
+(global-set-key (kbd "C-x D") 'find-name-dired)
 (global-set-key (kbd "S-<f5>") 'my-toggle-flyspell)
 (global-set-key (kbd "<f6>") 'column-highlight-mode)
 (global-set-key (kbd "S-<f6>") 'whitespace-mode)
