@@ -137,11 +137,14 @@ dot_overlay()
 {
   dot_print_info "applying overlay"
 
-  for f in $($bin_find $HOME/.dot.overlay/c -type f)
-  do
-    rf=${f##$HOME/.dot.overlay/c/}
-    dot_overlay_create "$f" "$HOME/.dot/$rf"
-  done
+  if [ -d $HOME/.dot.overlay/c ]
+  then
+    for f in $($bin_find $HOME/.dot.overlay/c -type f)
+    do
+      rf=${f##$HOME/.dot.overlay/c/}
+      dot_overlay_create "$f" "$HOME/.dot/$rf"
+    done
+  fi
 
   for f in $($bin_find $HOME/.dot -type f)
   do
