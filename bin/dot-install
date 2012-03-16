@@ -70,7 +70,6 @@ dot_install()
   dot_print_info "installing dot files"
 
   dot_mkdir   "$HOME/.ssh"
-  $bin_cp     "$HOME/.dot/install.sh" "$HOME/.dot/bin/dot-install"
   dot_symlink "$HOME/.dot/dot.ssh/config" "$HOME/.ssh/config"
   dot_symlink "$HOME/.dot/dot.emacs" "$HOME/.emacs"
   dot_symlink "$HOME/.dot/dot.libemacs" "$HOME/.libemacs"
