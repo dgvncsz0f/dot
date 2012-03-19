@@ -56,7 +56,7 @@ my_ssh_add()
   fi
 }
 
-[ -z "${PS1}" ] && return
+[ -z "${PS1}" ] && exit 0
 [ -f /etc/bash.bashrc ] && source /etc/bash.bashrc
 [ -f /etc/bash_completion ] && source /etc/bash_completion
 [ -f /etc/bashrc ] && source /etc/bashrc
