@@ -19,6 +19,7 @@
   wl-interactive-send t
   wl-interactive-exit nil
   wl-draft-always-delete-myself t
+  wl-user-mail-address-list '("dsouza@bitforest.org" "dsouza.rb@gmail.com" "paravinicius@yahoo.com.br")
 
   ;; Automatic signature insertion
   signature-file-name "~/.email-signature.txt"
