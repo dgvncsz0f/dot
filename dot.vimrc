@@ -155,4 +155,6 @@ if has("printer")
   set printoptions=paper:A4,syntax:y,number:n,wrap:y
 endif
 
-source $HOME/.vimrc.local
+if filereadable("$HOME/.vimrc.local")
+  source $HOME/.vimrc.local
+endif
