@@ -179,6 +179,7 @@ dot_postinst()
   dot_fixperms
   [ -x $bin_xmonad ] && dot_post_xmonad
   [ -x $bin_emacs ]  && dot_post_emacs
+  return 0
 }
 
 dot_omit_stdout_of()
