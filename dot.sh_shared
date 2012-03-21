@@ -78,6 +78,11 @@ my_setenv()
   export GPG_TTY=$(/usr/bin/tty)
   export LANG=en_US.UTF-8
   export LC_ALL=en_US.UTF-8
+  if [ "`id -u`" -eq 0 ]; then
+    export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.dot/bin"
+  else
+    export PATH="/usr/local/bin:/usr/bin:/bin:/usr/games:$HOME/.dot/bin"
+  fi
 }
 
 my_aliases()
