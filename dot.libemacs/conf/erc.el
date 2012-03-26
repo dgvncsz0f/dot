@@ -23,6 +23,7 @@
 (setq erc-log-channels-directory "~/.irclogs/")
 (setq erc-save-buffer-on-part t)
 (setq erc-hide-timestamps nil)
+(setq erc-hide-list '("JOIN" "PART" "QUIT"))
 (setq erc-max-buffer-size 20000)
 (setq erc-truncate-buffer-on-save t)
 (setq erc-prompt-for-nickserv-password nil)
@@ -35,6 +36,12 @@
 (setq erc-autojoin-channels-alist
           '(("freenode" "#haskell" "#agda" "#latex" "#emacs" "##devel-pedreiro" "#guru-sp")
             ("locaweb" "#cloud" "#infradev")))
+
+(defadvice erc-auto-query (around erc-auto-query-dirtyfix activate)
+  (let ((old-erc-query-display erc-query-display))
+    (setq erc-query-display erc-auto-query)
+    ad-do-it
+    (setq erc-query-display old-erc-query-display)))
 
 ;; Source: http://www.emacswiki.org/emacs/ErcChannelTracking#toc5
 (defadvice erc-track-find-face (around erc-track-find-face-promote-query activate)
