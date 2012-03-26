@@ -6,7 +6,7 @@ site=$(/usr/bin/basename $1)
 range=${2:-10,20}
 pws_path "$site"
 
-while [ 1 ]
+while true
 do
   nextpwd=$(/usr/bin/perl -e "use Crypt::GeneratePassword qw(word chars); print chars(${range});")
   echo write \`$nextpwd\' to $pws_path
