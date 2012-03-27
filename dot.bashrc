@@ -1,3 +1,4 @@
+#!/bin/bash
 # -*- mode: Shell-script; sh-basic-offset: 2; -*-
 
 source $HOME/.dot/dot.sh_shared
@@ -56,20 +57,21 @@ my_ssh_add()
   fi
 }
 
-[ -z "${PS1}" ] && exit 0
-[ -f /etc/bash.bashrc ] && source /etc/bash.bashrc
-[ -f /etc/bash_completion ] && source /etc/bash_completion
-[ -f /etc/bashrc ] && source /etc/bashrc
-[ -f "${HOME}/.bashrc.local" ] && source "${HOME}/.bashrc.local"
+[ -n "${PS1}" ] && {
+  [ -f /etc/bash.bashrc ] && source /etc/bash.bashrc
+  [ -f /etc/bash_completion ] && source /etc/bash_completion
+  [ -f /etc/bashrc ] && source /etc/bashrc
+  [ -f "${HOME}/.bashrc.local" ] && source "${HOME}/.bashrc.local"
 
-my_bash_options
-my_colors
-my_setenv
-my_editors
-my_aliases
-my_encfs
-my_loadrvm
-my_bash_history
-my_bash_prompt
-my_bash_aliases
-my_ssh_add
+  my_bash_options
+  my_colors
+  my_setenv
+  my_editors
+  my_aliases
+  my_encfs
+  my_loadrvm
+  my_bash_history
+  my_bash_prompt
+  my_bash_aliases
+  my_ssh_add
+}

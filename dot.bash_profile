@@ -1,3 +1,4 @@
+#!/bin/bash
 # -*- mode: Shell-script; sh-basic-offset: 2; -*-
 
 [ -f /etc/profile ] && source /etc/profile
