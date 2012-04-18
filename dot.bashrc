@@ -18,19 +18,8 @@ my_bash_history()
   # http://stackoverflow.com/questions/103944/real-time-history-export-amongst-bash-terminal-windows/3055135#3055135
 }
 
-my_bash_cd()
-{
-  local todir=$HOME
-  if [ $# -eq 1 ]
-  then
-    todir=$1
-  fi
-  builtin pushd "$todir" >/dev/null
-}
-
 my_bash_aliases()
 {
-  alias cd=my_bash_cd
   [ -n "$COLORTERM" ] && { 
     alias ls="$(which ls) --color"
     alias grep="$(which grep) --color"
