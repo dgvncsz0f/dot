@@ -12,7 +12,7 @@ pws_path()
 _pwdcomp()
 {
   local cur="${COMP_WORDS[COMP_CWORD]}"
-  COMPREPLY=( $(compgen -W "$(pwdls | xargs echo)" -- "${cur}" ) )
+  COMPREPLY=( $(compgen -o filenames -W "$(pwdls | xargs echo)" -- "${cur}" ) )
   return 0
 }
 
