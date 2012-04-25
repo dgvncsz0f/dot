@@ -112,7 +112,7 @@ my_encfs()
   then
     if [ -d "${HOME}/.sec" ]
     then
-      while [ "`\"${MOUNT}\" | \"${GREP}\" /home/dsouza/sec | \"${WC}\" -l`" != "1" ]
+      while [ "`\"${MOUNT}\" | \"${GREP}\" "${HOME}/sec" | \"${WC}\" -l`" != "1" ]
       do
         "${ENCFS}" "${HOME}/.sec" "${HOME}/sec" -o nonempty
       done
