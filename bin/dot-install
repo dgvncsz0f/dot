@@ -57,7 +57,7 @@ dot_symlink()
 
 dot_clone_dot()
 {
-  dot_print_info "cloning dot into $HOME/.dot"
+  dot_print_info "cloning $arg_repo into $HOME/.dot"
   if [ -d "$HOME/.dot" ]
   then
     $bin_rm -rf $HOME/.dot
