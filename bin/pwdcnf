@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pwsroot="$HOME/dev/github/priv/passwd"
+pwsroot="$HOME/pwsstore"
 binroot=$HOME/.dot/bin
 
 pws_path()
