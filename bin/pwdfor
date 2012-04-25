@@ -2,7 +2,7 @@
 
 set -o pipefail
 
-source $HOME/.dot/bin/pwdcnf
+. $HOME/.dot/bin/pwdcnf
 
 $binroot/pwdshow $@ | /usr/bin/tr -d $'\n' | /usr/bin/xsel -p
 

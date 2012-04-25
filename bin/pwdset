@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $HOME/.dot/bin/pwdcnf
+. $HOME/.dot/bin/pwdcnf
 
 site=$(/usr/bin/basename $1)
 pws_path "$site"

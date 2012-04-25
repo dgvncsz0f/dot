@@ -1,5 +1,5 @@
 #!/bin/bash
 
-source $HOME/.dot/bin/pwdcnf
+. $HOME/.dot/bin/pwdcnf
 
-find "${pwsroot}" -type f -name \*.gpg -exec basename \{\} .gpg \; | sort
+find -L "${pwsroot}" -type f -name \*.gpg -exec basename \{\} .gpg \; | sort
