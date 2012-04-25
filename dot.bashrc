@@ -1,7 +1,7 @@
 #!/bin/bash
 # -*- mode: Shell-script; sh-basic-offset: 2; -*-
 
-source $HOME/.dot/dot.sh_shared
+. $HOME/.dot/dot.sh_shared
 
 my_bash_prompt()
 {
@@ -48,17 +48,17 @@ my_ssh_add()
 
 my_bash_completion()
 {
-  [ -f /etc/bash_completion ] && source /etc/bash_completion
+  [ -f /etc/bash_completion ] && . /etc/bash_completion
   for f in $(find "${HOME}/.dot/dot.bash_completion.d" -type f)
   do
-    source "$f"
+    . "$f"
   done
 }
 
 [ -n "${PS1}" ] && {
-  [ -f /etc/bash.bashrc ] && source /etc/bash.bashrc
-  [ -f /etc/bashrc ] && source /etc/bashrc
-  [ -f "${HOME}/.bashrc.local" ] && source "${HOME}/.bashrc.local"
+  [ -f /etc/bash.bashrc ] && . /etc/bash.bashrc
+  [ -f /etc/bashrc ] && . /etc/bashrc
+  [ -f "${HOME}/.bashrc.local" ] && . "${HOME}/.bashrc.local"
 
   my_bash_options
   my_colors

@@ -98,7 +98,7 @@ my_loadrvm()
 {
   if [ -f ~/.rvm/scripts/rvm ]
   then
-    source ~/.rvm/scripts/rvm
+    . ~/.rvm/scripts/rvm
   fi
 }
 

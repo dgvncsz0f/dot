@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $HOME/.dot/bin/pwdcnf
+. $HOME/.dot/bin/pwdcnf
 
 pws_path "$1"
 
