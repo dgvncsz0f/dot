@@ -2,7 +2,4 @@
 
 source $HOME/.dot/bin/pwdcnf
 
-for file in $(/bin/ls -1 "${pwsroot}")
-do
-  /usr/bin/basename "${file}" .gpg
-done
+find "${pwsroot}" -type f -name \*.gpg -exec basename \{\} .gpg \;

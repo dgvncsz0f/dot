@@ -1,8 +1,22 @@
+#!/bin/bash
+
 pwsroot="$HOME/dev/github/priv/passwd"
 binroot=$HOME/.dot/bin
 
-function pws_path
+pws_path()
 {
   local file=$(/usr/bin/basename $1)
   pws_path="${pwsroot}/${file}.gpg"
 }
+
+_pwdcomp()
+{
+  local cur files
+  COMPREPLY=()
+  cur="${COMP_WORDS[COMP_CWORD]}"
+  files=$(pwdls)
+
+  COMPREPLY=( $(compgen -W "${files}" -- ${cur} ) )
+  return 0
+}
+
