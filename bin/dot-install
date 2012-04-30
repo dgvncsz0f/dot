@@ -164,7 +164,7 @@ dot_fixperms()
 dot_post_xmonad()
 {
   dot_print_info "  recompiling xmonad"
-  $bin_xmonad --recompile
+  $bin_xmonad --recompile && $bin_xmonad --restart
 }
 
 dot_post_emacs()
