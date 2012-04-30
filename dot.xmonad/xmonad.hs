@@ -11,7 +11,7 @@ import System.IO
 
 myConfig = do { xmproc <- spawnPipe "/usr/bin/xmobar"
               ; return $ defaultConfig { manageHook = manageDocks <+> myManageHook <+> manageHook defaultConfig
-                                       , layoutHook = avoidStruts $ (tall ||| Mirror tall ||| Full ||| simpleTabbed)
+                                       , layoutHook = avoidStruts $ (simpleTabbed ||| tall)
                                        , logHook    = do { dynamicLogWithPP $ xmobarPP { ppOutput = hPutStrLn xmproc
                                                                                        , ppTitle  = xmobarColor "black" "" . shorten 50
                                                                                        }
