@@ -24,6 +24,7 @@ my_bash_aliases()
     alias ls="$(which ls) --color"
     alias grep="$(which grep) --color"
   }
+  alias stdred="LD_PRELOAD=\"$HOME/.dot/lib64/stderred.so $LD_PRELOAD\""
 }
 
 my_bash_options()
