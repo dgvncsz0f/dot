@@ -82,4 +82,5 @@
 (load "~/.libemacs/conf/movement.el")
 (load "~/.libemacs/conf/wl.el")
 (load "~/.libemacs/conf/dired.el")
+(load "~/.libemacs/conf/epresent.el")
 (load custom-file)

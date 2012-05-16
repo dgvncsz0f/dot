@@ -1,0 +1,12 @@
+(require 'epresent)
+
+(define-key org-mode-map (kbd "<f8>") '(lambda ()
+                                         (interactive)
+                                         (linum-mode)
+                                         (epresent-run)))
+(define-key epresent-mode-map (kbd "+") 'epresent-increase-font)
+(define-key epresent-mode-map (kbd "-") 'epresent-descrease-font)
+(define-key epresent-mode-map (kbd "q") '(lambda ()
+                                           (interactive)
+                                           (linum-mode)
+                                           (epresent-quit)))
