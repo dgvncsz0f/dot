@@ -20,7 +20,7 @@ myConfig = do { xmproc <- spawnPipe "/usr/bin/xmobar"
                                        , modMask    = myModMask
                                        , terminal   = "/usr/bin/urxvt -e /usr/bin/tmux"
                                        , workspaces = myWorkspaces
-                                       } `additionalKeys` [ ((myModMask .|. shiftMask, xK_x),     spawn "/usr/bin/xscreensaver-command -activate")
+                                       } `additionalKeys` [ ((myModMask .|. shiftMask, xK_x),     spawn "/usr/bin/slock")
                                                           , ((myModMask .|. shiftMask, xK_s),     spawn "/usr/bin/import /tmp/screenshot.png")
                                                           , ((myModMask .|. shiftMask, xK_e),     spawn "/usr/bin/editor")
                                                           , ((myModMask .|. shiftMask, xK_b),     spawn "/usr/bin/x-www-browser")
