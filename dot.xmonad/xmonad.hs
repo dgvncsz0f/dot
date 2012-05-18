@@ -25,6 +25,8 @@ myConfig = do { xmproc <- spawnPipe "/usr/bin/xmobar"
                                                           , ((myModMask .|. shiftMask, xK_e),     spawn "/usr/bin/editor")
                                                           , ((myModMask .|. shiftMask, xK_b),     spawn "/usr/bin/x-www-browser")
                                                           , ((myModMask .|. shiftMask, xK_space), spawn "/usr/bin/kupfer")
+                                                          , ((myModMask .|. shiftMask, xK_equal), spawn "/usr/bin/aumix -w +10")
+                                                          , ((myModMask .|. shiftMask, xK_minus), spawn "/usr/bin/aumix -w -10")
                                                           , ((myModMask,               xK_v),     windows copyToAll)
                                                           , ((myModMask .|. shiftMask, xK_v),     killAllOtherCopies)
                                                           ]
