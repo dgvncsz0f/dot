@@ -3,6 +3,7 @@
 set password ""
 set passphrase ""
 set name "cache-pw"
+set timeout 300
 eval spawn -noecho [lrange $argv 0 [llength $argv]]
 
 proc read_passwd {} {
