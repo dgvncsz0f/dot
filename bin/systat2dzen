@@ -249,7 +249,9 @@ class render(object):
 
   def dump_swpinfo(self):
     mem = meminfo()
-    return("swap %s" % pbar(1 - mem["swap_free_%"], 50, 10))
+    p   = mem["swap_free_%"]
+    # return("swap %s" % pbar(1 - mem["swap_free_%"], 50, 10))
+    return("swap {0: >4,.0f}%".format((1-p)*100))
 
   def dump_cpuinfo(self):
     return("cpu %s" % pbar(1 - self.cpu_sampler.get([1])[0], 50, 10))
@@ -268,11 +270,11 @@ class render(object):
   def dump(self):
     write("^tw() ")
     write(reduce(lambda acc, x: acc + sep() + x, [ self.dump_cpuinfo()
-                                                 , self.dump_loadinfo()
                                                  , self.dump_meminfo()
                                                  , self.dump_swpinfo()
                                                  , self.dump_netinfo()
                                                  , self.dump_ioinfo()
+                                                 , self.dump_loadinfo()
                                                  , self.dump_system()
                                                  ]))
     eof()
