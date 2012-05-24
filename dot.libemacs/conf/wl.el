@@ -28,18 +28,18 @@
 
   ;; Notification
   ;; Set mail-icon to be shown universally in the modeline.
-  global-mode-string
-  (cons
-   '(wl-modeline-biff-status
-     wl-modeline-biff-state-on
-     wl-modeline-biff-state-off)
-   global-mode-string)
-  wl-biff-check-folder-list
-  '( "%inbox:\"dsouza@bitforest.org\"/clear@imap.gmail.com:993!"
-     "%inbox:\"diego.souza\"/clear@outlook.locaweb.com.br:993!"
-    )
-  wl-biff-check-interval 180
-  wl-biff-use-idle-timer t
+  ;; global-mode-string
+  ;; (cons
+  ;;  '(wl-modeline-biff-status
+  ;;    wl-modeline-biff-state-on
+  ;;    wl-modeline-biff-state-off)
+  ;;  global-mode-string)
+  ;; wl-biff-check-folder-list
+  ;; '( "%inbox:\"dsouza@bitforest.org\"/clear@imap.gmail.com:993!"
+  ;;    "%inbox:\"diego.souza\"/clear@outlook.locaweb.com.br:993!"
+  ;;   )
+  ;; wl-biff-check-interval 180
+  ;; wl-biff-use-idle-timer t
   wl-strict-diff-folders '("^%inbox.*")
   wl-folder-use-server-diff t
 
@@ -202,11 +202,11 @@
     (wl-summary-sync-update)
     ))
 
-(add-hook
- 'wl-biff-notify-hook
- '(lambda ()
-    (my-wl-update-current-summaries)
-    ))
+;; (add-hook
+;;  'wl-biff-notify-hook
+;;  '(lambda ()
+;;     (my-wl-update-current-summaries)
+;;     ))
 
 (add-hook
  'wl-init-hook
@@ -227,11 +227,11 @@
 
      ;; elmo-imap4-set-seen-flag-explicitly doesn't seem to work
      ;; little hack for now
-     (defadvice wl-biff-check-folder (after my-wl-biff-check-folder (folder))
-       "This function ignores NEW messages and uses UNREAD instead"
-       (let ((new (nth 1 ad-return-value))
-             (tail (cdr ad-return-value)))
-         (setq ad-return-value (cons new tail))))
+     ;; (defadvice wl-biff-check-folder (after my-wl-biff-check-folder (folder))
+     ;;   "This function ignores NEW messages and uses UNREAD instead"
+     ;;   (let ((new (nth 1 ad-return-value))
+     ;;         (tail (cdr ad-return-value)))
+     ;;     (setq ad-return-value (cons new tail))))
      ;; (ad-activate 'wl-biff-check-folder)
      ))
 
