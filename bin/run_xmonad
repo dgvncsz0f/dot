@@ -1,3 +1,0 @@
-#!/bin/sh
-
-/usr/bin/xmonad | $HOME/.dot/bin/run_dzen2_bottom -ta l
