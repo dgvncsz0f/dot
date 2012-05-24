@@ -16,3 +16,4 @@ Assuming you have git installed::
 
   # Another option:
   $ sh bin/dot-install file:///path/to/your/dot/project
+

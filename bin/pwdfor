@@ -4,7 +4,7 @@ set -o pipefail
 
 . $HOME/.dot/bin/pwdcnf
 
-$binroot/pwdshow $@ | /usr/bin/tr -d $'\n' | /usr/bin/xsel -p
+$binroot/pwdshow "$@" | /usr/bin/tr -d $'\n' | /usr/bin/xsel -p
 
 if [ "$?" == "0" ]
 then

@@ -42,4 +42,5 @@ myConfig = return $ defaultConfig { manageHook  = manageDocks <+> myManageHook <
         lFull = named "full" Full
 
 main :: IO ()
-main = fmap ewmh myConfig >>= xmonad
+main = fixEncoding >> fmap ewmh myConfig >>= xmonad
+  where fixEncoding = hSetBinaryMode stdout True -- xmonad handling utf8 encoding
