@@ -9,31 +9,26 @@ import XMonad.Util.Run (spawnPipe)
 import XMonad.Util.EZConfig (additionalKeys)
 import System.IO
 
-myConfig = do { xmproc <- spawnPipe "/usr/bin/xmobar"
-              ; return $ defaultConfig { manageHook = manageDocks <+> myManageHook <+> manageHook defaultConfig
-                                       , layoutHook = avoidStruts $ (simpleTabbed ||| tall)
-                                       , logHook    = do { dynamicLogWithPP $ xmobarPP { ppOutput = hPutStrLn xmproc
-                                                                                       , ppTitle  = xmobarColor "black" "" . shorten 50
-                                                                                       }
-                                                         ; setWMName "LG3D"
-                                                         }
-                                       , modMask    = myModMask
-                                       , terminal   = "/usr/bin/urxvt -e /usr/bin/tmux"
-                                       , workspaces = myWorkspaces
-                                       } `additionalKeys` [ ((myModMask .|. shiftMask, xK_x),     spawn "/usr/bin/slock")
-                                                          , ((myModMask .|. shiftMask, xK_s),     spawn "/usr/bin/import /tmp/screenshot.png")
-                                                          , ((myModMask .|. shiftMask, xK_e),     spawn "/usr/bin/editor")
-                                                          , ((myModMask .|. shiftMask, xK_b),     spawn "/usr/bin/x-www-browser")
-                                                          , ((myModMask .|. shiftMask, xK_space), spawn "/usr/bin/kupfer")
-                                                          , ((myModMask .|. shiftMask, xK_equal), spawn "/usr/bin/aumix -w +10")
-                                                          , ((myModMask .|. shiftMask, xK_minus), spawn "/usr/bin/aumix -w -10")
-                                                          , ((myModMask,               xK_v),     windows copyToAll)
-                                                          , ((myModMask .|. shiftMask, xK_v),     killAllOtherCopies)
-                                                          ]
-              }
+myConfig = return $ defaultConfig { manageHook = manageDocks <+> myManageHook <+> manageHook defaultConfig
+                                  , layoutHook = avoidStruts $ (simpleTabbed ||| tall)
+                                  , logHook    = do { dynamicLogWithPP dzenPP
+                                                    ; setWMName "LG3D"
+                                                    }
+                                  , modMask    = myModMask
+                                  , terminal   = "/usr/bin/urxvt -e /usr/bin/tmux"
+                                  , workspaces = myWorkspaces
+                                  } `additionalKeys` [ ((myModMask .|. shiftMask, xK_x),     spawn "/usr/bin/slock")
+                                                     , ((myModMask .|. shiftMask, xK_s),     spawn "/usr/bin/import /tmp/screenshot.png")
+                                                     , ((myModMask .|. shiftMask, xK_e),     spawn "/usr/bin/editor")
+                                                     , ((myModMask .|. shiftMask, xK_b),     spawn "/usr/bin/x-www-browser")
+                                                     , ((myModMask .|. shiftMask, xK_space), spawn "/usr/bin/kupfer")
+                                                     , ((myModMask .|. shiftMask, xK_equal), spawn "/usr/bin/aumix -w +10")
+                                                     , ((myModMask .|. shiftMask, xK_minus), spawn "/usr/bin/aumix -w -10")
+                                                     , ((myModMask,               xK_v),     windows copyToAll)
+                                                     , ((myModMask .|. shiftMask, xK_v),     killAllOtherCopies)
+                                                     ]
   where myManageHook = composeAll [ className =? "Pidgin"      --> doFloat
                                   , className =? "Skype"       --> doFloat
-                                  , appName   =? "stalonetray" --> doShift "9"
                                   , isFullscreen               --> doFullFloat
                                   ]
 

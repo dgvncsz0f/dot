@@ -1,0 +1,289 @@
+#!/usr/bin/python
+# -*- coding: utf-8; -*-
+
+import re
+import os
+import sys
+import math
+import time
+import threading
+import subprocess
+import platform
+import optparse
+from optparse import OptionParser
+
+def sectorsz(device):
+  p = subprocess.Popen(["/usr/sbin/blktool", "/dev/%s" % device, "sector-sz"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+  (out, _) = p.communicate()
+  if (p.wait() == 0):
+    return(int(out))
+  else:
+    return(512)
+
+def safe(f, default, *args, **kwargs):
+  try:
+    return(f(*args, **kwargs))
+  except:
+    return(default)
+
+fmap_id   = lambda x: x
+fmap_cons = lambda x: [x]
+
+class sample(object):
+
+  def __init__(self, *args):
+    self.s = 1
+    self.r = None
+    self.t = threading.Thread(target=self.invoke, args=args)
+    self.t.setDaemon(True)
+    self.t.start()
+
+  def sample(self, f, h, fmap=fmap_id):
+    odata = fmap(f())
+    avg_f = lambda (x,y): x/float(self.s) + y
+    zeros = lambda x: map(lambda _: 0, range(x))
+    while True:
+      r = []
+      for i in range(self.s):
+        time.sleep(1)
+        ndata = fmap(f())
+        diff  = map(lambda (x,y): h(x,y), zip(ndata, odata))
+        odata = ndata
+        if (len(r) == 0):
+          r = zeros(len(diff))
+        r = map(avg_f, zip(diff, r))
+      self.r = r
+
+  def invoke(self, *args):
+    self.r = self.sample(*args)
+
+  def get(self, default):
+    return([self.r, default][self.r is None])
+
+def retrieve(pattern, text, default=None):
+  m = re.search(pattern, text, re.M)
+  if (m):
+    return(m.groups())
+  else:
+    return(default)
+
+def human_unit(n, fmt="{0: >6,.1f} {1:s}"):
+  unit = ["b/s", "K/s", "M/s", "G/s", "T/s", "P/s", "E/s", "Z/s", "Y/s"]
+  while (n>512 and len(unit)>1):
+    n = n / 1024.0
+    unit.pop(0)
+  return(fmt.format(n, unit.pop(0)))
+
+def human_time(t, fmt="{0:.0f}{1:s}"):
+  unit = [(60,"m"), (60,"h"), (24,"d")]
+  u    = "s"
+  for (x,u1) in unit:
+    if (t < x):
+      break
+    t = t / x
+    u = u1
+  return(fmt.format(t, u))
+
+def meminfo():
+  result = {}
+  with file("/proc/meminfo", "r") as f:
+    output = f.read()
+    result["total"]   = map(long, retrieve(r"^MemTotal:\s+(\d+) kB", output, [0]))[0]
+    result["free"]    = map(long, retrieve(r"^MemFree:\s+(\d+) kB", output, [0]))[0]
+    result["buffers"] = map(long, retrieve(r"^Buffers:\s+(\d+) kB", output, [0]))[0]
+    result["cached"]  = map(long, retrieve(r"^Cached:\s+(\d+) kB", output, [0]))[0]
+    result["swap_total"] = map(long, retrieve(r"^SwapTotal:\s+(\d+) kB", output, [0]))[0]
+    result["swap_free"]  = map(long, retrieve(r"^SwapFree:\s+(\d+) kB", output, [0]))[0]
+
+  free  = result["free"] + result["buffers"] + result["cached"]
+  total = result["total"]
+  result["free_%"] = free / float(total)
+
+  free  = result["swap_free"]
+  total = result["swap_total"]
+  result["swap_free_%"] = free / float(total)
+
+  return(result)
+
+def cpustat():
+  result = {}
+  with file("/proc/stat", "r") as f:
+    output = f.read()
+    for line in output.splitlines():
+      if (line.startswith("cpu")):
+        cpu = line.split()
+        result[cpu[0]] = map(long, cpu[1:])
+    return(result)
+
+def iostat(device, size):
+  def stat():
+    with file("/sys/block/%s/stat" % device, "r") as f:
+      output = f.read()
+      return(map(long, output.split()))
+
+  data = safe(stat, [0,0,0,0,0,0,0])
+  return(data[2]*size, data[6]*size)
+
+def sysinfo():
+  now  = time.strftime("%a, %b %Y %H:%M")
+  node = platform.node()
+  return({ "time": now,
+           "hostfdqn": node,
+           "hostname": "".join(node.split(".")[:1])
+         })
+
+def loadinfo():
+  with file("/proc/loadavg", "r") as f:
+    output = f.read()
+    (load1, load5, load15) = map(float, output.split()[:3])
+  with file("/proc/uptime", "r") as f:
+    output = f.read()
+    uptime = map(float, output.split())[0]
+  return(uptime, load1, load5, load15)
+
+def netinfo():
+  RTF_UP      = 0x0001
+  RTF_GATEWAY = 0x0002
+  rtf_flag    = lambda x,f: int(x)&f==f
+  def active_if():
+    with file("/proc/net/route", "r") as f:
+      output = f.read()
+      for line in output.splitlines()[1:]:
+        (ifname, dest, gw, flags) = line.split()[:4]
+        if (rtf_flag(flags, RTF_UP) and rtf_flag(flags, RTF_GATEWAY)):
+          if (long(dest, 16) == 0):
+            return(ifname)
+    return("--")
+
+  def wireless(ifname):
+    with file("/proc/net/wireless", "r") as f:
+      output = f.read()
+      for line in output.splitlines():
+        if (line.startswith(ifname)):
+          return(True)
+      return(False)
+
+  ifname = active_if()
+  return({ "ifname": ifname,
+           "wireless": wireless(ifname),
+         })
+
+def netstat(ifname):
+  with file("/proc/net/dev", "r") as f:
+    output  = f.read()
+    rxbytes = -1
+    txbytes = -1
+    for line in output.splitlines():
+      data = filter(lambda x: len(x.strip())>0, re.split(r"[ |:]", line))
+      if (rxbytes==-1 and "bytes" in data):
+        rxbytes = data.index("bytes")
+      if (txbytes==-1 and rxbytes!=-1):
+        txbytes = data.index("bytes", rxbytes+1)
+      if (ifname in data):
+        result = map(long, data[1:])
+        return(result[rxbytes-1], result[txbytes-1])
+    return([0, 0])
+
+def bar(w, h):
+  fmt = "^r(%dx%d)"
+  return(fmt % (long(w), long(h)))
+
+def with_color(s, fg=None, bg=None):
+  if (fg is not None):
+    s = "%s%s%s" % (set_color(fg=fg), s, set_color(fg=""))
+  if (bg is not None):
+    s = "%s%s%s" % (set_color(bg=bg), s, set_color(bg=""))
+  return(s)
+
+def set_color(fg=None, bg=None):
+  s = ""
+  if (bg is not None):
+    s = "^bg(%s)%s" % (bg, s)
+  if (fg is not None):
+    s = "^fg(%s)%s" % (fg, s)
+  return(s)
+
+def pbar(p, w, h, white="", black="#2b2b2b"):
+  left  = math.ceil(p * w)
+  right = w - left
+  mybar = set_color(fg=white) + bar(left, h) + set_color(fg=black) + bar(right, h)
+  mybar = with_color(mybar, fg=black)
+  fmt   = "{0: >4,.0f}% {1:s}"
+  return(fmt.format(p*100, mybar))
+
+def sep():
+  return(with_color(" ||", fg="#666666"))
+
+def write(s):
+  sys.stdout.write(s.encode("utf-8"))
+
+def eof():
+  sys.stdout.write("\n")
+  sys.stdout.flush()
+
+class render(object):
+
+  def __init__(self, device):
+    cpu_diff = lambda (nv,nt),(ov,ot): (nv - ov)/max(float(nt - ot), 1.0)
+    cpu_read = lambda cpu: [(cpu["cpu"][3], sum(cpu["cpu"]))]
+    net_diff = lambda n,o: n-o
+    io_diff  = net_diff
+    secsz    = sectorsz(device)
+    self.device      = device
+    self.cpu_sampler = sample(cpustat, cpu_diff, cpu_read)
+    self.net_sampler = sample(lambda: netstat(netinfo()["ifname"]), net_diff)
+    self.io_sampler  = sample(lambda: iostat(device, secsz), io_diff)
+
+  def dump_meminfo(self):
+    mem = meminfo()
+    return("mem %s" % pbar(1 - mem["free_%"], 50, 10))
+
+  def dump_system(self):
+    machine = sysinfo()
+    return(" %s - %s " % (machine["hostname"],machine["time"]))
+
+  def dump_loadinfo(self):
+    load   = loadinfo()
+    uptime = human_time(load[0])
+    return("uptime {0:s} {1: >5,.2f} {2: >5,.2f} {3: >5,.2f}".format(uptime, load[1], load[2], load[3]))
+
+  def dump_swpinfo(self):
+    mem = meminfo()
+    return("swap %s" % pbar(1 - mem["swap_free_%"], 50, 10))
+
+  def dump_cpuinfo(self):
+    return("cpu %s" % pbar(1 - self.cpu_sampler.get([1])[0], 50, 10))
+
+  def dump_netinfo(self):
+    downstream = human_unit(self.net_sampler.get([0,0])[0], fmt=u"{0: >6,.1f}⬇ {1:s}")
+    upstream   = human_unit(self.net_sampler.get([0,0])[1], fmt=u"{0: >6,.1f}⬆ {1:s}")
+    ifname     = netinfo()["ifname"]
+    return("%s %s %s" % (ifname, downstream, upstream))
+
+  def dump_ioinfo(self):
+    reads  = human_unit(self.io_sampler.get([0,0])[0], fmt=u"{0: >6,.1f}⬆ {1:s}")
+    writes = human_unit(self.io_sampler.get([0,0])[1], fmt=u"{0: >6,.1f}⬇ {1:s}")
+    return("%s %s %s" % (self.device, reads, writes))
+
+  def dump(self):
+    write("^tw() ")
+    write(reduce(lambda acc, x: acc + sep() + x, [ self.dump_cpuinfo()
+                                                 , self.dump_loadinfo()
+                                                 , self.dump_meminfo()
+                                                 , self.dump_swpinfo()
+                                                 , self.dump_netinfo()
+                                                 , self.dump_ioinfo()
+                                                 , self.dump_system()
+                                                 ]))
+    eof()
+
+if __name__ == "__main__":
+  parser = OptionParser()
+  parser.add_option("-d", "--disk-device", dest="device", default="sda",
+                    help="report information about a given disk device", metavar="DEV")
+  (options, args) = parser.parse_args()
+  r = render(device=options.device)
+  while True:
+    r.dump()
+    time.sleep(1)
+

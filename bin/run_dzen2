@@ -1,0 +1,26 @@
+#!/bin/sh
+
+dzen2_height=${dzen2_height:-16}
+color_fg="#dcdccc"
+color_bg="#3f3f3f"
+screenh=$(/usr/bin/xwininfo -stats -root | grep Height | sed -r 's/\s*height: ([0-9]+).*/\1/i')
+fontname="xft:dejavu sans mono:pixelsize=11"
+self=$(basename $0)
+
+run_dzen2_bottom()
+{
+  ypos=$(( $screenh - $dzen2_height ))
+  exec dzen2 -h $dzen2_height -y $ypos -x 0 -fn "$fontname" -bg "$color_bg" -fg "$color_fg" $@
+}
+
+run_dzen2_top()
+{
+  exec dzen2 -h $dzen2_height -y 0 -x 0 -fn "$fontname" -bg "$color_bg" -fg "$color_fg" $@
+}
+
+if [ "$self" = run_dzen2_bottom ]
+then
+  run_dzen2_bottom $@
+else
+  run_dzen2_top $@
+fi
