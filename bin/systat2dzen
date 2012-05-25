@@ -10,6 +10,8 @@ import threading
 import subprocess
 import platform
 import optparse
+import urlparse
+import imaplib
 from optparse import OptionParser
 
 def sectorsz(device):
@@ -29,22 +31,46 @@ def safe(f, default, *args, **kwargs):
 fmap_id   = lambda x: x
 fmap_cons = lambda x: [x]
 
-class sample(object):
+class background(object):
+
+  def __init__(self, f, interval, *args, **kwargs):
+    self.f      = f
+    self.args   = args
+    self.kwargs = kwargs
+    self.out    = None
+    self.interval = interval
+    t = threading.Thread(target=self.invoke)
+    t.setDaemon(True)
+    t.start()
+
+  def output(self, out):
+    self.out = out
+
+  def invoke(self):
+    while (True):
+      self.f(self.output, *self.args, **self.kwargs)
+      time.sleep(self.interval)
+
+  def get(self, default):
+    if (self.out is None):
+      return(default)
+    else:
+      return(self.out)
+
+class sampler(background):
 
   def __init__(self, *args):
-    self.s = 1
-    self.r = None
-    self.t = threading.Thread(target=self.invoke, args=args)
-    self.t.setDaemon(True)
-    self.t.start()
+    super(sampler, self).__init__(sampler.sample, 0, *args)
 
-  def sample(self, f, h, fmap=fmap_id):
-    odata = fmap(f())
-    avg_f = lambda (x,y): x/float(self.s) + y
-    zeros = lambda x: map(lambda _: 0, range(x))
+  @classmethod
+  def sample(self, output, f, h, fmap=fmap_id):
+    samples = 1
+    odata   = fmap(f())
+    avg_f   = lambda (x,y): x/float(samples) + y
+    zeros   = lambda x: map(lambda _: 0, range(x))
     while True:
       r = []
-      for i in range(self.s):
+      for i in range(samples):
         time.sleep(1)
         ndata = fmap(f())
         diff  = map(lambda (x,y): h(x,y), zip(ndata, odata))
@@ -52,13 +78,7 @@ class sample(object):
         if (len(r) == 0):
           r = zeros(len(diff))
         r = map(avg_f, zip(diff, r))
-      self.r = r
-
-  def invoke(self, *args):
-    self.r = self.sample(*args)
-
-  def get(self, default):
-    return([self.r, default][self.r is None])
+      output(r)
 
 def retrieve(pattern, text, default=None):
   m = re.search(pattern, text, re.M)
@@ -140,6 +160,32 @@ def loadinfo():
     output = f.read()
     uptime = map(float, output.split())[0]
   return(uptime, load1, load5, load15)
+
+def imapinfo():
+  def accounts():
+    with file(os.path.expanduser("~/.systat2dzen/imap"), "r") as f:
+      return(eval(f.read()))
+
+  def imap_unseen(account):
+    if (account["proto"] == "imaps"):
+      i = imaplib.IMAP4_SSL(account["hostname"], account["port"])
+    else:
+      i = imaplib.IMAP(account["hostname"], account["port"])
+    i.login(account["user"], account["password"])
+    r = {}
+    for f in account["folders"]:
+      (rc, _) = i.select(mailbox=f, readonly=True)
+      if (rc == "OK"):
+        (rc, unseen) = i.search(None, "UNSEEN")
+        if (rc == "OK"):
+          r[f] = len(unseen[0].split())
+    return(r)
+
+  r = {}
+  a = safe(accounts, {})
+  for (account, cfg) in a.iteritems():
+    r[account] = safe(imap_unseen, {}, cfg)
+  return(r)
 
 def netinfo():
   RTF_UP      = 0x0001
@@ -230,9 +276,10 @@ class render(object):
     io_diff  = net_diff
     secsz    = sectorsz(device)
     self.device      = device
-    self.cpu_sampler = sample(cpustat, cpu_diff, cpu_read)
-    self.net_sampler = sample(lambda: netstat(netinfo()["ifname"]), net_diff)
-    self.io_sampler  = sample(lambda: iostat(device, secsz), io_diff)
+    self.cpu_sampler = sampler(cpustat, cpu_diff, cpu_read)
+    self.net_sampler = sampler(lambda: netstat(netinfo()["ifname"]), net_diff)
+    self.io_sampler  = sampler(lambda: iostat(device, secsz), io_diff)
+    self.emails      = background(lambda f: f(imapinfo()), 300)
 
   def dump_meminfo(self):
     mem = meminfo()
@@ -246,6 +293,25 @@ class render(object):
     load   = loadinfo()
     uptime = human_time(load[0])
     return("uptime {0:s} {1: >5,.2f} {2: >5,.2f} {3: >5,.2f}".format(uptime, load[1], load[2], load[3]))
+
+  def dump_emailinfo(self):
+    accounts = self.emails.get({})
+    summary  = dict(map(lambda (k,v):(k, sum(v.values())), accounts.iteritems()))
+    result   = {}
+    for (k, v) in summary.iteritems():
+      if (v == 0):
+        continue
+      inits = reduce(lambda acc,c: acc + [acc[-1] + c], k, [""])[1:]
+      for p in inits:
+        if (p in result):
+          continue
+        result[p] = v
+        break
+    emails = ",".join(map(lambda (k,v): "{0:s}:{1:d}".format(k,v), result.iteritems()))
+    if (len(emails) > 0):
+      return("email: %s" % emails)
+    else:
+      return("")
 
   def dump_swpinfo(self):
     mem = meminfo()
@@ -276,6 +342,7 @@ class render(object):
                                                  , self.dump_ioinfo()
                                                  , self.dump_loadinfo()
                                                  , self.dump_system()
+                                                 , self.dump_emailinfo()
                                                  ]))
     eof()
 
