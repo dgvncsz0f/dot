@@ -257,6 +257,9 @@ def pbar(p, w, h, white="", black="#2b2b2b"):
   fmt   = "{0: >4,.0f}% {1:s}"
   return(fmt.format(p*100, mybar))
 
+def image(f):
+  return("^i(%s)" % os.path.expanduser(f))
+
 def sep():
   return(with_color(" ||", fg="#666666"))
 
@@ -309,7 +312,7 @@ class render(object):
         break
     emails = ",".join(map(lambda (k,v): "{0:s}:{1:d}".format(k,v), result.iteritems()))
     if (len(emails) > 0):
-      return("email: %s" % emails)
+      return("%s: %s" % (image("~/.dot/share/icons/mail.xbm"), emails))
     else:
       return("")
 
