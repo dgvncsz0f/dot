@@ -1,3 +1,5 @@
+(setq erc-track-enable-keybindings nil)
+
 (require 'erc)
 (require 'erc-join)
 (require 'erc-match)
