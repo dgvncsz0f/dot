@@ -1,4 +1,6 @@
-Xft.antialias: true
+! Xft.antialias: false
+! Xft.autohint: false
+! Xft.hintstyle: hintnone
 
 dzen2.font: unifont-11
 dzen2.foreground: #dcdccc
