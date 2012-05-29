@@ -1,5 +1,9 @@
 Xft.antialias: true
 
+dzen2.font: unifont-11
+dzen2.foreground: #dcdccc
+dzen2.background: #3f3f3f
+
 xterm*background: #3f3f3f
 xterm*foreground: #dcdccc
 xterm*colorBDMode: true
