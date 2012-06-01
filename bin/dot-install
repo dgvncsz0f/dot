@@ -140,14 +140,14 @@ dot_overlay()
 
   if [ -d $HOME/.dot.overlay/c ]
   then
-    for f in $($bin_find $HOME/.dot.overlay/c -type f)
+    for f in $($bin_find -L $HOME/.dot.overlay/c -type f)
     do
       rf=${f##$HOME/.dot.overlay/c/}
       dot_overlay_create "$f" "$HOME/.dot/$rf"
     done
   fi
 
-  for f in $($bin_find $HOME/.dot -type f)
+  for f in $($bin_find -L $HOME/.dot -type f)
   do
     rf=${f##$HOME/.dot/}
     dot_overlay_replace "$HOME/.dot.overlay/r/$rf" "$HOME/.dot/$rf"
@@ -158,9 +158,9 @@ dot_overlay()
 
 dot_fixperms()
 {
-  $bin_find $HOME/.dot -type d -exec $bin_chmod 0700 \{\} \;
-  $bin_find $HOME/.dot -type f -exec $bin_chmod 0600 \{\} \;
-  $bin_find $HOME/.dot/bin -type f -exec $bin_chmod 0700 \{\} \;
+  $bin_find -L $HOME/.dot -type d -exec $bin_chmod 0700 \{\} \;
+  $bin_find -L $HOME/.dot -type f -exec $bin_chmod 0600 \{\} \;
+  $bin_find -L $HOME/.dot/bin -type f -exec $bin_chmod 0700 \{\} \;
 }
 
 dot_post_xmonad()
@@ -173,7 +173,7 @@ dot_post_emacs()
 {
   dot_print_info "  byte-compiling emacs lisp files"
   $bin_rm -f $HOME/.emacs.elc
-  $bin_find $HOME/.dot -name \*.el | $bin_xargs $bin_emacs --user $USER --batch --funcall batch-byte-compile
+  $bin_find -L $HOME/.dot -name \*.el | $bin_xargs $bin_emacs --user $USER --batch --funcall batch-byte-compile
 }
 
 dot_postinst()
