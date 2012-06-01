@@ -1,5 +1,0 @@
-#!/bin/bash
-
-. $HOME/.dot/bin/pwdcnf
-
-complete -o filenames -F _pwdcomp pwdfor
