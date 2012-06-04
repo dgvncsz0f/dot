@@ -1,5 +1,0 @@
-#!/bin/bash
-
-. $HOME/.dot/bin/pwdcnf
-
-find -L "${pwsroot}" -type f -name \*.gpg -exec basename \{\} .gpg \; | sort
