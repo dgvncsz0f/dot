@@ -10,9 +10,9 @@ gmail {
   %[Gmail]/Trash:"dsouza@bitforest.org"/clear@imap.gmail.com:993! "trash"
   %[Gmail]/Sent Mail:"dsouza@bitforest.org"/clear@imap.gmail.com:993! "sent"
   %[Gmail]/Drafts:"dsouza@bitforest.org"/clear@imap.gmail.com:993! "drafts"
-  gmail-lists {
+  lists {
     %cron:"dsouza@bitforest.org"/clear@imap.gmail.com:993! "cron"
     %ilists/haskell:"dsouza@bitforest.org"/clear@imap.gmail.com:993! "l/haskell"
-    %ilists/haskell-cafe:"dsouza@bitforest.org"/clear@imap.gmail.com:993! "l/haskell-cafe"
+    %ilists/netstack:"dsouza@bitforest.org"/clear@imap.gmail.com:993! "l/netstack"
   }
 }
