@@ -63,7 +63,7 @@
   wl-auto-select-next 'unread
   wl-summary-width nil
   wl-summary-weekday-name-lang "en"
-  wl-summary-line-format "%11n %T%P%M/%D(%W)%h:%m %[ %17f %] %t%C%s"
+  wl-summary-line-format "%T%P%M/%D(%W)%h:%m %[ %17f %] %t%C%s"
   wl-thread-insert-opened t
   wl-thread-open-reading-thread t
 
@@ -181,8 +181,7 @@
       ;; Use the default:
       wl-summary-from-function 'wl-summary-default-from
 
-      ;; Using BBDB for pet names is OK
-      wl-summary-get-petname-function 'bbdb-wl-get-petname
+      wl-summary-get-petname-function '(lambda (string) (or (wl-address-header-extract-realname string) (wl-address-header-extract-address string)))
       )
 
 ;; Apply wl-draft-config-alist as soon as you enter in a draft buffer. Without
