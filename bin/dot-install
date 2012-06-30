@@ -1,6 +1,6 @@
 #!/bin/sh
 
-arg_repo=${1:-git://github.com/dsouza/dot.git}
+arg_repo=${1:-git://github.com/dgvncsz0f/dot.git}
 
 bin_ln=/bin/ln
 bin_cat=/bin/cat

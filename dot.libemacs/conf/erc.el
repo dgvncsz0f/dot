@@ -73,17 +73,17 @@
 
 (defun my-irc-freenode ()
   (interactive)
-  (erc :server "irc.freenode.net" :port 6667 :nick "dsouza" :full-name "Diego Souza")
+  (erc :server "irc.freenode.net" :port 6667 :nick "dgvncsz0f" :full-name "Diego Souza")
   )
 
 (defun my-irc-bitlbee ()
   (interactive)
-  (erc :server "localhost" :port 6667 :nick "dsouza" :full-name "Diego Souza")
+  (erc :server "localhost" :port 6667 :nick "dgvncsz0f" :full-name "Diego Souza")
   )
 
 (defun my-irc-locaweb ()
    (interactive)
-   (erc :server "irc.linux.locaweb.com.br" :port 5222 :nick "dsouza" :full-name "Diego Souza")
+   (erc :server "irc.linux.locaweb.com.br" :port 5222 :nick "dgvncsz0f" :full-name "Diego Souza")
    )
 
 ;; Source: http://mwolson.org/projects/emacs-config/erc-init.el

@@ -1,10 +1,10 @@
 set folder      = "imaps://imap.gmail.com/"
 set spoolfile   = "=INBOX"
 set signature   = "~/.email-signature"
-set from        = "dsouza@bitforest.org"
-set envelope_from_address = "dsouza@bitforest.org"
-set smtp_url    = smtps://dsouza@bitforest.org@smtp.gmail.com"
-set imap_user   = dsouza@bitforest.org
+set from        = "dgvncsz0f@bitforest.org"
+set envelope_from_address = "dgvncsz0f@bitforest.org"
+set smtp_url    = smtps://dgvncsz0f@bitforest.org@smtp.gmail.com"
+set imap_user   = dgvncsz0f@bitforest.org
 
 source "/etc/Muttrc"
 source ~/.mutt/mutt-vars

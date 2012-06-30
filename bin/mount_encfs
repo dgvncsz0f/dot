@@ -1,5 +1,0 @@
-#!/bin/bash
-
-ROOT=${1:-/mnt/pws}
-
-/usr/bin/encfs ${ROOT}/dsouza/.sec ${ROOT}/dsouza/sec

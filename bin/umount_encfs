@@ -1,3 +1,0 @@
-#!/bin/bash
-
-/usr/bin/fusermount -u /mnt/pws/dsouza/sec
