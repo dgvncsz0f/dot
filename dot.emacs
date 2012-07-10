@@ -7,6 +7,7 @@
 (require 'myemacs)
 (require 'uniquify)
 (require 'fastnav)
+(require 'python-mode)
 (require 'ipython)
 (require 'rainbow-delimiters)
 (require 'org)
