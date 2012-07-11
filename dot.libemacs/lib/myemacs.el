@@ -73,7 +73,8 @@
   (setq haskell-program-name "ghci"))
 
 (defun my-python-mode-hook ()
-  (setq py-indent-offset 2))
+  (setq py-indent-offset 2)
+  (modify-syntax-entry ?_ "_"))
 
 (defun my-icicle-mode-hook ()
   (when (symbol-value icicle-mode)
