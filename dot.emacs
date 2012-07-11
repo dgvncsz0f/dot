@@ -61,7 +61,7 @@
 (global-hl-line-mode)
 (column-number-mode t)
 (visual-line-mode t)
-(transient-mark-mode nil)
+(transient-mark-mode -1)
 (icy-mode t)
 (my-x-as-term)
 (nyan-mode)

@@ -188,10 +188,10 @@
 ;; this wanderlust would apply it only when actually sending the e-mail.
 (add-hook 'wl-mail-setup-hook 'wl-draft-config-exec)
 
-(add-hook 'mime-view-mode-hook
-	  (lambda ()
-	    (local-set-key "f" 'my-jump-and-visit-link)
-            (w3m-link-numbering-mode)))
+; (add-hook 'mime-view-mode-hook
+; 	  (lambda ()
+; 	    (local-set-key "f" 'my-jump-and-visit-link)
+;             (w3m-link-numbering-mode)))
 
 (add-hook
  'wl-summary-exec-hook

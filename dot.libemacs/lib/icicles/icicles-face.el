@@ -4,12 +4,12 @@
 ;; Description: Faces for Icicles
 ;; Author: Drew Adams
 ;; Maintainer: Drew Adams
-;; Copyright (C) 1996-2010, Drew Adams, all rights reserved.
+;; Copyright (C) 1996-2012, Drew Adams, all rights reserved.
 ;; Created: Mon Feb 27 09:19:43 2006
 ;; Version: 22.0
-;; Last-Updated: Thu Aug 12 13:57:45 2010 (-0700)
+;; Last-Updated: Sun Apr  8 13:02:23 2012 (-0700)
 ;;           By: dradams
-;;     Update #: 519
+;;     Update #: 645
 ;; URL: http://www.emacswiki.org/cgi-bin/wiki/icicles-face.el
 ;; Keywords: internal, extensions, help, abbrev, local, minibuffer,
 ;;           keys, apropos, completion, matching, regexp, command
@@ -17,7 +17,7 @@
 ;;
 ;; Features that might be required by this library:
 ;;
-;;   None
+;;   `hexrgb'.
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -47,7 +47,7 @@
 ;;    `icicle-input-completion-fail-lax',
 ;;    `icicle-match-highlight-Completions',
 ;;    `icicle-match-highlight-minibuffer', `icicle-mode-line-help',
-;;    `icicle-multi-command-completion',
+;;    `icicle-msg-emphasis', `icicle-multi-command-completion',
 ;;    `icicle-mustmatch-completion', `icicle-proxy-candidate',
 ;;    `icicle-saved-candidate', `icicle-search-context-level-1',
 ;;    `icicle-search-context-level-2',
@@ -64,7 +64,8 @@
 ;;  Functions defined here:
 ;;
 ;;    `icicle-increment-color-hue',
-;;    `icicle-increment-color-saturation'.
+;;    `icicle-increment-color-saturation'
+;;    `icicle-increment-color-value'.
 ;;
 ;;  For descriptions of changes to this file, see `icicles-chg.el'.
  
@@ -77,8 +78,9 @@
 ;;  headings throughout this file.  You can get `linkd.el' here:
 ;;  http://dto.freeshell.org/notebook/Linkd.html.
 ;;
-;;  (@> "Groups, organized alphabetically")
-;;  (@> "Faces, organized alphabetically")
+;;  (@> "Icicles Commands for Other Packages")
+;;  (@> "Groups, Organized Alphabetically")
+;;  (@> "Faces, Organized Alphabetically")
  
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -103,9 +105,77 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  
-;;(@* "Groups, organized alphabetically")
+;;(@* "Icicles Commands for Other Packages")
 
-;;; Groups, organized alphabetically ---------------------------------
+;;; Icicles Commands for Other Packages ------------------------------
+
+(when (require 'hexrgb nil t);; (no error if not found):
+  ;; hexrgb-color-values-to-hex, hexrgb-hsv-to-rgb, hexrgb-rgb-to-hsv.
+
+
+  ;; Essentially a version of `doremi-increment-color-component' for hue only.
+  ;; Must be before `icicle-search-context-level-1'.
+  (defun icicle-increment-color-hue (color increment)
+    "Increase hue component of COLOR by INCREMENT."
+    (unless (string-match "#" color)    ; Convert color name to #hhh...
+      (setq color  (hexrgb-color-values-to-hex (x-color-values color))))
+    ;; Convert RGB to HSV
+    (let* ((rgb         (x-color-values color))
+           (red         (/ (float (nth 0 rgb)) 65535.0)) ; Convert from 0-65535 to 0.0-1.0
+           (green       (/ (float (nth 1 rgb)) 65535.0))
+           (blue        (/ (float (nth 2 rgb)) 65535.0))
+           (hsv         (hexrgb-rgb-to-hsv red green blue))
+           (hue         (nth 0 hsv))
+           (saturation  (nth 1 hsv))
+           (value       (nth 2 hsv)))
+      (setq hue  (+ hue (/ increment 100.0)))
+      (when (> hue 1.0) (setq hue  (1- hue)))
+      (hexrgb-color-values-to-hex (mapcar (lambda (x) (floor (* x 65535.0)))
+                                          (hexrgb-hsv-to-rgb hue saturation value)))))
+
+  ;; Essentially a version of `doremi-increment-color-component' for saturation only.
+  ;; Must be before `icicle-search-context-level-1'.
+  (defun icicle-increment-color-saturation (color increment)
+    "Increase saturation component of COLOR by INCREMENT."
+    (unless (string-match "#" color)    ; Convert color name to #hhh...
+      (setq color  (hexrgb-color-values-to-hex (x-color-values color))))
+    ;; Convert RGB to HSV
+    (let* ((rgb         (x-color-values color))
+           (red         (/ (float (nth 0 rgb)) 65535.0)) ; Convert from 0-65535 to 0.0-1.0
+           (green       (/ (float (nth 1 rgb)) 65535.0))
+           (blue        (/ (float (nth 2 rgb)) 65535.0))
+           (hsv         (hexrgb-rgb-to-hsv red green blue))
+           (hue         (nth 0 hsv))
+           (saturation  (nth 1 hsv))
+           (value       (nth 2 hsv)))
+      (setq saturation  (+ saturation (/ increment 100.0)))
+      (when (> saturation 1.0) (setq saturation  (1- saturation)))
+      (hexrgb-color-values-to-hex (mapcar (lambda (x) (floor (* x 65535.0)))
+                                          (hexrgb-hsv-to-rgb hue saturation value)))))
+
+  ;; Essentially a version of `doremi-increment-color-component' for value only.
+  ;; Must be before definition of option `icicle-region-background' (in `icicles-opt.el').
+  (defun icicle-increment-color-value (color increment)
+    "Increase value component (brightness) of COLOR by INCREMENT."
+    (unless (string-match "#" color)    ; Convert color name to #hhh...
+      (setq color  (hexrgb-color-values-to-hex (x-color-values color))))
+    ;; Convert RGB to HSV
+    (let* ((rgb         (x-color-values color))
+           (red         (/ (float (nth 0 rgb)) 65535.0)) ; Convert from 0-65535 to 0.0-1.0
+           (green       (/ (float (nth 1 rgb)) 65535.0))
+           (blue        (/ (float (nth 2 rgb)) 65535.0))
+           (hsv         (hexrgb-rgb-to-hsv red green blue))
+           (hue         (nth 0 hsv))
+           (saturation  (nth 1 hsv))
+           (value       (nth 2 hsv)))
+      (setq value  (+ value (/ increment 100.0)))
+      (when (> value 1.0) (setq value  (1- value)))
+      (hexrgb-color-values-to-hex (mapcar (lambda (x) (floor (* x 65535.0)))
+                                          (hexrgb-hsv-to-rgb hue saturation value))))))
+ 
+;;(@* "Groups, Organized Alphabetically")
+
+;;; Groups, Organized Alphabetically ---------------------------------
 
 ;;;###autoload
 (defgroup Icicles nil
@@ -299,22 +369,22 @@ Don't forget to mention your Emacs and Icicles library versions."))
   :link '(emacs-commentary-link :tag "Doc-Part1" "icicles-doc1")
   )
  
-;;(@* "Faces, organized alphabetically")
+;;(@* "Faces, Organized Alphabetically")
 
-;;; Faces, organized alphabetically ----------------------------------
+;;; Faces, Organized Alphabetically ----------------------------------
 
 ;;;###autoload
 (defface icicle-candidate-part
     '((((background dark)) (:background "#451700143197")) ; a very dark magenta
       (t (:background "#EF84FFEAF427"))) ; A light green.
-  "*Face used to highlight part(s) of a candidate in *Completions*."
+  "*Face used to highlight part(s) of a candidate in `*Completions*'."
   :group 'Icicles-Completions-Display :group 'faces)
 
 ;;;###autoload
 (defface icicle-common-match-highlight-Completions
     '((((background dark)) (:foreground "#2017A71F2017")) ; a dark green
       (t (:foreground "magenta3")))
-  "*Face used to highlight candidates common match, in *Completions*."
+  "*Face used to highlight candidates common match, in `*Completions*'."
   :group 'Icicles-Completions-Display :group 'faces)
 
 ;;;###autoload
@@ -338,28 +408,28 @@ Not used for versions of Emacs before version 21."
 (defface icicle-Completions-instruction-1
   '((((background dark)) (:foreground "#AC4AAC4A0000")) ; a dark yellow
     (t (:foreground "Blue")))
-  "*Face used to highlight first line of *Completions* buffer."
+  "*Face used to highlight first line of `*Completions*' buffer."
   :group 'Icicles-Completions-Display :group 'faces)
 
 ;;;###autoload
 (defface icicle-Completions-instruction-2
     '((((background dark)) (:foreground "#0000D53CD53C")) ; a dark cyan
       (t (:foreground "Red")))
-  "*Face used to highlight second line of *Completions* buffer."
+  "*Face used to highlight second line of `*Completions*' buffer."
   :group 'Icicles-Completions-Display :group 'faces)
 
 ;;;###autoload
 (defface icicle-current-candidate-highlight
   '((((background dark)) (:background "#69D40A460000")) ; a red brown
     (t (:background "CadetBlue1")))
-  "*Face used to highlight the current candidate, in *Completions*."
+  "*Face used to highlight the current candidate, in `*Completions*'."
   :group 'Icicles-Completions-Display :group 'faces)
 
 ;;;###autoload
 (defface icicle-extra-candidate
     '((((background dark)) (:background "#4517305D0000")) ; a dark brown
       (t (:background "#C847D8FEFFFF"))) ; a light blue
-  "*Face used to highlight *Completions* candidates that are extra.
+  "*Face used to highlight `*Completions*' candidates that are extra.
 This means that they belong to list `icicle-extra-candidates'."
   :group 'Icicles-Completions-Display :group 'faces)
 
@@ -367,7 +437,7 @@ This means that they belong to list `icicle-extra-candidates'."
 (defface icicle-historical-candidate
   '((((background dark)) (:foreground "#DBD599DF0000")) ; a dark orange
     (t (:foreground "Blue")))
-  "*Face used to highlight *Completions* candidates that have been used."
+  "*Face used to highlight `*Completions*' candidates that have been used."
   :group 'Icicles-Completions-Display :group 'faces)
 
 ;;;###autoload
@@ -388,7 +458,7 @@ This means that they belong to list `icicle-extra-candidates'."
 (defface icicle-match-highlight-Completions
     '((((background dark)) (:foreground "#1F1FA21CA21C")) ; a very dark cyan
       (t (:foreground "Red3")))
-  "*Face used to highlight root that was completed, in *Completions*."
+  "*Face used to highlight root that was completed, in `*Completions*'."
   :group 'Icicles-Completions-Display :group 'faces)
 
 ;;;###autoload
@@ -402,6 +472,13 @@ This means that they belong to list `icicle-extra-candidates'."
     (t (:foreground "Blue")))
   "*Face used to highlight help shown in the mode-line."
   :group 'Icicles-Completions-Display :group 'Icicles-Miscellaneous :group 'faces)
+
+;;;###autoload
+(defface icicle-msg-emphasis
+  '((((background dark)) (:foreground "#B19E6A64B19E")) ; a dark magenta
+    (t (:foreground "DarkGreen")))
+  "*Face used to emphasize (part of) a message."
+  :group 'Icicles-Minibuffer-Display :group 'faces)
 
 ;;;###autoload
 (defface icicle-multi-command-completion
@@ -437,7 +514,7 @@ Not used for versions of Emacs before version 21."
 (defface icicle-saved-candidate
     '((((background dark)) (:background "gray20"))   ; a dark gray
       (t (:background "gray80"))) ; a light gray
-  "*Face used to highlight *Completions* candidates that have been saved."
+  "*Face used to highlight `*Completions*' candidates that have been saved."
   :group 'Icicles-Completions-Display :group 'faces)
 
 ;;;###autoload
@@ -448,58 +525,14 @@ Not used for versions of Emacs before version 21."
 This highlighting is done during Icicles searching."
   :group 'Icicles-Searching :group 'faces)
 
-;; This is essentially a version of `doremi-increment-color-component' for hue only.
-;; Must be before `icicle-search-context-level-1'.
-(defun icicle-increment-color-hue (color increment)
-  "Increase hue component of COLOR by INCREMENT."
-  (unless (featurep 'hexrgb) (error "`icicle-increment-color-hue' requires library `hexrgb.el'"))
-  (unless (string-match "#" color)      ; Convert color name to #hhh...
-    (setq color  (hexrgb-color-values-to-hex (x-color-values color))))
-  ;; Convert RGB to HSV
-  (let* ((rgb         (x-color-values color))
-         (red         (/ (float (nth 0 rgb)) 65535.0)) ; Convert from 0-65535 to 0.0-1.0
-         (green       (/ (float (nth 1 rgb)) 65535.0))
-         (blue        (/ (float (nth 2 rgb)) 65535.0))
-         (hsv         (hexrgb-rgb-to-hsv red green blue))
-         (hue         (nth 0 hsv))
-         (saturation  (nth 1 hsv))
-         (value       (nth 2 hsv)))
-    (setq hue  (+ hue (/ increment 100.0)))
-    (when (> hue 1.0) (setq hue  (1- hue)))
-    (hexrgb-color-values-to-hex (mapcar (lambda (x) (floor (* x 65535.0)))
-                                        (hexrgb-hsv-to-rgb hue saturation value)))))
-
-;; This is essentially a version of `doremi-increment-color-component' for saturation only.
-;; Must be before `icicle-search-context-level-1'.
-(defun icicle-increment-color-saturation (color increment)
-  "Increase saturation component of COLOR by INCREMENT."
-  (unless (featurep 'hexrgb)
-    (error "`icicle-increment-color-saturation' requires library `hexrgb.el'"))
-  (unless (string-match "#" color)      ; Convert color name to #hhh...
-    (setq color  (hexrgb-color-values-to-hex (x-color-values color))))
-  ;; Convert RGB to HSV
-  (let* ((rgb         (x-color-values color))
-         (red         (/ (float (nth 0 rgb)) 65535.0)) ; Convert from 0-65535 to 0.0-1.0
-         (green       (/ (float (nth 1 rgb)) 65535.0))
-         (blue        (/ (float (nth 2 rgb)) 65535.0))
-         (hsv         (hexrgb-rgb-to-hsv red green blue))
-         (hue         (nth 0 hsv))
-         (saturation  (nth 1 hsv))
-         (value       (nth 2 hsv)))
-    (setq saturation  (+ saturation (/ increment 100.0)))
-    (when (> saturation 1.0) (setq saturation  (1- saturation)))
-    (hexrgb-color-values-to-hex (mapcar (lambda (x) (floor (* x 65535.0)))
-                                        (hexrgb-hsv-to-rgb hue saturation value)))))
-
-;;;###autoload
 (defface icicle-search-context-level-1
     (let ((context-bg  (face-background 'icicle-search-main-regexp-current)))
       `((((background dark))
-         (:background ,(if (featurep 'hexrgb)
+         (:background ,(if (fboundp 'icicle-increment-color-saturation)
                            (icicle-increment-color-saturation
                             (icicle-increment-color-hue context-bg 80) 10)
                            "#071F473A0000"))) ; a dark green
-        (t (:background ,(if (featurep 'hexrgb)
+        (t (:background ,(if (fboundp 'icicle-increment-color-saturation)
                              (icicle-increment-color-saturation
                               (icicle-increment-color-hue context-bg 80) 10)
                              "#FA6CC847FFFF"))))) ; a light magenta
@@ -509,15 +542,14 @@ This highlighting is done during Icicles searching whenever
 search context corresponds to the entire regexp."
   :group 'Icicles-Searching :group 'faces)
 
-;;;###autoload
 (defface icicle-search-context-level-2
     (let ((context-bg  (face-background 'icicle-search-main-regexp-current)))
       `((((background dark))
-         (:background ,(if (featurep 'hexrgb)
+         (:background ,(if (fboundp 'icicle-increment-color-saturation)
                            (icicle-increment-color-saturation
                             (icicle-increment-color-hue context-bg 40) 10)
                            "#507400002839"))) ; a dark red
-        (t (:background ,(if (featurep 'hexrgb)
+        (t (:background ,(if (fboundp 'icicle-increment-color-saturation)
                              (icicle-increment-color-saturation
                               (icicle-increment-color-hue context-bg 40) 10)
                              "#C847FFFFE423"))))) ; a light cyan
@@ -527,15 +559,14 @@ This highlighting is done during Icicles searching whenever
 search context corresponds to the entire regexp."
   :group 'Icicles-Searching :group 'faces)
 
-;;;###autoload
 (defface icicle-search-context-level-3
     (let ((context-bg  (face-background 'icicle-search-main-regexp-current)))
       `((((background dark))
-         (:background ,(if (featurep 'hexrgb)
+         (:background ,(if (fboundp 'icicle-increment-color-saturation)
                            (icicle-increment-color-saturation
                             (icicle-increment-color-hue context-bg 60) 10)
                            "#4517305D0000"))) ; a dark brown
-        (t (:background ,(if (featurep 'hexrgb)
+        (t (:background ,(if (fboundp 'icicle-increment-color-saturation)
                              (icicle-increment-color-saturation
                               (icicle-increment-color-hue context-bg 60) 10)
                              "#C847D8FEFFFF"))))) ; a light blue
@@ -545,15 +576,14 @@ This highlighting is done during Icicles searching whenever
 search context corresponds to the entire regexp."
   :group 'Icicles-Searching :group 'faces)
 
-;;;###autoload
 (defface icicle-search-context-level-4
     (let ((context-bg  (face-background 'icicle-search-main-regexp-current)))
       `((((background dark))
-         (:background ,(if (featurep 'hexrgb)
+         (:background ,(if (fboundp 'icicle-increment-color-saturation)
                            (icicle-increment-color-saturation
                             (icicle-increment-color-hue context-bg 20) 10)
                            "#176900004E0A"))) ; a dark blue
-        (t (:background ,(if (featurep 'hexrgb)
+        (t (:background ,(if (fboundp 'icicle-increment-color-saturation)
                              (icicle-increment-color-saturation
                               (icicle-increment-color-hue context-bg 20) 10)
                              "#EF47FFFFC847"))))) ; a light yellow
@@ -563,14 +593,13 @@ This highlighting is done during Icicles searching whenever
 search context corresponds to the entire regexp."
   :group 'Icicles-Searching :group 'faces)
 
-;;;###autoload
 (defface icicle-search-context-level-5
     (let ((context-bg  (face-background 'icicle-search-main-regexp-current)))
       `((((background dark))
-         (:background ,(if (featurep 'hexrgb)
+         (:background ,(if (fboundp 'icicle-increment-color-saturation)
                            (icicle-increment-color-hue context-bg 80)
                            "#04602BC00000"))) ; a very dark green
-        (t (:background ,(if (featurep 'hexrgb)
+        (t (:background ,(if (fboundp 'icicle-increment-color-saturation)
                              (icicle-increment-color-hue context-bg 80)
                              "#FCFCE1E1FFFF"))))) ; a light magenta
   "*Face used to highlight level (subgroup match) 5 of your search context.
@@ -579,14 +608,13 @@ This highlighting is done during Icicles searching whenever
 search context corresponds to the entire regexp."
   :group 'Icicles-Searching :group 'faces)
 
-;;;###autoload
 (defface icicle-search-context-level-6
     (let ((context-bg  (face-background 'icicle-search-main-regexp-current)))
       `((((background dark))
-         (:background ,(if (featurep 'hexrgb)
+         (:background ,(if (fboundp 'icicle-increment-color-saturation)
                            (icicle-increment-color-hue context-bg 40)
                            "#32F200001979"))) ; a very dark red
-        (t (:background ,(if (featurep 'hexrgb)
+        (t (:background ,(if (fboundp 'icicle-increment-color-saturation)
                              (icicle-increment-color-hue context-bg 40)
                              "#E1E1FFFFF0F0"))))) ; a light cyan
   "*Face used to highlight level (subgroup match) 6 of your search context.
@@ -595,14 +623,13 @@ This highlighting is done during Icicles searching whenever
 search context corresponds to the entire regexp."
   :group 'Icicles-Searching :group 'faces)
 
-;;;###autoload
 (defface icicle-search-context-level-7
     (let ((context-bg  (face-background 'icicle-search-main-regexp-current)))
       `((((background dark))
-         (:background ,(if (featurep 'hexrgb)
+         (:background ,(if (fboundp 'icicle-increment-color-saturation)
                            (icicle-increment-color-hue context-bg 60)
                            "#316B22970000"))) ; a very dark brown
-        (t (:background ,(if (featurep 'hexrgb)
+        (t (:background ,(if (fboundp 'icicle-increment-color-saturation)
                              (icicle-increment-color-hue context-bg 60)
                              "#E1E1EAEAFFFF"))))) ; a light blue
   "*Face used to highlight level (subgroup match) 7 of your search context.
@@ -611,14 +638,14 @@ This highlighting is done during Icicles searching whenever
 search context corresponds to the entire regexp."
   :group 'Icicles-Searching :group 'faces)
 
-;;;###autoload
+;; NO AUTOLOAD COOKIE HERE.
 (defface icicle-search-context-level-8
     (let ((context-bg  (face-background 'icicle-search-main-regexp-current)))
       `((((background dark))
-         (:background ,(if (featurep 'hexrgb)
+         (:background ,(if (fboundp 'icicle-increment-color-saturation)
                            (icicle-increment-color-hue context-bg 20)
                            "#12EC00003F0E"))) ; a very dark blue
-        (t (:background ,(if (featurep 'hexrgb)
+        (t (:background ,(if (fboundp 'icicle-increment-color-saturation)
                              (icicle-increment-color-hue context-bg 20)
                              "#F6F5FFFFE1E1"))))) ; a light yellow
   "*Face used to highlight level (subgroup match) 8 of your search context.
@@ -652,7 +679,7 @@ This highlighting is done during Icicles searching."
 (defface icicle-special-candidate
     '((((background dark)) (:background "#176900004E0A")) ; a dark blue
       (t (:background "#EF47FFFFC847")))   ; A light yellow.
-  "*Face used to highlight *Completions* candidates that are special.
+  "*Face used to highlight `*Completions*' candidates that are special.
 The meaning of special is that their names match
 `icicle-special-candidate-regexp'."
   :group 'Icicles-Completions-Display :group 'faces)
@@ -666,11 +693,10 @@ The meaning of special is that their names match
 
 ;; This is defined in `faces.el', Emacs 22.  This is for Emacs < 22.  This is used
 ;; only for versions of Emacs that have `propertize' but don't have this face.
-;;;###autoload
 (unless (facep 'minibuffer-prompt)
   (defface minibuffer-prompt '((((background dark)) (:foreground "cyan"))
                                (t (:foreground "dark blue")))
-    "Face for minibuffer prompts."
+    "*Face for minibuffer prompts."
     :group 'basic-faces))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
