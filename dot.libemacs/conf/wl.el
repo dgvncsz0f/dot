@@ -19,7 +19,7 @@
   wl-interactive-send t
   wl-interactive-exit nil
   wl-draft-always-delete-myself t
-  wl-user-mail-address-list '("dgvncsz0f@bitforest.org" "dgvncsz0f@gmail.com" "paravinicius@yahoo.com.br" "diego.souza@locaweb.com.br")
+  wl-user-mail-address-list '("dgvncsz0f@bitforest.org" "dgvncsz0f@gmail.com" "paravinicius@yahoo.com.br" "diego.souza@locaweb.com.br" "dsouza@c0d3.xxx" "dgvncsz0f@c0d3.xxx")
 
   ;; Automatic signature insertion
   signature-file-name "~/.email-signature.txt"
@@ -111,7 +111,7 @@
   wl-template-alist
   '(
     ("gmail"
-     (wl-from . "diego souza <dgvncsz0f@bitforest.org>")
+     (wl-from . "diego souza <dsouza@c0d3.xxx>")
      ("From" . wl-from)
      (wl-fcc . nil)
      (wl-trash-folder . "%[Gmail]/Trash:\"dgvncsz0f@bitforest.org\"/clear@imap.gmail.com:993!")
