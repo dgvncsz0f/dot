@@ -1,6 +1,6 @@
 #!/bin/sh
 
-arg_repo=${1:-https://github.com/dgvncsz0f/dot/tarball/master}
+arg_repo=${1:-git@github.com:dgvncsz0f/dot.git}
 
 bin_ln=/bin/ln
 bin_cat=/bin/cat
@@ -13,8 +13,7 @@ bin_find=/usr/bin/find
 bin_xmonad=/usr/bin/xmonad
 bin_emacs=/usr/bin/emacs
 bin_xargs=/usr/bin/xargs
-bin_tar=/bin/tar
-bin_curl=/usr/bin/curl
+bin_git=/usr/bin/git
 
 dot_print_info()
 {
@@ -37,8 +36,7 @@ dot_check_binaries()
   [ ! -x "$bin_xargs" ] && dot_print_error "xargs binary not found"
   [ ! -x "$bin_cat" ] && dot_print_error "cat binary not found"
   [ ! -x "$bin_cp" ] && dot_print_error "cp binary not found"
-  [ ! -x "$bin_tar" ] && dot_print_error "tar binary not found"
-  [ ! -x "$bin_curl" ] && dot_print_error "curl binary not found"
+  [ ! -x "$bin_git" ] && dot_print_error "git binary not found"
 }
 
 dot_mkdir()
@@ -64,7 +62,7 @@ dot_download_dot()
   then
     $bin_rm -rf $HOME/.dot
   fi
-  $bin_curl -L "$arg_repo" | $bin_tar -x -z --transform 's,^dgvncsz0f-dot-[a-z0-9]*,.dot,' -C "$HOME" -f -
+  $bin_git clone --depth 1 $arg_repo "$HOME/.dot"
 }
 
 dot_install()
