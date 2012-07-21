@@ -1,6 +1,6 @@
 #!/bin/sh
 
-arg_repo=${1:-git://github.com/dgvncsz0f/dot.git}
+arg_repo=${1:-https://github.com/dgvncsz0f/dot/tarball/master}
 
 bin_ln=/bin/ln
 bin_cat=/bin/cat
@@ -9,11 +9,12 @@ bin_rm=/bin/rm
 bin_mkdir=/bin/mkdir
 bin_chmod=/bin/chmod
 bin_env=/usr/bin/env
-bin_git=${GIT_BIN:-$(which git)}
 bin_find=/usr/bin/find
 bin_xmonad=/usr/bin/xmonad
 bin_emacs=/usr/bin/emacs
 bin_xargs=/usr/bin/xargs
+bin_tar=/bin/tar
+bin_curl=/usr/bin/curl
 
 dot_print_info()
 {
@@ -32,11 +33,12 @@ dot_check_binaries()
   [ ! -x "$bin_rm" ]  && dot_print_error "rm binary not found"
   [ ! -x "$bin_chmod" ] && dot_print_error "chmod binary not found"
   [ ! -x "$bin_env" ] && dot_print_error "env binary not found"
-  [ ! -x "$bin_git" ] && dot_print_error "git binary not found"
   [ ! -x "$bin_find" ] && dot_print_error "find binary not found"
   [ ! -x "$bin_xargs" ] && dot_print_error "xargs binary not found"
   [ ! -x "$bin_cat" ] && dot_print_error "cat binary not found"
   [ ! -x "$bin_cp" ] && dot_print_error "cp binary not found"
+  [ ! -x "$bin_tar" ] && dot_print_error "tar binary not found"
+  [ ! -x "$bin_curl" ] && dot_print_error "curl binary not found"
 }
 
 dot_mkdir()
@@ -55,14 +57,14 @@ dot_symlink()
   [ -e "$src" ] && $bin_ln -s -f -n "$src" "$dst"
 }
 
-dot_clone_dot()
+dot_download_dot()
 {
-  dot_print_info "cloning $arg_repo into $HOME/.dot"
+  dot_print_info "downloading $arg_repo into $HOME"
   if [ -d "$HOME/.dot" ]
   then
     $bin_rm -rf $HOME/.dot
   fi
-  $bin_git clone $arg_repo "$HOME/.dot"
+  $bin_curl -L "$arg_repo" | $bin_tar -x -z --transform 's,^dgvncsz0f-dot-[a-z0-9]*,.dot,' -C "$HOME" -f -
 }
 
 dot_install()
@@ -138,11 +140,11 @@ dot_overlay()
 {
   dot_print_info "applying overlay"
 
-  if [ -d $HOME/.dot.overlay/c ]
+  if [ -d $HOME/dot.overlay/c ]
   then
-    for f in $($bin_find -L $HOME/.dot.overlay/c -type f)
+    for f in $($bin_find -L $HOME/dot.overlay/c -type f)
     do
-      rf=${f##$HOME/.dot.overlay/c/}
+      rf=${f##$HOME/dot.overlay/c/}
       dot_overlay_create "$f" "$HOME/.dot/$rf"
     done
   fi
@@ -150,8 +152,8 @@ dot_overlay()
   for f in $($bin_find -L $HOME/.dot -type f)
   do
     rf=${f##$HOME/.dot/}
-    dot_overlay_replace "$HOME/.dot.overlay/r/$rf" "$HOME/.dot/$rf"
-    dot_overlay_merge "$HOME/.dot.overlay/m/$rf" "$HOME/.dot/$rf"
+    dot_overlay_replace "$HOME/dot.overlay/r/$rf" "$HOME/.dot/$rf"
+    dot_overlay_merge "$HOME/dot.overlay/m/$rf" "$HOME/.dot/$rf"
   done
 
 }
@@ -180,7 +182,7 @@ dot_postinst()
 {
   dot_fixperms
   [ -x $bin_xmonad ] && dot_post_xmonad
-  [ -x $bin_emacs ]  && dot_post_emacs
+  # [ -x $bin_emacs ]  && dot_post_emacs
   return 0
 }
 
@@ -222,7 +224,7 @@ dot_omit_stderr_of()
 }
 
 dot_check_binaries
-dot_omit_stderr_of "git clone" dot_clone_dot
+dot_omit_stderr_of "download" dot_download_dot
 dot_install
 dot_overlay
 dot_omit_stderr_of "post install" dot_postinst
