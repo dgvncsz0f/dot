@@ -1,7 +1,7 @@
 [user]
   name = diego souza
-  email = dgvncsz0f@c0d3.xxx
-  signingkey = dgvncsz0f
+  email = dsouza@c0d3.xxx
+  signingkey = dsouza
 
 [color]
   diff = auto
