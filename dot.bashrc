@@ -42,7 +42,7 @@ my_ssh_add()
 {
   if [ -n "$SSH_AGENT_PID" ]
   then
-    $HOME/.dot/bin/cache-pw /bin/sh -c 'for f in $(/usr/bin/find "$HOME/.ssh/" -xtype f); do if /usr/bin/file -L -b "$f" | /bin/grep -q -i "\bprivate key\b"; then key_finger=$(/usr/bin/ssh-keygen -l -f "$f" | /usr/bin/cut -d \  -f2); if ! /usr/bin/ssh-add -l | /bin/grep -q "$key_finger"; then /usr/bin/ssh-add "$f"; fi; fi; done'
+    $HOME/.dot/bin/cache-pw /bin/sh -c 'for f in $(/usr/bin/find "$HOME/.ssh/" -xtype f); do if /usr/bin/file -L -b "$f" | grep -q -i "\bprivate key\b"; then key_finger=$(/usr/bin/ssh-keygen -l -f "$f" | /usr/bin/cut -d \  -f2); if ! /usr/bin/ssh-add -l | grep -q "$key_finger"; then /usr/bin/ssh-add "$f"; fi; fi; done'
   fi
 }
 

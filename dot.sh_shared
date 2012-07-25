@@ -107,7 +107,7 @@ my_encfs()
   local ENCFS=/usr/bin/encfs
   local MOUNT=/bin/mount
   local WC=/usr/bin/wc
-  local GREP=/bin/grep
+  local GREP=grep
   if [ -x "${ENCFS}" ]
   then
     if [ -d "${HOME}/.sec" ]
