@@ -6,13 +6,13 @@ locaweb {
 }
 
 gmail {
-  %inbox:"dgvncsz0f@bitforest.org"/clear@imap.gmail.com:993! "inbox"
-  %[Gmail]/Trash:"dgvncsz0f@bitforest.org"/clear@imap.gmail.com:993! "trash"
-  %[Gmail]/Sent Mail:"dgvncsz0f@bitforest.org"/clear@imap.gmail.com:993! "sent"
-  %[Gmail]/Drafts:"dgvncsz0f@bitforest.org"/clear@imap.gmail.com:993! "drafts"
+  %inbox:"dsouza@bitforest.org"/clear@imap.gmail.com:993! "inbox"
+  %[Gmail]/Trash:"dsouza@bitforest.org"/clear@imap.gmail.com:993! "trash"
+  %[Gmail]/Sent Mail:"dsouza@bitforest.org"/clear@imap.gmail.com:993! "sent"
+  %[Gmail]/Drafts:"dsouza@bitforest.org"/clear@imap.gmail.com:993! "drafts"
   lists {
-    %cron:"dgvncsz0f@bitforest.org"/clear@imap.gmail.com:993! "cron"
-    %ilists/haskell:"dgvncsz0f@bitforest.org"/clear@imap.gmail.com:993! "l/haskell"
-    %ilists/netstack:"dgvncsz0f@bitforest.org"/clear@imap.gmail.com:993! "l/netstack"
+    %cron:"dsouza@bitforest.org"/clear@imap.gmail.com:993! "cron"
+    %ilists/haskell:"dsouza@bitforest.org"/clear@imap.gmail.com:993! "l/haskell"
+    %ilists/netstack:"dsouza@bitforest.org"/clear@imap.gmail.com:993! "l/netstack"
   }
 }

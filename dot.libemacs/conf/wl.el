@@ -19,7 +19,7 @@
   wl-interactive-send t
   wl-interactive-exit nil
   wl-draft-always-delete-myself t
-  wl-user-mail-address-list '("dgvncsz0f@bitforest.org" "dgvncsz0f@gmail.com" "paravinicius@yahoo.com.br" "diego.souza@locaweb.com.br" "dsouza@c0d3.xxx" "dgvncsz0f@c0d3.xxx")
+  wl-user-mail-address-list '("dgvncsz0f@bitforest.org" "dgvncsz0f@gmail.com" "paravinicius@yahoo.com.br" "diego.souza@locaweb.com.br" "dsouza@c0d3.xxx" "dsouza@bitforest.org" "dgvncsz0f@c0d3.xxx")
 
   ;; Automatic signature insertion
   signature-file-name "~/.email-signature.txt"
@@ -35,7 +35,7 @@
   ;;    wl-modeline-biff-state-off)
   ;;  global-mode-string)
   ;; wl-biff-check-folder-list
-  ;; '( "%inbox:\"dgvncsz0f@bitforest.org\"/clear@imap.gmail.com:993!"
+  ;; '( "%inbox:\"dsouza@bitforest.org\"/clear@imap.gmail.com:993!"
   ;;    "%inbox:\"diego.souza\"/clear@outlook.locaweb.com.br:993!"
   ;;   )
   ;; wl-biff-check-interval 180
@@ -56,7 +56,7 @@
   wl-smtp-connection-type 'starttls
   wl-smtp-posting-port 25
   wl-smtp-authenticate-type "plain"
-  wl-smtp-posting-user "dgvncsz0f"
+  wl-smtp-posting-user "dsouza"
   wl-smtp-posting-server "localhost"
 
   ;; Summary
@@ -104,7 +104,7 @@
   wl-draft-reply-buffer-style 'full
   wl-dispose-folder-alist
   '(
-    (".*gmail" . "%[Gmail]/Trash:\"dgvncsz0f@bitforest.org\"/clear@imap.gmail.com:993!")
+    (".*gmail" . "%[Gmail]/Trash:\"dsouza@bitforest.org\"/clear@imap.gmail.com:993!")
     (".*locaweb" . remove)
     )
   wl-template-default-name "gmail"
@@ -114,12 +114,12 @@
      (wl-from . "diego souza <dsouza@c0d3.xxx>")
      ("From" . wl-from)
      (wl-fcc . nil)
-     (wl-trash-folder . "%[Gmail]/Trash:\"dgvncsz0f@bitforest.org\"/clear@imap.gmail.com:993!")
-     ; (wl-draft-folder . "%[Gmail]/Drafts:\"dgvncsz0f@bitforest.org\"/clear@imap.gmail.com:993!")
+     (wl-trash-folder . "%[Gmail]/Trash:\"dsouza@bitforest.org\"/clear@imap.gmail.com:993!")
+     ; (wl-draft-folder . "%[Gmail]/Drafts:\"dsouza@bitforest.org\"/clear@imap.gmail.com:993!")
      (wl-smtp-connection-type . 'starttls)
      (wl-smtp-posting-port . 25)
      (wl-smtp-authenticate-type . "plain")
-     (wl-smtp-posting-user . "dgvncsz0f@bitforest.org")
+     (wl-smtp-posting-user . "dsouza@bitforest.org")
      (wl-smtp-posting-server . "smtp.gmail.com")
      (signature-file-name . "~/.email-signature.txt")
      )
