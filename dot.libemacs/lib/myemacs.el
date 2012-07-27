@@ -61,10 +61,12 @@
 
 (defun my-c-mode-common-hook ()
   (setq c-basic-offset 2)
-  (setq c-set-style "bsd"))
+  (setq c-set-style "bsd")
+  (rainbow-delimiters-mode))
 
 (defun my-sh-mode-hook ()
-  (setq sh-basic-offset 2))
+  (setq sh-basic-offset 2)
+  (rainbow-delimiters-mode))
 
 (defun my-sgml-mode-hook ()
   (setq sgml-basic-offset 2))
@@ -82,7 +84,8 @@
     (define-key icicle-mode-map (kbd "C-c f") 'icicle-locate-file)))
 
 (defun my-js-mode-hook ()
-  (setq js-indent-level 2))
+  (setq js-indent-level 2)
+  (rainbow-delimiters-mode))
 
 (defun yas/org-very-safe-expand ()
   (let ((yas/fallback-behavior 'return-nil)) (yas/expand)))
