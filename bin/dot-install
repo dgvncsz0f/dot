@@ -65,7 +65,7 @@ dot_download_dot()
     (cd $dot_home
       $bin_git ls-files -o -z | $bin_xargs -0 $bin_rm -r -f &&\
       $bin_git reset --hard &&\
-      $bin_git pull origin master) || $bin_rm -r -f "$dot_home"
+      $bin_git pull -q origin master) || $bin_rm -r -f "$dot_home"
   fi
 
   if [ ! -d "$dot_home" ]
@@ -231,7 +231,7 @@ dot_omit_stderr_of()
 }
 
 dot_check_binaries
-dot_omit_stderr_of dot_download_dot
+dot_omit_stderr_of "downloading" dot_download_dot
 dot_install
 dot_overlay
 dot_omit_stderr_of "post install" dot_postinst
