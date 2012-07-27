@@ -58,7 +58,7 @@ dot_symlink()
 
 dot_download_dot()
 {
-  dot_print_info "downloading $arg_repo into $dot_home"
+  dot_print_info "cloning $arg_repo into $dot_home"
 
   if [ -d "$dot_home" ]
   then
@@ -231,7 +231,7 @@ dot_omit_stderr_of()
 }
 
 dot_check_binaries
-dot_omit_stderr_of "downloading" dot_download_dot
+dot_omit_stderr_of "download" dot_download_dot
 dot_install
 dot_overlay
 dot_omit_stderr_of "post install" dot_postinst
