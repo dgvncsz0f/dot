@@ -1,6 +1,7 @@
 #!/bin/sh
 
 arg_repo=${1:-git://github.com/dgvncsz0f/dot.git}
+dot_home="$HOME/.dot"
 
 bin_ln=/bin/ln
 bin_cat=/bin/cat
@@ -57,12 +58,20 @@ dot_symlink()
 
 dot_download_dot()
 {
-  dot_print_info "downloading $arg_repo into $HOME"
-  if [ -d "$HOME/.dot" ]
+  dot_print_info "downloading $arg_repo into $dot_home"
+
+  if [ -d "$dot_home" ]
   then
-    $bin_rm -rf $HOME/.dot
+    (cd $dot_home
+      $bin_git ls-files -o -z | $bin_xargs -0 $bin_rm -r -f &&\
+      $bin_git reset --hard &&\
+      $bin_git pull origin master) || $bin_rm -r -f "$dot_home"
   fi
-  $bin_git clone --depth 1 $arg_repo "$HOME/.dot"
+
+  if [ ! -d "$dot_home" ]
+  then
+    $bin_git clone --depth 1 $arg_repo "$dot_home"
+  fi
 }
 
 dot_install()
@@ -70,31 +79,31 @@ dot_install()
   dot_print_info "installing dot files"
 
   dot_mkdir   "$HOME/.ssh"
-  dot_symlink "$HOME/.dot/dot.ssh/config" "$HOME/.ssh/config"
-  dot_symlink "$HOME/.dot/dot.emacs" "$HOME/.emacs"
-  dot_symlink "$HOME/.dot/dot.libemacs" "$HOME/.libemacs"
-  dot_symlink "$HOME/.dot/dot.vim" "$HOME/.vim"
-  dot_symlink "$HOME/.dot/dot.vimrc" "$HOME/.vimrc"
-  dot_symlink "$HOME/.dot/dot.fonts.conf" "$HOME/.fonts.conf"
-  dot_symlink "$HOME/.dot/dot.bash_profile" "$HOME/.bash_profile"
-  dot_symlink "$HOME/.dot/dot.bashrc" "$HOME/.bashrc"
-  dot_symlink "$HOME/.dot/dot.zshrc" "$HOME/.zshrc"
-  dot_symlink "$HOME/.dot/dot.conkerorrc" "$HOME/.conkerorrc"
-  dot_symlink "$HOME/.dot/dot.gitconfig" "$HOME/.gitconfig"
-  dot_symlink "$HOME/.dot/dot.inputrc" "$HOME/.inputrc"
-  dot_symlink "$HOME/.dot/dot.screenrc" "$HOME/.screenrc"
-  dot_symlink "$HOME/.dot/dot.tmux.conf" "$HOME/.tmux.conf"
-  dot_symlink "$HOME/.dot/dot.xinitrc" "$HOME/.xinitrc"
-  dot_symlink "$HOME/.dot/dot.xmobarrc" "$HOME/.xmobarrc"
-  dot_symlink "$HOME/.dot/dot.xmodmaprc" "$HOME/.xmodmaprc"
-  dot_symlink "$HOME/.dot/dot.xmonad" "$HOME/.xmonad"
-  dot_symlink "$HOME/.dot/dot.xresourcesrc" "$HOME/.xresourcesrc"
-  dot_symlink "$HOME/.dot/dot.mutt" "$HOME/.mutt"
-  dot_symlink "$HOME/.dot/dot.email-signature" "$HOME/.email-signature.txt"
-  dot_symlink "$HOME/.dot/dot.octaverc" "$HOME/.octaverc"
-  dot_symlink "$HOME/.dot/dot.gtkrc-2.0" "$HOME/.gtkrc-2.0"
-  dot_symlink "$HOME/.dot/dot.folders" "$HOME/.folders"
-  dot_symlink "$HOME/.dot/bin/run_dzen2" "$HOME/.dot/bin/run_dzen2_bottom"
+  dot_symlink "$dot_home/dot.ssh/config" "$HOME/.ssh/config"
+  dot_symlink "$dot_home/dot.emacs" "$HOME/.emacs"
+  dot_symlink "$dot_home/dot.libemacs" "$HOME/.libemacs"
+  dot_symlink "$dot_home/dot.vim" "$HOME/.vim"
+  dot_symlink "$dot_home/dot.vimrc" "$HOME/.vimrc"
+  dot_symlink "$dot_home/dot.fonts.conf" "$HOME/.fonts.conf"
+  dot_symlink "$dot_home/dot.bash_profile" "$HOME/.bash_profile"
+  dot_symlink "$dot_home/dot.bashrc" "$HOME/.bashrc"
+  dot_symlink "$dot_home/dot.zshrc" "$HOME/.zshrc"
+  dot_symlink "$dot_home/dot.conkerorrc" "$HOME/.conkerorrc"
+  dot_symlink "$dot_home/dot.gitconfig" "$HOME/.gitconfig"
+  dot_symlink "$dot_home/dot.inputrc" "$HOME/.inputrc"
+  dot_symlink "$dot_home/dot.screenrc" "$HOME/.screenrc"
+  dot_symlink "$dot_home/dot.tmux.conf" "$HOME/.tmux.conf"
+  dot_symlink "$dot_home/dot.xinitrc" "$HOME/.xinitrc"
+  dot_symlink "$dot_home/dot.xmobarrc" "$HOME/.xmobarrc"
+  dot_symlink "$dot_home/dot.xmodmaprc" "$HOME/.xmodmaprc"
+  dot_symlink "$dot_home/dot.xmonad" "$HOME/.xmonad"
+  dot_symlink "$dot_home/dot.xresourcesrc" "$HOME/.xresourcesrc"
+  dot_symlink "$dot_home/dot.mutt" "$HOME/.mutt"
+  dot_symlink "$dot_home/dot.email-signature" "$HOME/.email-signature.txt"
+  dot_symlink "$dot_home/dot.octaverc" "$HOME/.octaverc"
+  dot_symlink "$dot_home/dot.gtkrc-2.0" "$HOME/.gtkrc-2.0"
+  dot_symlink "$dot_home/dot.folders" "$HOME/.folders"
+  dot_symlink "$dot_home/bin/run_dzen2" "$dot_home/bin/run_dzen2_bottom"
 }
 
 dot_overlay_merge()
@@ -138,29 +147,29 @@ dot_overlay()
 {
   dot_print_info "applying overlay"
 
-  if [ -d $HOME/dot.overlay/c ]
+  if [ -d "$HOME/dot.overlay/c" ]
   then
     for f in $($bin_find -L $HOME/dot.overlay/c -type f)
     do
       rf=${f##$HOME/dot.overlay/c/}
-      dot_overlay_create "$f" "$HOME/.dot/$rf"
+      dot_overlay_create "$f" "$dot_home/$rf"
     done
   fi
 
-  for f in $($bin_find -L $HOME/.dot -type f)
+  for f in $($bin_find -L "$dot_home" -type f)
   do
-    rf=${f##$HOME/.dot/}
-    dot_overlay_replace "$HOME/dot.overlay/r/$rf" "$HOME/.dot/$rf"
-    dot_overlay_merge "$HOME/dot.overlay/m/$rf" "$HOME/.dot/$rf"
+    rf=${f##$dot_home/}
+    dot_overlay_replace "$HOME/dot.overlay/r/$rf" "$dot_home/$rf"
+    dot_overlay_merge "$HOME/dot.overlay/m/$rf" "$dot_home/$rf"
   done
 
 }
 
 dot_fixperms()
 {
-  $bin_find -L $HOME/.dot -type d -exec $bin_chmod 0700 \{\} \;
-  $bin_find -L $HOME/.dot -type f -exec $bin_chmod 0600 \{\} \;
-  $bin_find -L $HOME/.dot/bin -type f -exec $bin_chmod 0700 \{\} \;
+  $bin_find -L "$dot_home" -type d -exec $bin_chmod 0700 \{\} \;
+  $bin_find -L "$dot_home" -type f -exec $bin_chmod 0600 \{\} \;
+  $bin_find -L "$dot_home/bin" -type f -exec $bin_chmod 0700 \{\} \;
 }
 
 dot_post_xmonad()
@@ -173,7 +182,7 @@ dot_post_emacs()
 {
   dot_print_info "  byte-compiling emacs lisp files"
   $bin_rm -f $HOME/.emacs.elc
-  $bin_find -L $HOME/.dot -name \*.el | $bin_xargs $bin_emacs --user $USER --batch --funcall batch-byte-compile
+  $bin_find -L "$dot_home" -name \*.el | $bin_xargs $bin_emacs --user $USER --batch --funcall batch-byte-compile
 }
 
 dot_postinst()
