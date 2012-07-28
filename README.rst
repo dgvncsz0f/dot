@@ -16,7 +16,7 @@ Assuming you have git installed::
 
 Where options might be:
 
-  * clean=1      : remote previous .dot directory (otherwise will try git pull);
-  * debug=1      : print debug messages;
-  * remote=url   : custom git url (default: git://github.com/dgvncsz0f/dot.git);
+  * clean=1      : force using git clone instead of git pull;
+  * debug=1      : turn debug messages on;
+  * remote=url   : the git url (default: git://github.com/dgvncsz0f/dot.git);
   * dot_home=dir : directory to clone/update (default $HOME/.dot);
