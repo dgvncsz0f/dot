@@ -104,17 +104,23 @@ my_loadrvm()
 
 my_encfs()
 {
-  local ENCFS=/usr/bin/encfs
-  local MOUNT=/bin/mount
-  local WC=/usr/bin/wc
-  local GREP=grep
-  if [ -x "${ENCFS}" ]
+  local bin_encfs
+  local bin_mount
+  local bin_wc
+  local bin_grep
+
+  bin_encfs=/usr/bin/encfs
+  bin_mount=/bin/mount
+  bin_wc=/usr/bin/wc
+  [ -x /bin/grep ] && bin_grep=/bin/grep
+  [ -x /usr/bin/grep ] && bin_grep=/usr/bin/grep
+  if [ -x "${bin_encfs}" ]
   then
     if [ -d "${HOME}/.sec" ]
     then
-      while [ "`\"${MOUNT}\" | \"${GREP}\" "${HOME}/sec" | \"${WC}\" -l`" != "1" ]
+      while [ "`\"${bin_mount}\" | \"${bin_grep}\" "${HOME}/sec" | \"${bin_wc}\" -l`" != "1" ]
       do
-        "${ENCFS}" "${HOME}/.sec" "${HOME}/sec" -o nonempty
+        "${bin_encfs}" "${HOME}/.sec" "${HOME}/sec" -o nonempty
       done
     fi
   fi
