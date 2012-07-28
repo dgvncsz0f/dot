@@ -153,11 +153,6 @@ my_gpgagent_init()
 {
   local daemon_args
 
-  if [ -x /usr/bin/pinentry-curses ]
-  then
-    daemon_args="--pinentry-program /usr/bin/pinentry-curses"
-  fi
-
   my_gpgagent_cleanse
   if [ ! -f "$HOME/.gpg-agent.env" ]
   then
