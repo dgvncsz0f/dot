@@ -136,7 +136,8 @@ my_gpgagent_export()
   then
     . "$HOME/.gpg-agent.env"
     export GPG_AGENT_INFO
-    export SSH_AGENT_INFO
+    export SSH_AGENT_PID
+    export SSH_AUTH_SOCK
   fi
 }
 
