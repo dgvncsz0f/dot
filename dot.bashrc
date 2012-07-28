@@ -72,4 +72,5 @@ my_bash_completion()
   my_bash_aliases
   my_ssh_add
   my_bash_completion
+  my_gpgagent_export
 }

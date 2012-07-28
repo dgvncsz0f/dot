@@ -119,3 +119,39 @@ my_encfs()
     fi
   fi
 }
+
+my_gpgagent_export()
+{
+  if [ -f "$HOME/.gpg-agent.env" ]
+  then
+    . "$HOME/.gpg-agent.env"
+    export GPG_AGENT_INFO
+  fi
+}
+
+my_gpgagent_check()
+{
+  my_gpgagent_export
+
+  if [ ! -f "$GPG_AGENT_INFO" ]
+  then
+    rm -f "$HOME/.gpg-agent.env"
+  fi
+}
+
+my_gpgagent_init()
+{
+  local daemon_args
+
+  if [ -x /usr/bin/pinentry-curses ]
+  then
+    daemon_args="--pinentry-program /usr/bin/pinentry-curses"
+  fi
+
+  my_gpgagent_check
+  if [ ! -f "$HOME/.gpg-agent.env" ]
+  then
+    /usr/bin/gpg-agent --daemon --max-cache-ttl 28800 --default-cache-ttl 28800 --write-env-file "$HOME/.gpg-agent.env" $daemon_args
+  fi
+}
+
