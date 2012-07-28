@@ -147,7 +147,7 @@ my_gpgagent_cleanse()
 
   if [ -x /usr/bin/gpg-connect-agent ]
   then
-    if ! echo /bye | /usr/bin/gpg-connect-agent 2>/dev/null
+    if ! /usr/bin/gpg-connect-agent /bye 2>/dev/null
     then
       rm -f "$HOME/.gpg-agent.env"
     fi
