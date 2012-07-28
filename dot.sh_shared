@@ -74,6 +74,7 @@ my_editors()
 
 my_setenv()
 {
+  export GNUPGHOME=$HOME/sec/gnupg
   export PAGER=/usr/bin/less
   export GPG_TTY=$(/usr/bin/tty)
   export LANG=en_US.UTF-8
