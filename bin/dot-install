@@ -1,7 +1,6 @@
 #!/bin/sh
 
-arg_repo=${1:-git://github.com/dgvncsz0f/dot.git}
-dot_home="$HOME/.dot"
+def_repo=git://github.com/dgvncsz0f/dot.git
 
 bin_ln=/bin/ln
 bin_cat=/bin/cat
@@ -9,6 +8,7 @@ bin_cp=/bin/cp
 bin_rm=/bin/rm
 bin_mkdir=/bin/mkdir
 bin_chmod=/bin/chmod
+bin_grep=/usr/bin/grep
 bin_env=/usr/bin/env
 bin_find=/usr/bin/find
 bin_xmonad=/usr/bin/xmonad
@@ -16,9 +16,41 @@ bin_emacs=/usr/bin/emacs
 bin_xargs=/usr/bin/xargs
 bin_git=/usr/bin/git
 
+envlist="$@"
+
+dot_getenv()
+{
+  arglist=""
+  for env in $envlist
+  do
+    if echo "$env" | $bin_grep -Eq '^[a-z_]+=[a-zA-Z0-9_/:-]+$'
+    then
+      eval "$env"
+      arglist="$arglist $env"
+    fi
+  done
+
+  [ -z "$remote" ] && {
+    remote=$def_repo
+    arglist="$arglist remote=$remote"
+  }
+
+  [ -z "$dot_home" ] && {
+    dot_home="$HOME/.dot"
+    arglist="$arglist dot_home=$HOME/.dot"
+  }
+
+  dot_print_info "using:$arglist"
+}
+
 dot_print_info()
 {
   printf "%s\n" "$1"
+}
+
+dot_print_debug()
+{
+  [ -n "$debug" ] && printf "[debug] %s\n" "$1"
 }
 
 dot_print_error()
@@ -58,19 +90,27 @@ dot_symlink()
 
 dot_download_dot()
 {
-  dot_print_info "cloning $arg_repo into $dot_home"
+  dot_print_info "cloning $remote into $dot_home"
+
+  if [ -n "$clean" ]
+  then
+    dot_print_info "removing $dot_home"
+    $bin_rm -r -f "$dot_home"
+  fi
 
   if [ -d "$dot_home" ]
   then
+    dot_print_info "trying git pull"
     (cd $dot_home
       $bin_git ls-files -o -z | $bin_xargs -0 $bin_rm -r -f &&\
-      $bin_git reset --hard &&\
+      $bin_git reset -q --hard &&\
       $bin_git pull -q origin master) || $bin_rm -r -f "$dot_home"
   fi
 
   if [ ! -d "$dot_home" ]
   then
-    $bin_git clone --depth 1 $arg_repo "$dot_home"
+    dot_print_info "trying git clone"
+    $bin_git clone --depth 1 $remote "$dot_home"
   fi
 }
 
@@ -215,7 +255,7 @@ dot_omit_stderr_of()
   cmd=$2
   
   dot_print_info "invoking $txt"
-  if [ -n "$dot_debugon" ]
+  if [ -n "$debug" ]
   then
     $cmd
   else
@@ -230,6 +270,7 @@ dot_omit_stderr_of()
   fi
 }
 
+dot_getenv
 dot_check_binaries
 dot_omit_stderr_of "download" dot_download_dot
 dot_install

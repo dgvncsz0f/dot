@@ -9,11 +9,14 @@ Installing
 
 Assuming you have git installed::
 
-  $ curl -k -s https://raw.github.com/dgvncsz0f/dot/master/bin/dot-install | sh
+  $ sh <(curl -k -s https://raw.github.com/dgvncsz0f/dot/master/bin/dot-install) [options]
 
-  # Alternatively
-  $ wget --no-check-certificate -O - https://raw.github.com/dgvncsz0f/dot/master/bin/dot-install | sh
+  # Alternatively:
+  $ sh bin/dot-install clean=1 remote=file:///path/to/your/dot/project [options]
 
-  # Another option:
-  $ sh bin/dot-install file:///path/to/your/dot/project
+Where options might be:
 
+  * clean=1      : remote previous .dot directory (otherwise will try git pull);
+  * debug=1      : print debug messages;
+  * remote=url   : custom git url (default: git://github.com/dgvncsz0f/dot.git);
+  * dot_home=dir : directory to clone/update (default $HOME/.dot);
