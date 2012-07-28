@@ -3,6 +3,7 @@
 
 . $HOME/.dot/dot.sh_shared
 
+my_setenv
 my_gpgagent_init
 
 [ -f /etc/profile ] && . /etc/profile
