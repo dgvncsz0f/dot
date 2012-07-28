@@ -161,7 +161,7 @@ my_gpgagent_init()
   my_gpgagent_cleanse
   if [ ! -f "$HOME/.gpg-agent.env" ]
   then
-    /usr/bin/gpg-agent --daemon --enable-ssh-support --max-cache-ttl 28800 --default-cache-ttl 28800 --write-env-file "$HOME/.gpg-agent.env" $daemon_args
+    /usr/bin/gpg-agent --daemon -sh --enable-ssh-support --max-cache-ttl 28800 --default-cache-ttl 28800 --write-env-file "$HOME/.gpg-agent.env" $daemon_args
   fi
 }
 
