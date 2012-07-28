@@ -129,13 +129,16 @@ my_gpgagent_export()
   fi
 }
 
-my_gpgagent_check()
+my_gpgagent_cleanse()
 {
   my_gpgagent_export
 
-  if [ ! -f "$GPG_AGENT_INFO" ]
+  if [ -x /usr/bin/gpg-connect-agent ]
   then
-    rm -f "$HOME/.gpg-agent.env"
+    if ! echo /bye | /usr/bin/gpg-connect-agent 2>/dev/null
+    then
+      rm -f "$HOME/.gpg-agent.env"
+    fi
   fi
 }
 
@@ -148,7 +151,7 @@ my_gpgagent_init()
     daemon_args="--pinentry-program /usr/bin/pinentry-curses"
   fi
 
-  my_gpgagent_check
+  my_gpgagent_cleanse
   if [ ! -f "$HOME/.gpg-agent.env" ]
   then
     /usr/bin/gpg-agent --daemon --max-cache-ttl 28800 --default-cache-ttl 28800 --write-env-file "$HOME/.gpg-agent.env" $daemon_args
