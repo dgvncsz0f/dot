@@ -6,9 +6,11 @@ bin_ln=/bin/ln
 bin_cat=/bin/cat
 bin_cp=/bin/cp
 bin_rm=/bin/rm
+bin_mv=/bin/mv
 bin_mkdir=/bin/mkdir
 bin_chmod=/bin/chmod
-bin_grep=/usr/bin/grep
+[ -x "/usr/bin/grep" ] && bin_grep=/usr/bin/grep
+[ -x "/bin/grep" ] && bin_grep=/bin/grep
 bin_env=/usr/bin/env
 bin_find=/usr/bin/find
 bin_xmonad=/usr/bin/xmonad
@@ -61,15 +63,17 @@ dot_print_error()
 
 dot_check_binaries()
 {
-  [ ! -x "$bin_ln" ]  && dot_print_error "ln binary not found"
-  [ ! -x "$bin_rm" ]  && dot_print_error "rm binary not found"
-  [ ! -x "$bin_chmod" ] && dot_print_error "chmod binary not found"
-  [ ! -x "$bin_env" ] && dot_print_error "env binary not found"
-  [ ! -x "$bin_find" ] && dot_print_error "find binary not found"
-  [ ! -x "$bin_xargs" ] && dot_print_error "xargs binary not found"
-  [ ! -x "$bin_cat" ] && dot_print_error "cat binary not found"
-  [ ! -x "$bin_cp" ] && dot_print_error "cp binary not found"
-  [ ! -x "$bin_git" ] && dot_print_error "git binary not found"
+  [ ! -x "$bin_ln" ]  && dot_print_error "$bin_ln not found"
+  [ ! -x "$bin_rm" ]  && dot_print_error "$bin_rm not found"
+  [ ! -x "$bin_chmod" ] && dot_print_error "$bin_chmod binary not found"
+  [ ! -x "$bin_env" ] && dot_print_error "$bin_env binary not found"
+  [ ! -x "$bin_find" ] && dot_print_error "$bin_find binary not found"
+  [ ! -x "$bin_grep" ] && dot_print_error "$bin_grep binary not found"
+  [ ! -x "$bin_xargs" ] && dot_print_error "$bin_xargs binary not found"
+  [ ! -x "$bin_cat" ] && dot_print_error "$bin_cat binary not found"
+  [ ! -x "$bin_cp" ] && dot_print_error "$bin_cp binary not found"
+  [ ! -x "$bin_mv" ] && dot_print_error "$bin_mv binary not found"
+  [ ! -x "$bin_git" ] && dot_print_error "$bin_git binary not found"
 }
 
 dot_mkdir()
@@ -146,26 +150,40 @@ dot_install()
   dot_symlink "$dot_home/bin/run_dzen2" "$dot_home/bin/run_dzen2_bottom"
 }
 
-dot_overlay_merge()
+dot_overlay_append()
 {
   src=$1
   dst=$2
 
   if [ -f "$src" ]
   then
-    dot_print_info "  merging $src into $dst"
+    dot_print_info "  append $src into $dst"
     $bin_cat "$src" >>"$dst"
   fi
 }
 
-dot_overlay_replace()
+dot_overlay_prpend()
 {
   src=$1
   dst=$2
 
   if [ -f "$src" ]
   then
-    dot_print_info "  replacing $dst with $src"
+    dot_print_info "  prpend $src into $dst"
+    $bin_cat "$src" "$dst" >"${dst}-overlay-prpend"
+    $bin_mv "${dst}-overlay-prpend" "$dst"
+  fi
+}
+
+
+dot_overlay_update()
+{
+  src=$1
+  dst=$2
+
+  if [ -f "$src" ]
+  then
+    dot_print_info "  update $dst with $src"
     $bin_cp "$src" "$dst"
   fi
 }
@@ -177,7 +195,7 @@ dot_overlay_create()
 
   if [ ! -f "$dst" ]
   then
-    dot_print_info "  copying $src to $dst"
+    dot_print_info "  create $src to $dst"
     $bin_mkdir -p $(dirname "$dst") 2>/dev/null
     $bin_cp "$src" "$dst"
   fi
@@ -187,22 +205,22 @@ dot_overlay()
 {
   dot_print_info "applying overlay"
 
-  if [ -d "$HOME/dot.overlay/c" ]
+  if [ -d "$HOME/dot.overlay/create" ]
   then
-    for f in $($bin_find -L $HOME/dot.overlay/c -type f)
+    for f in $($bin_find -L $HOME/dot.overlay/create -type f)
     do
-      rf=${f##$HOME/dot.overlay/c/}
+      rf=${f##$HOME/dot.overlay/create/}
       dot_overlay_create "$f" "$dot_home/$rf"
     done
   fi
-
+  
   for f in $($bin_find -L "$dot_home" -type f)
   do
     rf=${f##$dot_home/}
-    dot_overlay_replace "$HOME/dot.overlay/r/$rf" "$dot_home/$rf"
-    dot_overlay_merge "$HOME/dot.overlay/m/$rf" "$dot_home/$rf"
+    dot_overlay_prpend "$HOME/dot.overlay/prpend/$rf" "$dot_home/$rf"
+    dot_overlay_append "$HOME/dot.overlay/append/$rf" "$dot_home/$rf"
+    dot_overlay_update "$HOME/dot.overlay/update/$rf" "$dot_home/$rf"
   done
-
 }
 
 dot_fixperms()
@@ -270,8 +288,8 @@ dot_omit_stderr_of()
   fi
 }
 
-dot_getenv
 dot_check_binaries
+dot_getenv
 dot_omit_stderr_of "download" dot_download_dot
 dot_install
 dot_overlay
