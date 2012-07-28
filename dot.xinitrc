@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec ssh-agent /bin/sh $HOME/.xinitrc.local
+exec /bin/sh $HOME/.xinitrc.local
