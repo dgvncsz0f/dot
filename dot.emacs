@@ -6,6 +6,7 @@
 (require 'col-highlight)
 (require 'myemacs)
 (require 'uniquify)
+(require 'magit)
 (require 'fastnav)
 (require 'python-mode)
 (require 'ipython)
