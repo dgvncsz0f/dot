@@ -25,19 +25,24 @@ Overlay
 =======
 
 There is a mechanism to apply small patches or replace files entirely
-per site. This is called overlay.
+per site when invoking dot-install.
 
-For this to work, there must a directory $HOME/dot.overlay, with one
-or more of the following directories (execution order):
+For this to work, there must a directory $HOME/dot.overlay with one
+or more of the following directories (listing execution order):
 
   * $HOME/dot.overlay/create/
   * $HOME/dot.overlay/prpend/
   * $HOME/dot.overlay/append/
   * $HOME/dot.overlay/update/
 
-Example, to create a new file named foo under $HOME/.dot/bin and to
+For instance, to create a new file named foo under $HOME/.dot/bin and to
 change .ssh/config:
 
   $ touch $HOME/dot.overlay/create/bin/foo
-  $ echo "# last line" >$HOME/dot.overlay/append/dot.ssh/config
+
+  $ echo ... >$HOME/dot.overlay/append/dot.bashrc
+
+  $ dot-install # will apply the changes above
+
+After this the file $HOME/.dot/bin/foo should have been created. Similarly, $HOME/.dot/dot.bashrc should have been modified.
 
