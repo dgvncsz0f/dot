@@ -8,6 +8,12 @@ my_bash_prompt()
   export PS1="\[$fg_bold_red\]➜ \[$fg_bold_grey\]|\\u@\\H| \[$fg_norm_cyan\]\\w \\n\[$fg_bold_yellow\]\\$\[$nocolors\] "
 }
 
+my_execbg()
+{
+  cmd="$@"
+  ($cmd 2>&1 >/dev/null & disown)
+}
+
 my_bash_history()
 {
   export HISTFILE=$HOME/.bash_history
