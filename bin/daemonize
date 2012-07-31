@@ -1,4 +1,5 @@
 #!/bin/bash
 
+exec >/dev/null
 command nohup "$@" >/dev/null&
 exit 0
