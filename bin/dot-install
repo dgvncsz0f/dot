@@ -123,6 +123,13 @@ dot_install()
   dot_print_info "installing dot files"
 
   dot_mkdir   "$HOME/.ssh"
+  dot_mkdir   "$HOME/.gnupg"
+  if [ -d "$GNUPGHOME" ]
+  then
+    dot_symlink "$dot_home/dot.gnupg/gpg-agent.conf" "$GNUPGHOME/gpg-agent.conf"
+  else
+    dot_symlink "$dot_home/dot.gnupg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
+  fi
   dot_symlink "$dot_home/dot.ssh/config" "$HOME/.ssh/config"
   dot_symlink "$dot_home/dot.emacs" "$HOME/.emacs"
   dot_symlink "$dot_home/dot.libemacs" "$HOME/.libemacs"
