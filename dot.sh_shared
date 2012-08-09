@@ -138,6 +138,7 @@ my_gpgagent_export()
     export GPG_AGENT_INFO
     export SSH_AGENT_PID
     export SSH_AUTH_SOCK
+    /usr/bin/gpg-connect-agent updatestartuptty /bye >/dev/null 2>&1
   fi
 }
 
