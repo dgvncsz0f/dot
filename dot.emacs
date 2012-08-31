@@ -8,6 +8,7 @@
 (require 'uniquify)
 (require 'magit)
 (require 'fastnav)
+(require 'haskell-mode)
 (require 'python-mode)
 (require 'ipython)
 (require 'rainbow-delimiters)
