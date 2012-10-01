@@ -63,10 +63,6 @@ if has("linebreak")
   set showtabline=2
 endif
 
-if has("folding")
-  set foldmethod=indent
-endif
-
 if has("autocmd")
   augroup filetypedetect
     autocmd BufRead,BufNewFile *.yicf setfiletype yicf
