@@ -18,7 +18,5 @@
   push        = stash
   pop         = stash pop
   xlog        = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-  pushnotes   = !sh -c 'git push $1 refs/notes/*' -
-  fetchnotes  = !sh -c 'git fetch $1 refs/notes/*:refs/notes/*' -
-  pushnotes_  = !sh -c 'git pushnotes origin' -
-  fetchnotes_ = !sh -c 'git fetchnotes origin' -
+  pushnotes   = !sh -c 'git push ${1:-origin} refs/notes/*' -
+  fetchnotes  = !sh -c 'git fetch ${1:-origin} refs/notes/*:refs/notes/*' -
