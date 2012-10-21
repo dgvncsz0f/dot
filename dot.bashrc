@@ -72,7 +72,10 @@ my_bash_completion()
   my_bash_aliases
   # my_ssh_add
   my_bash_completion
-  my_gpgagent_cleanse
-  my_gpgagent_init
-  my_gpgagent_export
+  if [ -z "$SSH_CONNECTION" ]
+  then
+    my_gpgagent_cleanse
+    my_gpgagent_init
+    my_gpgagent_export
+  fi
 }

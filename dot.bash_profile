@@ -4,7 +4,6 @@
 . $HOME/.dot/dot.sh_shared
 
 my_setenv
-my_gpgagent_init
 
 [ -f /etc/profile ] && . /etc/profile
 [ -f "${HOME}/.bash_profile.local" ] && . "${HOME}/.bash_profile.local"
