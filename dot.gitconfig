@@ -1,10 +1,10 @@
 [user]
-  name = diego souza
-  email = dsouza@c0d3.xxx
+  name       = diego souza
+  email      = dsouza@c0d3.xxx
   signingkey = dsouza
 
 [color]
-  diff = auto
+  diff   = auto
   status = auto
   branch = auto
 
@@ -20,3 +20,6 @@
   xlog        = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   pushnotes   = !sh -c 'git push ${1:-origin} refs/notes/*' -
   fetchnotes  = !sh -c 'git fetch ${1:-origin} refs/notes/*:refs/notes/*' -
+
+[push]
+  default = simple
