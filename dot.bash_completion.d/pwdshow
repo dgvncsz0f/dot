@@ -1,5 +1,8 @@
 #!/bin/bash
 
-. $HOME/.dot/bin/pwdcnf
+if [ -r $HOME/.dot/bin/pwdcnf ]
+then
+  . $HOME/.dot/bin/pwdcnf
 
-complete -o filenames -F _pwdcomp pwdshow
+  complete -o filenames -F _pwdcomp pwdshow
+fi
