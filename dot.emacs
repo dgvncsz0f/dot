@@ -90,3 +90,4 @@
 (icomplete-mode 99)
 (my-x-as-term)
 (nyan-mode)
+(unless (server-running-p) (server-start))

@@ -63,7 +63,6 @@ my_bash_completion()
   my_bash_options
   my_colors
   my_setenv
-  my_editors
   my_aliases
   my_encfs
   my_loadrvm

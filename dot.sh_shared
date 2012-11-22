@@ -55,25 +55,10 @@ bg_bold_def='[01;49m'
 nocolors='[0m'
 }
 
-my_editors()
-{
-  if [ -x "/usr/bin/emacs" ]
-  then
-    export VISUAL=/usr/bin/emacs
-    export EDITOR=/usr/bin/emacs
-  elif [ -x "/usr/bin/vim" ]
-  then
-    export VISUAL=/usr/bin/vim
-    export EDITOR=/usr/bin/vim
-  elif [ -x "/usr/bin/vi" ]
-  then
-    export VISUAL=/usr/bin/vi
-    export EDITOR=/usr/vin/vi
-  fi
-}
-
 my_setenv()
 {
+  export VISUAL=editor
+  export EDITOR=editor
   export GNUPGHOME=$HOME/sec/gnupg
   export PAGER=/usr/bin/less
   export GPG_TTY=$(/usr/bin/tty)
