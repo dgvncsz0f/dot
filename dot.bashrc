@@ -55,22 +55,21 @@ my_bash_completion()
   done
 }
 
-[ -n "${PS1}" ] && {
-  [ -f /etc/bash.bashrc ] && . /etc/bash.bashrc
-  [ -f /etc/bashrc ] && . /etc/bashrc
-  [ -f "${HOME}/.bashrc.local" ] && . "${HOME}/.bashrc.local"
+[ -f /etc/bash.bashrc ]        && . /etc/bash.bashrc
+[ -f /etc/bashrc ]             && . /etc/bashrc
+[ -f "${HOME}/.bashrc.local" ] && . "${HOME}/.bashrc.local"
 
-  my_bash_options
-  my_colors
-  my_setenv
-  my_aliases
+my_bash_options
+my_colors
+my_setenv
+my_aliases
+my_loadrvm
+my_bash_history
+my_bash_prompt
+my_bash_aliases
+my_bash_completion
+[ -n "$PS1" ] && {
   my_encfs
-  my_loadrvm
-  my_bash_history
-  my_bash_prompt
-  my_bash_aliases
-  # my_ssh_add
-  my_bash_completion
   if [ -z "$SSH_CONNECTION" ]
   then
     my_gpgagent_cleanse

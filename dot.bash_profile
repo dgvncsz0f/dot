@@ -5,6 +5,6 @@
 
 my_setenv
 
-[ -f /etc/profile ] && . /etc/profile
+[ -f /etc/profile ]                  && . /etc/profile
 [ -f "${HOME}/.bash_profile.local" ] && . "${HOME}/.bash_profile.local"
-[ -f "${HOME}/.bashrc" ] && . "${HOME}/.bashrc"
+[ -f "${HOME}/.bashrc" ]             && . "${HOME}/.bashrc"
