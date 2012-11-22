@@ -114,7 +114,7 @@ dot_download_dot()
   if [ ! -d "$dot_home" ]
   then
     dot_print_info "trying git clone"
-    $bin_git clone --depth 1 $remote "$dot_home"
+    $bin_git clone $remote "$dot_home"
   fi
 
   (cd $dot_home; $bin_git submodule init; $bin_git submodule update)
