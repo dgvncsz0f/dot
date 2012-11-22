@@ -226,11 +226,8 @@
 
 (defun my-locate-project-file ()
   (interactive)
-  (let ((project-root (my-locate-gitroot)))
-    (if project-root
-        (cd project-root)
-      (setq current-prefix-arg '(4)))
-    (call-interactively 'icicle-locate-file)))
+  (let ((default-directory (or (my-locate-gitroot) default-directory)))
+    (icicle-locate-file)))
 
 ; (defun my-jump-and-yank-link ()
 ;   (interactive)
