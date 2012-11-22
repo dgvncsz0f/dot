@@ -197,10 +197,10 @@
              (myf)
            (delete-other-windows)))))
 
-(defun my-browse-url-chrome (url &rest ignore)
-  "Browse url using google-chrome"
+(defun my-browse-url-conkeror (url &rest ignore)
+  "Browse url using conkeror"
   (interactive "sURL: ")
-  (shell-command-to-string (concat "google-chrome " (shell-quote-argument url) "&")))
+  (shell-command-to-string (concat "firecmd conkeror " (shell-quote-argument url))))
 
 (defun my-jump-and-visit-link ()
   (interactive)

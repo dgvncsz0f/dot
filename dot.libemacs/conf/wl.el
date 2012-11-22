@@ -15,7 +15,7 @@
   wl-mime-charset 'x-ctext
   elmo-mime-charset 'utf-8
   mime-transfer-level 8
-  browse-url-browser-function 'my-browse-url-chrome
+  browse-url-browser-function 'my-browse-url-conkeror
   wl-interactive-send t
   wl-interactive-exit nil
   wl-draft-always-delete-myself t
