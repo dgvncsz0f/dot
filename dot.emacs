@@ -76,6 +76,7 @@
 (load "~/.libemacs/conf/wl.el")
 (load "~/.libemacs/conf/dired.el")
 (load "~/.libemacs/conf/epresent.el")
+(load "~/.libemacs/conf/icicles.el")
 (load custom-file)
 
 (show-paren-mode t)
