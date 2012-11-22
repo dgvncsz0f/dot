@@ -1,3 +1,5 @@
+-- -*- mode: haskell; -*-
+
 import XMonad
 import XMonad.Layout.Tabbed
 import XMonad.Layout.Named
@@ -22,11 +24,9 @@ myConfig = return $ defaultConfig { manageHook  = manageDocks <+> myManageHook <
                                                      , ((myModMask .|. shiftMask, xK_s),     spawn "/usr/bin/import /tmp/screenshot.png")
                                                      , ((myModMask .|. shiftMask, xK_e),     spawn "/usr/bin/editor")
                                                      , ((myModMask .|. shiftMask, xK_b),     spawn "/usr/bin/x-www-browser")
-                                                     , ((myModMask .|. shiftMask, xK_p),     spawn "/usr/bin/kupfer")
+                                                     , ((myModMask              , xK_p),     spawn "/bin/bash -l -c dmenu_run")
                                                      , ((myModMask .|. shiftMask, xK_equal), spawn "/usr/bin/aumix -w +10")
                                                      , ((myModMask .|. shiftMask, xK_minus), spawn "/usr/bin/aumix -w -10")
-                                                     , ((myModMask,               xK_v),     windows copyToAll)
-                                                     , ((myModMask .|. shiftMask, xK_v),     killAllOtherCopies)
                                                      ]
   where myManageHook = composeAll [ className =? "Pidgin"      --> doFloat
                                   , className =? "Skype"       --> doFloat
