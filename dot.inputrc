@@ -6,6 +6,6 @@ set visible-stats on
 set bell-style none
 set show-all-if-ambiguous on
 
+"\C-w": kill-region
 "\C-k": kill-whole-line
-"\C-x\C-k": kill-line
-"\C-x\C-d": kill-region
+"\C-\M-k": kill-line
