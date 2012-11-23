@@ -65,10 +65,10 @@ my_setenv
 my_aliases
 my_loadrvm
 my_bash_history
-my_bash_prompt
 my_bash_aliases
 my_bash_completion
 [ -n "$PS1" ] && {
+  my_bash_prompt
   my_encfs
   if [ -z "$SSH_CONNECTION" ]
   then
