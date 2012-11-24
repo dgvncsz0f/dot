@@ -2,4 +2,7 @@
 
 (require 'icicles)
 
+; save this for ace-jump-mode
+(delete-if (lambda (k) (equal " " (car k))) icicle-top-level-key-bindings)
+
 (icy-mode 1)
