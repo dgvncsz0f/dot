@@ -4,3 +4,6 @@
 [submodule "emacs/icicles/data/icicles.git"]
 	path = emacs/icicles/data/icicles.git
 	url = git://github.com/emacsmirror/icicles.git
+[submodule "emacs/magit/data/magit.git"]
+	path = emacs/magit/data/magit.git
+	url = git://github.com/magit/magit.git

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec make -s -C data/magit.git install_core PREFIX=~/.emacs.d SYSCONFDIR=~/.emacs.d/libexec
