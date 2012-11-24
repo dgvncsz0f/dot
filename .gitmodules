@@ -10,3 +10,6 @@
 [submodule "emacs/bookmark+/data/bookmark+.git"]
 	path = emacs/bookmark+/data/bookmark+.git
 	url = git://github.com/emacsmirror/bookmark-plus.git
+[submodule "emacs/fastnav/data/fastnav.git"]
+	path = emacs/fastnav/data/fastnav.git
+	url = git://github.com/gleber/fastnav.el.git
