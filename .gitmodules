@@ -34,3 +34,6 @@
 [submodule "emacs/buff-menu+/data/buff-menu+.git"]
 	path = emacs/buff-menu+/data/buff-menu+.git
 	url = git://github.com/emacsmirror/buff-menu-plus.git
+[submodule "emacs/markdown-mode/data/markdown-mode.git"]
+	path = emacs/markdown-mode/data/markdown-mode.git
+	url = http://jblevins.org/git/markdown-mode.git
