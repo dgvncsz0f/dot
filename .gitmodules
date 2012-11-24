@@ -4,3 +4,6 @@
 [submodule "dot.libemacs/lib/markdown-mode"]
 	path = dot.libemacs/lib/markdown-mode
 	url = http://jblevins.org/git/markdown-mode.git
+[submodule "dot.libemacs/lib/yaml-mode"]
+	path = dot.libemacs/lib/yaml-mode
+	url = git://github.com/yoshiki/yaml-mode.git
