@@ -10,8 +10,8 @@
 [submodule "emacs/xtra/fastnav/data/fastnav.git"]
 	path = emacs/xtra/fastnav/data/fastnav.git
 	url = git://github.com/gleber/fastnav.el.git
-[submodule "emacs/rainbow-delimiters/data/rainbow-delimiters.git"]
-	path = emacs/rainbow-delimiters/data/rainbow-delimiters.git
+[submodule "emacs/xtra/rainbow-delimiters/data/rainbow-delimiters.git"]
+	path = emacs/xtra/rainbow-delimiters/data/rainbow-delimiters.git
 	url = git://github.com/jlr/rainbow-delimiters.git
 [submodule "emacs/xtra/nyan-mode/data/nyan-mode.git"]
 	path = emacs/xtra/nyan-mode/data/nyan-mode.git
