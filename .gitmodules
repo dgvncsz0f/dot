@@ -7,3 +7,6 @@
 [submodule "emacs/magit/data/magit.git"]
 	path = emacs/magit/data/magit.git
 	url = git://github.com/magit/magit.git
+[submodule "emacs/bookmark+/data/bookmark+.git"]
+	path = emacs/bookmark+/data/bookmark+.git
+	url = git://github.com/emacsmirror/bookmark-plus.git
