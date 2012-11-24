@@ -14,13 +14,13 @@ is done.
 
 However, the long short-long history is this:
 
-  * Each directory represents a module;
+* Each directory represents a module;
 
-  * Each module has one or more tags [$module/tags directory];
+* Each module has one or more tags [$module/tags directory];
 
-  * When you invoke `dot-install`, you tell which tags you want to
-    install. In other words, if you want to use my emacs files, and
-    nothing else, you could do::
+* When you invoke `dot-install`, you tell which tags you want to
+  install. In other words, if you want to use my emacs files, and
+  nothing else, you could do::
 
   $ dot-install install=emacs repo=git://github.com/dgvncsz0f/dot.git
 
