@@ -1,5 +1,6 @@
 (add-to-list 'load-path "~/.libemacs/lib/")
 (add-to-list 'load-path "~/.libemacs/lib/icicles")
+(add-to-list 'load-path "~/.libemacs/lib/markdown-mode")
 (require 'bbdb)
 (require 'icomplete)
 (require 'icomplete+)
@@ -22,6 +23,7 @@
 (require 'files+)
 (require 'dired+)
 (require 'buff-menu+)
+(require 'markdown-mode)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -77,6 +79,7 @@
 (load "~/.libemacs/conf/dired.el")
 (load "~/.libemacs/conf/epresent.el")
 (load "~/.libemacs/conf/icicles.el")
+(load "~/.libemacs/conf/markdown.el")
 (load custom-file)
 
 (show-paren-mode t)
