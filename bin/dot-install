@@ -107,14 +107,15 @@ dot_download_dot()
     dot_print_info "trying git pull"
     (cd $dot_home;
       $bin_git pull --ff-only -q origin master && \
-      $bin_git submodule foreach $bin_git pull --ff-only origin master) || $bin_rm -r -f "$dot_home"
+      $bin_git submodule init                  && \
+      $bin_git submodule update) || $bin_rm -r -f "$dot_home"
   fi
 
   if [ ! -d "$dot_home" ]
   then
     dot_print_info "trying git clone"
     $bin_git clone $remote "$dot_home"
-    (cd $dot_home; $bin_git submodule init; $bin_git submodule update)
+    (cd $dot_home; $bin_git submodule init && $bin_git submodule update)
   fi
 }
 
