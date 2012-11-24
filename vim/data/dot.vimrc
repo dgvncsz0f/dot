@@ -78,8 +78,6 @@ endif
 if has("localmap")
   nmap <unique> <silent> <Leader>a :w %<CR> :!aspell -c %<CR> :e! %<CR>
   nmap <unique> <silent> <Leader>s :syn sync fromstart<CR>
-  nmap <unique> <silent> <S-A-h> :execute TabMoveRW()<CR>
-  nmap <unique> <silent> <S-A-l> :execute TabMoveFW()<CR>
   nmap <unique> <silent> <C-A-h> :tabprev<CR>
   nmap <unique> <silent> <C-A-l> :tabnext<CR>
   nmap <unique> <silent> <A-t> :tabnew<CR>
@@ -87,64 +85,6 @@ if has("localmap")
   nmap <unique> <silent> <A-S-w> :close<CR>
   nmap <unique> <silent> <F5> :prev<CR>
   nmap <unique> <silent> <F6> :next<CR>
-  nmap <unique> <silent> <Leader>b :buffers<CR>:buffer<Space>
-endif
-
-if has("windows") && v:version >= 700
-  function MyTabLine()
-    let s = ''
-    for i in range(tabpagenr('$'))
-      " select the highlighting
-      if i + 1 == tabpagenr()
-        let s .= '%#TabLineSel#'
-      else
-        let s .= '%#TabLine#'
-      endif
-  
-      " set the tab page number (for mouse clicks)
-      let s .= '%' . (i + 1) . 'T'
-  
-      " the label is made by MyTabLabel()
-      let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
-    endfor
-  
-    " after the last tab fill with TabLineFill and reset tab page nr
-    let s .= '%#TabLineFill#%T'
-  
-    " right-align the label to close the current tab page
-    "if tabpagenr('$') > 1 let s .= '%=%#TabLine#%999Xclose' endif
-  
-    return s
-  endfunction
-  
-  function MyTabLabel(n)
-    let buflist = tabpagebuflist(a:n)
-    let winnr = tabpagewinnr(a:n)
-    let s = substitute((bufname(buflist[winnr - 1])), '.*/', '', '')
-    if (empty(s))
-      let s = '[No Name]'
-    endif
-    let s = s . ' ['. bufnr(buflist[winnr-1]) .']'
-    return(s)
-  endfunction
-
-  set tabline=%!MyTabLine()
-
-  function TabMoveFW()
-    if (tabpagenr() == tabpagenr('$'))
-      :execute "tabmove 0"
-    else
-      :execute "tabmove ". tabpagenr()
-    endif
-  endfunction
-  
-  function TabMoveRW()
-    if (tabpagenr() < 2)
-      :execute "tabmove"
-    else
-      :execute "tabmove ". (tabpagenr()-2)
-    endif
-  endfunction
 endif
 
 if has("printer")
