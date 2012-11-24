@@ -7,8 +7,8 @@
 [submodule "emacs/xtra/bookmark+/data/bookmark+.git"]
 	path = emacs/xtra/bookmark+/data/bookmark+.git
 	url = git://github.com/emacsmirror/bookmark-plus.git
-[submodule "emacs/fastnav/data/fastnav.git"]
-	path = emacs/fastnav/data/fastnav.git
+[submodule "emacs/xtra/fastnav/data/fastnav.git"]
+	path = emacs/xtra/fastnav/data/fastnav.git
 	url = git://github.com/gleber/fastnav.el.git
 [submodule "emacs/rainbow-delimiters/data/rainbow-delimiters.git"]
 	path = emacs/rainbow-delimiters/data/rainbow-delimiters.git
