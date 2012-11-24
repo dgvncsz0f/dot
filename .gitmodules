@@ -34,8 +34,8 @@
 [submodule "emacs/markdown-mode/data/markdown-mode.git"]
 	path = emacs/markdown-mode/data/markdown-mode.git
 	url = http://jblevins.org/git/markdown-mode.git
-[submodule "emacs/ace-jump-mode/data/ace-jump-mode.git"]
-	path = emacs/ace-jump-mode/data/ace-jump-mode.git
+[submodule "emacs/xtra/ace-jump-mode/data/ace-jump-mode.git"]
+	path = emacs/xtra/ace-jump-mode/data/ace-jump-mode.git
 	url = git://github.com/winterTTr/ace-jump-mode.git
 [submodule "emacs/xtra/zenburn/data/zenburn-emacs.git"]
 	path = emacs/xtra/zenburn/data/zenburn-emacs.git
