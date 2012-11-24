@@ -1,5 +1,5 @@
-[submodule "emacs/icicles/data/icicles.git"]
-	path = emacs/icicles/data/icicles.git
+[submodule "emacs/xtra/icicles/data/icicles.git"]
+	path = emacs/xtra/icicles/data/icicles.git
 	url = git://github.com/emacsmirror/icicles.git
 [submodule "emacs/magit/data/magit.git"]
 	path = emacs/magit/data/magit.git
