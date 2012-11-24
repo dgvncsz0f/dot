@@ -1,0 +1,5 @@
+; -*- mode: emacs-lisp; -*-
+
+(require 'rainbow-delimiters)
+
+(global-rainbow-delimiters-mode)
