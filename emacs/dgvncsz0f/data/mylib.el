@@ -59,28 +59,8 @@
        (menu-bar-mode (- 1))
        (scroll-bar-mode (- 1))))))
 
-(defun my-c-mode-common-hook ()
-  (setq c-basic-offset 2)
-  (setq c-set-style "bsd")
-  (rainbow-delimiters-mode))
-
-(defun my-sh-mode-hook ()
-  (setq sh-basic-offset 2)
-  (rainbow-delimiters-mode))
-
 (defun my-sgml-mode-hook ()
   (setq sgml-basic-offset 2))
-
-(defun my-haskell-mode-hook ()
-  (setq haskell-program-name "ghci"))
-
-(defun my-python-mode-hook ()
-  (setq py-indent-offset 2)
-  (modify-syntax-entry ?_ "_"))
-
-(defun my-js-mode-hook ()
-  (setq js-indent-level 2)
-  (rainbow-delimiters-mode))
 
 (defun yas/org-very-safe-expand ()
   (let ((yas/fallback-behavior 'return-nil)) (yas/expand)))
@@ -90,9 +70,6 @@
   (interactive "P")
   (move-beginning-of-line nil)
   (org-kill-line arg))
-
-(defun my-w3m-mode-hook ()
-  (w3m-link-numbering-mode))
 
 (defun my-delete-prefix (pfx str)
   (if (string-prefix-p pfx str)
@@ -197,13 +174,6 @@
   (interactive "sURL: ")
   (shell-command-to-string (concat "firecmd conkeror " (shell-quote-argument url))))
 
-(defun my-jump-and-visit-link ()
-  (interactive)
-  (let ((active w3m-link-numbering-mode))
-    (when (not active) (w3m-link-numbering-mode))
-    (w3m-move-numbered-anchor (read-number "Link #: "))
-    (w3m-view-url-with-external-browser)))
-
 (defun my-parent-directory (path)
   (let ((parent-path (file-name-directory (directory-file-name path))))
     (if (and (file-directory-p parent-path) (not (string-equal parent-path path)))
@@ -218,12 +188,5 @@
 (defun my-locate-gitroot ()
   (my-locate-up (expand-file-name default-directory)
                 (lambda (x) (file-directory-p (concat x ".git")))))
-
-; (defun my-jump-and-yank-link ()
-;   (interactive)
-;   (let ((active w3m-link-numbering-mode))
-;     (when (not active) (w3m-link-numbering-mode))
-;     (w3m-move-numbered-anchor (read-number "Link #: "))
-;     (w3m-url-at-point)))
 
 (provide 'myemacs)
