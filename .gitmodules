@@ -28,3 +28,6 @@
 [submodule "emacs/wanderlust/data/wanderlust.git"]
 	path = emacs/wanderlust/data/wanderlust.git
 	url = git://github.com/wanderlust/wanderlust.git
+[submodule "emacs/yaml-mode/data/yaml-mode.git"]
+	path = emacs/yaml-mode/data/yaml-mode.git
+	url = git://github.com/yoshiki/yaml-mode.git
