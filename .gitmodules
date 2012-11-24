@@ -25,3 +25,6 @@
 [submodule "emacs/haskell-mode/data/haskell-mode.git"]
 	path = emacs/haskell-mode/data/haskell-mode.git
 	url = git://github.com/haskell/haskell-mode.git
+[submodule "emacs/wanderlust/data/wanderlust.git"]
+	path = emacs/wanderlust/data/wanderlust.git
+	url = git://github.com/wanderlust/wanderlust.git
