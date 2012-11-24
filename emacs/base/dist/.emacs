@@ -1,1 +1,1 @@
-../data/dot.emacs
+../data/emacs

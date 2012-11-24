@@ -10,6 +10,7 @@
   (mapcar 'load (file-expand-wildcards (concat user-site-start-dir "*.el"))))
 
 (require 'server)
+(require 'uniquify)
 
 (set-default-font "DejaVu Sans Mono")
 
@@ -26,6 +27,8 @@
 (setq comment-multi-line t)
 (setq mail-from-style 'angles)
 (setq kill-whole-line t)
+(setq uniquify-buffer-name-style 'post-forward)
+(setq uniquify-strip-common-suffix nil)
 (setq custom-file "~/.emacs.d/custom-file")
 
 (put 'erase-buffer 'disabled nil)
