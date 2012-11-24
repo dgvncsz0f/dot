@@ -2,47 +2,28 @@
  dot
 =====
 
-My .rc files.
+My dot files.
 
-Installing
-==========
+This is the repository where I keep all my configuration files [emacs,
+git, shell stuff etc.]. This project does nothing but hold the
+files. The one responsible for deploying them into the filesystem is
+the `dot-install <https://github.com/dgvncsz0f/dot-install>`_ project.
 
-Assuming you have git installed::
+You should refer to that project for more information about how this
+is done.
 
-  $ sh <(curl -k -s https://raw.github.com/dgvncsz0f/dot/master/bin/dot-install) [options]
+However, the long short-long history is this:
 
-  # Alternatively:
-  $ sh bin/dot-install clean=1 remote=file:///path/to/your/dot/project [options]
+  * Each directory represents a module;
 
-Where options might be:
+  * Each module has one or more tags [$module/tags directory];
 
-  * clean=1      : force using git clone instead of git pull;
-  * debug=1      : turn debug messages on;
-  * remote=url   : the git url (default: git://github.com/dgvncsz0f/dot.git);
-  * dot_home=dir : directory to clone/update (default $HOME/.dot);
+  * When you invoke `dot-install`, you tell which tags you want to
+    install. In other words, if you want to use my emacs files, and
+    nothing else, you could do::
 
-Overlay
-=======
+  $ dot-install install=emacs repo=git://github.com/dgvncsz0f/dot.git
 
-There is a mechanism to apply small patches or replace files entirely
-per site when invoking dot-install.
+Each module should have a README, describing how things are organized.
 
-For this to work, there must a directory $HOME/dot.overlay with one
-or more of the following directories (listing execution order):
-
-  * $HOME/dot.overlay/create/
-  * $HOME/dot.overlay/prpend/
-  * $HOME/dot.overlay/append/
-  * $HOME/dot.overlay/update/
-
-For instance, to create a new file named foo under $HOME/.dot/bin and to
-change .ssh/config:
-
-  $ touch $HOME/dot.overlay/create/bin/foo
-
-  $ echo ... >$HOME/dot.overlay/append/dot.bashrc
-
-  $ dot-install # will apply the changes above
-
-After this the file $HOME/.dot/bin/foo should have been created. Similarly, $HOME/.dot/dot.bashrc should have been modified.
-
+~dsouza

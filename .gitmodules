@@ -1,9 +1,3 @@
-[submodule "dot.libemacs/lib/icicles"]
-	path = dot.libemacs/lib/icicles
-	url = git://github.com/emacsmirror/icicles.git
-[submodule "dot.libemacs/lib/markdown-mode"]
-	path = dot.libemacs/lib/markdown-mode
-	url = http://jblevins.org/git/markdown-mode.git
-[submodule "dot.libemacs/lib/yaml-mode"]
-	path = dot.libemacs/lib/yaml-mode
-	url = git://github.com/yoshiki/yaml-mode.git
+[submodule "emacs/zenburn/data/zenburn-git"]
+	path = emacs/zenburn/data/zenburn-git
+	url = git://github.com/bbatsov/zenburn-emacs.git
