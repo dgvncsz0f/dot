@@ -10,6 +10,8 @@
 
 (when (file-exists-p "~/.erc.passwd") (load "~/.erc.passwd"))
 
+(global-set-key (kbd "C-c C-SPC") 'erc-track-switch-buffer)
+
 ;; References: http://www.emacswiki.org/emacs/ErcStartupFiles
 ;;             http://www.emacswiki.org/emacs/ErcChannelTracking
 (setq erc-current-nick-highlight-type 'nick)

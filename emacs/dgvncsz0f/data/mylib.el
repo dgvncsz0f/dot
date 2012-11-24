@@ -78,11 +78,6 @@
   (setq py-indent-offset 2)
   (modify-syntax-entry ?_ "_"))
 
-(defun my-icicle-mode-hook ()
-  (when (symbol-value icicle-mode)
-    (setq icicle-incremental-completion-flag t)
-    (define-key icicle-mode-map (kbd "C-c f") 'my-locate-project-file)))
-
 (defun my-js-mode-hook ()
   (setq js-indent-level 2)
   (rainbow-delimiters-mode))
@@ -223,11 +218,6 @@
 (defun my-locate-gitroot ()
   (my-locate-up (expand-file-name default-directory)
                 (lambda (x) (file-directory-p (concat x ".git")))))
-
-(defun my-locate-project-file ()
-  (interactive)
-  (let ((default-directory (or (my-locate-gitroot) default-directory)))
-    (icicle-locate-file)))
 
 ; (defun my-jump-and-yank-link ()
 ;   (interactive)
