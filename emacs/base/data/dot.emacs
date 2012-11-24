@@ -1,4 +1,4 @@
-; -*- mode: lisp; -*-
+; -*- mode: emacs-lisp; -*-
 
 (let ((user-site-lisp-dir (concat user-emacs-directory "share/emacs/site-lisp/"))
       (user-theme-dir (concat user-emacs-directory "themes/"))

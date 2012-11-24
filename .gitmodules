@@ -1,3 +1,6 @@
 [submodule "emacs/zenburn/data/zenburn-git"]
 	path = emacs/zenburn/data/zenburn-git
 	url = git://github.com/bbatsov/zenburn-emacs.git
+[submodule "emacs/icicles/data/icicles.git"]
+	path = emacs/icicles/data/icicles.git
+	url = git://github.com/emacsmirror/icicles.git
