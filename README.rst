@@ -26,4 +26,13 @@ However, the long short-long history is this:
 
 Each module should have a README, describing how things are organized.
 
-~dsouza
+The most complex module so far is the emacs one. It has a number of
+sub-modules [although there is no hierarchy between modules] and a
+couple of modules makes use of pre-install hooks:
+
+* emacs/magit
+
+* emacs/wanderlust
+
+That should be a good reference if one is considering using
+`dot-install` to manage its own files.
