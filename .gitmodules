@@ -31,8 +31,8 @@
 [submodule "emacs/xtra/buff-menu+/data/buff-menu+.git"]
 	path = emacs/xtra/buff-menu+/data/buff-menu+.git
 	url = git://github.com/emacsmirror/buff-menu-plus.git
-[submodule "emacs/markdown-mode/data/markdown-mode.git"]
-	path = emacs/markdown-mode/data/markdown-mode.git
+[submodule "emacs/xtra/markdown-mode/data/markdown-mode.git"]
+	path = emacs/xtra/markdown-mode/data/markdown-mode.git
 	url = http://jblevins.org/git/markdown-mode.git
 [submodule "emacs/xtra/ace-jump-mode/data/ace-jump-mode.git"]
 	path = emacs/xtra/ace-jump-mode/data/ace-jump-mode.git
