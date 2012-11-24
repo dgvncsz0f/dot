@@ -16,3 +16,6 @@
 [submodule "emacs/rainbow-delimiters/data/rainbow-delimiters.git"]
 	path = emacs/rainbow-delimiters/data/rainbow-delimiters.git
 	url = git://github.com/jlr/rainbow-delimiters.git
+[submodule "emacs/nyan-mode/data/nyan-mode.git"]
+	path = emacs/nyan-mode/data/nyan-mode.git
+	url = git://github.com/TeMPOraL/nyan-mode.git
