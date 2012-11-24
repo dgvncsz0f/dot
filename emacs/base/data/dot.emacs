@@ -36,7 +36,7 @@
 (put 'upcase-region 'disabled nil)
 (put 'set-goal-column 'disabled nil)
 
-(load custom-file)
+(when (file-exists-p custom-file) (load custom-file))
 
 (show-paren-mode t)
 (size-indication-mode t)
