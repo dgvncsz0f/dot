@@ -1,6 +1,3 @@
-[submodule "emacs/zenburn/data/zenburn-git"]
-	path = emacs/zenburn/data/zenburn-git
-	url = git://github.com/bbatsov/zenburn-emacs.git
 [submodule "emacs/icicles/data/icicles.git"]
 	path = emacs/icicles/data/icicles.git
 	url = git://github.com/emacsmirror/icicles.git
@@ -40,3 +37,6 @@
 [submodule "emacs/ace-jump-mode/data/ace-jump-mode.git"]
 	path = emacs/ace-jump-mode/data/ace-jump-mode.git
 	url = git://github.com/winterTTr/ace-jump-mode.git
+[submodule "emacs/xtra/zenburn/data/zenburn-emacs.git"]
+	path = emacs/xtra/zenburn/data/zenburn-emacs.git
+	url = git://github.com/bbatsov/zenburn-emacs.git
