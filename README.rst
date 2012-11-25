@@ -26,8 +26,8 @@ However, the long short-long history is this:
 
   $ sh <(curl -s https://raw.github.com/dgvncsz0f/dot-install/master/dot-install) module=editor/emacs
 
-  The above command will replace you `~/.emacs` with no mercy. To just
-  stage the files::
+  The above command will replace your `~/.emacs`. To just stage the
+  files instead::
 
     $ sh <(curl -s https://raw.github.com/dgvncsz0f/dot-install/master/dot-install) module=editor/emacs dryrun=1
 
