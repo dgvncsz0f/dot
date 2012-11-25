@@ -83,11 +83,3 @@ my_setenv()
   export HISTCONTROL=ignoredups:erasedups
   export HISTIGNORE=" *"
 }
-
-my_loadrvm()
-{
-  if [ -f ~/.rvm/scripts/rvm ]
-  then
-    . ~/.rvm/scripts/rvm
-  fi
-}
