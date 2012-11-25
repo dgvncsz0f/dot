@@ -92,30 +92,6 @@ my_loadrvm()
   fi
 }
 
-my_encfs()
-{
-  local bin_encfs
-  local bin_mount
-  local bin_wc
-  local bin_grep
-
-  bin_encfs=/usr/bin/encfs
-  bin_mount=/bin/mount
-  bin_wc=/usr/bin/wc
-  [ -x /bin/grep ] && bin_grep=/bin/grep
-  [ -x /usr/bin/grep ] && bin_grep=/usr/bin/grep
-  if [ -x "${bin_encfs}" ]
-  then
-    if [ -d "${HOME}/.sec" ]
-    then
-      while [ "`\"${bin_mount}\" | \"${bin_grep}\" "${HOME}/sec" | \"${bin_wc}\" -l`" != "1" ]
-      do
-        "${bin_encfs}" "${HOME}/.sec" "${HOME}/sec" -o nonempty
-      done
-    fi
-  fi
-}
-
 my_gpgagent_export()
 {
   if [ -f "$HOME/.gpg-agent.env" ]
