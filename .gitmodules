@@ -16,8 +16,8 @@
 [submodule "emacs/xtra/nyan-mode/data/nyan-mode.git"]
 	path = emacs/xtra/nyan-mode/data/nyan-mode.git
 	url = git://github.com/TeMPOraL/nyan-mode.git
-[submodule "emacs/yasnippet/data/yasnippet.git"]
-	path = emacs/yasnippet/data/yasnippet.git
+[submodule "emacs/xtra/yasnippet/data/yasnippet.git"]
+	path = emacs/xtra/yasnippet/data/yasnippet.git
 	url = git://github.com/capitaomorte/yasnippet.git
 [submodule "emacs/xtra/haskell-mode/data/haskell-mode.git"]
 	path = emacs/xtra/haskell-mode/data/haskell-mode.git
