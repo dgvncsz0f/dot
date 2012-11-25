@@ -24,7 +24,14 @@ However, the long short-long history is this:
   you want to install. For instance, if you want to use my emacs
   files, and nothing else::
 
-  $ TODO:fixme when the interface is stable
+  $ sh <(curl -s https://raw.github.com/dgvncsz0f/dot-install/master/dot-install) module=editor/emacs
+
+  The above command will replace you `~/.emacs` with no mercy. To just
+  stage the files::
+
+    $ sh <(curl -s https://raw.github.com/dgvncsz0f/dot-install/master/dot-install) module=editor/emacs dryrun=1
+
+  That will only stage the files into a temporary location, so that you can review what will be done.
 
 Ideally each module will have a README describing how things are
 organized.
