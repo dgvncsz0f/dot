@@ -1,5 +1,5 @@
 #!/bin/sh
 
 export VISUAL=select-editor
-exprot EDITOR=select-editor
+export EDITOR=select-editor
 export PATH=$PATH:$HOME/.scripts
