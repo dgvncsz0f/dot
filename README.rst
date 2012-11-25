@@ -14,25 +14,20 @@ is done.
 
 However, the long short-long history is this:
 
-* Each directory represents a module;
+* Things are organized in modules. Modules are directories with an
+  special `dist` dir;
 
-* Each module has one or more tags [$module/tags directory];
-
-* When you invoke `dot-install`, you tell which tags you want to
-  install. In other words, if you want to use my emacs files, and
-  nothing else, you could do::
+* When you invoke `dot-install`, you tell what *modules* you want to
+  install. In reality you just provide one or more directories and the
+  script will install everything in it (all modules with a *dist* dir
+  defined). For instance, if you want to use my emacs files, and
+  nothing else::
 
   $ dot-install install=emacs repo=git://github.com/dgvncsz0f/dot.git
 
-Each module should have a README, describing how things are organized.
+Ideally each module will have a README describing how things are
+organized.
 
 The most complex module so far is the emacs one. It has a number of
 sub-modules [although there is no hierarchy between modules] and a
-couple of modules makes use of pre-install hooks:
-
-* emacs/magit
-
-* emacs/wanderlust
-
-That should be a good reference if one is considering using
-`dot-install` to manage its own files.
+couple of modules makes use of install hooks.
