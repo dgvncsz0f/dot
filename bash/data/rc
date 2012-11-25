@@ -11,7 +11,7 @@ my_setenv
 
 if ls --color >/dev/null 2>/dev/null
 then
-  if which ls >/dev/null 2>/dev/null
+  if command -V ls >/dev/null 2>/dev/null
   then
     alias ls="$(which ls) --color"
   fi
@@ -19,7 +19,7 @@ fi
 
 if echo x | grep --color . >/dev/null 2>/dev/null
 then
-  if which grep >/dev/null 2>/dev/null
+  if command -V grep >/dev/null 2>/dev/null
   then
     alias grep="$(which grep) --color"
   fi
