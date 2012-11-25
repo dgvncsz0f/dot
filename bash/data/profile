@@ -1,0 +1,15 @@
+#!/bin/bash
+# -*- mode: Shell-script; sh-basic-offset: 2; -*-
+
+test -r /etc/profile && . /etc/profile
+
+. $HOME/.bash.d/functions
+
+my_setenv
+
+for f in $HOME/.bash.d/profile.d/*.sh
+do
+  . $f
+done
+
+test -r "$HOME/.bashrc" && . "$HOME/.bashrc"
