@@ -22,8 +22,8 @@
 [submodule "emacs/xtra/haskell-mode/data/haskell-mode.git"]
 	path = emacs/xtra/haskell-mode/data/haskell-mode.git
 	url = git://github.com/haskell/haskell-mode.git
-[submodule "emacs/wanderlust/data/wanderlust.git"]
-	path = emacs/wanderlust/data/wanderlust.git
+[submodule "emacs/xtra/wanderlust/data/wanderlust.git"]
+	path = emacs/xtra/wanderlust/data/wanderlust.git
 	url = git://github.com/wanderlust/wanderlust.git
 [submodule "emacs/yaml-mode/data/yaml-mode.git"]
 	path = emacs/yaml-mode/data/yaml-mode.git
