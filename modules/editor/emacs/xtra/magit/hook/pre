@@ -1,3 +1,7 @@
 #!/bin/sh
 
-exec make -s -C data/magit.git install_core PREFIX="$dot_root/.emacs.d" SYSCONFDIR="$dot_root/.emacs.d/libexec"
+for d in "$dot_root/.emacs.d/share/emacs/site-lisp" "$dot_root/.emacs.d/libexec/emacs/site-start.d"
+do
+  test -d "$d" || mkdir -p $d
+done
+exec make -C data/magit.git install_core PREFIX="$dot_root/.emacs.d" SYSCONFDIR="$dot_root/.emacs.d/libexec"

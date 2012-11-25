@@ -1,3 +1,7 @@
 #!/bin/sh
 
-exec make -s -C data/wanderlust.git install LISPDIR="$dot_root/.emacs.d/share/emacs/site-lisp" PIXMAPDIR="$dot_root/.emacs.d/share/emacs/etc/wl/icons"
+for d in "$dot_root/.emacs.d/share/emacs/site-lisp" "$dot_root/.emacs.d/libexec/emacs/site-start.d"
+do
+  test -d "$d" || mkdir -p $d
+done
+exec make -C data/wanderlust.git install LISPDIR="$dot_root/.emacs.d/share/emacs/site-lisp" PIXMAPDIR="$dot_root/.emacs.d/share/emacs/etc/wl/icons"
