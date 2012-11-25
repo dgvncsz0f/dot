@@ -1,45 +1,45 @@
-[submodule "emacs/xtra/icicles/data/icicles.git"]
-	path = emacs/xtra/icicles/data/icicles.git
+[submodule "modules/emacs/xtra/icicles/data/icicles.git"]
+	path = modules/emacs/xtra/icicles/data/icicles.git
 	url = git://github.com/emacsmirror/icicles.git
-[submodule "emacs/xtra/magit/data/magit.git"]
-	path = emacs/xtra/magit/data/magit.git
+[submodule "modules/emacs/xtra/magit/data/magit.git"]
+	path = modules/emacs/xtra/magit/data/magit.git
 	url = git://github.com/magit/magit.git
-[submodule "emacs/xtra/bookmark+/data/bookmark+.git"]
-	path = emacs/xtra/bookmark+/data/bookmark+.git
+[submodule "modules/emacs/xtra/bookmark+/data/bookmark+.git"]
+	path = modules/emacs/xtra/bookmark+/data/bookmark+.git
 	url = git://github.com/emacsmirror/bookmark-plus.git
-[submodule "emacs/xtra/fastnav/data/fastnav.git"]
-	path = emacs/xtra/fastnav/data/fastnav.git
+[submodule "modules/emacs/xtra/fastnav/data/fastnav.git"]
+	path = modules/emacs/xtra/fastnav/data/fastnav.git
 	url = git://github.com/gleber/fastnav.el.git
-[submodule "emacs/xtra/rainbow-delimiters/data/rainbow-delimiters.git"]
-	path = emacs/xtra/rainbow-delimiters/data/rainbow-delimiters.git
+[submodule "modules/emacs/xtra/rainbow-delimiters/data/rainbow-delimiters.git"]
+	path = modules/emacs/xtra/rainbow-delimiters/data/rainbow-delimiters.git
 	url = git://github.com/jlr/rainbow-delimiters.git
-[submodule "emacs/xtra/nyan-mode/data/nyan-mode.git"]
-	path = emacs/xtra/nyan-mode/data/nyan-mode.git
+[submodule "modules/emacs/xtra/nyan-mode/data/nyan-mode.git"]
+	path = modules/emacs/xtra/nyan-mode/data/nyan-mode.git
 	url = git://github.com/TeMPOraL/nyan-mode.git
-[submodule "emacs/xtra/yasnippet/data/yasnippet.git"]
-	path = emacs/xtra/yasnippet/data/yasnippet.git
+[submodule "modules/emacs/xtra/yasnippet/data/yasnippet.git"]
+	path = modules/emacs/xtra/yasnippet/data/yasnippet.git
 	url = git://github.com/capitaomorte/yasnippet.git
-[submodule "emacs/xtra/haskell-mode/data/haskell-mode.git"]
-	path = emacs/xtra/haskell-mode/data/haskell-mode.git
+[submodule "modules/emacs/xtra/haskell-mode/data/haskell-mode.git"]
+	path = modules/emacs/xtra/haskell-mode/data/haskell-mode.git
 	url = git://github.com/haskell/haskell-mode.git
-[submodule "emacs/xtra/wanderlust/data/wanderlust.git"]
-	path = emacs/xtra/wanderlust/data/wanderlust.git
+[submodule "modules/emacs/xtra/wanderlust/data/wanderlust.git"]
+	path = modules/emacs/xtra/wanderlust/data/wanderlust.git
 	url = git://github.com/wanderlust/wanderlust.git
-[submodule "emacs/xtra/yaml-mode/data/yaml-mode.git"]
-	path = emacs/xtra/yaml-mode/data/yaml-mode.git
+[submodule "modules/emacs/xtra/yaml-mode/data/yaml-mode.git"]
+	path = modules/emacs/xtra/yaml-mode/data/yaml-mode.git
 	url = git://github.com/yoshiki/yaml-mode.git
-[submodule "emacs/xtra/buff-menu+/data/buff-menu+.git"]
-	path = emacs/xtra/buff-menu+/data/buff-menu+.git
+[submodule "modules/emacs/xtra/buff-menu+/data/buff-menu+.git"]
+	path = modules/emacs/xtra/buff-menu+/data/buff-menu+.git
 	url = git://github.com/emacsmirror/buff-menu-plus.git
-[submodule "emacs/xtra/markdown-mode/data/markdown-mode.git"]
-	path = emacs/xtra/markdown-mode/data/markdown-mode.git
+[submodule "modules/emacs/xtra/markdown-mode/data/markdown-mode.git"]
+	path = modules/emacs/xtra/markdown-mode/data/markdown-mode.git
 	url = http://jblevins.org/git/markdown-mode.git
-[submodule "emacs/xtra/ace-jump-mode/data/ace-jump-mode.git"]
-	path = emacs/xtra/ace-jump-mode/data/ace-jump-mode.git
+[submodule "modules/emacs/xtra/ace-jump-mode/data/ace-jump-mode.git"]
+	path = modules/emacs/xtra/ace-jump-mode/data/ace-jump-mode.git
 	url = git://github.com/winterTTr/ace-jump-mode.git
-[submodule "emacs/xtra/zenburn/data/zenburn-emacs.git"]
-	path = emacs/xtra/zenburn/data/zenburn-emacs.git
+[submodule "modules/emacs/xtra/zenburn/data/zenburn-emacs.git"]
+	path = modules/emacs/xtra/zenburn/data/zenburn-emacs.git
 	url = git://github.com/bbatsov/zenburn-emacs.git
-[submodule "scripts/data/shssword.git"]
-	path = scripts/data/shssword.git
+[submodule "modules/scripts/data/shssword.git"]
+	path = modules/scripts/data/shssword.git
 	url = git://github.com/dgvncsz0f/shssword.git
