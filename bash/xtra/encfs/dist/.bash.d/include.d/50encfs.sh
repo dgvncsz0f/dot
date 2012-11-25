@@ -10,7 +10,7 @@ my_maybe_mount_encfs()
   local bin_wc
   local bin_grep
 
-  if { command -V encfs && command -V mount && command -V grep; } 2>/dev/null >/dev/null
+  if { command -v encfs && command -v mount && command -v grep; } 2>/dev/null >/dev/null
   then
     if [ -d "$HOME/.sec" ]
     then
