@@ -44,7 +44,17 @@ my_gpgagent_init()
   then
     if [ -d "$HOME/sec/gnupg" ]
     then
-      /usr/bin/gpg-agent --daemon --sh --homedir "$HOME/sec/gnupg" --enable-ssh-support --write-env-file "$HOME/.gpg-agent.env" $daemon_args
+      /usr/bin/gpg-agent                        \
+        --max-cache-ttl 28800                   \
+        --default-cache-ttl 28800               \
+        --max-cache-ttl-ssh 28800               \
+        --default-cache-ttl-ssh 28800           \
+        --daemon                                \
+        --sh                                    \
+        --homedir "$HOME/sec/gnupg"             \
+        --enable-ssh-support                    \
+        --write-env-file "$HOME/.gpg-agent.env" \
+        $daemon_args
     fi
   fi
 }
