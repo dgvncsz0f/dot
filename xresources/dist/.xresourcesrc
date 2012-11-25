@@ -2,16 +2,9 @@
 ! Xft.autohint: false
 ! Xft.hintstyle: hintnone
 
-dzen2.font: unifont-11
-dzen2.foreground: #dcdccc
-dzen2.background: #3f3f3f
-
-xterm*background: #3f3f3f
-xterm*foreground: #dcdccc
-xterm*colorBDMode: true
-xterm*boldMode: true
-xterm*saveLines: 4096
-xterm*geometry: 130x40
+! dzen2.font: unifont-11
+! dzen2.foreground: #dcdccc
+! dzen2.background: #3f3f3f
 
 editor.menuBar: off
 editor.toolBar: off
@@ -25,12 +18,6 @@ emacs.verticalScrollBars: off
 emacs.background: black
 emacs.foreground: white
 emacs.mode-line.AttributeBox: t
-emacs23.menuBar: off
-emacs23.toolBar: off
-emacs23.verticalScrollBars: off
-emacs23.background: black
-emacs23.foreground: white
-emacs23.mode-line.AttributeBox: t
 
 urxvt.background: #3f3f3f
 urxvt.foreground: #dcdccc
