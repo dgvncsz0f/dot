@@ -40,6 +40,6 @@
 [submodule "modules/editor/emacs/xtra/zenburn/data/zenburn-emacs.git"]
 	path = modules/editor/emacs/xtra/zenburn/data/zenburn-emacs.git
 	url = git://github.com/bbatsov/zenburn-emacs.git
-[submodule "modules/scripts/data/shssword.git"]
-	path = modules/scripts/data/shssword.git
+[submodule "modules/terminal/shell/scripts/data/shssword.git"]
+	path = modules/terminal/shell/scripts/data/shssword.git
 	url = git://github.com/dgvncsz0f/shssword.git
