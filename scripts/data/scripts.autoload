@@ -4,3 +4,8 @@ export VISUAL=select-editor
 export EDITOR=select-editor
 export PATH=$PATH:$HOME/.scripts:$HOME/.scripts/shssword.git
 export pwshome=$HOME/.scripts/shssword.git
+
+for f in $HOME/.scripts/shssword.git/bash_completion.d/*
+do
+  . $f
+done
