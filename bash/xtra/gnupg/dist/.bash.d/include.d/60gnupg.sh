@@ -1,0 +1,1 @@
+../../../data/gnupg.sh

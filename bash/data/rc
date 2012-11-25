@@ -42,13 +42,3 @@ for f in $HOME/.bash.d/include.d/*.sh
 do
   . $f
 done
-
-#my_test_interactive && {
-#  my_encfs
-#  if [ -z "$SSH_CONNECTION" ]
-#  then
-#    my_gpgagent_cleanse
-#    my_gpgagent_init
-#    my_gpgagent_export
-#  fi
-#}
