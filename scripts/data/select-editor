@@ -12,22 +12,22 @@ has_emacsclient ()
 
 has_emacs ()
 {
-  which emacs 2>/dev/null >/dev/null
+  command -V emacs 2>/dev/null >/dev/null
 }
 
 has_gvim ()
 {
-  which gvim 2>/dev/null >/dev/null
+  command -V gvim 2>/dev/null >/dev/null
 }
 
 has_vim ()
 {
-  which vim 2>/dev/null >/dev/null
+  command -V vim 2>/dev/null >/dev/null
 }
 
 has_vi ()
 {
-  which vi 2>/dev/null >/dev/null
+  command -V vi 2>/dev/null >/dev/null
 }
 
 has_x11 && has_emacsclient && exec emacsclient -c "$@"

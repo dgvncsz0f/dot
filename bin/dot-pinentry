@@ -1,8 +1,0 @@
-#!/bin/sh
-
-if [ -n "$XAUTHORITY" ]
-then
-  exec /usr/bin/pinentry-gtk-2 "$@"
-else
-  exec /usr/bin/pinentry-curses "$@"
-fi
