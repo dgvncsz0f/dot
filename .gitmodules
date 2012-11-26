@@ -43,3 +43,6 @@
 [submodule "modules/terminal/shell/scripts/data/shssword.git"]
 	path = modules/terminal/shell/scripts/data/shssword.git
 	url = git://github.com/dgvncsz0f/shssword.git
+[submodule "modules/terminal/shell/scripts/data/dot-install.git"]
+	path = modules/terminal/shell/scripts/data/dot-install.git
+	url = git://github.com/dgvncsz0f/dot-install.git
