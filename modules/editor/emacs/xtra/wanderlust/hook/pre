@@ -1,6 +1,6 @@
 #!/bin/sh
 
-for d in "$dot_root/.emacs.d/share/emacs/site-lisp" "$dot_root/.emacs.d/libexec/emacs/site-start.d"
+for d in "$dot_root/.emacs.d/share/emacs/site-lisp" "$dot_root/.emacs.d/libexec/emacs/site-start.d" "$dot_root/.emacs.d/share/emacs/etc/wl/icons"
 do
   test -d "$d" || mkdir -p $d
 done

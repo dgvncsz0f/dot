@@ -1,5 +1,7 @@
 ; -*- mode: emacs-lisp; -*-
 
+(setq wl-icon-directory (concat user-emacs-directory "share/emacs/etc/wl/icons"))
+
 (require 'wl)
 (require 'wl-draft)
 (require 'w3m-load nil t)
