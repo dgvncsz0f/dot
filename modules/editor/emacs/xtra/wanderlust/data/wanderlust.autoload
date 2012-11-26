@@ -2,6 +2,6 @@
 
 (require 'wl)
 (require 'wl-draft)
-(require 'w3m-load)
-(require 'mime-w3m)
-(require 'bbdb-wl)
+(require 'w3m-load nil t)
+(require 'mime-w3m nil t)
+(require 'bbdb-wl nil t)
