@@ -43,6 +43,10 @@
 (put 'upcase-region 'disabled nil)
 (put 'set-goal-column 'disabled nil)
 
+(set-scroll-bar-mode nil)
+(menu-bar-mode 0)
+(tool-bar-mode 0)
+
 (when (file-exists-p custom-file) (load custom-file))
 
 (show-paren-mode t)
