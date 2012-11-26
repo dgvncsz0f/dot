@@ -1,5 +1,12 @@
 ; -*- mode: emacs-lisp; -*-
 
+(require 'custom)
+(require 'server)
+(require 'uniquify)
+
+(unless (boundp 'user-emacs-directory)
+  (setq user-emacs-directory "~/.emacs.d/"))
+
 (let ((user-site-lisp-dir (concat user-emacs-directory "share/emacs/site-lisp/"))
       (user-theme-dir (concat user-emacs-directory "themes/"))
       (user-site-start-dir (concat user-emacs-directory "libexec/emacs/site-start.d/")))
@@ -8,9 +15,6 @@
     (normal-top-level-add-to-load-path '("."))
     (normal-top-level-add-subdirs-to-load-path))
   (mapcar 'load (file-expand-wildcards (concat user-site-start-dir "*.el"))))
-
-(require 'server)
-(require 'uniquify)
 
 (set-default-font "DejaVu Sans Mono")
 
