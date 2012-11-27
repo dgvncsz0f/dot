@@ -24,12 +24,16 @@ However, the long short-long history is this:
   you want to install. For instance, if you want to use my emacs
   files, and nothing else::
 
-  $ sh <(curl -s https://raw.github.com/dgvncsz0f/dot-install/master/dot-install) module=editor/emacs
+    $ sh <(curl -s https://raw.github.com/dgvncsz0f/dot-install/master/dot-install) \
+      repo=git://github.com/dgvncsz0f/dot.git \
+      module=editor/emacs
 
   The above command will replace your `~/.emacs`. To just stage the
   files instead::
 
-    $ sh <(curl -s https://raw.github.com/dgvncsz0f/dot-install/master/dot-install) module=editor/emacs dryrun=1
+    $ sh <(curl -s https://raw.github.com/dgvncsz0f/dot-install/master/dot-install) \
+      repo=git://github.com/dgvncsz0f/dot.git \
+      module=editor/emacs dryrun=1
 
   That will only stage the files into a temporary location, so that you can review what will be done.
 
