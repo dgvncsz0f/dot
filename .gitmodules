@@ -46,3 +46,6 @@
 [submodule "modules/terminal/shell/scripts/data/dot-install.git"]
 	path = modules/terminal/shell/scripts/data/dot-install.git
 	url = git://github.com/dgvncsz0f/dot-install.git
+[submodule "modules/terminal/shell/scripts/data/dzen-tools.git"]
+	path = modules/terminal/shell/scripts/data/dzen-tools.git
+	url = git://github.com/dgvncsz0f/dzen-tools.git
