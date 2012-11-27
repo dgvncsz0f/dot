@@ -2,8 +2,10 @@
 
 (defun my-locate-project-file ()
   (interactive)
-  (let ((default-directory (or (my-locate-gitroot) default-directory)))
-    (icicle-locate-file)))
+  (if current-prefix-arg
+      (icicle-locate-file)
+    (let ((default-directory (or (my-locate-gitroot) default-directory)))
+      (icicle-locate-file))))
 
 (defun my-icicle-mode-hook ()
   (when (symbol-value icicle-mode)
