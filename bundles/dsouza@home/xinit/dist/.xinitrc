@@ -7,5 +7,4 @@ xscreensaver -no-splash&
 /usr/bin/setxkbmap us_intl
 /usr/bin/xrdb -I$HOME -load $HOME/.xresourcesrc
 /usr/bin/xmodmap $HOME/.xmodmaprc
-xrandr --output DisplayPort-1 --mode 1680x1050 --pos 0x0 --rotate normal --output DisplayPort-0 --mode 1680x1050 --pos 1680x0 --rotate normal
 xmonad | run_dzen2_bottom -ta l -xs 1
