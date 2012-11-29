@@ -1,8 +1,6 @@
 #!/bin/bash
 # -*- mode: Shell-script; sh-basic-offset: 2; -*-
 
-. "$HOME/.bash.d/functions"
-
 export GNUPGHOME="$HOME/sec/gnupg"
 
 my_test_ssh_connection ()
@@ -37,8 +35,6 @@ my_gpgagent_cleanse()
 
 my_gpgagent_init()
 {
-  local daemon_args
-
   my_gpgagent_cleanse
   if [ ! -f "$HOME/.gpg-agent.env" ]
   then
@@ -53,14 +49,18 @@ my_gpgagent_init()
         --sh                                    \
         --homedir "$HOME/sec/gnupg"             \
         --enable-ssh-support                    \
-        --write-env-file "$HOME/.gpg-agent.env" \
-        $daemon_args
+        --write-env-file "$HOME/.gpg-agent.env"
     fi
   fi
 }
 
-my_test_interactive && ! my_test_ssh_connection && {
+! my_test_ssh_connection && {
   my_gpgagent_cleanse
   my_gpgagent_init
   my_gpgagent_export
 }
+
+if [ "$#" -gt 0 ]
+then
+  exec "$@"
+fi

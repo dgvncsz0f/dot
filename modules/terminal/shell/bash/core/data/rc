@@ -38,7 +38,12 @@ shopt -s globstar
 shopt -s checkjobs
 shopt -s checkwinsize
 
-for f in $HOME/.bash.d/include.d/*.sh
+for f in "$HOME"/.bash.d/include.d/**/*.sh
 do
   . $f
+done
+
+for d in "$HOME"/.bash.d/bin/**/
+do
+  export PATH="$PATH:$d"
 done

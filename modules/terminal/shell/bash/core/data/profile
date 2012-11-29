@@ -7,7 +7,7 @@ test -r /etc/profile && . /etc/profile
 
 my_setenv
 
-for f in $HOME/.bash.d/profile.d/*.sh
+for f in $HOME/.bash.d/profile.d/**/*.sh
 do
   . $f
 done
