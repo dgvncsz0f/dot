@@ -59,8 +59,3 @@ my_gpgagent_init()
   my_gpgagent_init
   my_gpgagent_export
 }
-
-if [ "$#" -gt 0 ]
-then
-  exec "$@"
-fi

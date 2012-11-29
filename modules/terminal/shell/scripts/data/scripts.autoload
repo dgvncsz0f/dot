@@ -1,5 +1,5 @@
 #!/bin/sh
 
-export VISUAL=select-editor
-export EDITOR=select-editor
+export VISUAL=editor
+export EDITOR=editor
 export pwshome=$HOME/.bash.d/bin/shssword.git
