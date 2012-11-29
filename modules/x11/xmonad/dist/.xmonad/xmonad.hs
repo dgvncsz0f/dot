@@ -23,7 +23,7 @@ myConfig = return $ defaultConfig { manageHook  = manageDocks <+> myManageHook <
                                   } `additionalKeys` [ ((myModMask .|. shiftMask, xK_x),     spawn "xscreensaver-command -activate")
                                                      , ((myModMask .|. shiftMask, xK_s),     spawn "import /tmp/screenshot.png")
                                                      , ((myModMask .|. shiftMask, xK_e),     spawn "bash -l -c select-editor")
-                                                     , ((myModMask .|. shiftMask, xK_b),     spawn "conkeror")
+                                                     , ((myModMask .|. shiftMask, xK_b),     spawn "bash -l -c conkeror")
                                                      , ((myModMask              , xK_p),     spawn "bash -l -c dmenu_run")
                                                      ]
   where myManageHook = composeAll [ className =? "Pidgin"      --> doFloat
