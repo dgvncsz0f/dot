@@ -2,4 +2,4 @@
 
 export VISUAL=select-editor
 export EDITOR=select-editor
-export pwshome=$HOME/.scripts/shssword.git
+export pwshome=$HOME/.bash.d/bin/shssword.git
