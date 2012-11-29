@@ -24,6 +24,7 @@
 (setq ssl-program-arguments '("--insecure" "--port" service "--x509cafile" "/etc/ssl/certs/ca-certificates.crt" host))
 (setq-default indent-tabs-mode nil)
 (setq backup-inhibited t)
+(setq tags-revert-without-query t)
 (setq auto-save-default nil)
 (setq blink-matching-paren t)
 (setq inhibit-startup-screen t)
