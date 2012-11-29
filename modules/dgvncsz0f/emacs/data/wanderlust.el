@@ -9,6 +9,7 @@
     wl-insert-message-id nil
     wl-mime-charset 'x-ctext
     elmo-mime-charset 'utf-8
+    elmo-message-fetch-threshold nil
     mime-transfer-level 8
     browse-url-browser-function 'my-browse-url-conkeror
     wl-interactive-send t
