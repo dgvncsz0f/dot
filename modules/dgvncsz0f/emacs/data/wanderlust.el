@@ -157,28 +157,19 @@
   
   ;; ----------------------------------------------------------------------------
   ;;; Configure BBDB to manage Email addresses
-  (if (functionp 'bbdb-wl-setup)
-      (bbdb-wl-setup)
-  
-    (setq bbdb-use-pop-up t ;; Allow pop-ups
-          bbdb-pop-up-target-lines 2
-          bbdb/mail-auto-create-p t ;; auto collection
-          bbdb-wl-ignore-folder-regexp "^@" ;; folders without auto collection
-          bbdb-north-american-phone-numbers-p nil
-          bbdb-auto-notes-alist '(("X-ML-Name" (".*$" ML 0)))
-          bbdb-dwim-net-address-allow-redundancy t
-          bbdb-offer-save 'never
-          bbdb-quiet-about-name-mismatches t
-  
-        ;; shows the name of bbdb in the summary
-  
-        ;; Not with wl-summary-showto-folder-regexp
-        ;;wl-summary-from-function 'bbdb-wl-from-func
-        ;; Use the default:
-          wl-summary-from-function 'wl-summary-default-from
-  
-          wl-summary-get-petname-function '(lambda (string) (or (wl-address-header-extract-realname string) (wl-address-header-extract-address string)))
-          ))
+  (when (featurep 'bbdb)
+    (bbdb-wl-setup)
+    (setq bbdb-use-pop-up nil
+	  bbdb-pop-up-target-lines 2
+	  bbdb/mail-auto-create-p t
+	  bbdb-wl-ignore-folder-regexp "^@"
+	  bbdb-north-american-phone-numbers-p nil
+	  bbdb-auto-notes-alist '(("X-ML-Name" (".*$" ML 0)))
+	  bbdb-dwim-net-address-allow-redundancy t
+	  bbdb-offer-save 'never
+	  bbdb-quiet-about-name-mismatches 2
+	  wl-summary-from-function 'wl-summary-default-from
+	  wl-summary-get-petname-function '(lambda (string) (or (wl-address-header-extract-realname string) (wl-address-header-extract-address string)))))
   
   ;; Apply wl-draft-config-alist as soon as you enter in a draft buffer. Without
   ;; this wanderlust would apply it only when actually sending the e-mail.
