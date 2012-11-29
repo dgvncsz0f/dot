@@ -18,15 +18,13 @@ myConfig = return $ defaultConfig { manageHook  = manageDocks <+> myManageHook <
                                   , logHook     = dynamicLogWithPP dzenPP >> setWMName "LG3D"
                                   , startupHook = setWMName "LG3D"
                                   , modMask     = myModMask
-                                  , terminal    = "/usr/bin/urxvt -e /usr/bin/tmux"
+                                  , terminal    = "urxvt -e tmux"
                                   , workspaces  = myWorkspaces
-                                  } `additionalKeys` [ ((myModMask .|. shiftMask, xK_x),     spawn "/usr/bin/xscreensaver-command -activate")
-                                                     , ((myModMask .|. shiftMask, xK_s),     spawn "/usr/bin/import /tmp/screenshot.png")
-                                                     , ((myModMask .|. shiftMask, xK_e),     spawn "/usr/bin/editor")
-                                                     , ((myModMask .|. shiftMask, xK_b),     spawn "/usr/bin/x-www-browser")
-                                                     , ((myModMask              , xK_p),     spawn "/bin/bash -l -c dmenu_run")
-                                                     , ((myModMask .|. shiftMask, xK_equal), spawn "/usr/bin/aumix -w +10")
-                                                     , ((myModMask .|. shiftMask, xK_minus), spawn "/usr/bin/aumix -w -10")
+                                  } `additionalKeys` [ ((myModMask .|. shiftMask, xK_x),     spawn "xscreensaver-command -activate")
+                                                     , ((myModMask .|. shiftMask, xK_s),     spawn "import /tmp/screenshot.png")
+                                                     , ((myModMask .|. shiftMask, xK_e),     spawn "bash -l -c select-editor")
+                                                     , ((myModMask .|. shiftMask, xK_b),     spawn "conkeror")
+                                                     , ((myModMask              , xK_p),     spawn "bash -l -c dmenu_run")
                                                      ]
   where myManageHook = composeAll [ className =? "Pidgin"      --> doFloat
                                   , className =? "Skype"       --> doFloat
