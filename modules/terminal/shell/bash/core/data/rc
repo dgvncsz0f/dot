@@ -38,9 +38,9 @@ shopt -s globstar
 shopt -s checkjobs
 shopt -s checkwinsize
 
-for f in "$HOME"/.bash.d/include.d/**/*.sh
+for f in "$HOME"/.bash.d/include.d/**/*
 do
-  . $f
+  [ -f "$f" -a -r "$f" ] && . $f
 done
 
 for d in "$HOME"/.bash.d/bin/**/

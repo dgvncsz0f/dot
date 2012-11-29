@@ -9,9 +9,9 @@ my_setenv
 
 shopt -s globstar
 
-for f in $HOME/.bash.d/profile.d/**/*.sh
+for f in $HOME/.bash.d/profile.d/**/*
 do
-  . $f
+  [ -f "$f" -a -r "$f" ] && . $f
 done
 
 test -r "$HOME/.bashrc" && . "$HOME/.bashrc"
