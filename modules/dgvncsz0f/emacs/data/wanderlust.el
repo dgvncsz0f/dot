@@ -162,11 +162,14 @@
     (setq bbdb-use-pop-up nil
 	  bbdb-pop-up-target-lines 2
 	  bbdb/mail-auto-create-p t
+          bbdb-use-alternate-names nil
 	  bbdb-wl-ignore-folder-regexp "^@"
 	  bbdb-north-american-phone-numbers-p nil
 	  bbdb-auto-notes-alist '(("X-ML-Name" (".*$" ML 0)))
 	  bbdb-dwim-net-address-allow-redundancy t
-	  bbdb-offer-save 'never
+	  bbdb-offer-save 'savenoprompt
+          bbdb-always-add-addresses t
+          bbdb-new-nets-always-primary 'never
 	  bbdb-quiet-about-name-mismatches 2
 	  wl-summary-from-function 'wl-summary-default-from
 	  wl-summary-get-petname-function '(lambda (string) (or (wl-address-header-extract-realname string) (wl-address-header-extract-address string)))))
