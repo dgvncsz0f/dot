@@ -12,8 +12,8 @@ fi
 
 if [ -f "$HOME/sec/scripts/sign.py" ]
 then
-  [ ! -d "$dot_root/.scripts" ] && mkdir "$dot_root/.scripts"
-  ln -s "$HOME/sec/scripts/sign.py" "$dot_root/.scripts/sign.py"
+  [ ! -d "$dot_root/.bash.d/bin" ] && mkdir -p "$dot_root/.bash.d/bin"
+  ln -s "$HOME/sec/scripts/sign.py" "$dot_root/.bash.d/bin/sign.py"
 fi
 
 exit 0
