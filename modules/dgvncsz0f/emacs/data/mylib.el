@@ -175,6 +175,6 @@
   (shell-command-to-string (concat "firecmd conkeror " (shell-quote-argument url))))
 
 (defun my-locate-gitroot ()
-  (locate-dominating-file (expand-file-name default-directory) ".git/"))
+  (locate-dominating-file (or buffer-file-name "~/") ".git/"))
 
 (provide 'myemacs)
