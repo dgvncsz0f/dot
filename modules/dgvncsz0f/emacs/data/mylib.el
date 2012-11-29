@@ -174,19 +174,7 @@
   (interactive "sURL: ")
   (shell-command-to-string (concat "firecmd conkeror " (shell-quote-argument url))))
 
-(defun my-parent-directory (path)
-  (let ((parent-path (file-name-directory (directory-file-name path))))
-    (if (and (file-directory-p parent-path) (not (string-equal parent-path path)))
-        parent-path)))
-
-(defun my-locate-up (base accept-p)
-  (when (and (stringp base) (file-directory-p base))
-    (let ((parent-dir (my-parent-directory base)))
-      (if (funcall accept-p base) base
-        (my-locate-up parent-dir accept-p)))))
-
 (defun my-locate-gitroot ()
-  (my-locate-up (expand-file-name default-directory)
-                (lambda (x) (file-directory-p (concat x ".git")))))
+  (locate-dominating-file (expand-file-name default-directory) ".git/"))
 
 (provide 'myemacs)
