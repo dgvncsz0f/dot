@@ -9,5 +9,5 @@ xscreensaver -no-splash&
 /usr/bin/xmodmap $HOME/.xmodmaprc
 xrandr --output DisplayPort-0 --mode 1680x1050 --pos 0x0    --rotate normal --right-of DisplayPort-1 \
        --output DisplayPort-1 --mode 1680x1050 --pos 1680x0 --rotate normal --primary
-{ systat2dzen | run_dzen2_top -ta l -xs 1 -fn terminus; }&
-xmonad | run_dzen2_bottom -ta l -xs 1 -fn terminus
+{ systat2dzen | run_dzen2_top -ta l -xs 1 -fn terminus-9; }&
+xmonad | run_dzen2_bottom -ta l -xs 1 -fn terminus-9

@@ -7,5 +7,5 @@ xscreensaver -no-splash&
 /usr/bin/setxkbmap us_intl
 /usr/bin/xrdb -I$HOME -load $HOME/.xresourcesrc
 /usr/bin/xmodmap $HOME/.xmodmaprc
-{ systat2dzen | run_dzen2_top -ta l -xs 1 -fn terminus; }&
-xmonad | run_dzen2_bottom -ta l -xs 1 -fn terminus
+{ systat2dzen | run_dzen2_top -ta l -xs 1 -fn terminus-9; }&
+xmonad | run_dzen2_bottom -ta l -xs 1 -fn terminus-9
