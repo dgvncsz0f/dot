@@ -27,6 +27,8 @@
 (setq erc-log-channels-directory "~/.irclogs/")
 (setq erc-save-buffer-on-part t)
 (setq erc-hide-timestamps nil)
+(setq erc-autojoin-timing 'ident)
+(setq erc-autojoin-delay 60)
 (setq erc-hide-list '("JOIN" "PART" "QUIT"))
 (setq erc-max-buffer-size 20000)
 (setq erc-truncate-buffer-on-save t)
@@ -39,7 +41,8 @@
 (setq erc-kill-server-buffer-on-quit t)
 (setq erc-autojoin-channels-alist
           '(("freenode" "#haskell" "#agda" "#latex" "#emacs" "##devel-pedreiro")
-            ("locaweb" "#cloud" "#infradev" "#linux")))
+            ("locaweb" "#cloud" "#infradev" "#linux")
+            ("oftc" "#sysadms")))
 
 (defadvice erc-auto-query (around erc-auto-query-dirtyfix activate)
   (let ((old-erc-query-display erc-query-display))
