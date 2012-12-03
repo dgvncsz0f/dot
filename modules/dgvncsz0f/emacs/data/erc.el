@@ -42,7 +42,7 @@
 (setq erc-autojoin-channels-alist
           '(("freenode" "#haskell" "#agda" "#latex" "#emacs" "##devel-pedreiro")
             ("locaweb" "#cloud" "#infradev" "#linux")
-            ("oftc" "#sysadms")))
+            ("OFTC" "#sysadms")))
 
 (defadvice erc-auto-query (around erc-auto-query-dirtyfix activate)
   (let ((old-erc-query-display erc-query-display))
