@@ -39,7 +39,8 @@
 (setq erc-kill-server-buffer-on-quit t)
 (setq erc-autojoin-channels-alist
           '(("freenode" "#haskell" "#agda" "#latex" "#emacs" "##devel-pedreiro")
-            ("locaweb" "#cloud" "#infradev" "#linux" "#sysadms")))
+            ("locaweb" "#cloud" "#infradev" "#linux" "#sysadms")
+            ("OFTC" "#sysadms")))
 
 (defadvice erc-auto-query (around erc-auto-query-dirtyfix activate)
   (let ((old-erc-query-display erc-query-display))
@@ -75,23 +76,25 @@
 
 (defun my-irc-freenode ()
   (interactive)
-  (erc :server "irc.freenode.net" :port 6667 :nick "dgvncsz0f" :full-name "Diego Souza")
-  )
+  (erc :server "irc.freenode.net" :port 6667 :nick "dgvncsz0f" :full-name "dsouza"))
 
 (defun my-irc-bitlbee ()
   (interactive)
-  (erc :server "localhost" :port 6667 :nick "dgvncsz0f" :full-name "Diego Souza")
-  )
+  (erc :server "localhost" :port 6667 :nick "dgvncsz0f" :full-name "dsouza"))
 
 (defun my-irc-locaweb ()
    (interactive)
-   (erc :server "irc.linux.locaweb.com.br" :port 5222 :nick "dgvncsz0f" :full-name "Diego Souza")
-   )
+   (erc :server "irc.linux.locaweb.com.br" :port 5222 :nick "dgvncsz0f" :full-name "dsouza"))
+
+(defun my-irc-oftc ()
+  (interactive)
+  (erc :server "irc.oftc.net" :port 6667 :nick "dgvncsz0f" :full-name "dsouza"))
 
 (defun my-irc-connect-all ()
   (interactive)
   (my-irc-locaweb)
   (my-irc-freenode)
+  (my-irc-oftc)
   (my-irc-bitlbee))
 
 (defun my-irc-disconnect-all ()
@@ -101,4 +104,4 @@
                 (when (get-buffer s)
                   (message s)
                   (set-buffer s)
-                  (erc-cmd-QUIT nil))) '("localhost:6667" "irc.freenode.net:6667" "irc.linux.locaweb.com.br:5222"))))
+                  (erc-cmd-QUIT nil))) '("localhost:6667" "irc.freenode.net:6667" "irc.linux.locaweb.com.br:5222" "irc.oftc.net"))))
