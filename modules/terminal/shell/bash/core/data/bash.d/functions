@@ -69,10 +69,11 @@ my_setenv()
   export LANG=en_US.UTF-8
   export LC_ALL=en_US.UTF-8
   if my_test_root; then
-    export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+    PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
   else
-    export PATH="/usr/local/bin:/usr/bin:/bin"
+    PATH="/usr/local/bin:/usr/bin:/bin"
   fi
+  PATH="$PATH:/usr/bin/vendor_perl"
   if my_test_interactive
   then
     export PS1="\[$fg_bold_red\]➜ \[$fg_bold_grey\]|\\u@\\H| \[$fg_norm_cyan\]\\w \\n\[$fg_bold_yellow\]\\$\[$nocolors\] "
@@ -82,4 +83,5 @@ my_setenv()
   export HISTSIZE=7500
   export HISTCONTROL=ignoredups:erasedups
   export HISTIGNORE=" *"
+  export PATH
 }
