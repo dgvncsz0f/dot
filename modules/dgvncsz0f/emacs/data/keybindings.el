@@ -1,5 +1,4 @@
-(global-set-key (kbd "C-c o") 'org-capture)
-(global-set-key (kbd "C-c v") 'view-mode)
+(global-set-key (kbd "C-c o") 'occur)
 (global-set-key (kbd "C-c s") 'my-open-shell-sideways)
 (global-set-key (kbd "C-c c") 'describe-char)
 (global-set-key (kbd "C-S-o") 'my-prepend-line)
