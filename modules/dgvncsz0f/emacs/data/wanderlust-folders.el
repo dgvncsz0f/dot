@@ -1,5 +1,7 @@
 # my folders
 
++draft "drafts"
+
 locaweb {
   %inbox:"diego.souza"/clear@outlook.locaweb.com.br:993! "inbox"
   %sent items:"diego.souza"/clear@outlook.locaweb.com.br:993! "sent"
