@@ -49,3 +49,6 @@
 [submodule "modules/terminal/shell/scripts/data/dzen-tools.git"]
 	path = modules/terminal/shell/scripts/data/dzen-tools.git
 	url = git://github.com/dgvncsz0f/dzen-tools.git
+[submodule "modules/editor/emacs/xtra/expand-region/data/expand-region.git"]
+	path = modules/editor/emacs/xtra/expand-region/data/expand-region.git
+	url = git://github.com/magnars/expand-region.el.git
