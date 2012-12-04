@@ -3,7 +3,7 @@
   (interactive)
   (split-window)
   (other-window 1)
-  (shell))
+  (eshell))
 
 (defun my-copy-line (&optional arg)
   " Do a kill-line but copy rather than kill.  This function
