@@ -54,6 +54,9 @@
 
 (when (file-exists-p custom-file) (load custom-file))
 
+(custom-set-faces
+ '(region ((t (:background "gray42")))))
+
 (show-paren-mode t)
 (size-indication-mode t)
 (global-font-lock-mode t)
