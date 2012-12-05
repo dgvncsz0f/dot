@@ -1,3 +1,4 @@
+(global-set-key (kbd "M-w") 'copy-region-as-kill)
 (global-set-key (kbd "C-c o") 'occur)
 (global-set-key (kbd "C-c s") 'my-open-shell-sideways)
 (global-set-key (kbd "C-c c") 'describe-char)
