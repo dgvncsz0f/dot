@@ -28,6 +28,7 @@ myConfig = return $ defaultConfig { manageHook  = manageDocks <+> myManageHook <
                                                      ]
   where myManageHook = composeAll [ className =? "Pidgin"      --> doFloat
                                   , className =? "Skype"       --> doFloat
+                                  , className =? "Ediff"       --> doFloat
                                   , isFullscreen               --> doFullFloat
                                   ]
 
