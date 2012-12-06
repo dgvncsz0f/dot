@@ -58,3 +58,6 @@
 [submodule "modules/editor/emacs/xtra/full-ack/data/full-ack.git"]
 	path = modules/editor/emacs/xtra/full-ack/data/full-ack.git
 	url = git://github.com/nschum/full-ack.git
+[submodule "modules/editor/emacs/xtra/js2-mode/data/js2-mode.git"]
+	path = modules/editor/emacs/xtra/js2-mode/data/js2-mode.git
+	url = git://github.com/mooz/js2-mode.git
