@@ -17,7 +17,13 @@
   (interactive "P")
   (let ((buffer-read-only t)
         (kill-read-only-ok t))
-    (kill-whole-line arg)))
+    (save-excursion (kill-whole-line arg))))
+
+(defun my-copy-region-or-whole-line ()
+  (interactive)
+  (if (or mark-active (use-region-p))
+      (call-interactively 'copy-region-as-kill)
+    (call-interactively 'my-copy-line)))
 
 (defun my-prepend-line (&optional arg)
   " Insert a newline before the current one. C-a C-o achieves the
