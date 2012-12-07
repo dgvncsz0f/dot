@@ -73,7 +73,7 @@ my_setenv()
   else
     PATH="/usr/local/bin:/usr/bin:/bin"
   fi
-  PATH="$PATH:/usr/bin/vendor_perl"
+  PATH="$PATH:$HOME/.cabal/bin:/usr/bin/vendor_perl"
   if my_test_interactive
   then
     export PS1="\[$fg_bold_red\]➜ \[$fg_bold_grey\]|\\u@\\H| \[$fg_norm_cyan\]\\w \\n\[$fg_bold_yellow\]\\$\[$nocolors\] "
