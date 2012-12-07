@@ -61,6 +61,6 @@
 [submodule "modules/editor/emacs/xtra/js2-mode/data/js2-mode.git"]
 	path = modules/editor/emacs/xtra/js2-mode/data/js2-mode.git
 	url = git://github.com/mooz/js2-mode.git
-[submodule "modules/editor/emacs/xtra/wrap-region/data/wrap-region.git"]
-	path = modules/editor/emacs/xtra/wrap-region/data/wrap-region.git
-	url = git://github.com/rejeep/wrap-region.git
+[submodule "modules/editor/emacs/xtra/smartparens/data/smartparens.git"]
+	path = modules/editor/emacs/xtra/smartparens/data/smartparens.git
+	url = git://github.com/Fuco1/smartparens.git

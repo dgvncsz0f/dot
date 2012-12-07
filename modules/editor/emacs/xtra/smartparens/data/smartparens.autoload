@@ -1,0 +1,4 @@
+; -*- mode: emacs-lisp; -*-
+
+(require 'smartparens)
+(smartparens-global-mode 1)
