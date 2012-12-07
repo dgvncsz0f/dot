@@ -64,3 +64,6 @@
 [submodule "modules/editor/emacs/xtra/smartparens/data/smartparens.git"]
 	path = modules/editor/emacs/xtra/smartparens/data/smartparens.git
 	url = git://github.com/Fuco1/smartparens.git
+[submodule "modules/editor/emacs/xtra/dash/data/dash.el.git"]
+	path = modules/editor/emacs/xtra/dash/data/dash.el.git
+	url = git://github.com/magnars/dash.el.git
