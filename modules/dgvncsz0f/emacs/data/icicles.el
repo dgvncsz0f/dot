@@ -11,7 +11,6 @@
   (when icicle-mode
     (setq icicle-incremental-completion-flag t)
     (define-key icicle-mode-map (kbd "C-c f") 'my-locate-project-file)
-    (define-key icicle-mode-map (kbd "C-c ,") 'icicle-tag-search)
-    (setq icicle-apropos-complete-match-fn 'icicle-scatter-match)))
+    (define-key icicle-mode-map (kbd "C-c ,") 'icicle-tag-search)))
 
 (add-hook 'icicle-mode-hook 'my-icicle-mode-hook)
