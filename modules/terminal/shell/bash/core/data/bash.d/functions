@@ -68,6 +68,7 @@ my_setenv()
   export GPG_TTY=$(/usr/bin/tty)
   export LANG=en_US.UTF-8
   export LC_ALL=en_US.UTF-8
+  export NEWT_MONO=1
   if my_test_root; then
     PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
   else
