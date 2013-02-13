@@ -106,4 +106,4 @@
                 (when (get-buffer s)
                   (message s)
                   (set-buffer s)
-                  (erc-cmd-QUIT nil))) '("localhost:6667" "irc.freenode.net:6667" "irc.linux.locaweb.com.br:5222" "irc.oftc.net"))))
+                  (erc-cmd-QUIT nil))) '("localhost:6667" "irc.freenode.net:6667" "irc.linux.locaweb.com.br:5222" "irc.oftc.net:6667"))))
