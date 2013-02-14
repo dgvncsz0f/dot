@@ -64,17 +64,12 @@ my_test_root ()
 
 my_setenv()
 {
+  test -f /etc/profile && . /etc/profile
   export PAGER=/usr/bin/less
   export GPG_TTY=$(/usr/bin/tty)
   export LANG=en_US.UTF-8
   export LC_ALL=en_US.UTF-8
   export NEWT_MONO=1
-  if my_test_root; then
-    PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-  else
-    PATH="/usr/local/bin:/usr/bin:/bin"
-  fi
-  PATH="$PATH:$HOME/.cabal/bin:/usr/bin/vendor_perl"
   if my_test_interactive
   then
     export PS1="\[$fg_bold_red\]➜ \[$fg_bold_grey\]|\\u@\\H| \[$fg_norm_cyan\]\\w \\n\[$fg_bold_yellow\]\\$\[$nocolors\] "

@@ -1,8 +1,6 @@
 #!/bin/bash
 # -*- mode: Shell-script; sh-basic-offset: 2; -*-
 
-test -r /etc/profile && . /etc/profile
-
 . $HOME/.bash.d/functions
 
 my_setenv
