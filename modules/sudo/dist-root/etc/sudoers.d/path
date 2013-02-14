@@ -1,2 +1,0 @@
-Defaults env_reset
-Defaults secure_path=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl
