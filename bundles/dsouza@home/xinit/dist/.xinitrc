@@ -1,5 +1,17 @@
 #!/usr/bin/env BASH_ENV=~/.bashrc /bin/bash
 
+if xrandr -q | grep -q VGA1.connected
+then
+  xrandr --output LVDS1 --mode 1366x768 \
+                        --pos 0x0       \
+                        --rotate normal \
+                        --right-of VGA1 \
+         --output VGA1 --mode 1680x1050 \
+                       --pos 1366x0     \
+                       --rotate normal  \
+                       --primary  
+fi
+
 xscreensaver -no-splash&
 /usr/bin/xset && /usr/bin/xset -b b off
 /usr/bin/xsetroot -solid black
