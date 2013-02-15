@@ -2,8 +2,6 @@
 
 ;; Mostly stuff stolen from: http://www.emacswiki.org/emacs/hgw-init-wl.el
 
-(require 'wl nil t)
-
 (when (featurep 'wl)
   (setq 
     ;; Misc
@@ -115,7 +113,7 @@
        (wl-trash-folder . "%[Gmail]/Trash:\"dsouza@bitforest.org\"/clear@imap.gmail.com:993!")
        ; (wl-draft-folder . "%[Gmail]/Drafts:\"dsouza@bitforest.org\"/clear@imap.gmail.com:993!")
        (wl-smtp-connection-type . 'starttls)
-       (wl-smtp-posting-port . 25)
+       (wl-smtp-posting-port . 587)
        (wl-smtp-authenticate-type . "plain")
        (wl-smtp-posting-user . "dsouza@bitforest.org")
        (wl-smtp-posting-server . "smtp.gmail.com")
