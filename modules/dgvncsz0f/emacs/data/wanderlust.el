@@ -2,6 +2,8 @@
 
 ;; Mostly stuff stolen from: http://www.emacswiki.org/emacs/hgw-init-wl.el
 
+(require 'wl nil t)
+
 (when (featurep 'wl)
   (setq 
     ;; Misc
