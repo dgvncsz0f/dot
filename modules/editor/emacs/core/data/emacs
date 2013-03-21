@@ -20,6 +20,7 @@
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
+(setq vc-handled-backends ())
 (setq ssl-program-name "gnutls-cli")
 (setq ssl-program-arguments '("--insecure" "--port" service "--x509cafile" "/etc/ssl/certs/ca-certificates.crt" host))
 (setq-default indent-tabs-mode nil)
