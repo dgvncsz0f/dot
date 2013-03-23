@@ -1,3 +1,5 @@
 ; -*- mode: emacs-lisp; -*-
 
 (require 'dired+)
+
+(setq dired-omit-files (concat dired-omit-files "\\|\.hi$"))
