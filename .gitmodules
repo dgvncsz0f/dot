@@ -67,3 +67,6 @@
 [submodule "modules/editor/emacs/xtra/dash/data/dash.el.git"]
 	path = modules/editor/emacs/xtra/dash/data/dash.el.git
 	url = git://github.com/magnars/dash.el.git
+[submodule "modules/editor/emacs/xtra/org-tree-slide/data/org-tree-slide.git"]
+	path = modules/editor/emacs/xtra/org-tree-slide/data/org-tree-slide.git
+	url = git://github.com/takaxp/org-tree-slide.git
