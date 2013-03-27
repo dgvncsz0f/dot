@@ -1,6 +1,8 @@
 -- -*- mode: haskell; -*-
 
 import XMonad
+import XMonad.Actions.UpdatePointer
+import XMonad.Actions.Warp
 import XMonad.Layout.Tabbed
 import XMonad.Layout.Named
 import XMonad.Hooks.DynamicLog
@@ -15,16 +17,17 @@ import System.IO
 
 myConfig = return $ defaultConfig { manageHook  = manageDocks <+> myManageHook <+> manageHook defaultConfig
                                   , layoutHook  = avoidStruts $ (lTabs ||| lTall ||| lFull)
-                                  , logHook     = dynamicLogWithPP dzenPP >> setWMName "LG3D"
+                                  , logHook     = dynamicLogWithPP dzenPP >> setWMName "LG3D" >> updatePointer (Relative 0 0)
                                   , startupHook = setWMName "LG3D"
                                   , modMask     = myModMask
                                   , terminal    = "urxvt -e tmux"
                                   , workspaces  = myWorkspaces
-                                  } `additionalKeys` [ ((myModMask .|. shiftMask, xK_x),     spawn "xscreensaver-command -activate")
-                                                     , ((myModMask .|. shiftMask, xK_s),     spawn "import /tmp/screenshot.png")
-                                                     , ((myModMask .|. shiftMask, xK_e),     spawn "bash -l -c editor")
-                                                     , ((myModMask .|. shiftMask, xK_b),     spawn "bash -l -c conkeror")
-                                                     , ((myModMask              , xK_p),     spawn "bash -l -c dmenu_run")
+                                  } `additionalKeys` [ ((myModMask .|. shiftMask, xK_x), spawn "xscreensaver-command -activate")
+                                                     , ((myModMask .|. shiftMask, xK_s), spawn "import /tmp/screenshot.png")
+                                                     , ((myModMask .|. shiftMask, xK_e), spawn "bash -l -c editor")
+                                                     , ((myModMask .|. shiftMask, xK_b), spawn "bash -l -c conkeror")
+                                                     , ((myModMask              , xK_p), spawn "bash -l -c dmenu_run")
+                                                     , ((myModMask              , xK_z), warpToWindow 0 0)
                                                      ]
   where myManageHook = composeAll [ className =? "Pidgin"      --> doFloat
                                   , className =? "Skype"       --> doFloat
