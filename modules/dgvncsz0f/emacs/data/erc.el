@@ -41,7 +41,7 @@
 (setq erc-kill-server-buffer-on-quit t)
 (setq erc-autojoin-channels-alist
           '(("freenode" "#haskell" "#agda" "#latex" "#emacs" "##devel-pedreiro")
-            ("locaweb" "#cloud" "#infradev" "#linux")
+            ("locaweb" "#cloud" "#infradev" "#iaas" "#linux")
             ("OFTC" "#sysadms")))
 
 (defadvice erc-auto-query (around erc-auto-query-dirtyfix activate)
