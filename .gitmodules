@@ -52,9 +52,6 @@
 [submodule "modules/editor/emacs/xtra/expand-region/data/expand-region.git"]
 	path = modules/editor/emacs/xtra/expand-region/data/expand-region.git
 	url = git://github.com/magnars/expand-region.el.git
-[submodule "modules/editor/emacs/xtra/multiple-cursors/data/multiple-cursors.git"]
-	path = modules/editor/emacs/xtra/multiple-cursors/data/multiple-cursors.git
-	url = git://github.com/emacsmirror/multiple-cursors.git
 [submodule "modules/editor/emacs/xtra/full-ack/data/full-ack.git"]
 	path = modules/editor/emacs/xtra/full-ack/data/full-ack.git
 	url = git://github.com/nschum/full-ack.git
