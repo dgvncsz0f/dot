@@ -84,13 +84,27 @@ my_setenv()
 
 my_x11_copy ()
 {
-  xsel -p -b
+  export MY_X11_FALLBACK=$(cat)
+  if [ -n "$DISPLAY" ]
+  then
+    echo -n "$MY_X11_FALLBACK" | xsel -p
+    echo -n "$MY_X11_FALLBACK" | xsel -b
+  fi
 }
 
 my_x11_yank ()
 {
   local tmp size
-  tmp=$(xsel -p -o)
+  if [ -n "$DISPLAY" ]
+  then
+    tmp=$(xsel -p -o)
+    if [ -n "$tmp" ]
+    then
+      tmp=$(xsel -b -o)
+    fi
+  else
+    tmp=$MY_X11_FALLBACK
+  fi
   size=$(echo -n "$tmp" | wc -c)
   READLINE_LINE=${READLINE_LINE:0:$READLINE_POINT}${tmp}${READLINE_LINE:$READLINE_POINT}
   READLINE_POINT=$(( $READLINE_POINT + $size ))
