@@ -34,6 +34,11 @@ shopt -s globstar
 shopt -s checkjobs
 shopt -s checkwinsize
 
+bind -m emacs -x '"\C-k": my_kill_whole_line'
+bind -m emacs -x '"\C-\M-k": my_kill_line'
+bind -m emacs -x '"\C-x\C-?": my_backward_kill_line'
+bind -m emacs -x '"\C-\M-y": my_x11_yank'
+
 for f in "$HOME"/.bash.d/include.d/**/*
 do
   [ -f "$f" -a -r "$f" ] && . $f

@@ -81,3 +81,40 @@ my_setenv()
   export HISTIGNORE=" *"
   export PATH
 }
+
+my_x11_copy ()
+{
+  xsel -p -b
+}
+
+my_x11_yank ()
+{
+  local tmp size
+  tmp=$(xsel -p -o)
+  size=$(echo -n "$tmp" | wc -c)
+  READLINE_LINE=${READLINE_LINE:0:$READLINE_POINT}${tmp}${READLINE_LINE:$READLINE_POINT}
+  READLINE_POINT=$(( $READLINE_POINT + $size ))
+}
+
+my_kill_whole_line () 
+{
+  echo -n "${READLINE_LINE}" | my_x11_copy
+  READLINE_LINE=""
+  READLINE_POINT=0
+}
+
+my_kill_line ()
+{
+  local tmp size
+  tmp=${READLINE_LINE:$READLINE_POINT}
+  size=$(echo -n "$tmp" | wc -c)
+  echo -n "$tmp" | my_x11_copy
+  READLINE_LINE=${READLINE_LINE:0:$READLINE_POINT}
+}
+
+my_backward_kill_line ()
+{
+  echo -n "${READLINE_LINE:0:$READLINE_POINT}" | my_x11_copy
+  READLINE_LINE=${READLINE_LINE:$READLINE_POINT}
+  READLINE_POINT=0
+}
