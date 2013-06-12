@@ -22,7 +22,8 @@ myConfig = return $ defaultConfig { manageHook  = manageDocks <+> myManageHook <
                                   , modMask     = myModMask
                                   , terminal    = "urxvt -e tmux"
                                   , workspaces  = myWorkspaces
-                                  } `additionalKeys` [ ((myModMask .|. shiftMask, xK_x), spawn "xscreensaver-command -activate")
+                                  } `additionalKeys` [ ((myModMask, xK_x), spawn "{ xscreensaver-command -time || xscreensaver -no-splash &}; xscreensaver-command -activate")
+                                                     , ((myModMask .|. shiftMask, xK_x), spawn "xscreensaver-command -exit")
                                                      , ((myModMask .|. shiftMask, xK_s), spawn "import /tmp/screenshot.png")
                                                      , ((myModMask .|. shiftMask, xK_e), spawn "bash -l -c editor")
                                                      , ((myModMask .|. shiftMask, xK_b), spawn "bash -l -c conkeror")
