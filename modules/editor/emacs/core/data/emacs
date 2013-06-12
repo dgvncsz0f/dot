@@ -3,6 +3,11 @@
 (require 'custom)
 (require 'server)
 (require 'uniquify)
+(require 'package)
+
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
+(package-initialize)
 
 (unless (boundp 'user-emacs-directory)
   (setq user-emacs-directory "~/.emacs.d/"))
