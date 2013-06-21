@@ -1,6 +1,5 @@
 ; -*- mode: emacs-lisp; -*-
 
-(load (concat user-emacs-directory "share/emacs/site-lisp/haskell-mode/haskell-site-file.el"))
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 (add-hook 'haskell-mode-hook 'font-lock-mode)
