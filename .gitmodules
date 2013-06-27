@@ -19,9 +19,6 @@
 [submodule "modules/editor/emacs/xtra/yasnippet/data/yasnippet.git"]
 	path = modules/editor/emacs/xtra/yasnippet/data/yasnippet.git
 	url = git://github.com/capitaomorte/yasnippet.git
-[submodule "modules/editor/emacs/xtra/haskell-mode/data/haskell-mode.git"]
-	path = modules/editor/emacs/xtra/haskell-mode/data/haskell-mode.git
-	url = git://github.com/haskell/haskell-mode.git
 [submodule "modules/editor/emacs/xtra/wanderlust/data/wanderlust.git"]
 	path = modules/editor/emacs/xtra/wanderlust/data/wanderlust.git
 	url = git://github.com/wanderlust/wanderlust.git
