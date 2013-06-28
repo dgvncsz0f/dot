@@ -3,3 +3,5 @@
 (unless (package-installed-p 'clojure-mode)
   (package-refresh-contents)
   (package-install 'clojure-mode))
+
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
