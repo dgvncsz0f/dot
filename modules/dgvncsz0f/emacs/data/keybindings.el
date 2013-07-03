@@ -5,7 +5,7 @@
 (global-set-key (kbd "C-S-o") 'my-prepend-line)
 (global-set-key (kbd "C-c U") 'browse-url-at-point)
 (global-set-key (kbd "C-c u") 'browse-url)
-(global-set-key (kbd "C-S-<f5>") 'revert-buffer)
+(global-set-key (kbd "C-S-r") 'revert-buffer)
 (global-set-key (kbd "C-o") 'my-append-line)
 (global-set-key (kbd "<f5>") 'ispell-change-dictionary)
 (global-set-key (kbd "C-x D") 'find-name-dired)
