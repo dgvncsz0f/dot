@@ -1,7 +1,0 @@
-; -*- mode: emacs-lisp; -*-
-
-(unless (package-installed-p 'haskell-mode)
-  (package-refresh-contents)
-  (package-install 'haskell-mode))
-
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)

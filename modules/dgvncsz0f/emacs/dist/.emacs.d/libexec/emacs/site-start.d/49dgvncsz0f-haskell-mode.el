@@ -1,1 +1,0 @@
-../../../../../data/haskell-mode.el
