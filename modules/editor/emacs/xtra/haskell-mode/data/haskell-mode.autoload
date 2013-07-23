@@ -1,7 +1,7 @@
 ; -*- mode: emacs-lisp; -*-
 
-(unless (package-installed-p 'clojure-mode)
+(unless (package-installed-p 'haskell-mode)
   (package-refresh-contents)
-  (package-install 'clojure-mode))
+  (package-install 'haskell-mode))
 
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
