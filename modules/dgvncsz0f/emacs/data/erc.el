@@ -86,7 +86,7 @@
 
 (defun my-irc-locaweb ()
    (interactive)
-   (erc :server "irc.linux.locaweb.com.br" :port 5222 :nick "dgvncsz0f" :full-name "dsouza"))
+   (erc :server "irc.linux.locaweb.com.br" :port 6667 :nick "dgvncsz0f" :full-name "dsouza"))
 
 (defun my-irc-oftc ()
   (interactive)
