@@ -1,4 +1,4 @@
 (require 'adj-font)
 
-(global-set-key (kbd "<C-wheel-down>") 'font-small)
-(global-set-key (kbd "<C-wheel-up>") 'font-big)
+(global-set-key (kbd "<M-mouse-5>") 'adj-font-decr)
+(global-set-key (kbd "<M-mouse-4>") 'adj-font-incr)

@@ -1,5 +1,7 @@
 ; http://stackoverflow.com/questions/2091881/emacs-font-sizing-with-ctrl-key-and-mouse-scroll
 
+(provide 'adj-font)
+
 (defun adj-font-incr ()
  (interactive)
  (set-face-attribute 'default nil :height 
