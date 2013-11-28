@@ -22,6 +22,8 @@
   (mapcar 'load (file-expand-wildcards (concat user-site-start-dir "*.el"))))
 
 (set-default-font "DejaVu Sans Mono")
+(set-face-attribute 'default nil :height 130)
+
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
