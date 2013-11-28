@@ -23,10 +23,10 @@
 
 (set-default-font "DejaVu Sans Mono")
 (set-face-attribute 'default nil :height 130)
-
+(global-set-key (kbd "<M-mouse-4>") 'text-scale-decrease)
+(global-set-key (kbd "<M-mouse-5>") 'text-scale-increase)
 
 (fset 'yes-or-no-p 'y-or-n-p)
-
 (setq echo-keystrokes 0.1)
 (setq vc-handled-backends ())
 (setq ssl-program-name "gnutls-cli")
