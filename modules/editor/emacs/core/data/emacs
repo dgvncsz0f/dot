@@ -77,4 +77,14 @@
 (visual-line-mode t)
 (transient-mark-mode -1)
 (cua-selection-mode t)
+
+(c-add-style "dgvncsz0f" '("bsd"
+                           (c-basic-offset . 2)
+                           (substatement-open . 0)
+                           ))
+(defun dgvncsz0f-mode-hook ()
+  (c-set-style "dgvncsz0f"))
+(add-hook 'c-mode-hook 'dgvncsz0f-mode-hook)
+(add-hook 'c++-mode-hook 'dgvncsz0f-mode-hook)
+
 (unless (server-running-p) (server-start))
