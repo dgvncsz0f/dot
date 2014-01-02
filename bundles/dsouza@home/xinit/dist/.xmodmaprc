@@ -1,13 +1,4 @@
-!
-! Swap Caps_Lock and Control_L
-!
-remove Lock = Caps_Lock
 remove Control = Control_L
-keysym Control_L = Caps_Lock
-keysym Caps_Lock = Control_L
-add Lock = Caps_Lock
-add Control = Control_L
-! ! 
-! keycode 119 = BackSpace
-! keycode 22 = Delete
-pointer =  1 2 3 4 5 6 7 8 9
+keycode 66     = Control_L
+add Control    = Control_L
+pointer        =  1 2 3 4 5 6 7 8 9
