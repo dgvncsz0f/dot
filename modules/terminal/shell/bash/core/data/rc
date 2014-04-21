@@ -24,7 +24,7 @@ alias ll="ls -l"
 alias l1="ls -1"
 alias la="ll -a"
 alias rm="/bin/rm -i"
-alias ssh="env TERM=rxvt /usr/bin/ssh"
+alias oterm="env TERM=rxvt"
 
 shopt -s histappend
 shopt -s extglob
