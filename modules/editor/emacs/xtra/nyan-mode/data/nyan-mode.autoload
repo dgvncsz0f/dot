@@ -1,4 +1,0 @@
-; -*- mode: emacs-lisp; -*-
-
-(require 'nyan-mode)
-(nyan-mode 1)
