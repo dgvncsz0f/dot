@@ -67,6 +67,6 @@
 [submodule "modules/editor/emacs/xtra/evil-numbers/data/evil-numbers.git"]
 	path = modules/editor/emacs/xtra/evil-numbers/data/evil-numbers.git
 	url = git://github.com/cofi/evil-numbers.git
-[submodule "modules/editor/emacs/xtra/powerline/data/emacs-powerline.git"]
-	path = modules/editor/emacs/xtra/powerline/data/emacs-powerline.git
-	url = https://github.com/jonathanchu/emacs-powerline.git
+[submodule "modules/editor/emacs/xtra/powerline/data/powerline"]
+	path = modules/editor/emacs/xtra/powerline/data/powerline.git
+	url = https://github.com/milkypostman/powerline.git
