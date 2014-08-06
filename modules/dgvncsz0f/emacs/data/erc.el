@@ -41,7 +41,6 @@
 (setq erc-kill-server-buffer-on-quit t)
 (setq erc-autojoin-channels-alist
           '(("freenode" "#haskell" "#agda" "#latex" "#emacs" "##devel-pedreiro")
-            ("locaweb" "#cloud" "#infradev" "#iaas" "#linux")
             ("OFTC" "#sysadms")))
 
 (defadvice erc-auto-query (around erc-auto-query-dirtyfix activate)
@@ -84,17 +83,18 @@
   (interactive)
   (erc :server "localhost" :port 6667 :nick "dgvncsz0f" :full-name "dsouza"))
 
-(defun my-irc-locaweb ()
-   (interactive)
-   (erc :server "irc.locaweb.com.br" :port 6667 :nick "dgvncsz0f" :full-name "dsouza"))
-
 (defun my-irc-oftc ()
   (interactive)
   (erc :server "irc.oftc.net" :port 6667 :nick "dgvncsz0f" :full-name "dsouza"))
 
+(defun my-irc-slack ()
+  (interactive)
+  (if (boundp 'slack-password)
+      (erc-ssl :server "locaweb.irc.slack.com" :port 6667 :nick "dgvncsz0f" :full-name "dgvncsz0f" :password slack-password)))
+
 (defun my-irc-connect-all ()
   (interactive)
-  (my-irc-locaweb)
+  (my-irc-slack)
   (my-irc-freenode)
   (my-irc-oftc)
   (my-irc-bitlbee))
@@ -106,4 +106,4 @@
                 (when (get-buffer s)
                   (message s)
                   (set-buffer s)
-                  (erc-cmd-QUIT nil))) '("localhost:6667" "irc.freenode.net:6667" "irc.locaweb.com.br:5222" "irc.oftc.net:6667"))))
+                  (erc-cmd-QUIT nil))) '("localhost:6667" "irc.freenode.net:6667" "locaweb.irc.slack.com:6667" "irc.oftc.net:6667"))))
