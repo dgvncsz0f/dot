@@ -75,10 +75,11 @@ xterm*color14:     #93e0e3
 urxvt*color15:     #ffffff
 xterm*color15:     #ffffff
 
-urxvt.font: xft:DejaVu\ Sans\ Mono:pixelsize=18
+urxvt.font: xft:Ubuntu\ Mono:size=16
 urxvt.modifier: mod1
 rxvt.modifier: mod1
-rxvt.font: xft:DejaVu\ Sans\ Mono:pixelsize=18
+rxvt.font: xft:Ubuntu\ Mono:size=16
 
-xterm*faceName: DejaVu Sans Mono
-xterm*faceSize: 18
+xterm*faceName: Ubuntu\ Mono
+xterm*faceSize: 16
+

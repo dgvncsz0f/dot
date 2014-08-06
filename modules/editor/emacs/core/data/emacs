@@ -21,10 +21,8 @@
     (normal-top-level-add-subdirs-to-load-path))
   (mapcar 'load (file-expand-wildcards (concat user-site-start-dir "*.el"))))
 
-(set-default-font "DejaVu Sans Mono")
-(set-face-attribute 'default nil :height 130)
-(global-set-key (kbd "<M-mouse-4>") 'text-scale-decrease)
-(global-set-key (kbd "<M-mouse-5>") 'text-scale-increase)
+(set-default-font "Ubuntu Mono")
+(set-face-attribute 'default nil :height 160)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
