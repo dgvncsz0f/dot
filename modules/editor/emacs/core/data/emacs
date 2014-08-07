@@ -57,6 +57,10 @@
 (put 'upcase-region 'disabled nil)
 (put 'set-goal-column 'disabled nil)
 
+(condition-case nil
+    (load-theme 'solarized-dark t)
+  (error (message "error loading theme solarized-dark")))
+
 (set-scroll-bar-mode nil)
 (menu-bar-mode 0)
 (tool-bar-mode 0)
