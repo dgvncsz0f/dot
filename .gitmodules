@@ -73,3 +73,6 @@
 [submodule "modules/terminal/shell/bash/xtra/dircolors-solarized/data/dircolors-solarized.git"]
 	path = modules/terminal/shell/bash/xtra/dircolors-solarized/data/dircolors-solarized.git
 	url = git://github.com/seebi/dircolors-solarized.git
+[submodule "modules/editor/emacs/xtra/better-registers/data/better-registers.git"]
+	path = modules/editor/emacs/xtra/better-registers/data/better-registers.git
+	url = git://github.com/emacsmirror/better-registers.git
