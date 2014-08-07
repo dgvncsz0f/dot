@@ -70,3 +70,6 @@
 [submodule "modules/editor/emacs/xtra/powerline/data/powerline"]
 	path = modules/editor/emacs/xtra/powerline/data/powerline.git
 	url = https://github.com/milkypostman/powerline.git
+[submodule "modules/terminal/shell/bash/xtra/dircolors-solarized/data/dircolors-solarized.git"]
+	path = modules/terminal/shell/bash/xtra/dircolors-solarized/data/dircolors-solarized.git
+	url = git://github.com/seebi/dircolors-solarized.git
