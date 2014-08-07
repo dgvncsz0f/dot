@@ -1,3 +1,4 @@
 #!/bin/sh
 
-sudo localectl set-x11-keymap pc104 us colemak
+sudo localectp set-keymap us colemak
+sudo localectl set-x11-keymap "" us colemak
