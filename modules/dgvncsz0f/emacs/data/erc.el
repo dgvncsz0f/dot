@@ -15,7 +15,7 @@
 ;; References: http://www.emacswiki.org/emacs/ErcStartupFiles
 ;;             http://www.emacswiki.org/emacs/ErcChannelTracking
 (setq erc-current-nick-highlight-type 'nick)
-(setq erc-track-exclude-types '("JOIN" "PART" "QUIT" "NICK" "MODE"))
+(setq erc-track-exclude-types '("MODE" "AWAY"))
 (setq erc-track-use-faces t)
 (setq erc-track-faces-priority-list
       '(erc-current-nick-face erc-keyword-face))
