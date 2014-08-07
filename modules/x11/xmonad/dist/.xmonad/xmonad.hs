@@ -22,7 +22,7 @@ myConfig = return $ defaultConfig { manageHook  = manageDocks <+> myManageHook <
                                   , modMask     = myModMask
                                   , terminal    = "sakura"
                                   , workspaces  = myWorkspaces
-                                  } `additionalKeys` [ ((myModMask, xK_x), spawn "{ xscreensaver-command -time || xscreensaver -no-splash &}; xscreensaver-command -activate")
+                                  } `additionalKeys` [ ((myModMask, xK_x), spawn "slock")
                                                      , ((myModMask .|. shiftMask, xK_x), spawn "xscreensaver-command -exit")
                                                      , ((myModMask .|. shiftMask, xK_s), spawn "import /tmp/screenshot.png")
                                                      , ((myModMask .|. shiftMask, xK_e), spawn "bash -l -c editor")
