@@ -20,7 +20,7 @@ myConfig = return $ defaultConfig { manageHook  = manageDocks <+> myManageHook <
                                   , logHook     = dynamicLogWithPP dzenPP >> setWMName "LG3D" >> updatePointer (Relative 0 0)
                                   , startupHook = setWMName "LG3D"
                                   , modMask     = myModMask
-                                  , terminal    = "urxvt -e tmux"
+                                  , terminal    = "sakura"
                                   , workspaces  = myWorkspaces
                                   } `additionalKeys` [ ((myModMask, xK_x), spawn "{ xscreensaver-command -time || xscreensaver -no-splash &}; xscreensaver-command -activate")
                                                      , ((myModMask .|. shiftMask, xK_x), spawn "xscreensaver-command -exit")
