@@ -75,5 +75,8 @@ xterm*color14:     #93e0e3
 urxvt*color15:     #ffffff
 xterm*color15:     #ffffff
 
-urxvt.font: xft:dejavu\ sans\ mono:size=12
-dzen2.font: Terminus-9
+urxvt.font: xft:Ubuntu\ Mono:size=16
+rxvt.font: xft:Ubuntu\ Mono:size=16
+
+xterm*faceName: Ubuntu\ Mono
+xterm*faceSize: 16
