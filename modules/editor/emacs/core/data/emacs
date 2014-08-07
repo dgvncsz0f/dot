@@ -67,9 +67,6 @@
 
 (when (file-exists-p custom-file) (load custom-file))
 
-(set-face-background 'region "gray42")
-(set-face-background 'col-highlight "#383838")
-
 (show-paren-mode t)
 (size-indication-mode t)
 (global-font-lock-mode t)
