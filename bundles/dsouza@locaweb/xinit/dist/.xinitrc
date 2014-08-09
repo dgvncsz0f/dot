@@ -1,6 +1,5 @@
 #!/usr/bin/env BASH_ENV=~/.bashrc /bin/bash
 
-xscreensaver -no-splash&
 /usr/bin/xset && /usr/bin/xset -b b off
 /usr/bin/xsetroot -solid black
 /usr/bin/xsetroot -cursor_name left_ptr
