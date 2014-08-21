@@ -72,7 +72,7 @@ my_setenv()
   export NEWT_MONO=1
   if my_test_interactive
   then
-    export PS1="\[$nocolors\]\\u@\\H \[$fg_norm_red\]~ \[$fg_norm_cyan\]\\w \\n\[$fg_bold_yellow\]\\$\[$nocolors\] "
+    export PS1="\\u@\\H [\\w]\\n\\$ "
   fi
   export HISTFILE=$HOME/.bash_history
   export HISTFILESIZE=10000
