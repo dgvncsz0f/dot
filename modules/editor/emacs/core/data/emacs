@@ -71,6 +71,8 @@
 (global-highline-mode t)
 (global-visual-line-mode t)
 (global-subword-mode t)
+(transient-mark-mode -1)
+(global-set-key (kbd "<C-return>") 'rectangle-mark-mode)
 
 (c-add-style "dgvncsz0f" '("bsd"
                            (c-basic-offset . 2)
