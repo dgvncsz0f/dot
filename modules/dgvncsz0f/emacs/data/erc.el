@@ -29,7 +29,7 @@
 (setq erc-hide-timestamps nil)
 (setq erc-autojoin-timing 'ident)
 (setq erc-autojoin-delay 60)
-(setq erc-hide-list '("JOIN" "PART" "QUIT"))
+(setq erc-hide-list '("JOIN" "PART" "QUIT" "AWAY"))
 (setq erc-max-buffer-size 20000)
 (setq erc-truncate-buffer-on-save t)
 (setq erc-prompt-for-nickserv-password nil)
@@ -62,9 +62,6 @@
 
 (add-hook 'erc-insert-post-hook 'erc-save-buffer-in-logs)
 (add-hook 'erc-insert-post-hook 'erc-truncate-buffer)
-(add-hook 'erc-after-connect '(lambda (SERVER NICK)
-                                (message server)
-                                (erc-message "PRIVMSG" (concat "nickserv identify " nickserv-passwd))))
 
 (erc-match-mode t)
 (erc-autojoin-mode t)
@@ -77,20 +74,23 @@
 
 (defun my-irc-freenode ()
   (interactive)
-  (erc :server "irc.freenode.net" :port 6667 :nick "dgvncsz0f" :full-name "dsouza"))
+  (if (boundp 'nickserv-passwd)
+      (erc-tls :server "irc.freenode.net" :port 6697 :nick "dgvncsz0f" :full-name "dsouza" :password nickserv-passwd)))
 
 (defun my-irc-bitlbee ()
   (interactive)
-  (erc :server "localhost" :port 6667 :nick "dgvncsz0f" :full-name "dsouza"))
+  (if (boundp 'nickserv-passwd)
+      (erc :server "localhost" :port 6667 :nick "dgvncsz0f" :full-name "dsouza" :password nickserv-passwd)))
 
 (defun my-irc-oftc ()
   (interactive)
-  (erc :server "irc.oftc.net" :port 6667 :nick "dgvncsz0f" :full-name "dsouza"))
+  (if (boundp 'nickserv-passwd)
+      (erc-tls :server "irc.oftc.net" :port 6697 :nick "dgvncsz0f" :full-name "dsouza" :password nickserv-passwd)))
 
 (defun my-irc-slack ()
   (interactive)
   (if (boundp 'slack-password)
-      (erc-ssl :server "locaweb.irc.slack.com" :port 6667 :nick "dgvncsz0f" :full-name "dgvncsz0f" :password slack-password)))
+      (erc-tls :server "locaweb.irc.slack.com" :port 6667 :nick "dgvncsz0f" :full-name "dgvncsz0f" :password slack-password)))
 
 (defun my-irc-connect-all ()
   (interactive)
