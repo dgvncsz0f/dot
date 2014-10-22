@@ -44,10 +44,6 @@
 (setq uniquify-buffer-name-style 'post-forward)
 (setq uniquify-strip-common-suffix nil)
 (setq custom-file "~/.emacs.d/custom-file")
-(setq cua-auto-tabify-rectangles nil)
-(setq cua-keep-region-after-copy t)
-(setq cua-toggle-set-mark t)
-(setq cua-highlight-region-shift-only t)
 
 (put 'erase-buffer 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
@@ -75,7 +71,6 @@
 (column-number-mode t)
 (visual-line-mode t)
 (transient-mark-mode -1)
-(cua-selection-mode t)
 
 (c-add-style "dgvncsz0f" '("bsd"
                            (c-basic-offset . 2)
