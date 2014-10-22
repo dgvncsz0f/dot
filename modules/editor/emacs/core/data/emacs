@@ -65,11 +65,12 @@
 
 (show-paren-mode t)
 (size-indication-mode t)
+(column-number-mode t)
 (global-font-lock-mode t)
 (global-linum-mode t)
 (global-hl-line-mode t)
-(column-number-mode t)
-(visual-line-mode t)
+(global-visual-line-mode t)
+(global-subword-mode t)
 
 (c-add-style "dgvncsz0f" '("bsd"
                            (c-basic-offset . 2)
