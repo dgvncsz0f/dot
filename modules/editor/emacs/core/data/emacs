@@ -73,6 +73,7 @@
 (global-subword-mode t)
 (transient-mark-mode -1)
 (global-set-key (kbd "<C-return>") 'rectangle-mark-mode)
+(global-set-key (kbd "C-c ro") 'open-rectangle)
 
 (c-add-style "dgvncsz0f" '("bsd"
                            (c-basic-offset . 2)
