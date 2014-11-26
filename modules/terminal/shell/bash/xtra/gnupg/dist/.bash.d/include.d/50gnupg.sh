@@ -3,59 +3,53 @@
 
 export GNUPGHOME="$HOME/sec/gnupg"
 
+my_gpgagent_envfile=$HOME/.gpg-agent.env
+
 my_test_ssh_connection ()
 {
   test -n "$SSH_CONNECTION"
 }
 
-my_gpgagent_export()
+my_gpgagent_export ()
 {
-  if [ -f "$HOME/.gpg-agent.env" ]
+  if [ -f $my_gpgagent_envfile ]
   then
-    . "$HOME/.gpg-agent.env"
-    export GPG_AGENT_INFO
-    export SSH_AGENT_PID
-    export SSH_AUTH_SOCK
-    /usr/bin/gpg-connect-agent updatestartuptty /bye >/dev/null 2>&1
+    eval $(cat $my_gpgagent_envfile)
   fi
 }
 
-my_gpgagent_cleanse()
+my_gpgagent_running ()
 {
   my_gpgagent_export
-
-  if [ -x /usr/bin/gpg-connect-agent ]
+  if /usr/bin/gpg-connect-agent --agent-program /bin/false /bye 2>/dev/null
   then
-    if ! /usr/bin/gpg-connect-agent /bye 2>/dev/null
-    then
-      rm -f "$HOME/.gpg-agent.env"
-    fi
+    return 0
+  else
+    rm -f $my_gpgagent_envfile
+    return 1
   fi
 }
 
-my_gpgagent_init()
+my_gpgagent_init ()
 {
-  my_gpgagent_cleanse
-  if [ ! -f "$HOME/.gpg-agent.env" ]
+  if ! my_gpgagent_running
   then
     if [ -d "$HOME/sec/gnupg" ]
     then
-      eval $(/usr/bin/gpg-agent                        \
-               --max-cache-ttl 28800                   \
-               --default-cache-ttl 28800               \
-               --max-cache-ttl-ssh 28800               \
-               --default-cache-ttl-ssh 28800           \
-               --daemon                                \
-               --sh                                    \
-               --homedir "$HOME/sec/gnupg"             \
-               --enable-ssh-support                    \
-               --write-env-file "$HOME/.gpg-agent.env")
+      /usr/bin/gpg-agent              \
+        --sh                          \
+        --daemon                      \
+        --homedir "$HOME/sec/gnupg"   \
+        --max-cache-ttl 28800         \
+        --default-cache-ttl 28800     \
+        --max-cache-ttl-ssh 28800     \
+        --enable-ssh-support          \
+        --default-cache-ttl-ssh 28800 >$my_gpgagent_envfile
     fi
   fi
 }
 
 ! my_test_ssh_connection && {
-  my_gpgagent_cleanse
   my_gpgagent_init
   my_gpgagent_export
 }
