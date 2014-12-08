@@ -3,4 +3,4 @@
   (package-install 'haskell-mode))
 
 (custom-set-variables
- '(haskell-mode-hook '(turn-on-haskell-simple-indent)))
+ '(haskell-mode-hook '(turn-on-haskell-indentation)))
