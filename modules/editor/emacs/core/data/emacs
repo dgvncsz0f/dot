@@ -71,7 +71,7 @@
 (global-hl-line-mode t)
 (global-visual-line-mode t)
 (global-subword-mode t)
-(transient-mark-mode -1)
+(transient-mark-mode t)
 (global-set-key (kbd "<C-return>") 'rectangle-mark-mode)
 (global-set-key (kbd "C-c ro") 'open-rectangle)
 
