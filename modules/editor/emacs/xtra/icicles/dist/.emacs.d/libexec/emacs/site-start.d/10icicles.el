@@ -4,3 +4,5 @@
   (package-install 'icicles))
 
 (require 'icicles)
+
+(icicle-mode t)
