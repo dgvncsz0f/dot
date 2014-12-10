@@ -1,1 +1,0 @@
-../../../../../data/erc-image.git/erc-image.el
