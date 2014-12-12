@@ -1,1 +1,1 @@
-../../../../../data/col-highlight.el
+(global-set-key (kbd "<f6>") 'column-highlight-mode)

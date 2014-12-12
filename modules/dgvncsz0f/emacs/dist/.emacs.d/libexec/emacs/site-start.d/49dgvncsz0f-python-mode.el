@@ -1,1 +1,0 @@
-../../../../../data/python-mode.el
