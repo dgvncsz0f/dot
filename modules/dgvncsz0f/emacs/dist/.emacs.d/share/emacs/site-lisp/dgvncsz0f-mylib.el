@@ -190,4 +190,4 @@
 (defun my-locate-gitroot ()
   (locate-dominating-file (or buffer-file-name default-directory "~/") ".git/"))
 
-(provide 'myemacs)
+(provide 'dgvncsz0f-mylib)
