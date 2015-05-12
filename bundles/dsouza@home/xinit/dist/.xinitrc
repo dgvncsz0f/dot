@@ -19,4 +19,5 @@ fi
 /usr/bin/xrdb -I$HOME -load $HOME/.xresourcesrc
 /usr/bin/xmodmap $HOME/.xmodmaprc
 { python2 $(which systat2dzen) | run_dzen2_top -ta l -xs 1 -fn terminus-9; }&
+redshift&
 xmonad | run_dzen2_bottom -ta l -xs 1 -fn terminus-9

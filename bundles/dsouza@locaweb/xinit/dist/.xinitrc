@@ -8,4 +8,5 @@
 /usr/bin/xmodmap $HOME/.xmodmaprc
 xrandr --output DVI-0  --mode 1680x1050 --pos 0x0 --rotate normal --right-of DVI-1 --output DVI-1 --mode 1680x1050 --pos 1680x0 --rotate normal --primary
 python2 $(which systat2dzen) | run_dzen2_top -ta l -xs 2 -fn terminus-9&
+redshift&
 xmonad | run_dzen2_bottom -ta l -xs 2 -fn terminus-9
