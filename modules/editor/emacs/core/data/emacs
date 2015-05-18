@@ -4,6 +4,7 @@
 (require 'server)
 (require 'uniquify)
 (require 'package)
+(require 'midnight)
 
 (when (>= emacs-major-version 24)
   (package-initialize)
