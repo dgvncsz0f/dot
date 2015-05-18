@@ -5,7 +5,6 @@
 (require 'uniquify)
 (require 'package)
 (require 'midnight)
-
 (when (>= emacs-major-version 24)
   (package-initialize)
   (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
@@ -29,6 +28,7 @@
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
+(setq magit-last-seen-setup-instructions "1.4.0")
 (setq enable-remote-dir-locals t)
 (setq echo-keystrokes 0.1)
 (setq vc-mode t)
