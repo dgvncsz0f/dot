@@ -12,6 +12,12 @@
 
 (global-set-key (kbd "C-c C-SPC") 'erc-track-switch-buffer)
 
+(add-to-list 'clean-buffer-list-kill-never-regexps "^#")
+(add-to-list 'clean-buffer-list-kill-never-buffer-names "irc.oftc.net:6697")
+(add-to-list 'clean-buffer-list-kill-never-buffer-names "irc.freenode.net:6667")
+(add-to-list 'clean-buffer-list-kill-never-buffer-names "localhost:6667")
+(add-to-list 'clean-buffer-list-kill-never-buffer-names "&bitlblee")
+
 ;; References: http://www.emacswiki.org/emacs/ErcStartupFiles
 ;;             http://www.emacswiki.org/emacs/ErcChannelTracking
 (setq erc-current-nick-highlight-type 'nick)
