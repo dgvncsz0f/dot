@@ -1,3 +1,5 @@
+; -*- mode: emacs-lisp; -*-
+
 (setq erc-track-enable-keybindings nil)
 
 (require 'erc)
@@ -75,39 +77,3 @@
 (erc-netsplit-mode t)
 (erc-timestamp-mode t)
 (erc-button-mode (- 1))
-
-(defun my-irc-freenode ()
-  (interactive)
-  (if (boundp 'nickserv-passwd)
-      (erc-tls :server "irc.freenode.net" :port 6697 :nick "dgvncsz0f" :full-name "dsouza" :password nickserv-passwd)))
-
-(defun my-irc-bitlbee ()
-  (interactive)
-  (if (boundp 'nickserv-passwd)
-      (erc :server "localhost" :port 6667 :nick "dgvncsz0f" :full-name "dsouza" :password nickserv-passwd)))
-
-(defun my-irc-oftc ()
-  (interactive)
-  (if (boundp 'nickserv-passwd)
-      (erc-tls :server "irc.oftc.net" :port 6697 :nick "dgvncsz0f" :full-name "dsouza" :password nickserv-passwd)))
-
-(defun my-irc-slack ()
-  (interactive)
-  (if (boundp 'slack-password)
-      (erc-tls :server "locaweb.irc.slack.com" :port 6667 :nick "dgvncsz0f" :full-name "dgvncsz0f" :password slack-password)))
-
-(defun my-irc-connect-all ()
-  (interactive)
-  (my-irc-slack)
-  (my-irc-freenode)
-  (my-irc-oftc)
-  (my-irc-bitlbee))
-
-(defun my-irc-disconnect-all ()
-  (interactive)
-  (save-excursion
-    (map nil '(lambda (s)
-                (when (get-buffer s)
-                  (message s)
-                  (set-buffer s)
-                  (erc-cmd-QUIT nil))) '("localhost:6667" "irc.freenode.net:6667" "locaweb.irc.slack.com:6667" "irc.oftc.net:6667"))))

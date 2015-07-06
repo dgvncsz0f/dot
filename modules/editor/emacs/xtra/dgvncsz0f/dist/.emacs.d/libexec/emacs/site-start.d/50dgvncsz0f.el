@@ -1,3 +1,3 @@
 ; -*- mode: emacs-lisp; -*-
 
-(require 'dgvncsz0f-mylib)
+(require 'dgvncsz0f)
