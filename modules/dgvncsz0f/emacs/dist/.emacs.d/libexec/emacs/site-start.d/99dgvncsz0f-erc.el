@@ -10,8 +10,6 @@
 
 (when (file-exists-p "~/.erc.passwd") (load "~/.erc.passwd"))
 
-(global-set-key (kbd "C-c C-SPC") 'erc-track-switch-buffer)
-
 (add-to-list 'clean-buffer-list-kill-never-regexps "^#")
 (add-to-list 'clean-buffer-list-kill-never-buffer-names "irc.oftc.net:6697")
 (add-to-list 'clean-buffer-list-kill-never-buffer-names "irc.freenode.net:6667")
