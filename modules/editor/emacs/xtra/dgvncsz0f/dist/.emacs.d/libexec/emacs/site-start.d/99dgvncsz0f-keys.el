@@ -1,6 +1,6 @@
 ; -*- mode: emacs-lisp; -*-
 
-(add-hook 'dired-mode-hook (lambda () (define-key dired-mode-map (kbd "M-g") 'ag)))
+;; (add-hook 'dired-mode-hook (lambda () (define-key dired-mode-map (kbd "M-g") 'ag)))
 (global-set-key (kbd "<f5>") 'ispell-change-dictionary)
 (global-set-key (kbd "<f6>") 'column-highlight-mode)
 (global-set-key (kbd "<f7>") 'visual-line-mode)
@@ -18,7 +18,7 @@
 (global-set-key (kbd "M-Z") 'ace-jump-zap-up-to-char)
 (global-set-key (kbd "C-c o") 'occur)
 (global-set-key (kbd "C-c s") 'eshell)
-(global-set-key (kbd "C-c C-e" 'dgvncsz0f-eval-and-replase))
+(global-set-key (kbd "C-c C-e") 'dgvncsz0f-eval-and-replase)
 (global-set-key (kbd "C-c c") 'describe-char)
 (global-set-key (kbd "C-S-o") 'dgvncsz0f-prepend-line)
 (global-set-key (kbd "C-c U") 'browse-url-at-point)

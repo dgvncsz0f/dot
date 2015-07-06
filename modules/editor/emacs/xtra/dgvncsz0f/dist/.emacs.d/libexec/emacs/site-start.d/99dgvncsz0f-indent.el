@@ -7,7 +7,7 @@
 (add-hook 'c-mode-hook
           (lambda () (c-set-style "dgvncsz0f")))
 (add-hook 'c++-mode-hook
-          (lambda () (c-set-style "dgvncsz0f"))
+          (lambda () (c-set-style "dgvncsz0f")))
 (add-hook 'c-mode-common-hook
           (lambda ()
             (setq c-basic-offset 2)
