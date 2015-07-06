@@ -41,7 +41,7 @@
 
 (defun dgvncsz0f-locate-file ()
   (interactive)
-  (let ((root-dir (dgvncsz0f-project-root))
+  (let ((root-dir (file-truename (dgvncsz0f-project-root)))
         (locate-make-command-line (lambda (s) (list "locate-file" root-dir s))))
     (icicle-locate-no-search)))
 
