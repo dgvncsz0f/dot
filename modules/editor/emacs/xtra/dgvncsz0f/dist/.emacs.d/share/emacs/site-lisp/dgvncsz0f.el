@@ -1,4 +1,6 @@
 ; http://irreal.org/blog/?p=297
+
+
 (defun dgvncsz0f-eval-and-replace (value)
   "Evaluate the sexp at point and replace it with its value"
   (interactive (list (eval-last-sexp nil)))
@@ -21,6 +23,27 @@
   (move-end-of-line arg)
   (open-line 1)
   (forward-line 1))
+
+(defun dgvncsz0f-project-root ()
+  (with-temp-buffer
+    (if (= 0 (call-process "git" nil t t "rev-parse" "--show-toplevel"))
+        (replace-regexp-in-string "\n$" "" (buffer-string))
+      default-directory)))
+
+(defun dgvncsz0f-project-gitdir ()
+  (with-temp-buffer
+    (if (= 0 (call-process "git" nil t t "rev-parse" "--git-dir"))
+        (replace-regexp-in-string "\n$" "" (buffer-string))
+      default-directory)))
+
+(defun dgvncsz0f-project-has-git ()
+  (= 0 (call-process "git" nil nil nil "rev-parse" "--show-toplevel")))
+
+(defun dgvncsz0f-locate-file ()
+  (interactive)
+  (let ((root-dir (dgvncsz0f-project-root))
+        (locate-make-command-line (lambda (s) (list "find-files" root-dir s))))
+    (icicle-locate-no-search)))
 
 (defun dgvncsz0f-toggle-flyspell ()
   " Toggles flyspell-mode.
@@ -53,10 +76,10 @@
 
 (defun dgvncsz0f-irc-connect-all ()
   (interactive)
-  (my-irc-slack)
-  (my-irc-freenode)
-  (my-irc-oftc)
-  (my-irc-bitlbee))
+  (dgvncsz0f-irc-slack)
+  (dgvncsz0f-irc-freenode)
+  (dgvncsz0f-irc-oftc)
+  (dgvncsz0f-irc-bitlbee))
 
 (defun dgvncsz0f-irc-disconnect-all ()
   (interactive)

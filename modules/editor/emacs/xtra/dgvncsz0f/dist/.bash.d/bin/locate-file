@@ -1,0 +1,16 @@
+#!/bin/sh
+
+exec 3>&1
+exec 2>/dev/null
+
+regex=${2:-.}
+curdir=$(realpath "$1")
+
+if git --git-dir "$curdir/.git" rev-parse -q
+then
+  git --work-tree="$curdir" --git-dir="$curdir/.git" ls-files --full-name --cached --other --exclude-standard -z | \
+      xargs -0 -n1 printf "%s/%s\n" "$curdir" | \
+      grep -E "$regex" >&3
+else
+  locate --regex "$regex" | grep -E "^$curdir" >&3
+fi
