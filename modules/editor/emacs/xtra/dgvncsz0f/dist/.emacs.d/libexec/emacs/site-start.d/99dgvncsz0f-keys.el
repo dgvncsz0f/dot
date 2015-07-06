@@ -32,7 +32,6 @@
 (global-set-key (kbd "C-o") 'dgvncsz0f-append-line)
 (global-set-key (kbd "C-k") 'kill-whole-line)
 (global-set-key (kbd "C-M-k") 'kill-line)
-(global-set-key (kbd "C-c C-x C-e") 'eval-and-replace)
 (global-set-key (kbd "<C-return>") 'rectangle-mark-mode)
 (global-set-key (kbd "C-c ro") 'open-rectangle)
 (global-set-key (kbd "C-c C-SPC") 'erc-track-switch-buffer)
