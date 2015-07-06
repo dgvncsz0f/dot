@@ -1,6 +1,9 @@
 ; -*- mode: emacs-lisp; -*-
 
-;; (add-hook 'dired-mode-hook (lambda () (define-key dired-mode-map (kbd "M-g") 'ag)))
+(global-set-key (kbd "M-g l")
+                (lambda (&optional args)
+                  (interactive "sRegexp: ")
+                  (ack args t (dgvncsz0f-project-root))))
 (global-set-key (kbd "<f5>") 'ispell-change-dictionary)
 (global-set-key (kbd "<f6>") 'column-highlight-mode)
 (global-set-key (kbd "<f7>") 'visual-line-mode)
@@ -25,7 +28,6 @@
 (global-set-key (kbd "C-c u") 'browse-url)
 (global-set-key (kbd "C-S-r") 'revert-buffer)
 (global-set-key (kbd "C-o") 'dgvncsz0f-append-line)
-(global-set-key (kbd "C-x D") 'find-name-dired)
 (global-set-key (kbd "C-k") 'kill-whole-line)
 (global-set-key (kbd "C-M-k") 'kill-line)
 (global-set-key (kbd "C-c C-x C-e") 'eval-and-replace)
