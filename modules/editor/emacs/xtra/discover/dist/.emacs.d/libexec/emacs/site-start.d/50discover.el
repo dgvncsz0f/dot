@@ -4,4 +4,3 @@
   (package-install 'discover))
 
 (require 'discover)
-(global-discover-mode 1)
