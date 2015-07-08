@@ -3,9 +3,9 @@
 (add-hook 'dired-mode-hook
           (lambda () (define-key dired-mode-map (kbd "M-g") nil)))
 (add-hook 'cider-mode-hook
-          (lambda () (define-key cider-mode-map (kbd "M-TAB") nil)))
+          (lambda () (define-key cider-mode-map (kbd "M-TAB") 'company-complete)))
 (add-hook 'emacs-lisp-mode-hook
-          (lambda () (define-key emacs-lisp-mode-hook (kbd "M-TAB") nil)))
+          (lambda () (define-key emacs-lisp-mode-map (kbd "M-TAB") 'company-complete)))
 (global-set-key (kbd "M-g l")
                 (lambda (&optional args)
                   (interactive "sRegexp: ")
