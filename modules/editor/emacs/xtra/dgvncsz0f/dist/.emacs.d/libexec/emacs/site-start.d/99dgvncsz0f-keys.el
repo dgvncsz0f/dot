@@ -2,6 +2,10 @@
 
 (add-hook 'dired-mode-hook
           (lambda () (define-key dired-mode-map (kbd "M-g") nil)))
+(add-hook 'cider-mode-hook
+          (lambda () (define-key cider-mode-map (kbd "M-TAB") nil)))
+(add-hook 'emacs-lisp-mode-hook
+          (lambda () (define-key emacs-lisp-mode-hook (kbd "M-TAB") nil)))
 (global-set-key (kbd "M-g l")
                 (lambda (&optional args)
                   (interactive "sRegexp: ")
@@ -35,3 +39,4 @@
 (global-set-key (kbd "<C-return>") 'rectangle-mark-mode)
 (global-set-key (kbd "C-c ro") 'open-rectangle)
 (global-set-key (kbd "C-c C-SPC") 'erc-track-switch-buffer)
+(global-set-key (kbd "M-TAB") 'company-complete)
