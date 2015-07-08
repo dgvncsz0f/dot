@@ -1,7 +1,7 @@
 ; -*- mode: emacs-lisp; -*-
 
-(unless (package-installed-p 'cider-mode)
-  (package-install 'cider-mode))
+(unless (package-installed-p 'cider)
+  (package-install 'cider))
 
 (require 'cider-mode)
 
