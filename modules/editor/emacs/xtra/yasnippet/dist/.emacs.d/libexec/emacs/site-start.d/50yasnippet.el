@@ -6,4 +6,3 @@
 (add-to-list 'load-path (concat user-emacs-directory "share/emacs/site-lisp/yasnippet"))
 
 (require 'yasnippet)
-(yas-global-mode 1)
