@@ -1,6 +1,6 @@
 ; -*- mode: emacs-lisp; -*-
 
 (unless (package-installed-p 'lice)
-  (package-install 'anzu))
+  (package-install 'lice))
 
 (require 'lice)
