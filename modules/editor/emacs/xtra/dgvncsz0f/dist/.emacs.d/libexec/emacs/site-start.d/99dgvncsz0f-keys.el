@@ -3,7 +3,9 @@
 (add-hook 'dired-mode-hook
           (lambda () (define-key dired-mode-map (kbd "M-g") nil)))
 (add-hook 'cider-mode-hook
-          (lambda () (define-key cider-mode-map (kbd "M-TAB") 'company-complete)))
+          (lambda ()
+            (define-key cider-mode-map (kbd "M-TAB") 'company-complete)
+            (define-key cider-mode-map (kbd "C-c ,") 'dgvncsz0f--cider-test-run-tests)))
 (add-hook 'emacs-lisp-mode-hook
           (lambda () (define-key emacs-lisp-mode-map (kbd "M-TAB") 'company-complete)))
 (global-set-key (kbd "M-g l")
@@ -14,6 +16,9 @@
 (global-set-key (kbd "<f6>") 'column-highlight-mode)
 (global-set-key (kbd "<f7>") 'visual-line-mode)
 (global-set-key (kbd "<f8>") 'magit-status)
+(global-set-key (kbd "<f9>") 'dgvncsz0f-compile-test)
+(global-set-key (kbd "C-<f9>") 'dgvncsz0f-recompile)
+(global-set-key (kbd "M-<f9>") 'dgvncsz0f-compile-clean)
 (global-set-key (kbd "S-<f5>") 'dgvncsz0f-toggle-flyspell)
 (global-set-key (kbd "S-<f6>") 'whitespace-mode)
 (global-set-key (kbd "S-<f7>") 'toggle-truncate-lines)

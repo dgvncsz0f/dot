@@ -1,5 +1,32 @@
 ; http://irreal.org/blog/?p=297
 
+(defun dgvncsz0f--cider-test-run-tests ()
+  (interactive)
+  (let ((testns (concat (clojure-find-ns) "-test")))
+    (-if-let (path (cider-sync-request:ns-path testns))
+        (progn
+          (cider-load-file path)
+          (call-interactively 'cider-test-run-tests))
+      (error "can't find ns %s" testns))))
+
+(defun dgvncsz0f-invoke-compile (compile-command)
+  (let ((default-directory (concat (dgvncsz0f-project-root) "/" dgvncsz0f-compile-root)))
+    (recompile)))
+
+(defun dgvncsz0f-compile-test ()
+  (interactive)
+  (when (boundp 'dgvncsz0f-compile-test-command)
+    (dgvncsz0f-invoke-compile dgvncsz0f-compile-test-command)))
+
+(defun dgvncsz0f-recompile ()
+  (interactive)
+  (when (boundp 'dgvncsz0f-compile-command)
+    (dgvncsz0f-compile dgvncsz0f-compile-command)))
+
+(defun dgvncsz0f-compile-clean ()
+  (interactive)
+  (when (boundp 'dgvncsz0f-compile-clean-command)
+    (dgvncsz0f-compile dgvncsz0f-compile-clean-command)))
 
 (defun dgvncsz0f-eval-and-replace (value)
   "Evaluate the sexp at point and replace it with its value"
