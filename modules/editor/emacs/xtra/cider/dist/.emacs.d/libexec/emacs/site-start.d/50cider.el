@@ -5,6 +5,6 @@
 
 (require 'cider-mode)
 
-(setq company-idle-delay nil)
-(setq company-auto-complete nil)
-(global-company-mode t)
+(setq cider-prefer-local-resources t)
+(setq cider-repl-pop-to-buffer-on-connect nil)
+(add-hook 'cider-mode-hook 'eldoc-mode)
