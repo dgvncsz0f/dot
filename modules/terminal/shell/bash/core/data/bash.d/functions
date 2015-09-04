@@ -81,3 +81,7 @@ my_setenv()
   export HISTIGNORE=" *"
   export PATH
 }
+
+mute () {
+  "$@" >/dev/null 2>/dev/null
+}
