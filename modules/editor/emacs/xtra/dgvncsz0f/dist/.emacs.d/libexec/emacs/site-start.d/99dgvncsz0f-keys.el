@@ -75,7 +75,7 @@
 (define-key smartparens-mode-map (kbd "C-<right>") 'sp-forward-slurp-sexp)
 (define-key smartparens-mode-map (kbd "C-<left>") 'sp-forward-barf-sexp)
 (define-key smartparens-mode-map (kbd "M-<left>") 'sp-backward-slurp-sexp)
-(define-key smartparens-mode-map (kbd "M-<left>") 'sp-backward-barf-sexp)
+(define-key smartparens-mode-map (kbd "M-<right>") 'sp-backward-barf-sexp)
 
 (define-key smartparens-mode-map (kbd "C-M-k") 'sp-kill-sexp)
 (define-key smartparens-mode-map (kbd "C-M-K") 'sp-kill-hybrid-sexp)
