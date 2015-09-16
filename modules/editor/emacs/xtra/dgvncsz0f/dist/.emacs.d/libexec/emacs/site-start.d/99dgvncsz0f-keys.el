@@ -1,5 +1,7 @@
 ; -*- mode: emacs-lisp; -*-
 
+(require 'smartparens-config)
+
 (add-hook 'dired-mode-hook
           (lambda () (define-key dired-mode-map (kbd "M-g") nil)))
 (add-hook 'cider-mode-hook
@@ -45,3 +47,40 @@
 (global-set-key (kbd "C-c ro") 'open-rectangle)
 (global-set-key (kbd "C-c C-SPC") 'erc-track-switch-buffer)
 (global-set-key (kbd "M-TAB") 'company-complete)
+
+(add-hook 'prog-mode-hook 'turn-on-smartparens-strict-mode)
+(add-hook 'minibuffer-setup-hook 'turn-on-smartparens-strict-mode)
+
+(define-key smartparens-mode-map (kbd "M-F") 'sp-forward-sexp)
+(define-key smartparens-mode-map (kbd "M-B") 'sp-backward-sexp)
+
+(define-key smartparens-mode-map (kbd "C-M-d") 'sp-down-sexp)
+(define-key smartparens-mode-map (kbd "C-M-D") 'sp-backward-down-sexp)
+(define-key smartparens-mode-map (kbd "C-M-a") 'sp-beginning-of-sexp)
+(define-key smartparens-mode-map (kbd "C-M-e") 'sp-end-of-sexp)
+
+(define-key smartparens-mode-map (kbd "C-M-u") 'sp-up-sexp)
+(define-key smartparens-mode-map (kbd "C-M-U") 'sp-backward-up-sexp)
+(define-key smartparens-mode-map (kbd "C-M-t") 'sp-transpose-sexp)
+
+(define-key smartparens-mode-map (kbd "C-M-f") 'sp-next-sexp)
+(define-key smartparens-mode-map (kbd "C-M-b") 'sp-previous-sexp)
+
+(define-key smartparens-mode-map (kbd "C-M-k") 'sp-kill-sexp)
+(define-key smartparens-mode-map (kbd "C-M-w") 'sp-copy-sexp)
+
+(define-key smartparens-mode-map (kbd "C-B") 'sp-backward-symbol)
+(define-key smartparens-mode-map (kbd "C-F") 'sp-forward-symbol)
+
+(define-key smartparens-mode-map (kbd "C-<right>") 'sp-forward-slurp-sexp)
+(define-key smartparens-mode-map (kbd "C-<left>") 'sp-forward-barf-sexp)
+(define-key smartparens-mode-map (kbd "M-<left>") 'sp-backward-slurp-sexp)
+(define-key smartparens-mode-map (kbd "M-<left>") 'sp-backward-barf-sexp)
+
+(define-key smartparens-mode-map (kbd "C-M-k") 'sp-kill-sexp)
+(define-key smartparens-mode-map (kbd "C-M-K") 'sp-kill-hybrid-sexp)
+(define-key smartparens-mode-map (kbd "M-k") 'sp-backward-kill-sexp)
+(define-key smartparens-mode-map (kbd "M-K") 'sp-splice-sexp)
+(define-key smartparens-mode-map (kbd "M-D") 'sp-splice-sexp-killing-around)
+
+(define-key emacs-lisp-mode-map (kbd ";") 'sp-comment)
