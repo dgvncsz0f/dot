@@ -66,8 +66,9 @@
 (define-key smartparens-mode-map (kbd "C-M-f") 'sp-next-sexp)
 (define-key smartparens-mode-map (kbd "C-M-b") 'sp-previous-sexp)
 
-(define-key smartparens-mode-map (kbd "C-M-k") 'sp-kill-sexp)
+(define-key smartparens-mode-map (kbd "C-M-k") 'sp-kill-hybrid-sexp)
 (define-key smartparens-mode-map (kbd "C-M-w") 'sp-copy-sexp)
+(define-key smartparens-mode-map (kbd "C-M-S-k") 'sp-kill-sexp)
 
 (define-key smartparens-mode-map (kbd "C-S-b") 'sp-backward-symbol)
 (define-key smartparens-mode-map (kbd "C-S-f") 'sp-forward-symbol)
@@ -78,7 +79,6 @@
 (define-key smartparens-mode-map (kbd "M-<right>") 'sp-backward-barf-sexp)
 
 (define-key smartparens-mode-map (kbd "C-M-k") 'sp-kill-sexp)
-(define-key smartparens-mode-map (kbd "C-M-S-k") 'sp-kill-hybrid-sexp)
 (define-key smartparens-mode-map (kbd "M-k") 'sp-backward-kill-sexp)
 (define-key smartparens-mode-map (kbd "M-K") 'sp-splice-sexp)
 (define-key smartparens-mode-map (kbd "M-D") 'sp-splice-sexp-killing-around)
