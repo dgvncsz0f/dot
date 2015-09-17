@@ -51,8 +51,8 @@
 (add-hook 'prog-mode-hook 'turn-on-smartparens-strict-mode)
 (add-hook 'minibuffer-setup-hook 'turn-on-smartparens-strict-mode)
 
-(define-key smartparens-mode-map (kbd "M-S-f") 'sp-forward-sexp)
-(define-key smartparens-mode-map (kbd "M-S-b") 'sp-backward-sexp)
+(define-key smartparens-mode-map (kbd "M-F") 'sp-forward-sexp)
+(define-key smartparens-mode-map (kbd "M-B") 'sp-backward-sexp)
 
 (define-key smartparens-mode-map (kbd "C-M-d") 'sp-down-sexp)
 (define-key smartparens-mode-map (kbd "C-M-S-d") 'sp-backward-down-sexp)
@@ -80,7 +80,7 @@
 (define-key smartparens-mode-map (kbd "C-M-k") 'sp-kill-sexp)
 (define-key smartparens-mode-map (kbd "C-M-S-k") 'sp-kill-hybrid-sexp)
 (define-key smartparens-mode-map (kbd "M-k") 'sp-backward-kill-sexp)
-(define-key smartparens-mode-map (kbd "M-S-k") 'sp-splice-sexp)
-(define-key smartparens-mode-map (kbd "M-S-d") 'sp-splice-sexp-killing-around)
+(define-key smartparens-mode-map (kbd "M-K") 'sp-splice-sexp)
+(define-key smartparens-mode-map (kbd "M-D") 'sp-splice-sexp-killing-around)
 
 (define-key emacs-lisp-mode-map (kbd ";") 'sp-comment)
