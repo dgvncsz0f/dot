@@ -85,4 +85,6 @@
 (global-subword-mode t)
 (transient-mark-mode t)
 
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 (unless (server-running-p) (server-start))
