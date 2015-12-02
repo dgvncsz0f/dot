@@ -84,6 +84,7 @@
 (global-visual-line-mode t)
 (global-subword-mode t)
 (transient-mark-mode t)
+(linum-relative-global-mode t)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
