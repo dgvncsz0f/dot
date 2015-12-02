@@ -54,6 +54,15 @@
 (setq uniquify-strip-common-suffix nil)
 (setq custom-file "~/.emacs.d/custom-file")
 (setq dired-hide-details-hide-symlink-targets nil)
+(setq
+ tramp-password-prompt-regexp
+ (concat
+  "^.*"
+  (regexp-opt
+   '("passphrase" "Passphrase"
+     "password" "Password"
+     "Verification code" "verification code") t)
+  ".*:\0? *"))
 
 (put 'erase-buffer 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
