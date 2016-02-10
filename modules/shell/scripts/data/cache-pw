@@ -1,55 +1,40 @@
 #!/usr/bin/expect -f
 
-set password ""
-set passphrase ""
+array set passwd {}
 set name "cache-pw"
 set timeout 300
 eval spawn -noecho [lrange $argv 0 [llength $argv]]
 
-proc read_passwd {} {
-    global password
+proc read_passwd {index} {
     global name
-    if { $password == "" } {
-        send_user "($name) password: "
-        expect_user -re "(.*)\r"
-        set password $expect_out(1,string)
-    } else {
-        send_user "($name) using cache"
-        sleep 1
-    }
-}
+    global passwd
 
-proc read_passphrase {} {
-    global passphrase
-    global name
-    if { $passphrase == "" } {
-        send_user "($name) passphrase: "
-        expect_user -re "(.*)\r"
-        set passphrase $expect_out(1,string)
-    } else {
-        send_user "($name) using cache"
+    if { [info exists passwd($index)] } {
+        send_user "($name..$index) using cache"
         sleep 1
+    } else {
+        send_user "($name..$index) password: "
+        expect_user -re "(.*)\r"
+        array set passwd [list $index $expect_out(1,string)]
     }
+    send "$passwd($index)\r"
 }
 
 proc purge_cache {} {
-    global passphrase
-    global password
     global name
+    global passwd
+
     send_user "($name) purging cache\n"
-    set passphrase ""
-    set password ""
+    array unset passwd *
 }
 
 interact \
     ~. {
         purge_cache
-    } -o \
-    -nobuffer -re "\[pP\]assword.*: $" {
-        read_passwd
-        send "$password\n"
-    } -nobuffer -re "passphrase.*: $" {
-        read_passphrase
-        send "$passphrase\n"
+    } -o -nobuffer -re "Vault password: *$" {
+        read_passwd "vault"
+    } -nobuffer -re "SUDO password: *$" {
+        read_passwd "sudo"
+    } -nobuffer -re "\\\[sudo\\\] password .*: *$" {
+        read_passwd "sudo"
     }
-
