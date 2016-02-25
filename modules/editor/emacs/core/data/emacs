@@ -92,5 +92,8 @@
 (linum-relative-global-mode t)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'clojure-mode-hook
+          (lambda ()
+            (define-key clojure-mode-map (kbd "C-:") 'avy-goto-char)))
 
 (unless (server-running-p) (server-start))
