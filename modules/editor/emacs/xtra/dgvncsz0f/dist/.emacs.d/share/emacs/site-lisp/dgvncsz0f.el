@@ -54,10 +54,19 @@
   (open-line 1)
   (forward-line 1))
 
+(defun dgvncsz0f-locate-file (&optional arg)
+  (interactive "P")
+  (when (not (symbol-value 'projectile-mode))
+    (projectile-mode t))
+  (projectile-maybe-invalidate-cache arg)
+  (call-interactively 'icicle-projectile-find-file "P" arg))
+
 (icicle-define-command
  icicle-projectile-find-file
- "Jump to a project's file using completion"
- find-file
+ "Jump to a project's file using completion. With a prefix ARG invalidates the cache first."
+ (lambda (x)
+   (find-file x)
+   (run-hooks 'projectile-find-file-hook))
  "File: "
  (map 'list 'projectile-expand-root (projectile-current-project-files)))
 

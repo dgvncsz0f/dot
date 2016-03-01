@@ -36,7 +36,7 @@
 (global-set-key (kbd "M-Z") 'avy-zap-up-to-char-dwim)
 (global-set-key (kbd "C-c s") 'eshell)
 (global-set-key (kbd "C-c C-e") 'dgvncsz0f-eval-and-replace)
-(global-set-key (kbd "C-c f") 'icicle-projectile-find-file)
+(global-set-key (kbd "C-c f") 'dgvncsz0f-locate-file)
 (global-set-key (kbd "C-c c") 'describe-char)
 (global-set-key (kbd "C-S-o") 'dgvncsz0f-prepend-line)
 (global-set-key (kbd "C-c U") 'browse-url-at-point)
