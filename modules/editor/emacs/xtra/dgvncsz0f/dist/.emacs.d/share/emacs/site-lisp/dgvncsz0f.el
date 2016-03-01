@@ -1,5 +1,8 @@
 ; http://irreal.org/blog/?p=297
 
+(require 'projectile)
+(require 'icicles-mac)
+
 (defun dgvncsz0f--cider-test-run-tests ()
   (interactive)
   (let ((testns (concat (clojure-find-ns) "-test")))
@@ -51,26 +54,12 @@
   (open-line 1)
   (forward-line 1))
 
-(defun dgvncsz0f-project-root ()
-  (with-temp-buffer
-    (if (= 0 (call-process "git" nil t t "rev-parse" "--show-toplevel"))
-        (replace-regexp-in-string "\n$" "" (buffer-string))
-      default-directory)))
-
-(defun dgvncsz0f-project-gitdir ()
-  (with-temp-buffer
-    (if (= 0 (call-process "git" nil t t "rev-parse" "--git-dir"))
-        (replace-regexp-in-string "\n$" "" (buffer-string))
-      default-directory)))
-
-(defun dgvncsz0f-project-has-git ()
-  (= 0 (call-process "git" nil nil nil "rev-parse" "--show-toplevel")))
-
-(defun dgvncsz0f-locate-file ()
-  (interactive)
-  (let ((root-dir (file-truename (dgvncsz0f-project-root)))
-        (locate-make-command-line (lambda (s) (list "locate-file" root-dir s))))
-    (icicle-locate-no-search)))
+(icicle-define-command
+ icicle-projectile-find-file
+ "Jump to a project's file using completion"
+ find-file
+ "File: "
+ (map 'list 'projectile-expand-root (projectile-current-project-files)))
 
 (defun dgvncsz0f-toggle-flyspell ()
   " Toggles flyspell-mode.
