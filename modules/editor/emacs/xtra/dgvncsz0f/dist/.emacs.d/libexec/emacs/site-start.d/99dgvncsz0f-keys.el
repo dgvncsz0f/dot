@@ -37,6 +37,7 @@
 (global-set-key (kbd "C-c s") 'eshell)
 (global-set-key (kbd "C-c C-e") 'dgvncsz0f-eval-and-replace)
 (global-set-key (kbd "C-c f") 'dgvncsz0f-locate-file)
+(global-set-key (kbd "C-c d") 'dgvncsz0f-locate-dir)
 (global-set-key (kbd "C-c c") 'describe-char)
 (global-set-key (kbd "C-S-o") 'dgvncsz0f-prepend-line)
 (global-set-key (kbd "C-c U") 'browse-url-at-point)

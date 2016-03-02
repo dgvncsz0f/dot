@@ -70,6 +70,22 @@
  "File: "
  (map 'list 'projectile-expand-root (projectile-current-project-files)))
 
+(defun dgvncsz0f-locate-dir (&optional arg)
+  (interactive "P")
+  (when (not (symbol-value 'projectile-mode))
+    (projectile-mode t))
+  (projectile-maybe-invalidate-cache arg)
+  (call-interactively 'icicle-projectile-find-dir "P" arg))
+
+(icicle-define-command
+ icicle-projectile-find-dir
+ "Jump to a project's file using completion. With a prefix ARG invalidates the cache first."
+ (lambda (x)
+   (find-file x)
+   (run-hooks 'projectile-find-dir-hook))
+ "File: "
+ (map 'list 'projectile-expand-root (projectile-current-project-dirs)))
+
 (defun dgvncsz0f-toggle-flyspell ()
   " Toggles flyspell-mode.
   "
