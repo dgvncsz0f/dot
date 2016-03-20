@@ -22,17 +22,18 @@ myConfig = do
   return $ defaultConfig { manageHook  = manageDocks <+> myManageHook <+> manageHook defaultConfig
                          , layoutHook  = avoidStruts (lTabs ||| lTall ||| lFull ||| lStck)
                          , logHook     = dynamicLogWithPP xmobarPP { ppOutput = hPutStrLn xmproc }
-
                          , startupHook = setWMName "LG3D"
                          , modMask     = myModMask
                          , terminal    = "sakura"
                          , workspaces  = myWorkspaces
                          } `additionalKeys` [ ((myModMask, xK_x), spawn "slock")
                                             , ((noModMask, stringToKeysym "XF86AudioMute"), spawn "amixer set Master toggle")
+                                            , ((noModMask, stringToKeysym "XF86MonBrightnessUp"), spawn "xbacklight -inc 10")
                                             , ((noModMask, stringToKeysym "XF86AudioRaiseVolume"), spawn "amixer set Master 5dB+")
                                             , ((noModMask, stringToKeysym "XF86AudioLowerVolume"), spawn "amixer set Master 5dB-")
-                                            , ((myModMask .|. shiftMask, xK_x), spawn "xscreensaver-command -exit")
-                                            , ((myModMask .|. shiftMask, xK_s), spawn "import /tmp/screenshot.png")
+                                            , ((noModMask, stringToKeysym "XF86MonBrightnessDown"), spawn "xbacklight -dec 10")
+                                            , ((myModMask .|. shiftMask, xK_x), spawn "xscreensaver-command -lock")
+                                            , ((myModMask .|. shiftMask, xK_s), spawn "import /tmp/xscreenshot.png")
                                             , ((myModMask .|. shiftMask, xK_e), spawn "bash -l -c editor")
                                             , ((myModMask .|. shiftMask, xK_b), spawn "bash -l -c conkeror")
                                             , ((myModMask              , xK_p), spawn "bash -l -c dmenu_run")
