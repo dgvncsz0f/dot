@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if ! pgrep xscreensaver >/dev/null 2>/dev/null
+then
+    xscreensaver -no-splash&
+    disown
+    sleep 1
+fi
+
+exec xscreensaver-command -lock
