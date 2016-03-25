@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec bash <(https://raw.githubusercontent.com/dgvncsz0f/dot-install/master/dot-install) "$@"
