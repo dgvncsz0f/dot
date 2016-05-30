@@ -12,6 +12,7 @@ fi
 
 setxkbmap -layout us -variant colemak
 
+xset r rate 750 40
 xset -b b off
 xrdb -I$HOME -load $HOME/.xresourcesrc
 xsetroot -solid black
