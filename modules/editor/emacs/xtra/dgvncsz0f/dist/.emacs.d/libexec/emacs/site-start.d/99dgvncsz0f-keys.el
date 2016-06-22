@@ -28,7 +28,7 @@
 (global-set-key (kbd "M-g c") 'avy-goto-char)
 (global-set-key (kbd "M-g g") 'avy-goto-line)
 (global-set-key (kbd "M-g w") 'avy-goto-word-1)
-(global-set-key (kbd "<C-return>") 'avy-goto-word-1)
+(global-set-key (kbd "<C-return>") 'avy-goto-char)
 (global-set-key (kbd "M-g o") 'ace-window)
 (global-set-key (kbd "C-x o") 'ace-window)
 (global-set-key (kbd "M-z") 'avy-zap-to-char-dwim)
@@ -48,6 +48,9 @@
 (global-set-key (kbd "C-c ro") 'open-rectangle)
 (global-set-key (kbd "C-c C-SPC") 'erc-track-switch-buffer)
 (global-set-key (kbd "M-TAB") 'company-complete)
+
+(global-set-key (kbd "C-c p g") 'magit-status)
+(global-set-key (kbd "C-c p s") 'ag-project)
 
 (add-hook 'prog-mode-hook 'turn-on-smartparens-strict-mode)
 (add-hook 'minibuffer-setup-hook 'turn-on-smartparens-strict-mode)
