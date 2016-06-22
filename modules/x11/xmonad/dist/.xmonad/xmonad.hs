@@ -24,7 +24,7 @@ myConfig = do
                          , logHook     = dynamicLogWithPP xmobarPP { ppOutput = hPutStrLn xmproc }
                          , startupHook = setWMName "LG3D"
                          , modMask     = myModMask
-                         , terminal    = "sakura"
+                         , terminal    = "pantheon-terminal"
                          , workspaces  = myWorkspaces
                          } `additionalKeys` [ ((myModMask, xK_x), spawn "bash -l -c x11-lock")
                                             , ((noModMask, stringToKeysym "XF86AudioMute"), spawn "amixer set Master toggle")
