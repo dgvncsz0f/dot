@@ -29,7 +29,7 @@
   (mapcar 'load (file-expand-wildcards (concat user-site-start-dir "*.el"))))
 
 (set-face-attribute 'default nil :height 160)
-(set-default-font "FiraCode Retina")
+(set-default-font "Fira Mono")
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
