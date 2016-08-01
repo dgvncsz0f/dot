@@ -1,7 +1,7 @@
 #!/bin/bash
 # -*- mode: Shell-script; sh-basic-offset: 2; -*-
 
-export GNUPGHOME="$HOME/sec/gnupg"
+export GNUPGHOME="$HOME/enc/gnupg"
 
 my_gpgagent_envfile=$HOME/.gpg-agent.env
 
@@ -34,12 +34,12 @@ my_gpgagent_init ()
 {
   if ! my_gpgagent_running
   then
-    if [ -d "$HOME/sec/gnupg" ]
+    if [ -d "$HOME/enc/gnupg" ]
     then
       /usr/bin/gpg-agent              \
         --sh                          \
         --daemon                      \
-        --homedir "$HOME/sec/gnupg"   \
+        --homedir "$HOME/enc/gnupg"   \
         --max-cache-ttl 28800         \
         --default-cache-ttl 28800     \
         --max-cache-ttl-ssh 28800     \
