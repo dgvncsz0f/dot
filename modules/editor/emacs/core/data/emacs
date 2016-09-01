@@ -93,4 +93,10 @@
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+(add-to-list 'tramp-default-proxies-alist '(".*" "\\`root\\'" "/ssh:dsouza@%h:"))
+(defun eshell/ssh (host)
+  (eshell/cd (concat "/ssh:dsouza@" host ":~")))
+(defun eshell/0ssh (host)
+  (eshell/cd (concat "/sudo:root@" host ":~")))
+
 (unless (server-running-p) (server-start))
