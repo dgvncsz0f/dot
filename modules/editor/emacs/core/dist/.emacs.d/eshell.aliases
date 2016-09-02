@@ -1,0 +1,8 @@
+alias ssh cd /ssh:$1:~
+alias ssh0 cd /sudo:$1:~
+
+alias d dired $1
+alias ll ls -lh $*
+alias ff find-file $1
+
+alias x eshell/exit
