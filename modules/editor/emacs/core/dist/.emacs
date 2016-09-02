@@ -94,6 +94,9 @@
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+(setq password-cache t
+      password-cache-expiry (* 8 3600))
+
 (setq eshell-aliases-file "~/.emacs.d/eshell.aliases"
       eshell-history-size 9999)
 
