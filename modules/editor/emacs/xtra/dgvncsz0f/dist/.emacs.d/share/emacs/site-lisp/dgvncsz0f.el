@@ -68,7 +68,7 @@
    (find-file x)
    (run-hooks 'projectile-find-file-hook))
  "File: "
- (map 'list 'projectile-expand-root (projectile-current-project-files)))
+ (mapcar (lambda (x) (projectile-expand-root x)) (projectile-current-project-files)))
 
 (defun dgvncsz0f-locate-dir (&optional arg)
   (interactive "P")
