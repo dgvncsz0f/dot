@@ -42,5 +42,8 @@ done
 
 for d in "$HOME"/.bash.d/bin/**/
 do
-  export PATH="$PATH:$d"
+  PATH="$PATH:$d"
 done
+
+PATH="$PATH:$HOME/.bin"
+export PATH
