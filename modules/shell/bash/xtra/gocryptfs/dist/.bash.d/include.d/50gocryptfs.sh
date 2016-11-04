@@ -12,7 +12,6 @@ my_maybe_mount_gocryptfs()
       if ! mount | grep -q "$HOME/enc"
       then
         echo "WARN: $HOME/enc is not mounted" >&2
-        echo "WARN: $ gocryptfs -q \"$HOME/.enc\" \"$HOME/enc\" # to fix it!" >&2
       fi
     fi
   fi
