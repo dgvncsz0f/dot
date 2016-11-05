@@ -24,7 +24,7 @@ myConfig = do
                          , logHook     = dynamicLogWithPP xmobarPP { ppOutput = hPutStrLn xmproc }
                          , startupHook = setWMName "LG3D"
                          , modMask     = myModMask
-                         , terminal    = "sakura"
+                         , terminal    = "bash -l -c lilyterm"
                          , workspaces  = myWorkspaces
                          } `additionalKeys` [ ((myModMask, xK_x), spawn "bash -l -c x11-lock")
                                             , ((noModMask, stringToKeysym "XF86AudioMute"), spawn "amixer set Master toggle")
@@ -33,7 +33,7 @@ myConfig = do
                                             , ((noModMask, stringToKeysym "XF86AudioLowerVolume"), spawn "amixer set Master 5dB-")
                                             , ((noModMask, stringToKeysym "XF86MonBrightnessDown"), spawn "xbacklight -dec 10")
                                             , ((myModMask .|. shiftMask, xK_s), spawn "import /tmp/xscreenshot.png")
-                                            , ((myModMask .|. shiftMask, xK_e), spawn "bash -l -c editor")
+                                            , ((myModMask .|. shiftMask, xK_e), spawn "bash -l -c emacs")
                                             , ((myModMask .|. shiftMask, xK_b), spawn "bash -l -c conkeror")
                                             , ((myModMask              , xK_p), spawn "bash -l -c dmenu_run")
                                             , ((myModMask              , xK_z), warpToWindow 0 0)
