@@ -72,10 +72,10 @@
 (put 'upcase-region 'disabled nil)
 (put 'set-goal-column 'disabled nil)
 
-(unless (package-installed-p 'darkburn-theme)
-  (package-install 'darkburn-theme))
+(unless (package-installed-p 'monokai-theme)
+  (package-install 'monokai-theme))
 
-(load-theme 'darkburn t)
+(load-theme 'monokai t)
 (set-scroll-bar-mode nil)
 (menu-bar-mode 0)
 (tool-bar-mode 0)
@@ -88,7 +88,6 @@
 (column-number-mode t)
 (global-font-lock-mode t)
 (global-linum-mode t)
-(global-hl-line-mode t)
 (global-visual-line-mode t)
 (global-subword-mode t)
 (transient-mark-mode t)
