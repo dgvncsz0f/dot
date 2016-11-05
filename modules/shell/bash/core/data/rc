@@ -46,4 +46,6 @@ do
 done
 
 PATH="$PATH:$HOME/.bin"
+
+unset PROMPT_COMMAND
 export PATH
