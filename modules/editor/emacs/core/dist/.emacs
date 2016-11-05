@@ -15,7 +15,6 @@
   (unless package-archive-contents
     (package-refresh-contents)))
 
-
 (unless (boundp 'user-emacs-directory)
   (setq user-emacs-directory "~/.emacs.d/"))
 
@@ -73,7 +72,10 @@
 (put 'upcase-region 'disabled nil)
 (put 'set-goal-column 'disabled nil)
 
-(load-theme 'zenburn t)
+(unless (package-installed-p 'darkburn-theme)
+  (package-install 'darkburn-theme))
+
+(load-theme 'darkburn t)
 (set-scroll-bar-mode nil)
 (menu-bar-mode 0)
 (tool-bar-mode 0)
