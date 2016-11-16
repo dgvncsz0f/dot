@@ -31,7 +31,7 @@ myConfig = do
                                             , ((noModMask, stringToKeysym "XF86AudioRaiseVolume"), spawn "amixer set Master 5dB+")
                                             , ((noModMask, stringToKeysym "XF86AudioLowerVolume"), spawn "amixer set Master 5dB-")
                                             , ((noModMask, stringToKeysym "XF86MonBrightnessDown"), spawn "xbacklight -dec 10")
-                                            , ((myModMask .|. shiftMask, xK_s), spawn "import /tmp/xscreenshot.png")
+                                            , ((myModMask .|. shiftMask, xK_s), spawn "bash -l -c prnscr")
                                             , ((myModMask .|. shiftMask, xK_e), spawn "bash -l -c emacs")
                                             , ((myModMask .|. shiftMask, xK_b), spawn "bash -l -c conkeror")
                                             , ((myModMask              , xK_l), spawn "bash -l -c x11-lock")
