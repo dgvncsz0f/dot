@@ -72,13 +72,14 @@
 (put 'upcase-region 'disabled nil)
 (put 'set-goal-column 'disabled nil)
 
-(unless (package-installed-p 'monokai-theme)
-  (package-install 'monokai-theme))
+(unless (package-installed-p 'darktooth-theme)
+  (package-install 'darktooth-theme))
 
-(load-theme 'monokai t)
-(set-scroll-bar-mode nil)
 (menu-bar-mode 0)
 (tool-bar-mode 0)
+(set-scroll-bar-mode nil)
+(load-theme 'darktooth t)
+(darktooth-modeline)
 
 (when (file-exists-p custom-file) (load custom-file))
 
