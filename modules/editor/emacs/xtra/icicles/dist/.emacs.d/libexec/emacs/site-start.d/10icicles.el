@@ -5,6 +5,4 @@
 
 (require 'icicles)
 
-(setq icicle-files-ido-like-flag nil)
-(setq icicle-buffers-ido-like-flag t)
 (icicle-mode t)
