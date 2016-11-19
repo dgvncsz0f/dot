@@ -1,4 +1,3 @@
-require("new-tabs.js");
 require("clicks-in-new-buffer.js");
 
 homepage                        = "about:blank";
@@ -7,7 +6,6 @@ url_completion_use_bookmarks    = true;
 url_remoting_fn                 = load_url_in_new_buffer;
 hints_display_url_panel         = true;
 view_source_use_external_editor = true;
-xkcd_add_title                  = true;
 
 clicks_in_new_buffer_target = OPEN_NEW_BUFFER_BACKGROUND;
 clicks_in_new_buffer_button = 1;
@@ -15,19 +13,10 @@ clicks_in_new_buffer_button = 1;
 define_webjump( "?", "http://google.com/search?q=%s",
                 $alternative = "http://google.com"
               );
-define_webjump( "codesearch", "http://google.com/codesearch?q=%s",
-                $alternative = "http://google.com/codesearch"
-              );
-define_webjump( "scholar", "http://scholar.google.com/scholar?q=%s",
+define_webjump( "?s", "http://scholar.google.com/scholar?q=%s",
                 $alternative = "http://scholar.google.com"
               );
-define_webjump( "haskell", "http://haskell.org/hoogle/?hoogle=%s",
-                $alternative = "http://haskell.org/hoogle/"
-              );
-define_webjump( "deb", "http://packages.debian.org/search?keywords=%s&searchon=names&suite=unstable&section=all",
-                $alternative = "http://packages.debian.org"
-              );
 
-theme_load_paths.unshift("/home/dsouza/.conkeror/themes");
-theme_unload("default");
-theme_load("zenburn");
+register_user_stylesheet(
+    make_css_data_uri(["* {font-size:14px; font-family:'Iosevka Term';}"],
+                      $namespace = XUL_NS));
