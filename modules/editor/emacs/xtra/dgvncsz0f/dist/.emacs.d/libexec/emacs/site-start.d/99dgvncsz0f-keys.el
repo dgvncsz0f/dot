@@ -38,9 +38,10 @@
 (global-set-key (kbd "C-c C-SPC") 'erc-track-switch-buffer)
 (global-set-key (kbd "M-TAB") 'company-complete)
 
-(global-set-key (kbd "C-c p s") 'magit-status)
-(global-set-key (kbd "C-c p a") 'projectile-ag)
-(global-set-key (kbd "C-c p g") 'projectile-grep)
+(global-set-key (kbd "C-c p m s") 'magit-status)
+(global-set-key (kbd "C-c p m t") 'git-timemachine)
+(global-set-key (kbd "C-c p s a") 'projectile-ag)
+(global-set-key (kbd "C-c p s g") 'projectile-grep)
 (global-set-key (kbd "C-c p f") 'icicle-projectile-find-file)
 (global-set-key (kbd "C-c p d") 'icicle-projectile-find-dir)
 
