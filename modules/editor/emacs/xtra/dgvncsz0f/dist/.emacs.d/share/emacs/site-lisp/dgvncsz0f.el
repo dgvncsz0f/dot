@@ -115,6 +115,22 @@
   (if (boundp 'slack-password)
       (erc-tls :server "locaweb.irc.slack.com" :port 6667 :nick "dgvncsz0f" :full-name "dgvncsz0f" :password slack-password)))
 
+(defun dgvncsz0f-zprint-this ()
+  (interactive)
+  (let ((input (when buffer-file-name
+                 (concat "(zprint \"" buffer-file-name "\")")))
+        (connection (cider-current-connection "clj")))
+    (when (and input connection)
+      (basic-save-buffer)
+      (nrepl-request:eval input
+                          (nrepl-make-response-handler (current-buffer)
+                                                       (lambda (_buffer _value))
+                                                       (lambda (_buffer stdout)
+                                                         (message stdout))
+                                                       (lambda (_buffer _stderr))
+                                                       (lambda (_buffer)))
+                          connection))))
+
 (defun dgvncsz0f-irc-connect-all ()
   (interactive)
   (dgvncsz0f-irc-slack)
