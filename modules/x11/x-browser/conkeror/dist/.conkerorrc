@@ -1,5 +1,10 @@
 require("clicks-in-new-buffer.js");
 
+require("key-kill");
+key_kill_mode.test.push(\/\/.*github.com\/\/);
+key_kill_mode.test.push(\/\/.*slack.com\/\/);
+key_kill_input_fields = true;
+
 homepage                        = "about:blank";
 url_completion_use_history      = true;
 url_completion_use_bookmarks    = true;
