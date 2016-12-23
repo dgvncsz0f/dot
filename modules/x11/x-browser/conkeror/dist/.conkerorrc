@@ -1,9 +1,21 @@
 require("clicks-in-new-buffer.js");
 
-require("key-kill");
-key_kill_mode.test.push(\/\/.*github.com\/\/);
-key_kill_mode.test.push(\/\/.*slack.com\/\/);
-key_kill_input_fields = true;
+var kk_event = function kk_event (event) {
+  var elem = event.target;
+  if (event.which != 13)
+  { event.stopPropagation (); }
+};
+
+define_page_mode("kk-mode", [/./],
+ function enable (buffer) {
+   buffer.browser.addEventListener("keyup", kk_event, true);
+   buffer.browser.addEventListener("keydown", kk_event, true);
+ },
+ function disable (buffer) {
+   buffer.browser.removeEventListener("keyup", kk_event, true);
+   buffer.browser.removeEventListener("keydown", kk_event, true);
+ }, $display_name = "kk");
+page_mode_activate(kk_mode);
 
 homepage                        = "about:blank";
 url_completion_use_history      = true;
@@ -12,7 +24,7 @@ url_remoting_fn                 = load_url_in_new_buffer;
 hints_display_url_panel         = true;
 view_source_use_external_editor = true;
 
-clicks_in_new_buffer_target = OPEN_NEW_BUFFER_BACKGROUND;
+// clicks_in_new_buffer_target = OPEN_NEW_BUFFER_BACKGROUND;
 clicks_in_new_buffer_button = 1;
 
 define_webjump( "?", "http://google.com/search?q=%s",
