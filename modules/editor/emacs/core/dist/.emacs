@@ -63,7 +63,8 @@
      "password" "Password"
      "Verification code" "verification code") t)
   ".*:\0? *"))
-(add-to-list 'tramp-default-proxies-alist '(".*" "\\`root\\'" "/ssh:dsouza@%h:"))
+(add-to-list 'tramp-default-proxies-alist '(nil "root" "/ssh:dsouza@%h:"))
+(add-to-list 'tramp-default-proxies-alist '("localhost" nil nil))
 
 (put 'erase-buffer 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
