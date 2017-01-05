@@ -2,7 +2,8 @@ require("clicks-in-new-buffer.js");
 
 var kk_event = function kk_event (event) {
   var elem = event.target;
-  if (event.which != 13)
+  var whitelist = ["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight", "Enter", "Tab"];
+  if (whitelist.indexOf(event.key) === -1)
   { event.stopPropagation (); }
 };
 
