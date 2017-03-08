@@ -54,6 +54,7 @@
 (setq custom-file "~/.emacs.d/custom-file")
 (setq dired-hide-details-hide-symlink-targets nil)
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
+(setq ffap-machine-p-known 'reject)
 (setq
  tramp-password-prompt-regexp
  (concat
