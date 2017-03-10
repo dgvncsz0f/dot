@@ -13,6 +13,10 @@ then xmodmap $HOME/.xmodmaprc_kinesis
 else xmodmap $HOME/.xmodmaprc
 fi
 
+if xinput list | grep -q Touchscreen
+then xinput -disable $(xinput list | grep -i touchscreen | grep -o id=[0-9]* | cut -d= -f2)
+fi
+
 systemctl --user set-environment DISPLAY=$DISPLAY
 systemctl --user start redshift
 xscreensaver -no-splash&
