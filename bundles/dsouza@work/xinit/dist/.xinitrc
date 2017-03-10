@@ -19,6 +19,5 @@ fi
 
 systemctl --user set-environment DISPLAY=$DISPLAY
 systemctl --user start redshift
-xscreensaver -no-splash&
 
-xmonad
+exec xmonad
