@@ -1,26 +1,26 @@
-import XMonad
 import System.IO
+import Data.Monoid
+import XMonad
 import XMonad.Util.Run (spawnPipe)
 import XMonad.Layout.Named
 import XMonad.Actions.Warp
 import XMonad.Layout.Tabbed
 import XMonad.Util.EZConfig (additionalKeys)
-import Graphics.X11.Xlib.Misc
 import XMonad.Hooks.DynamicLog
 import XMonad.Layout.StackTile
 import XMonad.Layout.NoBorders
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.EwmhDesktops
-import XMonad.Actions.CopyWindow
 import XMonad.Hooks.ManageHelpers
-import XMonad.Actions.UpdatePointer
 
+myManageHook :: Query (Endo WindowSet)
 myManageHook = composeAll [ className =? "Pidgin"      --> doFloat
                           , className =? "Skype"       --> doFloat
                           , className =? "Ediff"       --> doFloat
                           , isFullscreen               --> doFullFloat
                           ]
 
+myAdditionalKeys :: [((KeyMask, KeySym), X ())]
 myAdditionalKeys = [ ((noModMask, stringToKeysym "XF86AudioMute"), spawn "amixer set Master toggle")
                    , ((noModMask, stringToKeysym "XF86MonBrightnessUp"), spawn "xbacklight -inc 10")
                    , ((noModMask, stringToKeysym "XF86AudioRaiseVolume"), spawn "amixer set Master 5dB+")
@@ -29,28 +29,32 @@ myAdditionalKeys = [ ((noModMask, stringToKeysym "XF86AudioMute"), spawn "amixer
                    , ((myModMask .|. shiftMask, xK_s), spawn "bash -l -c prnscr")
                    , ((myModMask .|. shiftMask, xK_e), spawn "bash -l -c emacs")
                    , ((myModMask .|. shiftMask, xK_b), spawn "bash -l -c conkeror")
-                   , ((myModMask              , xK_l), spawn "bash -l -c x11-lock")
+                   , ((myModMask              , xK_x), spawn "bash -l -c x11-lock")
                    , ((myModMask              , xK_p), spawn "bash -l -c passmenu")
-                   , ((myModMask              , xK_x), spawn "bash -l -c dmenu_run")
+                   , ((myModMask              , xK_r), spawn "bash -l -c dmenu_run")
                    , ((myModMask              , xK_z), warpToWindow 0 0)
                    ]
 
-myWorkspaces = map show [1..9]
+myWorkspaces :: [String]
+myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
+myModMask :: KeyMask
 myModMask = mod4Mask
 
 myConfig = do
-  xmproc <- spawnPipe "xmobar"
-  return $ defaultConfig { manageHook      = manageDocks <+> myManageHook <+> manageHook defaultConfig
-                         , layoutHook      = avoidStruts $ smartBorders $ lTabs ||| lTall ||| lFull ||| lStck
-                         , handleEventHook = docksEventHook <+> handleEventHook defaultConfig
-                         , logHook     = dynamicLogWithPP xmobarPP { ppOutput = hPutStrLn xmproc }
-                         -- , startupHook = setWMName "LG3D"
-                         , modMask     = myModMask
-                         , terminal    = "bash -l -c lilyterm"
-                         , workspaces  = myWorkspaces
-                         } `additionalKeys` myAdditionalKeys
+  spawn "xscreensaver -no-splash"
+  xmbfd <- spawnPipe "xmobar"
+  return $ def { manageHook      = manageDocks <+> myManageHook <+> manageHook def
+               , layoutHook      = layouts
+               , logHook         = dynamicLogWithPP xmobarPP { ppOutput = hPutStrLn xmbfd}
+               , modMask         = myModMask
+               , terminal        = "bash -l -c lilyterm"
+               , workspaces      = myWorkspaces
+               , handleEventHook = docksEventHook <+> handleEventHook def
+               } `additionalKeys` myAdditionalKeys
   where
+    layouts = avoidStruts $ smartBorders  $ lTabs ||| lTall ||| lFull ||| lStck
+
     lTall = named "tall" $ Tall 1 (3/100) (1/2)
     lTabs = named "tabbed" simpleTabbed
     lFull = named "full" Full
