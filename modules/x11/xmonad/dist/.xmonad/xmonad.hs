@@ -43,6 +43,7 @@ myModMask = mod4Mask
 
 myConfig = do
   spawn "xscreensaver -no-splash"
+  spawn "bash -l -c autorandr.sh"
   xmbfd <- spawnPipe "xmobar"
   return $ def { manageHook      = manageDocks <+> myManageHook <+> manageHook def
                , layoutHook      = layouts
