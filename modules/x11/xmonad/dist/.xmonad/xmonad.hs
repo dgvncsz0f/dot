@@ -26,12 +26,12 @@ myAdditionalKeys = [ ((noModMask, stringToKeysym "XF86AudioMute"), spawn "amixer
                    , ((noModMask, stringToKeysym "XF86AudioRaiseVolume"), spawn "amixer set Master 5dB+")
                    , ((noModMask, stringToKeysym "XF86AudioLowerVolume"), spawn "amixer set Master 5dB-")
                    , ((noModMask, stringToKeysym "XF86MonBrightnessDown"), spawn "xbacklight -dec 10")
-                   , ((myModMask .|. shiftMask, xK_s), spawn "bash -l -c prnscr")
-                   , ((myModMask .|. shiftMask, xK_e), spawn "bash -l -c emacs")
-                   , ((myModMask .|. shiftMask, xK_b), spawn "bash -l -c conkeror")
-                   , ((myModMask              , xK_x), spawn "bash -l -c x11-lock")
-                   , ((myModMask              , xK_p), spawn "bash -l -c passmenu")
-                   , ((myModMask              , xK_r), spawn "bash -l -c dmenu_run")
+                   , ((myModMask .|. shiftMask, xK_s), spawn "prnscr")
+                   , ((myModMask .|. shiftMask, xK_e), spawn "/bin/bash -l -c emacs")
+                   , ((myModMask .|. shiftMask, xK_b), spawn "conkeror")
+                   , ((myModMask              , xK_x), spawn "x11-lock")
+                   , ((myModMask              , xK_p), spawn "passmenu")
+                   , ((myModMask              , xK_r), spawn "dmenu_run")
                    , ((myModMask              , xK_z), warpToWindow 0 0)
                    ]
 
@@ -43,13 +43,13 @@ myModMask = mod4Mask
 
 myConfig = do
   spawn "xscreensaver -no-splash"
-  spawn "bash -l -c autorandr.sh"
+  spawn "/bin/sh -c $HOME/.bash.d/bin/autorandr.sh"
   xmbfd <- spawnPipe "xmobar"
   return $ def { manageHook      = manageDocks <+> myManageHook <+> manageHook def
                , layoutHook      = layouts
                , logHook         = dynamicLogWithPP xmobarPP { ppOutput = hPutStrLn xmbfd}
                , modMask         = myModMask
-               , terminal        = "bash -l -c lilyterm"
+               , terminal        = "/usr/bin/lilyterm"
                , workspaces      = myWorkspaces
                , handleEventHook = docksEventHook <+> handleEventHook def
                } `additionalKeys` myAdditionalKeys
