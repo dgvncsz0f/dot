@@ -75,14 +75,13 @@
 (put 'upcase-region 'disabled nil)
 (put 'set-goal-column 'disabled nil)
 
-(unless (package-installed-p 'darktooth-theme)
-  (package-install 'darktooth-theme))
+(unless (package-installed-p 'ample-zen-theme)
+  (package-install 'ample-zen-theme))
 
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (set-scroll-bar-mode nil)
-(load-theme 'darktooth t)
-(darktooth-modeline)
+(load-theme 'ample-zen t)
 
 (when (file-exists-p custom-file) (load custom-file))
 
