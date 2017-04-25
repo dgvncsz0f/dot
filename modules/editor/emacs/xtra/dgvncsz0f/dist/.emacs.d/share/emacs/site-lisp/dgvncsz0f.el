@@ -117,19 +117,8 @@
 
 (defun dgvncsz0f-zprint-this ()
   (interactive)
-  (let ((input (when buffer-file-name
-                 (concat "(zprint \"" buffer-file-name "\")")))
-        (connection (cider-current-connection "clj")))
-    (when (and input connection)
-      (basic-save-buffer)
-      (nrepl-request:eval input
-                          (nrepl-make-response-handler (current-buffer)
-                                                       (lambda (_buffer _value))
-                                                       (lambda (_buffer stdout)
-                                                         (message stdout))
-                                                       (lambda (_buffer _stderr))
-                                                       (lambda (_buffer)))
-                          connection))))
+  (basic-save-buffer)
+  (shell-command (concat "lein zprint " buffer-file-name)))
 
 (defun dgvncsz0f-irc-connect-all ()
   (interactive)
