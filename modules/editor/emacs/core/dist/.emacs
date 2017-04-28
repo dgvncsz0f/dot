@@ -115,4 +115,7 @@
         (eshell/cd path)
       (bookmark-jump name))))
 
+(setq dgvncsz0f/eshell-truncate-timer
+      (run-with-idle-timer 5 t #'dgvncsz0f/truncate-eshell-buffers))
+
 (unless (server-running-p) (server-start))

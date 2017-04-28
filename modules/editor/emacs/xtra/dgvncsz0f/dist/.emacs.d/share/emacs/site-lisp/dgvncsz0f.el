@@ -136,4 +136,14 @@
                   (set-buffer s)
                   (erc-cmd-QUIT nil))) '("localhost:6667" "irc.freenode.net:6667" "locaweb.irc.slack.com:6667" "irc.oftc.net:6667"))))
 
+;; https://emacs.stackexchange.com/a/10874
+(defun dgvncsz0f/truncate-eshell-buffers ()
+  "Truncates all eshell buffers"
+  (interactive)
+  (save-current-buffer
+    (dolist (buffer (buffer-list t))
+      (set-buffer buffer)
+      (when (eq major-mode 'eshell-mode)
+        (eshell-truncate-buffer)))))
+
 (provide 'dgvncsz0f)
