@@ -1,7 +1,4 @@
-pointer = 3 2 1
-
-keycode 107 = Super_L
-keycode 173 = F3
-keycode 172 = F4
-keycode 171 = F5
-keycode 35  = braceright bracketright
+remove Control = Control_L
+keycode 66     = Control_L
+add Control    = Control_L
+pointer        =  1 2 3 4 5 6 7 8 9
