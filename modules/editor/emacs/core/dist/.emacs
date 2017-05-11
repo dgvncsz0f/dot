@@ -75,8 +75,8 @@
 (put 'upcase-region 'disabled nil)
 (put 'set-goal-column 'disabled nil)
 
-(unless (package-installed-p 'ample-zen-theme)
-  (package-install 'ample-zen-theme))
+(unless (package-installed-p 'zenburn-theme)
+  (package-install 'zenburn-theme))
 
 (menu-bar-mode 0)
 (tool-bar-mode 0)
