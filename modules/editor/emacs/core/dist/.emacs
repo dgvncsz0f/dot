@@ -85,6 +85,9 @@
 
 (when (file-exists-p custom-file) (load custom-file))
 
+(setq linum-relative-current-symbol ""
+      linum-format 'linum-relative)
+
 (delete-selection-mode t)
 (show-paren-mode t)
 (size-indication-mode t)
