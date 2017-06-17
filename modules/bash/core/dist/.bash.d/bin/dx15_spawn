@@ -1,0 +1,7 @@
+#!/bin/bash
+
+exec 1>/dev/null
+exec 2>/dev/null
+
+nohup bash -l -c "$@"& disown
+exit 0

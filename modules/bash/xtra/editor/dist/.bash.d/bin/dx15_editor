@@ -1,0 +1,13 @@
+#!/bin/sh
+
+dx15_editor_has_emacsclient () { emacsclient -e "nil" 2>/dev/null >/dev/null; }
+dx15_editor_has_emacs () { command -v emacs 2>/dev/null >/dev/null; }
+dx15_editor_has_vim () { command -v vim 2>/dev/null >/dev/null; }
+dx15_editor_has_vi () { command -v vi 2>/dev/null >/dev/null; }
+
+dx15_editor_has_emacsclient            && exec emacsclient "$@"
+dx15_editor_has_emacs                  && exec emacs "$@"
+dx15_editor_has_vim                    && exec vim "$@"
+dx15_editor_has_vi                     && exec vi "$@"
+
+exit -1

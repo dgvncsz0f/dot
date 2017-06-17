@@ -27,11 +27,11 @@ myAdditionalKeys = [ ((noModMask, stringToKeysym "XF86AudioMute"), spawn "amixer
                    , ((noModMask, stringToKeysym "XF86AudioLowerVolume"), spawn "amixer set Master 5dB-")
                    , ((noModMask, stringToKeysym "XF86MonBrightnessDown"), spawn "xbacklight -dec 10")
                    , ((myModMask .|. shiftMask, xK_s), spawn "prnscr")
-                   , ((myModMask .|. shiftMask, xK_e), spawn "/bin/bash -l -c emacs")
-                   , ((myModMask .|. shiftMask, xK_b), spawn "conkeror")
-                   , ((myModMask              , xK_x), spawn "x11-lock")
-                   , ((myModMask              , xK_p), spawn "passmenu")
-                   , ((myModMask              , xK_r), spawn "dmenu_run")
+                   , ((myModMask .|. shiftMask, xK_e), spawn "/bin/bash -l -c dx15_editor")
+                   , ((myModMask .|. shiftMask, xK_b), spawn "/bin/bash -l -c conkeror")
+                   , ((myModMask              , xK_x), spawn "xscreensaver-command -lock")
+                   , ((myModMask              , xK_p), spawn "/bin/bash -l -c passmenu")
+                   , ((myModMask              , xK_r), spawn "/bin/bash -l -c dmenu_run")
                    , ((myModMask              , xK_z), warpToWindow 0 0)
                    ]
 
@@ -49,7 +49,7 @@ myConfig = do
                , layoutHook      = layouts
                , logHook         = dynamicLogWithPP xmobarPP { ppOutput = hPutStrLn xmbfd}
                , modMask         = myModMask
-               , terminal        = "/usr/bin/lilyterm"
+               , terminal        = "lilyterm -l"
                , workspaces      = myWorkspaces
                , handleEventHook = docksEventHook <+> handleEventHook def
                } `additionalKeys` myAdditionalKeys

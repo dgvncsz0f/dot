@@ -1,5 +1,0 @@
-#!/bin/sh
-
-tempdir=$(mktemp "$HOME/prnscr-XXXXXXXXXX.png") && {
-  exec import -quiet "$tempdir"
-}
