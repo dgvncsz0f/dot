@@ -81,7 +81,7 @@
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (set-scroll-bar-mode nil)
-(load-theme 'ample-zen t)
+(load-theme 'zenburn t)
 
 (when (file-exists-p custom-file) (load custom-file))
 
