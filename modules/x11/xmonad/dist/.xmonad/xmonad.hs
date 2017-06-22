@@ -19,6 +19,7 @@ myManageHook = composeAll [ className =? "Pidgin"      --> doFloat
                           , className =? "Ediff"       --> doFloat
                           , isFullscreen               --> doFullFloat
                           ]
+               <+> composeOne [ isDialog -?> doCenterFloat ]
 
 myAdditionalKeys :: [((KeyMask, KeySym), X ())]
 myAdditionalKeys = [ ((noModMask, stringToKeysym "XF86AudioMute"), spawn "amixer set Master toggle")
