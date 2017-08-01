@@ -1,19 +1,19 @@
 #!/bin/sh
 
 hdmi1_enabled () {
-  xrandr -q | grep HDMI-1 | grep -qv disconnected
+  xrandr -q | grep HDMI2 | grep -qv disconnected
 }
 
 hdmi1_connect () {
-  xrandr --output eDP-1 --auto --left-of HDMI-1 --output HDMI-1 --auto
+  xrandr --output LVDS1 --auto --left-of HDMI2 --output HDMI2 --auto
 }
 
 hdmi1_disconnect () {
-  xrandr --output eDP-1 --auto --output HDMI-1 --off
+  xrandr --output LVDS1 --auto --output HDMI2 --off
 }
 
 hdmi1_state=-1
-while sleep 2.5
+while sleep 5
 do
   if hdmi1_enabled
   then
