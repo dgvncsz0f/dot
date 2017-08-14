@@ -1,0 +1,34 @@
+[global_config]
+  borderless = True
+  enabled_plugins = TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  extra_styling = False
+  homogeneous_tabbar = False
+  scroll_tabbar = True
+  tab_position = bottom
+  title_font = Iosevka Term 16
+  title_transmit_bg_color = "#d30102"
+  title_use_system_font = False
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      profile = default
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_color = "#3f3f3f"
+    copy_on_selection = True
+    cursor_color = "#dcdcdc"
+    font = Iosevka Term 16
+    foreground_color = "#dcdcdc"
+    icon_bell = False
+    login_shell = True
+    palette = "#3f3f3f:#cc9393:#7f9f7f:#e3ceab:#dfaf8f:#cc9393:#8cd0d3:#dcdccc:#3f3f3f:#cc9393:#7f9f7f:#e3ceab:#dfaf8f:#cc9393:#8cd0d3:#dcdccc"
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
