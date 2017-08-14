@@ -50,7 +50,7 @@ myConfig = do
                , layoutHook      = layouts
                , logHook         = dynamicLogWithPP xmobarPP { ppOutput = hPutStrLn xmbfd}
                , modMask         = myModMask
-               , terminal        = "lilyterm -l"
+               , terminal        = "terminator"
                , workspaces      = myWorkspaces
                , handleEventHook = docksEventHook <+> handleEventHook def
                } `additionalKeys` myAdditionalKeys
