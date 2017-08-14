@@ -27,7 +27,7 @@
     (normal-top-level-add-subdirs-to-load-path))
   (mapcar 'load (file-expand-wildcards (concat user-site-start-dir "*.el"))))
 
-(set-face-attribute 'default nil :height 160)
+(set-face-attribute 'default nil :height 140)
 (set-frame-font "Iosevka Term:weight=Light" nil t)
 
 (fset 'yes-or-no-p 'y-or-n-p)

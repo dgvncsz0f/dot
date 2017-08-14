@@ -38,3 +38,7 @@ define_webjump( "?s", "http://scholar.google.com/scholar?q=%s",
 register_user_stylesheet(
     make_css_data_uri(["* {font-size:14px; font-family:'Iosevka Term';}"],
                       $namespace = XUL_NS));
+
+session_pref("font.minimum-size.x-western", 14);
+session_pref("font.name.monospace.x-unicode", "Iosevka Term");
+session_pref("font.name.monospace.x-western", "Iosevka Term");

@@ -5,7 +5,7 @@
   homogeneous_tabbar = False
   scroll_tabbar = True
   tab_position = bottom
-  title_font = Iosevka Term 16
+  title_font = Iosevka Term 14
   title_transmit_bg_color = "#d30102"
   title_use_system_font = False
 [keybindings]
@@ -24,7 +24,7 @@
     background_color = "#3f3f3f"
     copy_on_selection = True
     cursor_color = "#dcdcdc"
-    font = Iosevka Term 16
+    font = Iosevka Term 14
     foreground_color = "#dcdcdc"
     icon_bell = False
     login_shell = True
