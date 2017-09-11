@@ -28,7 +28,7 @@
   (mapcar 'load (file-expand-wildcards (concat user-site-start-dir "*.el"))))
 
 (set-face-attribute 'default nil :height 140)
-(set-frame-font "Iosevka Term:weight=Light" nil t)
+(set-default-font "Iosevka Term:weight=Light" nil t)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
