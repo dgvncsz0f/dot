@@ -21,11 +21,22 @@
 (global-set-key (kbd "S-<f6>") 'column-highlight-mode)
 (global-set-key (kbd "S-<f5>") 'dgvncsz0f-toggle-flyspell)
 (global-set-key (kbd "S-<f7>") 'toggle-truncate-lines)
+;; avy-char
 (global-set-key (kbd "<M-return>") 'avy-goto-line)
 (global-set-key (kbd "<C-return>") 'avy-goto-char)
-(global-set-key (kbd "C-x o") 'ace-window)
 (global-set-key (kbd "M-z") 'avy-zap-to-char-dwim)
 (global-set-key (kbd "M-Z") 'avy-zap-up-to-char-dwim)
+;; switch-window
+(global-set-key (kbd "C-x o") 'switch-window)
+(global-set-key (kbd "C-x 1") 'switch-window-then-maximize)
+(global-set-key (kbd "C-x 2") 'switch-window-then-split-below)
+(global-set-key (kbd "C-x 3") 'switch-window-then-split-right)
+(global-set-key (kbd "C-x 0") 'switch-window-then-delete)
+;; highlight-symbol
+(global-set-key [(control f3)] 'highlight-symbol)
+(global-set-key [f3] 'highlight-symbol-next)
+(global-set-key [(shift f3)] 'highlight-symbol-prev)
+(global-set-key [(meta f3)] 'highlight-symbol-query-replace)
 (global-set-key (kbd "C-c s") 'eshell)
 (global-set-key (kbd "C-c C-e") 'dgvncsz0f-eval-and-replace)
 (global-set-key (kbd "C-S-o") 'dgvncsz0f-prepend-line)
