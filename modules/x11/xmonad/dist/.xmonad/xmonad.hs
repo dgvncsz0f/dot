@@ -29,10 +29,11 @@ myAdditionalKeys = [ ((noModMask, stringToKeysym "XF86AudioMute"), spawn "amixer
                    , ((noModMask, stringToKeysym "XF86MonBrightnessDown"), spawn "xbacklight -dec 10")
                    , ((myModMask .|. shiftMask, xK_s), spawn "prnscr")
                    , ((myModMask .|. shiftMask, xK_e), spawn "/bin/bash -l -c dx15_editor")
-                   , ((myModMask .|. shiftMask, xK_b), spawn "/bin/bash -l -c conkeror")
+                   , ((myModMask .|. shiftMask, xK_b), spawn "/bin/bash -c conkeror")
+                   , ((myModMask              , xK_l), spawn "/bin/bash -c autorandr")
                    , ((myModMask              , xK_x), spawn "xscreensaver-command -lock")
                    , ((myModMask              , xK_p), spawn "/bin/bash -l -c passmenu")
-                   , ((myModMask              , xK_r), spawn "/bin/bash -l -c dmenu_run")
+                   , ((myModMask              , xK_r), spawn "/bin/bash -c dmenu_run")
                    , ((myModMask              , xK_z), warpToWindow 0 0)
                    ]
 
@@ -44,7 +45,6 @@ myModMask = mod4Mask
 
 myConfig = do
   spawn "xscreensaver -no-splash"
-  spawn "/bin/sh -c $HOME/.bash.d/bin/autorandr.sh"
   xmbfd <- spawnPipe "xmobar"
   return $ def { manageHook      = manageDocks <+> myManageHook <+> manageHook def
                , layoutHook      = layouts
