@@ -6,4 +6,6 @@
 
 (custom-set-variables
  '(haskell-mode-hook '(turn-on-haskell-indentation)))
-(add-hook 'haskell-mode-hook 'intero-mode)
+
+(require 'intero)
+(intero-global-mode 1)
