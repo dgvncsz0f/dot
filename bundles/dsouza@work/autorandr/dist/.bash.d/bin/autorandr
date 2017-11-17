@@ -1,6 +1,6 @@
 #!/bin/sh
 
-query () {
+autorandr_adjust () {
   (IFS=$'\n'; div=" ";
    for input in $(xrandr -q | grep -Eo '^.*? (dis)?connected\b')
    do
@@ -18,4 +18,13 @@ query () {
    done)
 }
 
-xrandr $(query)
+autorandr_order () {
+  echo -n "--output "
+  cut $AUTORANDR_ORDER -d' ' -f1
+  for head in $(echo $AUTORANDR_ORDER)
+  do "--left-of $head"; done
+}
+
+xrandr $(autorandr_adjust)
+if [ -n "AUTORANDR_ORDER" ]
+then xrandr $(autorandr_order); fi
