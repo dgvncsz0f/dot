@@ -83,8 +83,8 @@
  (lambda (x)
    (find-file x)
    (run-hooks 'projectile-find-dir-hook))
- "File: "
- (map 'list 'projectile-expand-root (projectile-current-project-dirs)))
+ "Directory: "
+ (mapcar (lambda (x) (projectile-expand-root x)) (projectile-current-project-dirs)))
 
 (defun dgvncsz0f-toggle-flyspell ()
   " Toggles flyspell-mode.
