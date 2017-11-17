@@ -89,15 +89,11 @@
       linum-format 'linum-relative)
 
 (delete-selection-mode t)
-(show-paren-mode t)
 (size-indication-mode t)
 (column-number-mode t)
 (global-font-lock-mode t)
-(global-linum-mode t)
 (global-visual-line-mode t)
-(global-subword-mode t)
 (transient-mark-mode t)
-(linum-relative-global-mode t)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 

@@ -1,10 +1,10 @@
 ; -*- mode: emacs-lisp; -*-
 
-(require 'elixir-mode)
+(require 'elisp-mode)
 
-(add-hook 'elixir-mode-hook
+(add-hook 'emacs-lisp-mode-hook
           (lambda ()
-            (turn-on-smartparens-mode)
+            (turn-on-smartparens-strict-mode)
             (show-paren-mode t)
             (linum-mode t)
             (linum-relative-mode t)))

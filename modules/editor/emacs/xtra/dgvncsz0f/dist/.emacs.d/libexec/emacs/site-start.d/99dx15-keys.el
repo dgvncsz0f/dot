@@ -57,9 +57,6 @@
 (global-set-key (kbd "C-c p d") 'icicle-projectile-find-dir)
 (define-key clojure-mode-map (kbd "C-c M-q") 'dgvncsz0f-zprint-this)
 
-(add-hook 'prog-mode-hook 'turn-on-smartparens-strict-mode)
-(add-hook 'minibuffer-setup-hook 'turn-on-smartparens-strict-mode)
-
 (define-key smartparens-mode-map (kbd "M-F") 'sp-forward-sexp)
 (define-key smartparens-mode-map (kbd "M-B") 'sp-backward-sexp)
 

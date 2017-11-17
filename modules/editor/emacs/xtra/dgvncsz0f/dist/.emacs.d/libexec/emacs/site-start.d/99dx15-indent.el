@@ -14,10 +14,6 @@
             (setq c-set-style "bsd")))
 (add-hook 'js-mode-hook
           (lambda () (setq js-indent-level 2)))
-(add-hook 'sh-mode-hook
-          (lambda ()
-            (setq sh-basic-offset 2
-                  sh-indentation 2)))
 (add-hook 'python-mode-hook
           (lambda ()
             (setq py-indent-offset 2)
