@@ -19,12 +19,18 @@ autorandr_adjust () {
 }
 
 autorandr_order () {
-  echo -n "--output "
-  cut $AUTORANDR_ORDER -d' ' -f1
-  for head in $(echo $AUTORANDR_ORDER)
-  do "--left-of $head"; done
+  local flag
+  flag=true
+  for head in $AUTORANDR_ORDER
+  do
+    if [ $flag = true ]
+    then echo -n "xrandr --output $head "
+    else echo -n "--left-of $head"
+    fi
+    flag=false
+  done
 }
 
 xrandr $(autorandr_adjust)
-if [ -n "AUTORANDR_ORDER" ]
-then xrandr $(autorandr_order); fi
+if [ -n "$AUTORANDR_ORDER" ]
+then $(autorandr_order); fi
