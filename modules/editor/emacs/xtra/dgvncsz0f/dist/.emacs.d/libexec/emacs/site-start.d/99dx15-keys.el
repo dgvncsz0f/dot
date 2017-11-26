@@ -32,6 +32,11 @@
 (global-set-key (kbd "C-x 2") 'switch-window-then-split-below)
 (global-set-key (kbd "C-x 3") 'switch-window-then-split-right)
 (global-set-key (kbd "C-x 0") 'switch-window-then-delete)
+;; resizing windows
+(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "S-C-<down>") 'shrink-window)
+(global-set-key (kbd "S-C-<up>") 'enlarge-window)
 ;; highlight-symbol
 (global-set-key [(control f3)] 'highlight-symbol)
 (global-set-key [f3] 'highlight-symbol-next)
