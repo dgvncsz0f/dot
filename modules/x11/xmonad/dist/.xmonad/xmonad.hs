@@ -4,7 +4,6 @@ import XMonad
 import XMonad.Util.Run (spawnPipe)
 import XMonad.Layout.Named
 import XMonad.Actions.Warp
-import XMonad.Layout.Tabbed
 import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Hooks.DynamicLog
 import XMonad.Layout.StackTile
@@ -14,12 +13,10 @@ import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageHelpers
 
 myManageHook :: Query (Endo WindowSet)
-myManageHook = composeAll [ className =? "Pidgin"      --> doFloat
-                          , className =? "Skype"       --> doFloat
-                          , className =? "Ediff"       --> doFloat
-                          , isFullscreen               --> doFullFloat
+myManageHook = composeOne [ transience
+                          , isDialog -?> doCenterFloat
+                          , isFullscreen -?> doFloat
                           ]
-               <+> composeOne [ isDialog -?> doCenterFloat ]
 
 myAdditionalKeys :: [((KeyMask, KeySym), X ())]
 myAdditionalKeys = [ ((noModMask, stringToKeysym "XF86AudioMute"), spawn "amixer set Master toggle")
@@ -30,7 +27,6 @@ myAdditionalKeys = [ ((noModMask, stringToKeysym "XF86AudioMute"), spawn "amixer
                    , ((myModMask .|. shiftMask, xK_s), spawn "prnscr")
                    , ((myModMask .|. shiftMask, xK_e), spawn "/bin/bash -l -c dx15_editor")
                    , ((myModMask .|. shiftMask, xK_b), spawn "/bin/bash -c conkeror")
-                   , ((myModMask              , xK_l), spawn "/bin/bash -c autorandr")
                    , ((myModMask              , xK_x), spawn "xscreensaver-command -lock")
                    , ((myModMask              , xK_p), spawn "/bin/bash -l -c passmenu")
                    , ((myModMask              , xK_r), spawn "/bin/bash -c dmenu_run")
@@ -55,12 +51,9 @@ myConfig = do
                , handleEventHook = docksEventHook <+> handleEventHook def
                } `additionalKeys` myAdditionalKeys
   where
-    layouts = avoidStruts $ smartBorders  $ lTabs ||| lTall ||| lFull ||| lStck
-
-    lTall = named "tall" $ Tall 1 (3/100) (1/2)
-    lTabs = named "tabbed" simpleTabbed
-    lFull = named "full" Full
-    lStck = named "stack" $ StackTile 1 (3/100) (1/2)
+    layouts = avoidStruts
+              $ smartBorders
+              $ Full
 
 main :: IO ()
 main = fixEncoding >> fmap ewmh myConfig >>= xmonad
