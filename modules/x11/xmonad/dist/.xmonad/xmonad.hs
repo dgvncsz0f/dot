@@ -53,7 +53,7 @@ myConfig = do
   where
     layouts = avoidStruts
               $ smartBorders
-              $ Full
+              $ Full ||| Tall 1 (3/100) (1/2)
 
 main :: IO ()
 main = fixEncoding >> fmap ewmh myConfig >>= xmonad
