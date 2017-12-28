@@ -21,6 +21,8 @@
 (global-set-key (kbd "S-<f6>") 'column-highlight-mode)
 (global-set-key (kbd "S-<f5>") 'dgvncsz0f-toggle-flyspell)
 (global-set-key (kbd "S-<f7>") 'toggle-truncate-lines)
+;; zoom
+(global-set-key (kbd "C-x +") 'zoom)
 ;; avy-char
 (global-set-key (kbd "<M-return>") 'avy-goto-line)
 (global-set-key (kbd "<C-return>") 'avy-goto-char)
