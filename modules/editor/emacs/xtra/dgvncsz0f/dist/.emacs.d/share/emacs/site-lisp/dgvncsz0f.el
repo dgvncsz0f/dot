@@ -120,6 +120,16 @@
   (basic-save-buffer)
   (shell-command (concat "lein zprint " buffer-file-name)))
 
+(defun dx15-hfmt-this ()
+  (interactive)
+  (basic-save-buffer)
+  (shell-command (concat "stack exec hfmt -- -w " buffer-file-name)))
+
+(defun dx15-mix-format-this ()
+  (interactive)
+  (basic-save-buffer)
+  (shell-command (concat "mix format " buffer-file-name)))
+
 (defun dgvncsz0f-irc-connect-all ()
   (interactive)
   (dgvncsz0f-irc-slack)

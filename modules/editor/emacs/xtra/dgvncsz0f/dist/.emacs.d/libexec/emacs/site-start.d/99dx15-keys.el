@@ -63,6 +63,8 @@
 (global-set-key (kbd "C-c p f") 'icicle-projectile-find-file)
 (global-set-key (kbd "C-c p d") 'icicle-projectile-find-dir)
 (define-key clojure-mode-map (kbd "C-c M-q") 'dgvncsz0f-zprint-this)
+(define-key haskell-mode-map (kbd "C-c M-q") 'dx15-hfmt-this)
+(define-key elixir-mode-map (kbd "C-c M-q") 'dx15-mix-format-this)
 
 (define-key smartparens-mode-map (kbd "M-F") 'sp-forward-sexp)
 (define-key smartparens-mode-map (kbd "M-B") 'sp-backward-sexp)
