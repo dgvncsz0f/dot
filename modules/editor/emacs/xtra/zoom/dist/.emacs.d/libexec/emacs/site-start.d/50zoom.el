@@ -8,4 +8,4 @@
 (custom-set-variables
  '(zoom-mode t)
  '(zoom-size '(0.7 . 0.7))
- '(zoom-ignored-major-modes '(dired-mode completion-list-mode)))
+ '(zoom-ignored-major-modes '(ediff-mode dired-mode completion-list-mode)))
