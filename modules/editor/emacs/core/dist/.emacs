@@ -55,6 +55,7 @@
 (setq dired-hide-details-hide-symlink-targets nil)
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 (setq ffap-machine-p-known 'reject)
+(setq display-line-numbers-type 'relative)
 (setq
  tramp-password-prompt-regexp
  (concat
@@ -83,9 +84,6 @@
 (load-theme 'zenburn t)
 
 (when (file-exists-p custom-file) (load custom-file))
-
-(setq linum-relative-current-symbol ""
-      linum-format 'linum-relative)
 
 (delete-selection-mode t)
 (size-indication-mode t)

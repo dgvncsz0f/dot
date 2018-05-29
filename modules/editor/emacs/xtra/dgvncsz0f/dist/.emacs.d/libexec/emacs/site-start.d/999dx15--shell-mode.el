@@ -8,5 +8,4 @@
                   sh-indentation 2)
             (turn-on-smartparens-mode)
             (show-paren-mode t)
-            (linum-mode t)
-            (linum-relative-mode t)))
+            (display-line-numbers-mode t)))
