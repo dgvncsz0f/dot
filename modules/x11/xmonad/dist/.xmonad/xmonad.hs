@@ -6,9 +6,8 @@ import           XMonad.Hooks.DynamicLog
 import           XMonad.Hooks.EwmhDesktops
 import           XMonad.Hooks.ManageDocks
 import           XMonad.Hooks.ManageHelpers
-import           XMonad.Layout.Named
+import           XMonad.Hooks.SetWMName
 import           XMonad.Layout.NoBorders
-import           XMonad.Layout.StackTile
 import           XMonad.Util.EZConfig       (additionalKeys)
 import           XMonad.Util.Run            (spawnPipe)
 
@@ -59,7 +58,10 @@ myConfig = do
     } `additionalKeys`
     myAdditionalKeys
   where
-    layouts = avoidStruts $ smartBorders $ Full ||| Tall 1 (3 / 100) (1 / 2)
+    layouts =
+      avoidStruts $
+      smartBorders $
+      Full ||| Tall 1 (3 / 100) (4 / 5) ||| Mirror (Tall 1 (3 / 100) (4 / 5))
 
 main :: IO ()
 main = fixEncoding >> fmap ewmh myConfig >>= xmonad
