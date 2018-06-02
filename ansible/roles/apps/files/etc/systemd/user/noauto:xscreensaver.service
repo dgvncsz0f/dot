@@ -1,0 +1,11 @@
+[Unit]
+Description=Screen saver and locker for the X Window System
+Documentation=http://www.jwz.org/xscreensaver/
+After=display-manager.service
+
+[Service]
+ExecStart=/usr/bin/xscreensaver -no-splash
+Restart=always
+
+[Install]
+WantedBy=default.target

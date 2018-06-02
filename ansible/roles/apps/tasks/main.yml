@@ -1,0 +1,43 @@
+---
+
+- name: install packages
+  become: true
+  package:
+    name: "{{ item }}"
+  loop:
+    - pass
+    - gnupg
+    - evince
+
+- name: install packages | aur
+  include_tasks: aura.yml
+  vars:
+    package: "{{ item }}"
+  loop:
+    - gocryptfs
+    - spotify
+
+- name: probe files to install
+  find:
+    path: "{{ cwd }}/files"
+    hidden: true
+    recurse: true
+    excludes: "noauto:*"
+    file_type: file
+  register: files
+
+- name: install files
+  copy:
+    src: "{{ item.path }}"
+    dest: "{{ root }}/{{ item.path|relpath(cwd)|relpath('files')|dirname }}/"
+    mode: "{{ item.mode }}"
+  loop: "{{ files.files }}"
+  loop_control:
+    label: "{{ item.path|relpath(cwd)|relpath('files') }}"
+
+- import_tasks: devel.yml
+- import_tasks: xmonad.yml
+- import_tasks: browser.yml
+- import_tasks: fontconfig.yml
+- import_tasks: xscreensaver.yml
+- import_tasks: gnome-terminal.yml

@@ -1,0 +1,9 @@
+---
+
+- name: systemd_daemon_reload
+  become: true
+  systemd:
+    daemon_reload: true
+
+- name: xmonad_recompile
+  command: xmonad --recompile

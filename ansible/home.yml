@@ -21,6 +21,9 @@
     - role: emacs
       tags: [emacs]
       cwd: "{{ playbook_dir }}/roles/emacs"
+    - role: apps
+      tags: [apps]
+      cwd: "{{ playbook_dir }}/roles/apps"
 
   post_tasks:
     - name: remove temporary directory

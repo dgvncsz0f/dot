@@ -1,0 +1,21 @@
+---
+
+- name: devel packages
+  package:
+    name: "{{ item }}"
+  loop:
+    - make
+    - clang
+    - patch
+    - erlang
+    - stack
+    - ghc
+    - lein
+
+- name: devel packages | aur
+  include_tasks: aura.yaml
+  vars:
+    package: "{{ item }}"
+  loop:
+    - jdk8
+    - leiningen

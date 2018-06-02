@@ -1,0 +1,31 @@
+---
+
+- name: fontconfig packages
+  become: true
+  package:
+    name: "{{ item }}"
+  loop:
+    - fontconfig
+    - noto-fonts
+    - ttf-croscore
+    - ttf-symbola
+
+- name: fontconfig packages | aur
+  include_tasks: aura.yml
+  vars:
+    package: "{{ item }}"
+  loop:
+    - freetype2-cleartype
+    - ttf-iosevka-ss07
+
+- name: fontconfig features
+  become: true
+  file:
+    src: "/etc/fonts/conf.avail/{{ item }}"
+    dest: "/etc/fonts/conf.d/{{ item }}"
+    state: link
+  loop:
+    - 10-sub-pixel-rgb.conf
+    - 10-hinting-slight.conf
+    - 11-lcdfilter-default.conf
+    - 70-no-bitmaps.conf

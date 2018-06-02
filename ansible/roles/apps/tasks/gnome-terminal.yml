@@ -1,0 +1,55 @@
+---
+
+- name: "gnome-terminal: packages"
+  become: true
+  package:
+    name: "{{ item }}"
+  loop:
+    - dconf
+    - python-psutil
+    - gnome-terminal
+
+- name: "gnome-terminal: find default profile"
+  dconf:
+    key: /org/gnome/terminal/legacy/profiles:/default
+    state: read
+  register: def_profile
+  changed_when: false
+
+- name: "gnome-terminal: find all profiles"
+  shell: "dconf list /org/gnome/terminal/legacy/profiles:/ | grep ^: | head -n1"
+  register: fst_profile
+  changed_when: false
+
+- set_fact:
+    profile: "{{ def_profile.value or fst_profile.stdout }}"
+
+- name: "gnome-terminal: configure default profiles"
+  dconf:
+    key: "/org/gnome/terminal/legacy/profiles:/:{{ profile[1:-1] }}/{{ item.key }}"
+    value: "{{ item.val }}"
+  loop:
+    - key: foreground-color
+      val: "'rgb(211,215,207)'"
+    - key: background-color
+      val: "'rgb(46,52,54)'"
+    - key: palette
+      val: "['rgb(7,54,66)', 'rgb(220,50,47)', 'rgb(133,153,0)', 'rgb(181,137,0)', 'rgb(38,139,210)', 'rgb(211,54,130)', 'rgb(42,161,152)', 'rgb(238,232,213)', 'rgb(0,43,54)', 'rgb(203,75,22)', 'rgb(88,110,117)', 'rgb(101,123,131)', 'rgb(131,148,150)', 'rgb(108,113,196)', 'rgb(147,161,161)', 'rgb(253,246,227)']"
+    - key: login-shell
+      val: "true"
+    - key: use-system-font
+      val: "false"
+    - key: font
+      val: "'Iosevka 12'"
+    - key: use-theme-colors
+      val: "false"
+    - key: scrollback-unlimited
+      val: "true"
+    - key: cursor-blink-mode
+      val: "'system'"
+    - key: cursor-shape
+      val: "'ibeam'"
+    - key: scrollbar-policy
+      val: "'never'"
+  loop_control:
+    label: "{{ profile[1:-1] }}/{{ item.key }}"

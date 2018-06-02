@@ -1,0 +1,27 @@
+---
+
+- name: xmonad/graphics packages
+  become: true
+  package:
+    name: "{{ item }}"
+  loop:
+    - xmonad
+    - xmonad-contrib
+    - xmobar
+    - redshift
+    - xorg-xset
+    - xorg-xrdb
+    - xorg-xsetroot
+    - rofi
+    - xclip
+
+- name: create xmonad dir
+  file:
+    path: "{{ root }}/.xmonad"
+    state: directory
+
+- name: "xmonad: copy config file"
+  copy:
+    src: .xmonad/noauto:xmonad.hs
+    dest: "{{ root }}/.xmonad/xmonad.hs"
+  notify: xmonad_recompile

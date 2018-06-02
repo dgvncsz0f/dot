@@ -1,0 +1,13 @@
+---
+
+- name: xscreensaver package
+  become: true
+  package:
+    name: xscreensaver
+
+- name: xscreensaver systemd service
+  become: true
+  copy:
+    src: etc/systemd/user/noauto:xscreensaver.service
+    dest: /etc/systemd/user/xscreensaver.service
+  notify: systemd_daemon_reload

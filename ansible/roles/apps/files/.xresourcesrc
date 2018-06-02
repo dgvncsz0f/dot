@@ -1,0 +1,19 @@
+Xft.autohint: 0
+Xft.hinting: 1
+Xft.hintstyle: hintslight
+Xft.antialias: 1
+Xft.rgba: rgb
+Xft.lcdfilter: lcddefault
+
+editor.menuBar: off
+editor.toolBar: off
+editor.verticalScrollBars: off
+editor.background: black
+editor.foreground: white
+editor.mode-line.AttributeBox: t
+emacs.menuBar: off
+emacs.toolBar: off
+emacs.verticalScrollBars: off
+emacs.background: black
+emacs.foreground: white
+emacs.mode-line.AttributeBox: t

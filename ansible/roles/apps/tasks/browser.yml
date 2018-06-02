@@ -1,0 +1,15 @@
+---
+
+- name: browser packages
+  package:
+    name: "{{ item }}"
+  loop:
+    - firefox
+    - chromium
+
+- name: browser packages | aur
+  include_tasks: aura.yml
+  vars:
+    package: "{{ item }}"
+  loop:
+    - brave

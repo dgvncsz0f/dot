@@ -1,0 +1,26 @@
+[user]
+  name        = dgvncsz0f
+  email       = dgvncsz0f@gmail.com
+  signingkey  = dgvncsz0f
+
+[color]
+  diff        = auto
+  status      = auto
+  branch      = auto
+
+[alias]
+  st   = status -s
+  ci   = commit
+  co   = checkout
+  br   = branch
+  pl   = pull
+  ps   = push
+  push = stash
+  pop  = stash pop
+  xlog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
+[push]
+  default = simple
+
+[commit]
+  gpgsign = true

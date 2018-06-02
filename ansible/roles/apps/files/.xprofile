@@ -1,0 +1,23 @@
+#!/bin/sh
+
+xset r rate 750 40
+xset -b b off
+xrdb -I$HOME -load ~/.xresourcesrc
+xsetroot -solid black
+xsetroot -cursor_name left_ptr
+
+if lsusb | grep -iq kinesis
+then xmodmap ~/.xmodmaprc_kinesis
+else xmodmap ~/.xmodmaprc_default
+fi
+
+if xinput list | grep -q Touchscreen
+then
+  xinput -disable $(xinput list | grep -i touchscreen | grep -o id=[0-9]* | cut -d= -f2)
+fi
+
+systemctl --user set-environment DISPLAY=$DISPLAY
+systemctl --user start redshift
+systemctl --user start xscreensaver
+
+exec xmonad
