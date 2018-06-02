@@ -1,0 +1,27 @@
+---
+
+- hosts: localhost
+  connection: local
+
+  vars:
+    - root: "{{ dx15_root | default(ansible_env.HOME) }}"
+    - clean: "{{ dx15_clean | default(false) }}"
+
+  pre_tasks:
+    - name: create temporary directory
+      tempfile:
+        state: directory
+      register: tempdir
+      changed_when: false
+
+  roles:
+    - role: emacs
+      tags: [emacs]
+      cwd: "{{ playbook_dir }}/roles/emacs"
+
+  post_tasks:
+    - name: remove temporary directory
+      file:
+        path: "{{ tempdir.path }}"
+        state: absent
+      changed_when: false

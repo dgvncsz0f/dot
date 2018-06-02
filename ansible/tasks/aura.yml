@@ -1,0 +1,8 @@
+---
+
+- name: "aura: install package {{ package }}"
+  become: true
+  command: "aura -Ax --needed --noconfirm {{ package }}"
+  register: aura_output
+  failed_when: "'ERROR:' in aura_output.stdout"
+  changed_when: "'The following packages are already installed' not in aura_output.stdout"

@@ -1,0 +1,94 @@
+---
+
+emacs_backup_files:
+  - "{{ root }}/.emacs.d/bookmarks"
+  - "{{ root }}/.emacs.d/custom-file"
+
+emacswiki:
+  requires:
+    - bookmark+
+    - dired+
+    - files+
+    - icicles
+  download:
+    - https://www.emacswiki.org/emacs/download/bookmark+.el
+    - https://www.emacswiki.org/emacs/download/bookmark+-1.el
+    - https://www.emacswiki.org/emacs/download/bookmark+-bmu.el
+    - https://www.emacswiki.org/emacs/download/bookmark+-key.el
+    - https://www.emacswiki.org/emacs/download/bookmark+-lit.el
+    - https://www.emacswiki.org/emacs/download/bookmark+-mac.el
+    - https://www.emacswiki.org/emacs/download/apropos-fn+var.el
+    - https://www.emacswiki.org/emacs/download/col-highlight.el
+    - https://www.emacswiki.org/emacs/download/crosshairs.el
+    - https://www.emacswiki.org/emacs/download/hl-line+.el
+    - https://www.emacswiki.org/emacs/download/info+.el
+    - https://www.emacswiki.org/emacs/download/dired+.el
+    - https://www.emacswiki.org/emacs/download/mb-depth+.el
+    - https://www.emacswiki.org/emacs/download/thingapt+.el
+    - https://www.emacswiki.org/emacs/download/vline.el
+    - https://www.emacswiki.org/emacs/download/files+.el
+    - https://www.emacswiki.org/emacs/download/icicles.el
+    - https://www.emacswiki.org/emacs/download/icicles-chg.el
+    - https://www.emacswiki.org/emacs/download/icicles-cmd1.el
+    - https://www.emacswiki.org/emacs/download/icicles-cmd2.el
+    - https://www.emacswiki.org/emacs/download/icicles-doc1.el
+    - https://www.emacswiki.org/emacs/download/icicles-doc2.el
+    - https://www.emacswiki.org/emacs/download/icicles-face.el
+    - https://www.emacswiki.org/emacs/download/icicles-fn.el
+    - https://www.emacswiki.org/emacs/download/icicles-mac.el
+    - https://www.emacswiki.org/emacs/download/icicles-mcmd.el
+    - https://www.emacswiki.org/emacs/download/icicles-mode.el
+    - https://www.emacswiki.org/emacs/download/icicles-opt.el
+    - https://www.emacswiki.org/emacs/download/icicles-var.el
+    - https://www.emacswiki.org/emacs/download/hexrgb.el
+
+emacs_packages:
+  - name: ag
+  - name: alchemist
+  - name: ansible
+  - name: ansible-doc
+  - name: anzu
+  - name: auth-source-pass
+  - name: avy
+  - name: avy-zap
+  - name: cider
+  - name: clj-refactor
+  - name: clojure-mode
+  - name: company
+  - name: company-ansible
+  - name: company-c-headers
+  - name: company-cabal
+  - name: company-erlang
+  - name: company-ghc
+  - name: company-ghci
+  - name: company-math
+  - name: company-shell
+  - name: company-terraform
+  - name: dash
+  - name: dot-mode
+  - name: elixir-mode
+  - name: evil-numbers
+  - name: expand-region
+  - name: full-ack
+  - name: git-timemachine
+  - name: haskell-mode
+  - name: highlight-symbol
+  - name: idris-mode
+  - name: intero
+  - name: js2-mode
+    requires: [js]
+  - name: json-mode
+  - name: magit
+  - name: markdown-mode
+  - name: projectile
+  - name: rust-mode
+  - name: smart-mode-line
+  - name: smartparens
+  - name: terraform-mode
+  - name: undo-tree
+  - name: ripgrep
+  - name: yaml-mode
+  - name: indent-guide
+  - name: zenburn-theme
+  - name: zoom
+  - name: switch-window

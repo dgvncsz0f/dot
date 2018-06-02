@@ -1,3 +1,0 @@
-; -*- mode: emacs-lisp; -*-
-
-(require 'col-highlight)

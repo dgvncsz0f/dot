@@ -1,0 +1,103 @@
+---
+
+- name: system packages
+  become: true
+  package:
+    name: "{{ item }}"
+  loop:
+    - emacs
+    - agda
+    - ripgrep
+    - hunspell
+    - hunspell-en
+
+- name: system packages | aur
+  include_tasks: aura.yml
+  vars:
+    package: "{{ item }}"
+  loop:
+    - hunspell-pt-br
+
+- name: clean .emacs.d directory
+  block:
+    - file:
+        path: "{{ tempdir.path }}/emacs"
+        state: directory
+
+    - stat:
+        path: "{{ item }}"
+      loop: "{{ emacs_backup_files }}"
+      register: stat_emacs_backup_files
+
+    - copy:
+        src: "{{ item.item }}"
+        dest: "{{ tempdir.path }}/emacs/{{ item.item|basename }}"
+      when: item.stat.exists
+      loop: "{{ stat_emacs_backup_files.results }}"
+      loop_control:
+        label: "{{ item.item }}"
+
+    - file:
+        path: "{{ root }}/.emacs.d"
+        state: absent
+
+    - copy:
+        src: "{{ tempdir.path }}/emacs/{{ item.item|basename }}"
+        dest: "{{ item.item|dirname }}/"
+      when: item.stat.exists
+      loop: "{{ stat_emacs_backup_files.results }}"
+      loop_control:
+        label: "{{ item.item }}"
+  when: clean
+
+- name: create .emacs.d
+  file:
+    path: "{{ root }}/{{ item }}"
+    mode: 0700
+    state: directory
+  loop:
+    - .emacs.d
+    - .emacs.d/dx15/exe.d
+    - .emacs.d/dx15/lib.d
+    - .emacs.d/dx15/files
+
+- name: install .emacs
+  template:
+    src: .emacs
+    dest: "{{ root }}/.emacs"
+
+- name: install cfg files
+  assemble:
+    src: "{{ cwd }}/files/cfg.d"
+    dest: "{{ root }}/.emacs.d/dx15/exe.d/z-config.el"
+    regexp: "\\.el$"
+
+- name: install lib files
+  copy:
+    src: "{{ cwd }}/files/lib.d/"
+    dest: "{{ root }}/.emacs.d/dx15/lib.d/"
+
+- name: install exe files
+  copy:
+    src: "{{ cwd }}/files/exe.d/"
+    dest: "{{ root }}/.emacs.d/dx15/exe.d/"
+
+- name: installu file
+  template:
+    src: installu.el
+    dest: "{{ root }}/.emacs.d/dx15/exe.d/0-installu.el"
+
+- name: installp file
+  template:
+    src: installp.el
+    dest: "{{ root }}/.emacs.d/dx15/exe.d/0-installp.el"
+
+- name: install other files
+  copy:
+    src: "{{ cwd }}/files/files/"
+    dest: "{{ root }}/.emacs.d/dx15/files/"
+
+- name: byte-compile lib.d directory
+  command: "emacs --batch --script '{{ root }}/.emacs' --eval '(dx15/compile-libd)'"
+  register: emacs_compiler
+  changed_when: "' 0 files compiled' not in emacs_compiler.stderr"
