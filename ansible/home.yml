@@ -15,6 +15,9 @@
       changed_when: false
 
   roles:
+    - role: bash
+      tags: [bash]
+      cwd: "{{ playbook_dir }}/roles/bash"
     - role: emacs
       tags: [emacs]
       cwd: "{{ playbook_dir }}/roles/emacs"

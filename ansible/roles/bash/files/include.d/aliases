@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if ls --color >/dev/null 2>/dev/null
+then
+  if command -v ls >/dev/null 2>/dev/null
+  then
+    alias ls="$(which ls) --color"
+  fi
+fi
+
+if echo x | grep --color . >/dev/null 2>/dev/null
+then
+  if command -v grep >/dev/null 2>/dev/null
+  then
+    alias grep="$(which grep) --color"
+  fi
+fi
+
+alias ll="ls -l"
+alias l1="ls -1"
+alias la="ll -a"
+alias vi=dx15_editor
+alias vim=dx15_editor
+alias edit=dx15_editor

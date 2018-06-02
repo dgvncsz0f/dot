@@ -1,0 +1,17 @@
+#!/bin/bash
+
+dx15_gocryptfs_alert ()
+{
+  if { command -v gocryptfs && command -v mount && command -v grep; } 2>/dev/null >/dev/null
+  then
+    if [ -d $HOME/.enc ]
+    then
+      if ! mount | grep -q $HOME/enc
+      then
+        echo "WARN: $HOME/enc is not mounted" >&2
+      fi
+    fi
+  fi
+}
+
+dx15_is_interactive && dx15_gocryptfs_alert

@@ -1,0 +1,25 @@
+---
+
+- name: "rbenv: clone repo"
+  git:
+    repo: git://github.com/rbenv/rbenv.git
+    dest: "{{ root }}/.bash.d/usr/rbenv"
+    depth: 1
+
+- name: "rbenv: install elixir-build"
+  import_tasks: aura.yml
+  vars:
+    package: ruby-build-git
+
+- name: "rbenv: install bin directory"
+  file:
+    src: "{{ root }}/.bash.d/usr/rbenv/bin"
+    dest: "{{ root }}/.bash.d/bin/rbenv"
+    state: link
+
+- name: "rbenv: install include file"
+  copy:
+    content: |
+      #!/bin/bash
+      eval "$(rbenv init -)"
+    dest: "{{ root }}/.bash.d/include.d/rbenv"

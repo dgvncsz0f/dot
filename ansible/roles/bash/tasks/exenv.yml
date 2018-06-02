@@ -1,0 +1,25 @@
+---
+
+- name: "exenv: clone repo"
+  git:
+    repo: git://github.com/mururu/exenv.git
+    dest: "{{ root }}/.bash.d/usr/exenv"
+    depth: 1
+
+- name: "exenv: install elixir-build"
+  import_tasks: aura.yml
+  vars:
+    package: elixir-build
+
+- name: "exenv: install bin directory"
+  file:
+    src: "{{ root }}/.bash.d/usr/exenv/bin"
+    dest: "{{ root }}/.bash.d/bin/exenv"
+    state: link
+
+- name: "exenv: install include file"
+  copy:
+    content: |
+      #!/bin/bash
+      eval "$(exenv init -)"
+    dest: "{{ root }}/.bash.d/include.d/exenv"

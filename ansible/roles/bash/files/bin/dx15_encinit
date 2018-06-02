@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec /usr/bin/gocryptfs -q "/home/dsouza/.enc" "/home/dsouza/enc"

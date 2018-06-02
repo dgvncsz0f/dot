@@ -1,0 +1,58 @@
+---
+
+- name: install packages
+  become: true
+  package:
+    name: "{{ item }}"
+  loop:
+    - expect
+    - bash-completion
+
+- name: remove previous files
+  file:
+    path: "{{ root }}/.bash.d"
+    state: absent
+  when: clean
+
+- name: create directory structure
+  file:
+    path: "{{ root }}/{{ item }}"
+    state: directory
+  loop:
+    - .bash.d
+    - .bash.d/bin
+    - .bash.d/usr
+    - .bash.d/include.d
+    - .bash.d/profile.d
+
+- name: install libdx15
+  copy:
+    src: libdx15
+    dest: "{{ root }}/.bash.d/"
+
+- name: install .bash_profile, .bash_rc
+  copy:
+    src: "{{ item }}"
+    dest: "{{ root }}/"
+  loop:
+    - .bashrc
+    - .bash_profile
+
+- name: install bin files
+  copy:
+    src: "{{ cwd }}/files/bin/"
+    dest: "{{ root }}/.bash.d/bin/"
+    mode: 0755
+
+- name: install include files
+  copy:
+    src: "{{ cwd }}/files/include.d/"
+    dest: "{{ root }}/.bash.d/include.d/"
+
+- name: install profile files
+  template:
+    src: "{{ cwd }}/templates/profile.d/editor"
+    dest: "{{ root }}/.bash.d/profile.d/"
+
+- import_tasks: rbenv.yml
+- import_tasks: exenv.yml

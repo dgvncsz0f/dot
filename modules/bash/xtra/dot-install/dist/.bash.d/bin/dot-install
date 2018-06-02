@@ -1,3 +1,0 @@
-#!/bin/bash
-
-sh <(curl -s https://raw.githubusercontent.com/dgvncsz0f/dot-install/stable/dot-install) repo=git://github.com/dgvncsz0f/dot.git

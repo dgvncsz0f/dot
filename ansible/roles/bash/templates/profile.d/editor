@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export VISUAL="{{ root }}/.bash.d/bin/dx15_editor"
+export EDITOR="{{ root }}/.bash.d/bin/dx15_editor"

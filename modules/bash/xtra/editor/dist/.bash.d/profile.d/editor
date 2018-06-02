@@ -1,4 +1,0 @@
-#!/bin/bash
-
-export VISUAL=$HOME/.bash.d/bin/dx15_editor
-export EDITOR=$HOME/.bash.d/bin/dx15_editor

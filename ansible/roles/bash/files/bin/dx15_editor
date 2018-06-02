@@ -1,0 +1,12 @@
+#!/bin/sh
+
+dx15_editor_has_emacsclient ()
+{ emacsclient -e nil 2>/dev/null >/dev/null; }
+
+dx15_editor_has_emacs ()
+{ command -v emacs 2>/dev/null >/dev/null; }
+
+if dx15_editor_has_emacsclient
+then exec emacsclient -c "$@"
+else exec emacs "$@"
+fi
