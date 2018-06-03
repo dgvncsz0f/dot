@@ -1,0 +1,92 @@
+---
+
+- name: install packages
+  become: true
+  package:
+    name: "{{ item }}"
+  loop:
+    - docker
+    - docker-compose
+    - openvpn
+    - fakeroot
+    - binutils
+    - xorg-server
+    - xorg-apps
+    - xorg-drivers
+    - xmonad
+    - xmonad-contrib
+    - netctl
+    - ifplugd
+    - dialog
+    - sudo
+    - tar
+    - gzip
+    - ntp
+
+- name: enable ntpd service
+  become: true
+  systemd:
+    name: ntpd
+    state: started
+    enabled: true
+
+- name: configure locale | locale-gen
+  become: true
+  locale_gen:
+    name: "{{ locale }}"
+    state: present
+
+- name: configure locale | locale.conf
+  become: true
+  copy:
+    content: "LANG={{ locale }}"
+    dest: /etc/locale.conf
+
+- name: configure timezone
+  become: true
+  timezone:
+    name: "{{ timezone }}"
+
+- name: configure vconsole keymap
+  become: true
+  copy:
+    content: "KEYMAP=colemak"
+    dest: /etc/vconsole.conf
+
+- name: configure x11 keymap
+  become: true
+  copy:
+    content: |
+      Section "InputClass"
+        Identifier "system-keyboard"
+        MatchIsKeyboard "on"
+        Option "XkbModel" "us"
+        Option "XkbVariant" "colemak"
+      EndSection
+    dest: /etc/X11/xorg.conf.d/00-keyboard.conf
+
+- name: create groups
+  group:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - sudo
+    - docker
+
+- name: create users
+  user:
+    name: dsouza
+    shell: /bin/bash
+    home: /home/dsouza
+    group: dsouza
+    groups: [sudo, audio, video, docker]
+    state: present
+
+- name: enable sudo group in sudoers
+  become: true
+  copy:
+    content: "%sudo ALL=(ALL) ALL"
+    dest: /etc/sudoers.d/groups
+
+- import_tasks: swap.yml
+- import_tasks: unbound.yml

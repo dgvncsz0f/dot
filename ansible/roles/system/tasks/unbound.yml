@@ -1,0 +1,23 @@
+---
+
+- name: unbound packages
+  become: true
+  package:
+    name: "{{ item }}"
+  loop:
+    - unbound
+    - openresolv
+
+- name: unbound resolvconf entry
+  become: true
+  lineinfile:
+    path: /etc/resolvconf.conf
+    line: "name_servers=127.0.0.1"
+    insertafter: EOF
+
+- name: unbound enable/start service
+  become: true
+  systemd:
+    name: unbound
+    state: started
+    enabled: true

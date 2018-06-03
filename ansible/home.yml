@@ -15,6 +15,11 @@
       changed_when: false
 
   roles:
+    - role: system
+      tags: [system]
+      vars:
+        locale: en_US.UTF-8
+        timezone: America/Sao_Paulo
     - role: bash
       tags: [bash]
       cwd: "{{ playbook_dir }}/roles/bash"

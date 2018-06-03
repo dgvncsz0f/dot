@@ -1,0 +1,55 @@
+#!/bin/sh
+
+set -e
+
+create_user () {
+  if ! getent group sudo >/dev/null 2>/dev/null
+  then groupadd sudo; fi
+  if ! getent passwd dsouza >/dev/null 2>/dev/null
+  then useradd --home-dir /home/dsouza --groups sudo,audio,video --guid dsouza --shell /bin/bash dsouza; fi
+}
+
+install_packages () {
+  pacman -Sy --noconfirm --needed wget sudo ansible
+}
+
+install_aura () {
+  local tempdir
+
+  if ! command -v aura 2>/dev/null >/dev/null
+  then
+    tempdir=$(mktemp -d) && {
+      trap "rm -rf '$tempdir'" EXIT
+
+      chmod 777 "$tempdir"
+
+      cd "$tempdir" && {
+        wget https://aur.archlinux.org/cgit/aur.git/snapshot/aura-bin.tar.gz
+        sudo -u dsouza tar xzf aura-bin.tar.gz
+        cd aura-bin && {
+          sudo -u dsouza makepkg
+          pacman -U --needed --noconfirm aura-bin-*.pkg.tar.xz
+        }
+      }
+    }
+  fi
+}
+
+invoke_ansible () {
+  local tempdir
+
+  tempdir=$(mktemp -d) && {
+    trap "rm -rf '$tempdir'" EXIT
+
+    cd "$tempdir" && {
+      wget https://github.com/dgvncsz0f/dot/archive/master.tar.gz
+      tar xzf master.tar.gz
+      ansible-playbook dot-master/ansible/home.yml --tags system
+    }
+  }
+}
+
+create_user
+install_packages
+install_aura
+invoke_ansible
