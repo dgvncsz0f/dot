@@ -9,6 +9,13 @@
     - gnupg
     - evince
 
+- name: enable gpg-agent-ssh
+  systemd:
+    name: gpg-agent-ssh
+    user: true
+    state: started
+    enable: true
+
 - name: install packages | aur
   include_tasks: aura.yml
   vars:
