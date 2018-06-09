@@ -44,7 +44,7 @@ invoke_ansible () {
     cd "$tempdir" && {
       wget https://github.com/dgvncsz0f/dot/archive/master.tar.gz
       tar xzf master.tar.gz
-      ansible-playbook dot-master/ansible/home.yml --tags system
+      ansible-playbook dot-master/home.yml --tags system
     }
   }
 }

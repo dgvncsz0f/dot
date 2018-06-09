@@ -6,3 +6,4 @@ dot.xmonad/xmonad.errors
 dot.irssi/nickserv.auth
 dot.irssi/nickserv.networks
 /dot-install.log
+/home.retry
