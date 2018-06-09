@@ -1,6 +1,6 @@
 Config {
 
-     font =         "xft:FiraCode:size=11:bold:antialias=true"
+     font =         "xft:monospace:size=8:bold"
    , bgColor =      "black"
    , fgColor =      "#646464"
    , position =     Top
