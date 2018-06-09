@@ -41,6 +41,8 @@
      "Verification code" "verification code") t)
   ".*:\0? *"))
 (add-to-list 'tramp-default-proxies-alist '("\\." "root" "/ssh:dsouza@%h:"))
+(add-to-list 'tramp-default-proxies-alist '("localhost" "root" nil))
+(add-to-list 'tramp-default-proxies-alist '(".*\\.localdomain" "root" nil))
 
 ;; disable limiters
 (put 'erase-buffer 'disabled nil)
