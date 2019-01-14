@@ -1,3 +1,5 @@
+This repo has been moved to gitlab: gitlab.com/dgvncsz0f/dot
+
 =====
  dot
 =====
